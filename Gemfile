@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
 gem 'puma'
+gem 'slim-rails', github: 'okuramasafumi/slim-rails'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 

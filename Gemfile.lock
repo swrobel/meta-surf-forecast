@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/okuramasafumi/slim-rails.git
+  revision: 7b76624a32cd50ca3268c5196634f47bef3eab9a
+  specs:
+    slim-rails (3.0.1)
+      actionmailer (>= 3.1, < 5.0)
+      actionpack (>= 3.1, < 5.0)
+      activesupport (>= 3.1, < 5.0)
+      railties (>= 3.1, < 5.0)
+      slim (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -148,7 +159,9 @@ GEM
     rake (10.5.0)
     redis (3.2.2)
     sass (3.4.20)
-    spring (1.6.1)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -156,8 +169,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
+    tilt (2.0.2)
     timers (4.1.1)
       hitimes
     turbolinks (2.5.3)
@@ -187,6 +202,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma
   rails (>= 5.0.0.beta1, < 5.1)
+  slim-rails!
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 3.0)
