@@ -1,0 +1,2 @@
+module SpotsHelper
+end

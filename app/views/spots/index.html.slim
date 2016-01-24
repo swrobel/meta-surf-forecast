@@ -1,0 +1,33 @@
+h1 Listing spots
+
+table
+  thead
+    tr
+      th Name
+      th Lat
+      th Lon
+      th Surfline
+      th Msw
+      th Spitcast
+      th Wunder
+      th
+      th
+      th
+
+  tbody
+    - @spots.each do |spot|
+      tr
+        td = spot.name
+        td = spot.lat
+        td = spot.lon
+        td = spot.surfline_id
+        td = spot.msw_id
+        td = spot.spitcast_id
+        td = spot.wunder_id
+        td = link_to 'Show', spot
+        td = link_to 'Edit', edit_spot_path(spot)
+        td = link_to 'Destroy', spot, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Spot', new_spot_path

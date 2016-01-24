@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @spot.name
+p
+  strong Lat:
+  = @spot.lat
+p
+  strong Lon:
+  = @spot.lon
+p
+  strong Surfline:
+  = @spot.surfline_id
+p
+  strong Msw:
+  = @spot.msw_id
+p
+  strong Spitcast:
+  = @spot.spitcast_id
+p
+  strong Wunder:
+  = @spot.wunder_id
+
+= link_to 'Edit', edit_spot_path(@spot)
+'|
+= link_to 'Back', spots_path
