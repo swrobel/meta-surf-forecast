@@ -1,27 +1,17 @@
-p#notice = notice
+h1= @spot.name
 
-p
-  strong Name:
-  = @spot.name
-p
-  strong Lat:
-  = @spot.lat
-p
-  strong Lon:
-  = @spot.lon
-p
-  strong Surfline:
-  = @spot.surfline_id
-p
-  strong Msw:
-  = @spot.msw_id
-p
-  strong Spitcast:
-  = @spot.spitcast_id
-p
-  strong Wunder:
-  = @spot.wunder_id
+table.table.table-sm
+  thead
+    tr
+      th Time
+      th Min
+      th Max
+      th Rating
 
-= link_to 'Edit', edit_spot_path(@spot)
-'|
-= link_to 'Back', spots_path
+  tbody
+    - @spot.msws.order(:timestamp).each do |msw|
+      tr
+        td = msw.timestamp.to_formatted_s(:short)
+        td = msw.min_height
+        td = msw.max_height
+        td = msw.rating

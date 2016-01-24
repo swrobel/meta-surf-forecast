@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124024745) do
+ActiveRecord::Schema.define(version: 20160124055217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "msws", force: :cascade do |t|
+    t.integer  "spot_id"
+    t.datetime "timestamp"
+    t.decimal  "min_height"
+    t.decimal  "max_height"
+    t.integer  "rating"
+    t.integer  "wind_effect"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "spots", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +37,16 @@ ActiveRecord::Schema.define(version: 20160124024745) do
     t.integer  "wunder_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "surflines", force: :cascade do |t|
+    t.integer  "spot_id"
+    t.datetime "timestamp"
+    t.decimal  "min_height"
+    t.decimal  "max_height"
+    t.string   "quality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
