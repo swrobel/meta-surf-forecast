@@ -21,6 +21,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'quiet_assets', github: 'marcroberts/quiet_assets', branch: 'rails5'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
 end
