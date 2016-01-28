@@ -1,6 +1,4 @@
-class Msw < ApplicationRecord
-  belongs_to :spot
-
+class Msw < Forecast
   def self.api_pull(spot)
     response = JSON.parse(Net::HTTP.get(URI("http://magicseaweed.com/api/#{ENV['MSW_API_KEY']}/forecast?spot_id=#{spot.msw_id}&units=us")), object_class: OpenStruct)
 
