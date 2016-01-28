@@ -7,7 +7,6 @@ class CreateSpots < ActiveRecord::Migration[5.0]
       t.integer :surfline_id
       t.integer :msw_id
       t.integer :spitcast_id
-      t.integer :wunder_id
 
       t.timestamps
     end

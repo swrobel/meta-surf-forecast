@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160124055217) do
     t.integer  "surfline_id"
     t.integer  "msw_id"
     t.integer  "spitcast_id"
-    t.integer  "wunder_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -44,9 +43,10 @@ ActiveRecord::Schema.define(version: 20160124055217) do
     t.datetime "timestamp"
     t.decimal  "min_height"
     t.decimal  "max_height"
-    t.string   "quality"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "swell_rating"
+    t.boolean  "optimal_wind"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
