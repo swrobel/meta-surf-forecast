@@ -3,8 +3,25 @@ class Forecast < ApplicationRecord
 
   belongs_to :spot
 
-  scope :current, -> {where("? < timestamp", Time.now)}
-  scope :ordered, -> {order(:spot_id, :timestamp)}
+  class << self
+    def current
+      where("? < timestamp", Time.now)
+    end
 
-  default_scope { current.ordered }
+    def ordered
+      order(:spot_id, :timestamp)
+    end
+
+    def default_scope
+      current.ordered
+    end
+
+    def api_get(spot)
+      response = JSON.parse(Net::HTTP.get(URI(api_url(spot))), object_class: OpenStruct)
+    end
+
+    def api_pull(spot)
+      parse_response(spot, api_get(spot))
+    end
+  end
 end
