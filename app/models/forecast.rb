@@ -17,11 +17,13 @@ class Forecast < ApplicationRecord
     end
 
     def api_get(spot)
-      response = JSON.parse(Net::HTTP.get(URI(api_url(spot))), object_class: OpenStruct)
+      Net::HTTP.get(URI(api_url(spot)))
     end
 
     def api_pull(spot)
-      parse_response(spot, api_get(spot))
+      response = api_get(spot)
+      ApiRequest.create(request: api_url(spot), response: response)
+      parse_response(spot, JSON.parse(response, object_class: OpenStruct))
     end
   end
 end

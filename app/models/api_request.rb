@@ -1,0 +1,2 @@
+class ApiRequest < ApplicationRecord
+end
