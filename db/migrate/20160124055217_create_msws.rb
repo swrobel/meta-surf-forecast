@@ -7,6 +7,7 @@ class CreateMsws < ActiveRecord::Migration[5.0]
       t.decimal :max_height
       t.integer :rating
       t.integer :wind_effect
+      t.integer :api_request_id
 
       t.timestamps
     end

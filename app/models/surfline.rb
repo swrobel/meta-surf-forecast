@@ -4,7 +4,7 @@ class Surfline < Forecast
       "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=false&units=e&interpolate=true&showOptimal=true&usenearshore=true"
     end
 
-    def parse_response(spot, response)
+    def parse_response(spot, request, response)
       forecasts = {}
 
       response.Surf.dateStamp.each_with_index do |day, day_index|
@@ -34,7 +34,7 @@ class Surfline < Forecast
       end
 
       forecasts.each do |key, values|
-        record = self.where(spot_id: spot.id, timestamp: key).first_or_initialize
+        record = self.where(spot_id: spot.id, api_request: request, timestamp: key).first_or_initialize
         values.each do |key, value|
           record[key] = value
         end

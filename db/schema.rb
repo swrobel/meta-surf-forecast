@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160128052704) do
   create_table "api_requests", force: :cascade do |t|
     t.string   "request"
     t.json     "response"
+    t.boolean  "success"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,8 +31,9 @@ ActiveRecord::Schema.define(version: 20160128052704) do
     t.decimal  "max_height"
     t.integer  "rating"
     t.integer  "wind_effect"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "api_request_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "spots", force: :cascade do |t|
@@ -52,8 +54,9 @@ ActiveRecord::Schema.define(version: 20160128052704) do
     t.decimal  "max_height"
     t.decimal  "swell_rating"
     t.boolean  "optimal_wind"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "api_request_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

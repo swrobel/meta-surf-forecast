@@ -3,6 +3,7 @@ require 'open-uri'
 class Forecast < ApplicationRecord
   self.abstract_class = true
 
+  belongs_to :api_request
   belongs_to :spot
 
   class << self
@@ -22,10 +23,10 @@ class Forecast < ApplicationRecord
       url = api_url(spot)
       begin
         response = open(url).read
-        ApiRequest.create(request: url, response: response)
-        parse_response(spot, JSON.parse(response, object_class: OpenStruct))
+        request = ApiRequest.create(request: url, response: response, success: true)
+        parse_response(spot, request, JSON.parse(response, object_class: OpenStruct))
       rescue OpenURI::HTTPError => e
-        ApiRequest.create(request: url, response: e)
+        ApiRequest.create(request: url, response: e, success: false)
       end
     end
   end

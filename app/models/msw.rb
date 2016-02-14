@@ -4,9 +4,9 @@ class Msw < Forecast
       "http://magicseaweed.com/api/#{ENV['MSW_API_KEY']}/forecast?spot_id=#{spot.msw_id}&units=us"
     end
 
-    def parse_response(spot, response)
+    def parse_response(spot, request, response)
       response.each do |response|
-        record = self.where(spot_id: spot.id, timestamp: Time.at(response.timestamp)).first_or_initialize
+        record = self.where(spot_id: spot.id, api_request: request, timestamp: Time.at(response.timestamp)).first_or_initialize
         record.min_height = response.swell.absMinBreakingHeight
         record.max_height = response.swell.absMaxBreakingHeight
         record.rating = response.solidRating

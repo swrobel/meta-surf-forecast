@@ -7,6 +7,7 @@ class CreateSurflines < ActiveRecord::Migration[5.0]
       t.decimal :max_height
       t.decimal :swell_rating
       t.boolean :optimal_wind
+      t.integer :api_request_id
 
       t.timestamps
     end
