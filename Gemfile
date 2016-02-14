@@ -6,7 +6,6 @@ gem 'rails', '>= 5.0.0.beta1', '< 5.1'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
 gem 'puma'
@@ -24,7 +23,7 @@ group :development do
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'quiet_assets', github: 'marcroberts/quiet_assets', branch: 'rails5'
-  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'spring'
   gem 'terminal-notifier-guard'
-  gem 'web-console', '~> 3.0'
+  gem 'web-console', '~> 3.0' # Access an IRB console on exception pages or by using <%= console %> in views
 end
