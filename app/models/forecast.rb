@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Forecast < ApplicationRecord
   self.abstract_class = true
 
@@ -16,14 +18,15 @@ class Forecast < ApplicationRecord
       current.ordered
     end
 
-    def api_get(spot)
-      Net::HTTP.get(URI(api_url(spot)))
-    end
-
     def api_pull(spot)
-      response = api_get(spot)
-      ApiRequest.create(request: api_url(spot), response: response)
-      parse_response(spot, JSON.parse(response, object_class: OpenStruct))
+      url = api_url(spot)
+      begin
+        response = open(url).read
+        ApiRequest.create(request: url, response: response)
+        parse_response(spot, JSON.parse(response, object_class: OpenStruct))
+      rescue OpenURI::HTTPError => e
+        ApiRequest.create(request: url, response: e)
+      end
     end
   end
 end
