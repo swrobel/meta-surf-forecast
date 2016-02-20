@@ -34,7 +34,8 @@ class Surfline < Forecast
       end
 
       forecasts.each do |key, values|
-        record = self.where(spot_id: spot.id, api_request: request, timestamp: key).first_or_initialize
+        record = self.unscoped.where(spot_id: spot.id, timestamp: key).first_or_initialize
+        record.api_request = request
         values.each do |key, value|
           record[key] = value
         end

@@ -6,7 +6,8 @@ class Msw < Forecast
 
     def parse_response(spot, request, response)
       response.each do |response|
-        record = self.where(spot_id: spot.id, api_request: request, timestamp: Time.at(response.timestamp)).first_or_initialize
+        record = self.unscoped.where(spot: spot, timestamp: Time.at(response.timestamp)).first_or_initialize
+        record.api_request = request
         record.min_height = response.swell.absMinBreakingHeight
         record.max_height = response.swell.absMaxBreakingHeight
         record.rating = response.solidRating
