@@ -8,7 +8,7 @@ class Forecast < ApplicationRecord
 
   class << self
     def current
-      where("? < timestamp", Time.now)
+      where('? < timestamp', Time.now.utc)
     end
 
     def ordered
@@ -17,6 +17,14 @@ class Forecast < ApplicationRecord
 
     def default_scope
       current.ordered
+    end
+
+    def api_url(spot)
+      raise 'Subclass should override'
+    end
+
+    def parse_response(spot, request, responses)
+      raise 'Subclass should override'
     end
 
     def api_pull(spot)

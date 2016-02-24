@@ -4,9 +4,9 @@ class Spitcast < Forecast
       "http://api.spitcast.com/api/spot/forecast/#{spot.spitcast_id}/"
     end
 
-    def parse_response(spot, request, response)
-      response.each do |response|
-        record = self.unscoped.where(spot: spot, timestamp: Time.parse(response.gmt) + Time.zone.utc_offset).first_or_initialize
+    def parse_response(spot, request, responses)
+      responses.each do |response|
+        record = unscoped.where(spot: spot, timestamp: Time.zone.parse(response.gmt) + Time.zone.utc_offset).first_or_initialize
         record.api_request = request
         record.height = response.size_ft
         record.rating = case response.shape_full

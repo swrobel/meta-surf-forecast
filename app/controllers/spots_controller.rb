@@ -61,14 +61,15 @@ class SpotsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_spot
-      @spot = Spot.find(params[:id])
-    end
+private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def spot_params
-      params.require(:spot).permit(:name, :lat, :lon, :surfline_id, :msw_id, :spitcast_id, :wunder_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_spot
+    @spot = Spot.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def spot_params
+    params.require(:spot).permit(:name, :lat, :lon, :surfline_id, :msw_id, :spitcast_id, :wunder_id)
+  end
 end
