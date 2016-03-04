@@ -9,7 +9,6 @@ table.table
       th Surfline
       th Msw
       th Spitcast
-      th Wunder
       th
       th
       th
@@ -23,7 +22,6 @@ table.table
         td = spot.surfline_id
         td = spot.msw_id
         td = spot.spitcast_id
-        td = spot.wunder_id
         td = link_to 'Show', spot
         td = link_to 'Edit', edit_spot_path(spot)
         td = link_to 'Destroy', spot, data: { confirm: 'Are you sure?' }, method: :delete
