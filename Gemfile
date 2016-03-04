@@ -14,8 +14,6 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
   gem 'dotenv-rails'
 end
 
@@ -26,5 +24,5 @@ group :development do
   gem 'quiet_assets', github: 'marcroberts/quiet_assets', branch: 'rails5'
   gem 'spring'
   gem 'terminal-notifier-guard'
-  gem 'web-console', '~> 3.0' # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 3.0'
 end
