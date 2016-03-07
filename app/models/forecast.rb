@@ -20,11 +20,11 @@ class Forecast < ApplicationRecord
     end
 
     def api_url(spot)
-      raise 'Subclass should override'
+      raise_not_implemented_error
     end
 
     def parse_response(spot, request, responses)
-      raise 'Subclass should override'
+      raise_not_implemented_error
     end
 
     def api_pull(spot)
@@ -36,6 +36,12 @@ class Forecast < ApplicationRecord
       rescue OpenURI::HTTPError => e
         ApiRequest.create(request: url, response: e, success: false)
       end
+    end
+
+  private
+
+    def raise_not_implemented_error
+      raise NotImplementedError, "Subclass should override method '#{caller[0][/`.*'/][1..-2]}'"
     end
   end
 end
