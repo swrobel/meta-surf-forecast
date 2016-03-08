@@ -13,5 +13,7 @@ module MetaSurfForecast
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Pacific Time (US & Canada)'
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

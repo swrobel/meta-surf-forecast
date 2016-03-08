@@ -224,6 +224,7 @@ DEPENDENCIES
   guard-bundler
   guard-rubocop
   jquery-rails
+  nokogiri
   pg (~> 0.18)
   puma
   quiet_assets!

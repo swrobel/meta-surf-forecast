@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class Forecast < ApplicationRecord
+  extend ApiMethods
   self.abstract_class = true
 
   belongs_to :api_request
@@ -28,13 +29,8 @@ class Forecast < ApplicationRecord
     end
 
     def api_pull(spot)
-      url = api_url(spot)
-      begin
-        response = open(url).read
-        request = ApiRequest.create(request: url, response: response, success: true)
-        parse_response(spot, request, JSON.parse(response, object_class: OpenStruct))
-      rescue OpenURI::HTTPError => e
-        ApiRequest.create(request: url, response: e, success: false)
+      if (result = api_get(api_url(spot)))
+        parse_response(spot, result.request, JSON.parse(result.response, object_class: OpenStruct))
       end
     end
 

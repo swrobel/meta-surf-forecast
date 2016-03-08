@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dept_id: MyString
+  name: MyString
+  ok: false
+  comments: MyString
+
+two:
+  dept_id: MyString
+  name: MyString
+  ok: false
+  comments: MyString
