@@ -7,6 +7,7 @@ gem 'rails', '>= 5.0.0.beta1', '< 5.1'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
+gem 'mail', '~> 2.6', '>= 2.6.4.rc2', require: false
 gem 'nokogiri'
 gem 'pg', '~> 0.18'
 gem 'puma'
