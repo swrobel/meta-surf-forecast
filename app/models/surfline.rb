@@ -1,11 +1,13 @@
 class Surfline < Forecast
   class << self
-    def api_url(spot)
-      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=false&units=e&interpolate=true&showOptimal=true&usenearshore=true"
+    # get_all_spots will grab the same data for all other spots in the same region as the requested spot
+    # ex: North LA County, South LA County
+    def api_url(spot, get_all_spots = false)
+      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=#{get_all_spots}&units=e&interpolate=true&showOptimal=true&usenearshore=true"
     end
 
     def parse_response(_spot, request, responses)
-      # If getAllSpots=false, response will be a single object instead of an array
+      # If get_all_spots is false, response will be a single object instead of an array
       responses = [responses] unless responses.is_a? Array
       forecasts = {}
 
