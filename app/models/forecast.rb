@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class Forecast < ApplicationRecord
   extend ApiMethods
   self.abstract_class = true

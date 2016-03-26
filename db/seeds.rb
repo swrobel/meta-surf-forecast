@@ -1,3 +1,5 @@
+WaterQualityDepartment.create(name: 'Los Angeles County Department of Public Health', code: 'LAPH', url: 'http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm')
+
 Spot.create(
   [
     {
@@ -26,6 +28,7 @@ Spot.create(
     },
     {
       name: 'El Porto',
+      surfline_id: 4900,
       msw_id: 2677,
     },
     {
@@ -33,7 +36,7 @@ Spot.create(
       msw_id: 3673,
     },
     {
-      name: 'Redondo Breakwater',
+      name: 'Redondo Breakwall',
       msw_id: 4208,
     },
   ]

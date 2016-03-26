@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module ApiMethods
   def api_get(url)
     response = open(url).read
