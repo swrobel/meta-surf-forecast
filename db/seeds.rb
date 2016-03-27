@@ -19,6 +19,8 @@ Spot.create(
     },
     {
       name: 'Zeros',
+      lat: 34.041956,
+      lon: -118.91593,
       msw_id: 2643,
     },
     {
