@@ -27,9 +27,9 @@ class Forecast < ApplicationRecord
     end
 
     def api_pull(spot)
-      if (result = api_get(api_url(spot)))
-        parse_response(spot, result.request, JSON.parse(result.response, object_class: OpenStruct))
-      end
+      return false unless (result = api_get(api_url(spot)))
+      parse_response(spot, result.request, JSON.parse(result.response, object_class: OpenStruct))
+      true
     end
 
   private

@@ -43,8 +43,9 @@ class Surfline < Forecast
       end
 
       forecasts.each do |surfline_id, timestamps|
+        next unless (spot = Spot.find_by_surfline_id(surfline_id))
         timestamps.each do |timestamp, values|
-          record = unscoped.where(spot_id: Spot.find_by_surfline_id(surfline_id), timestamp: timestamp).first_or_initialize
+          record = unscoped.where(spot_id: spot.id, timestamp: timestamp).first_or_initialize
           record.api_request = request
           values.each do |attribute, value|
             record[attribute] = value
