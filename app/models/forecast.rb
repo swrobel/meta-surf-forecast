@@ -26,8 +26,8 @@ class Forecast < ApplicationRecord
       raise_not_implemented_error
     end
 
-    def api_pull(spot, get_all_spots = false)
-      if (result = api_get(api_url(spot, get_all_spots)))
+    def api_pull(spot)
+      if (result = api_get(api_url(spot)))
         parse_response(spot, result.request, JSON.parse(result.response, object_class: OpenStruct))
       end
     end
