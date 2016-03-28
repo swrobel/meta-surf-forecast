@@ -59,7 +59,7 @@ GEM
       tzinfo (~> 1.1)
     arel (7.0.0)
     ast (2.2.0)
-    autoprefixer-rails (6.3.4)
+    autoprefixer-rails (6.3.5)
       execjs
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
@@ -123,6 +123,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     nenv (0.3.0)
+    newrelic_rpm (3.15.1.316)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -174,12 +175,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
-    rake (11.1.1)
+    rake (11.1.2)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    rubocop (0.38.0)
-      parser (>= 2.3.0.6, < 3.0)
+    rubocop (0.39.0)
+      parser (>= 2.3.0.7, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
@@ -230,6 +231,7 @@ DEPENDENCIES
   guard-bundler
   guard-rubocop
   jquery-rails
+  newrelic_rpm
   nokogiri
   pg (~> 0.18)
   puma
