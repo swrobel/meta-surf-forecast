@@ -7,7 +7,7 @@ class Forecast < ApplicationRecord
 
   class << self
     def current
-      where('? < timestamp', Time.now.utc)
+      where('timestamp > ?', Time.now.utc)
     end
 
     def ordered

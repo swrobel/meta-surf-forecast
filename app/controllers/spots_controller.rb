@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_action :set_spot, only: [:edit, :update, :destroy]
 
   # GET /spots
   # GET /spots.json
@@ -10,6 +10,8 @@ class SpotsController < ApplicationController
   # GET /spots/1
   # GET /spots/1.json
   def show
+    @spot = Spot.includes(:msws, :surflines, :spitcasts).find(params[:id])
+    @timestamps = @spot.msws.collect(&:timestamp) | @spot.surflines.collect(&:timestamp) | @spot.spitcasts.collect(&:timestamp)
   end
 
   # GET /spots/new

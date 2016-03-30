@@ -1,17 +1,39 @@
 h1= @spot.name
 
-table.table.table-sm
-  thead
+table.table.table-sm.table-bordered
+  thead.thead-inverse
     tr
+      th(colspan=2)
+      th.text-xs-center(colspan=3) MagicSeaweed
+      th.text-xs-center(colspan=4) Surfline
+      th.text-xs-center(colspan=2) Spitcast
+    tr
+      th Date
       th Time
       th Min
       th Max
       th Rating
+      th Min
+      th Max
+      th Rating
+      th Optimal Wind?
+      th Height
+      th Rating
 
   tbody
-    - @spot.msws.order(:timestamp).each do |msw|
+    - @timestamps.each do |timestamp|
       tr
-        td = msw.timestamp.to_formatted_s(:short)
-        td = msw.min_height
-        td = msw.max_height
-        td = msw.rating
+        td= timestamp.strftime('%A %b %e')
+        td= timestamp.strftime('%l:%M%P')
+        - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
+        td= msw.try(:min_height)
+        td= msw.try(:max_height)
+        td= msw.try(:rating)
+        - surfline = @spot.surflines.select{|x| x.timestamp == timestamp}.first
+        td= surfline.try(:min_height)
+        td= surfline.try(:max_height)
+        td= surfline.try(:swell_rating)
+        td= surfline.try(:optimal_wind)
+        - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
+        td= spitcast.try(:height)
+        td= spitcast.try(:rating)
