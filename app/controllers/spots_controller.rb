@@ -11,7 +11,7 @@ class SpotsController < ApplicationController
   # GET /spots/1.json
   def show
     @spot = Spot.includes(:msws, :surflines, :spitcasts).find(params[:id])
-    @timestamps = @spot.msws.collect(&:timestamp) | @spot.surflines.collect(&:timestamp) | @spot.spitcasts.collect(&:timestamp)
+    @timestamps = (@spot.msws.collect(&:timestamp) | @spot.surflines.collect(&:timestamp) | @spot.spitcasts.collect(&:timestamp)).sort
   end
 
   # GET /spots/new
