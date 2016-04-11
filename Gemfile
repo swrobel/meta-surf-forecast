@@ -11,6 +11,7 @@ gem 'nokogiri'
 gem 'pg', '~> 0.18'
 gem 'puma'
 gem 'slim-rails', github: 'okuramasafumi/slim-rails'
+gem 'sprockets', '~> 4.0.0.beta2'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
