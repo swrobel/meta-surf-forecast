@@ -1,5 +1,9 @@
 class Spitcast < Forecast
   class << self
+    def site_url
+      'http://www.spitcast.com/'
+    end
+
     def api_url(spot)
       "http://api.spitcast.com/api/spot/forecast/#{spot.spitcast_id}/?dcat=week"
     end

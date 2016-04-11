@@ -1,12 +1,12 @@
 h1= @spot.name
 
-table.table.table-sm.table-bordered
-  thead.thead-inverse
+table.table.table-sm.table-bordered.table-striped
+  thead.thead-default
     tr
       th
-      th.text-xs-center(colspan=2) Spitcast
-      th.text-xs-center(colspan=2) MagicSeaweed
-      th.text-xs-center(colspan=3) Surfline
+      th.text-xs-center(colspan=2)= link_to(image_tag('Spitcast.png', alt: 'Spitcast', height: 30), Spitcast.site_url)
+      th.text-xs-center(colspan=2)= link_to(image_tag('Msw.png', alt: 'MagicSeaweed', height: 30), Msw.site_url)
+      th.text-xs-center(colspan=3)= link_to(image_tag('Surfline.png', alt: 'Surfline', height: 30), Surfline.site_url)
     tr
       th Time
       th Height

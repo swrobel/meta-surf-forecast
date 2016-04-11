@@ -1,5 +1,9 @@
 class Msw < Forecast
   class << self
+    def site_url
+      'http://magicseaweed.com/'
+    end
+
     def api_url(spot)
       "http://magicseaweed.com/api/#{ENV['MSW_API_KEY']}/forecast?spot_id=#{spot.msw_id}&units=us"
     end

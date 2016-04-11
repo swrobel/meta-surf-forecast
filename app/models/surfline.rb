@@ -4,6 +4,10 @@ class Surfline < Forecast
   end
 
   class << self
+    def site_url
+      'http://www.surfline.com/'
+    end
+
     def api_url(spot)
       "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=true"
     end
