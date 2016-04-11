@@ -6,7 +6,7 @@ module ApiMethods
     request = ApiRequest.create(request: url, response: response, success: true)
     return OpenStruct.new(request: request, response: response)
   rescue OpenURI::HTTPError => e
-    ApiRequest.create(request: url, response: e, success: false)
+    ApiRequest.create(request: url, response: { message: e.message, meta: e.io.meta, status: e.io.status }, success: false)
     return false
   end
 end
