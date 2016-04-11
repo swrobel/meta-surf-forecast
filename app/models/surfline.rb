@@ -1,4 +1,8 @@
 class Surfline < Forecast
+  def display_swell_rating
+    (swell_rating * 5).round if swell_rating
+  end
+
   class << self
     def api_url(spot)
       "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=true"
