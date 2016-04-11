@@ -3,37 +3,31 @@ h1= @spot.name
 table.table.table-sm.table-bordered
   thead.thead-inverse
     tr
-      th(colspan=2)
-      th.text-xs-center(colspan=3) MagicSeaweed
-      th.text-xs-center(colspan=4) Surfline
+      th
       th.text-xs-center(colspan=2) Spitcast
+      th.text-xs-center(colspan=2) MagicSeaweed
+      th.text-xs-center(colspan=3) Surfline
     tr
-      th Date
       th Time
-      th Min
-      th Max
-      th Rating
-      th Min
-      th Max
-      th Rating
-      th Optimal Wind?
       th Height
       th Rating
+      th Height
+      th Rating
+      th Height
+      th Rating
+      th Optimal Wind?
 
   tbody
     - @timestamps.each do |timestamp|
       tr
-        td= timestamp.strftime('%A %b %e')
-        td= timestamp.strftime('%l:%M%P')
+        td= timestamp.strftime('%A %b %e, %l:%M%P')
+        - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
+        td= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft"
+        td= spitcast.try(:rating)
         - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
-        td= msw.try(:min_height).try(:round, 1)
-        td= msw.try(:max_height).try(:round, 1)
+        td= height_range(msw.try(:min_height), msw.try(:max_height))
         td= msw.try(:rating)
         - surfline = @spot.surflines.select{|x| x.timestamp == timestamp}.first
-        td= surfline.try(:min_height).try(:round, 1)
-        td= surfline.try(:max_height).try(:round, 1)
+        td= height_range(surfline.try(:min_height), surfline.try(:max_height))
         td= surfline.try(:display_swell_rating)
         td= surfline.try(:optimal_wind)
-        - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
-        td= spitcast.try(:height).try(:round, 1)
-        td= spitcast.try(:rating)
