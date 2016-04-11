@@ -1,7 +1,7 @@
 class Spitcast < Forecast
   class << self
     def api_url(spot)
-      "http://api.spitcast.com/api/spot/forecast/#{spot.spitcast_id}/"
+      "http://api.spitcast.com/api/spot/forecast/#{spot.spitcast_id}/?dcat=week"
     end
 
     def parse_response(spot, request, responses)
