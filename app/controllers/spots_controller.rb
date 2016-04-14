@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
   # GET /spots
   # GET /spots.json
   def index
-    @spots = Spot.all
+    @spots = Spot.order(:name)
   end
 
   # GET /spots/1
