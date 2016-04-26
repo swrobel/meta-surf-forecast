@@ -10,6 +10,7 @@ class Spitcast < Forecast
 
     def parse_response(spot, request, responses)
       responses.each do |response|
+        next unless response.gmt
         record = unscoped.where(spot: spot, timestamp: Time.zone.parse(response.gmt) + Time.zone.utc_offset).first_or_initialize
         record.api_request = request
         record.height = response.size_ft
