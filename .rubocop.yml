@@ -25,6 +25,10 @@ Metrics/MethodLength:
 Style/TrailingCommaInLiteral:
   Enabled: false
 
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/models/spitcast.rb
+
 Lint/UnusedMethodArgument:
   Exclude:
     - app/models/forecast.rb
