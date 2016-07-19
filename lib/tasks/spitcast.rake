@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :spitcast do
   desc 'Update forecast from Spitcast'
   task update: :environment do

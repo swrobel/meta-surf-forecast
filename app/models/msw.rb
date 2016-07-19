@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Msw < Forecast
   class << self
     def site_url

@@ -1,4 +1,10 @@
-workers Integer(ENV['WEB_WORKERS'] || 2)
+# frozen_string_literal: true
+unless Rails.env.development?
+  preload_app!
+
+  threads ENV['PUMA_THREADS'] || 2, ENV['PUMA_THREADS'] || 2
+  workers ENV['PUMA_WORKERS'] || 2
+end
 
 preload_app!
 

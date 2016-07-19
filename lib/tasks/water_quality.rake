@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :water_quality do
   desc 'Update forecast from Water Quality Departments'
   task update: :environment do

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 WaterQualityDepartment.create(name: 'Los Angeles County Department of Public Health', code: 'LAPH', url: 'http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm')
 
 Spot.create(

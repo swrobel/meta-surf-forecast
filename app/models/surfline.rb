@@ -1,4 +1,7 @@
+# frozen_string_literal: true
 class Surfline < Forecast
+  self.abstract_class = true
+
   def display_swell_rating
     (swell_rating * 5).round if swell_rating
   end
@@ -8,8 +11,8 @@ class Surfline < Forecast
       'http://www.surfline.com/'
     end
 
-    def api_url(spot)
-      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=true"
+    def api_url(spot, use_nearshore = true)
+      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
     end
 
     def parse_response(_spot, request, responses)

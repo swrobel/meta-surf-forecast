@@ -6,13 +6,23 @@ table.table.table-sm.table-bordered.table-striped
       th
       th.text-xs-center(colspan=2)= link_to(image_tag('Spitcast.png', alt: 'Spitcast', height: 30), Spitcast.site_url)
       th.text-xs-center(colspan=2)= link_to(image_tag('Msw.png', alt: 'MagicSeaweed', height: 30), Msw.site_url)
-      th.text-xs-center(colspan=3)= link_to(image_tag('Surfline.png', alt: 'Surfline', height: 30), Surfline.site_url)
+      th.text-xs-center(colspan=3)
+        = link_to Surfline.site_url do
+          =image_tag('Surfline.png', alt: 'Surfline', height: 30)
+          span.forecast-icon-label Nearshore
+      th.text-xs-center(colspan=3)
+        = link_to Surfline.site_url do
+          =image_tag('Surfline.png', alt: 'Surfline', height: 30)
+          span.forecast-icon-label LOLA
     tr
       th Time
       th Height
       th Rating
       th Height
       th Rating
+      th Height
+      th Rating
+      th Optimal Wind?
       th Height
       th Rating
       th Optimal Wind?
@@ -27,7 +37,6 @@ table.table.table-sm.table-bordered.table-striped
         - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
         td= height_range(msw.try(:min_height), msw.try(:max_height))
         td= msw.try(:rating)
-        - surfline = @spot.surflines.select{|x| x.timestamp == timestamp}.first
-        td= height_range(surfline.try(:min_height), surfline.try(:max_height))
-        td= surfline.try(:display_swell_rating)
-        td= surfline.try(:optimal_wind)
+        = render partial: 'surfline', locals: {surfline: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first}
+        = render partial: 'surfline', locals: {surfline: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first}
+        

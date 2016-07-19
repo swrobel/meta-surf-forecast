@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Forecast < ApplicationRecord
   extend ApiMethods
   self.abstract_class = true

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SpotsController < ApplicationController
   before_action :set_spot, only: [:edit, :update, :destroy]
 
@@ -10,8 +11,8 @@ class SpotsController < ApplicationController
   # GET /spots/1
   # GET /spots/1.json
   def show
-    @spot = Spot.includes(:msws, :surflines, :spitcasts).find(params[:id])
-    @timestamps = (@spot.msws.collect(&:timestamp) | @spot.surflines.collect(&:timestamp) | @spot.spitcasts.collect(&:timestamp)).sort
+    @spot = Spot.includes(:msws, :surfline_nearshores, :surfline_lolas, :spitcasts).find(params[:id])
+    @timestamps = (@spot.msws.collect(&:timestamp) | @spot.surfline_nearshores.collect(&:timestamp) | @spot.surfline_lolas.collect(&:timestamp) | @spot.spitcasts.collect(&:timestamp)).sort
   end
 
   # GET /spots/new
