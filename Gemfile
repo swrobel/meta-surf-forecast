@@ -2,15 +2,15 @@ source 'https://rubygems.org'
 
 ruby `cat .ruby-version`.strip
 
-gem 'rails', '>= 5.0.0.beta1', '< 5.1'
+gem 'rails', '~> 5.0.0'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.0'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'pg', '~> 0.18'
 gem 'puma'
-gem 'slim-rails', github: 'okuramasafumi/slim-rails'
+gem 'slim-rails'
 gem 'sprockets', '~> 4.0.0.beta2'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
