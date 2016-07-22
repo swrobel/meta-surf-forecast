@@ -3,10 +3,26 @@ class Surfline < Forecast
   self.abstract_class = true
 
   def display_swell_rating
-    (swell_rating * 5).round if swell_rating
+    (swell_rating * 5 * wind_factor).round unless swell_rating.nil? || optimal_wind.nil?
+  end
+
+  def wind_factor
+    optimal_wind ? 1 : 0.5
+  end
+
+  def avg_height
+    (min_height + max_height) / 2
   end
 
   class << self
+    def with_rating_and_wind
+      where.not(swell_rating: nil).where.not(optimal_wind: nil)
+    end
+
+    def default_scope
+      super.with_rating_and_wind
+    end
+
     def site_url
       'http://www.surfline.com/'
     end

@@ -32,7 +32,7 @@ table.table.table-sm.table-bordered.table-striped
       tr
         td= timestamp.strftime('%A %b %e, %l:%M%P')
         - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
-        td= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft"
+        td= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)
         td= spitcast.try(:rating)
         - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
         td= height_range(msw.try(:min_height), msw.try(:max_height))
