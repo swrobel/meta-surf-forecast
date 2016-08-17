@@ -11,3 +11,8 @@ html
   body
     .container-fluid
       == yield
+      - if Rails.env.development?
+        javascript:
+          //<![CDATA[
+            document.write("<script async src='https://HOST:3000/browser-sync/browser-sync-client.2.14.0.js'><\/script>".replace("HOST", location.hostname));
+          //]]>
