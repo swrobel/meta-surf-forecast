@@ -25,7 +25,6 @@ group :development do
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
-  gem 'quiet_assets', github: 'marcroberts/quiet_assets', branch: 'rails5'
   gem 'spring'
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'

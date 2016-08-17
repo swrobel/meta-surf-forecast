@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/marcroberts/quiet_assets.git
-  revision: ddcb21accd2f5c348478fa3be3a63bfdf2dc53c7
-  branch: rails5
-  specs:
-    quiet_assets (1.1.0)
-      railties (>= 3.1, < 5.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -259,7 +251,6 @@ DEPENDENCIES
   nokogiri
   pg (~> 0.18)
   puma
-  quiet_assets!
   rails (~> 5.0.0)
   rails_12factor
   slim-rails

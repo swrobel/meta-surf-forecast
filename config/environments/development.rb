@@ -57,4 +57,7 @@ Rails.application.configure do
 
   # Disable view rendering logs
   config.action_view.logger = nil
+
+  # Suppress static asset requests from server logs
+  config.assets.quiet = true
 end
