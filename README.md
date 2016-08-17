@@ -2,11 +2,26 @@
 
 ## Purpose
 
-Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magicseaweed.com/), [Spitcast](http://www.spitcast.com/) and [Weather Underground](http://www.wunderground.com/) APIs to display an aggregated surf & wind forecast.
+Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magicseaweed.com/) & [Spitcast](http://www.spitcast.com/) APIs to display an aggregated surf forecast.
+
+[See it in action!](https://meta-surf-forecast.herokuapp.com/)
+
+## Developer Setup
+
+1. Install postgres, if you don't have it already: `brew install postgresql`
+1. Create your database & seed it with spots: `rake db:setup`
+1. Install [Browsersync](https://www.browsersync.io/) if you want livereloading functionality: `npm install -g browser-sync
+`
+1. Grab some [Spitcast](http://www.spitcast.com/) data: `rake spitcast:update`
+1. Grab some [Surfline](http://www.surfline.com/) data: `rake surfline:update`
+1. Grab some [MagicSeaweed](http://magicseaweed.com/) data (requires a valid [API key](http://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx rake msw:update`
+1. Score!
+
+Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)
 
 ## Data Sources
 
-### Surfline
+### [Surfline](http://www.surfline.com/)
 
 Surfline's API is undocumented and unprotected, but is used via javascript on their website, so it was fairly easy to reverse-engineer. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
 
@@ -52,7 +67,7 @@ This is a breakdown of the querystring params available:
 Param|Values|Effect
 -----|------|------
 spot_id|integer|Surfline spot id that you want data for. A typical Surfline URL is `http://www.surfline.com/surf-report/venice-beach-southern-california_4211/` where 4211 is the `spot_id`. You can also get this from the response's `id` property.
-resources|string|Any comma-separated list of "surf,analysis,wind,weather,tide,sort". There could be more available that I haven't discovered. "Sort" gives an array of swells, periods & heights that are used for the tables on [spot forecast pages](www.surfline.com/surf-forecasts/spot/venice-beach_4211/). 
+resources|string|Any comma-separated list of "surf,analysis,wind,weather,tide,sort". There could be more available that I haven't discovered. "Sort" gives an array of swells, periods & heights that are used for the tables on [spot forecast pages](www.surfline.com/surf-forecasts/spot/venice-beach_4211/).
 days|integer|Number of days of forecast to get. This seems to cap out at 16 for Wind and 25 for Surf.
 getAllSpots|boolean|`false` returns an object containing the single spot you requested, `true` returns an array of data for all spots in the same region as your spot, in this case "South Los Angeles"
 units|string|`e` returns American units (ft/mi), `m` uses metric
@@ -61,18 +76,21 @@ interpolate|boolean|Provide "forecasts" every 3 hours instead of ever 6. These i
 showOptimal|boolean|Includes arrays of 0's & 1's indicating whether each wind & swell forecast is optimal for this spot or not. Unfortunately the optimal swell data is only provided if you include the "sort" resource - it is not included in the "surf" resource.
 callback|string|jsonp callback function name
 
-### MagicSeaweed
+### [MagicSeaweed](http://magicseaweed.com/)
 
 MagicSeaweed has a [well-documented JSON API](http://magicseaweed.com/developer/forecast-api) that requires requesting an API key via email. This was a straightforward process and they got back to me quickly with my key.
 
-### Spitcast
+### [Spitcast](http://www.spitcast.com/)
 
 Spitcast provides a [list of API endpoints](http://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
 
-### Weather Underground
+### [LA County Beach Grades](http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm)
+
+Doing some oldschool scraping to grab any water quality warnings.
 
 ## TODO
 
-* Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
-* Refresh data on a schedule
-* Cache API responses
+* [ ] Display water quality data in some useful way (preferably only when there's a warning). Need to do some geo magic to pick the closest sampling spot or spots to a surf spot.
+* [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
+* [ ] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
+* [x] Refresh data on a schedule based on when new data is available (Surfline: hourly, MagicSeaweed: daily, Spitcast: daily, LA Beach Grades: hourly)
