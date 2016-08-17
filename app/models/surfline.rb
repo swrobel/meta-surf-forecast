@@ -31,6 +31,10 @@ class Surfline < Forecast
       "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
     end
 
+    def for_chart
+      pluck(:timestamp, :max_height).to_h
+    end
+
     def parse_response(_spot, request, responses)
       # If get_all_spots is false, response will be a single object instead of an array
       responses = [responses] unless responses.is_a? Array

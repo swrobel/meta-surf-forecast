@@ -9,6 +9,10 @@ class Spitcast < Forecast
       "http://api.spitcast.com/api/spot/forecast/#{spot.spitcast_id}/?dcat=week"
     end
 
+    def for_chart
+      pluck(:timestamp, :height).to_h
+    end
+
     def parse_response(spot, request, responses)
       responses.each do |response|
         next unless response.gmt

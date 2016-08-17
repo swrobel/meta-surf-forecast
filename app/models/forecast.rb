@@ -33,6 +33,10 @@ class Forecast < ApplicationRecord
       true
     end
 
+    def forecasted_max
+      [Spitcast.maximum(:height), Msw.maximum(:max_height), SurflineNearshore.maximum(:max_height), SurflineLola.maximum(:max_height)].max
+    end
+
   private
 
     def raise_not_implemented_error

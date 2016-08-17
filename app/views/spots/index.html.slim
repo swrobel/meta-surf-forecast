@@ -1,15 +1,7 @@
-h1 Surf spots
-
-table.table
-  thead
-    tr
-      th Name
-      th Forecast
-
-  tbody
-    - @spots.each do |spot|
-      tr
-        td= raw "#{link_to spot.name, spot} (#{link_to 'map', spot.map_url})"
-        td
-
-br
+- @spots.each do |spot|
+  h4= raw "#{link_to spot.name, spot} (#{link_to 'map', spot.map_url})"
+  =column_chart [\
+      { name: 'Spitcast', data: spot.spitcasts.where(timestamp: spot.overlapping_timestamps).for_chart },
+      { name: 'MagicSeaweed', data: spot.msws.where(timestamp: spot.overlapping_timestamps).for_chart },
+      { name: 'Surfline', data: spot.surfline_nearshores.where(timestamp: spot.overlapping_timestamps).for_chart },
+    ], max: Forecast.forecasted_max.ceil

@@ -15,6 +15,7 @@ gem 'slim-rails'
 gem 'sprockets', '~> 4.0.0.beta2'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'chartkick'
 
 group :development, :test do
   gem 'dotenv-rails'
