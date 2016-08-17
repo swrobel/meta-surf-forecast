@@ -16,5 +16,7 @@ module MetaSurfForecast
     config.time_zone = 'Pacific Time (US & Canada)'
 
     config.autoload_paths += %W(#{config.root}/lib)
+
+    config.force_ssl = true
   end
 end

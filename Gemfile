@@ -28,6 +28,7 @@ group :development do
   gem 'spring'
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'
+  gem 'invoker'
 end
 
 group :production do
