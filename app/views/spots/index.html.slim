@@ -1,5 +1,5 @@
 - @spots.each do |spot|
-  h4= raw "#{link_to spot.name, spot} (#{link_to 'map', spot.map_url})"
+  h4= raw "#{link_to spot.name, spot} (#{map_link(spot)})"
   =column_chart [\
       { name: 'Spitcast', data: spot.spitcasts.where(timestamp: spot.overlapping_timestamps).for_chart },
       { name: 'MagicSeaweed', data: spot.msws.where(timestamp: spot.overlapping_timestamps).for_chart },

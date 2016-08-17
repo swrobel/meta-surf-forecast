@@ -1,4 +1,6 @@
-h1= @spot.name
+- provide(:title, @spot.name)
+
+h1= raw "#{@spot.name} (#{map_link(@spot)})"
 
 table.table.table-sm.table-bordered.table-striped
   thead.thead-default
