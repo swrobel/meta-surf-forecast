@@ -20,6 +20,29 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 
 Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)
 
+## Adding Spots
+
+Contributing new spots is easy! Make sure you're signed into your [Github account](https://github.com/join) and edit the [seeds file](https://github.com/swrobel/meta-surf-forecast/edit/master/db/seeds.rb)
+
+1. Get the Spitcast spot id & lat/lon data using [their spot list API](http://api.spitcast.com/api/spot/all).
+1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, ex: for `http://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` it's `616`.
+1. Go to the Surfline page for the spot you want to add. Their spot id is also at the end of the url, ex: for `http://www.surfline.com/surf-report/venice-beach-southern-california_4211/` it's `4211`.
+1. It's strongly encouraged to add all spots for a particular county or region rather than just a single one. Be a pal!
+1. Submit a pull request and I'll get it on the site ASAP!
+
+Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, etc, if that spot doesn't exist on that particular site.
+
+```ruby
+    {
+      name: 'County Line',
+      lat: 34.051,
+      lon: -118.964,
+      surfline_id: 4203,
+      msw_id: 277,
+      spitcast_id: 207,
+    },
+```
+
 ## Data Sources
 
 ### [Surfline](http://www.surfline.com/)
