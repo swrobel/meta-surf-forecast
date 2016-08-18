@@ -16,6 +16,7 @@ gem 'sprockets', '~> 4.0.0.beta2'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'chartkick'
+gem 'friendly_id', github: 'norman/friendly_id'
 
 group :development, :test do
   gem 'dotenv-rails'
