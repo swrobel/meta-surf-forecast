@@ -22,7 +22,7 @@ Pull requests welcome, especially around new data sources/better data visualizat
 
 ## Adding Spots
 
-Contributing new spots is easy! Make sure you're signed into your [Github account](https://github.com/join) and edit the [seeds file](https://github.com/swrobel/meta-surf-forecast/edit/master/db/seeds.rb)
+Contributing new spots is easy! Make sure you're signed into your [Github account](https://github.com/join) and edit the [seeds file](https://github.com/swrobel/meta-surf-forecast/edit/master/db/seeds.rb):
 
 1. Get the Spitcast spot id & lat/lon data using [their spot list API](http://api.spitcast.com/api/spot/all).
 1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, ex: for `http://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` it's `616`.
@@ -33,14 +33,14 @@ Contributing new spots is easy! Make sure you're signed into your [Github accoun
 Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, etc, if that spot doesn't exist on that particular site.
 
 ```ruby
-    {
-      name: 'County Line',
-      lat: 34.051,
-      lon: -118.964,
-      surfline_id: 4203,
-      msw_id: 277,
-      spitcast_id: 207,
-    },
+  {
+    name: 'County Line',
+    lat: 34.051,
+    lon: -118.964,
+    surfline_id: 4203,
+    msw_id: 277,
+    spitcast_id: 207,
+  },
 ```
 
 ## Data Sources
