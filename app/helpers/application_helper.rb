@@ -12,4 +12,14 @@ module ApplicationHelper
   def map_link(spot)
     link_to 'map', spot.map_url
   end
+
+  def format_timestamps(series)
+    series.transform_keys do |key|
+      if key.hour.zero? && key.min.zero? # Midnight
+        key.strftime('%a %b %-d')
+      else
+        key.strftime('%a %-I%P')
+      end
+    end
+  end
 end

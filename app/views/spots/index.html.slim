@@ -1,7 +1,7 @@
 - @spots.each do |spot|
   h4= raw "#{link_to spot.name, spot} (#{map_link(spot)})"
   =column_chart [\
-      { name: 'Spitcast', data: spot.spitcasts.where(timestamp: spot.overlapping_timestamps).for_chart },
-      { name: 'MagicSeaweed', data: spot.msws.where(timestamp: spot.overlapping_timestamps).for_chart },
-      { name: 'Surfline', data: spot.surfline_nearshores.where(timestamp: spot.overlapping_timestamps).for_chart },
+      { name: 'Spitcast', data: format_timestamps(spot.spitcasts.where(timestamp: spot.overlapping_timestamps).for_chart) },
+      { name: 'MagicSeaweed', data: format_timestamps(spot.msws.where(timestamp: spot.overlapping_timestamps).for_chart) },
+      { name: 'Surfline', data: format_timestamps(spot.surfline_nearshores.where(timestamp: spot.overlapping_timestamps).for_chart) },
     ], max: Forecast.forecasted_max.ceil

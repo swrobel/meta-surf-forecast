@@ -115,7 +115,7 @@ Doing some oldschool scraping to grab any water quality warnings.
 ## TODO
 
 * [ ] **Improve charts:**
-  * [ ] **Fix timestamp formatting.** Chartkick supports nice timestamp formatting for the x-axis, but it only seems to work automatically on `line_chart` (screenshot below) and not the `column_chart` currently used. See [this bug](https://github.com/ankane/chartkick/issues/196). Could also switch to another charting gem/library (Chartkick supports Highcharts & Google Charts. Currently using the default Chart.js)
+  * [x] **Fix timestamp formatting.** Chartkick supports nice timestamp formatting for the x-axis, but it only seems to work automatically on `line_chart` (screenshot below) and not the `column_chart` currently used. See [this bug](https://github.com/ankane/chartkick/issues/196). Could also switch to another charting gem/library (Chartkick supports Highcharts & Google Charts. Currently using the default Chart.js)
     ![Chartkick line_chart automatic timestamp labels](https://cloud.githubusercontent.com/assets/157270/17811969/ec1275c8-65d9-11e6-8666-50a08d6d0b8f.png)
   * [ ] **Account for min/max size forecast. Currently charts just reflect the max.** Could simply take an average or use some clever display method to show a stacked bar. Also, worth noting that Spitcast only gives one height value, not a min/max.
   * [ ] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
