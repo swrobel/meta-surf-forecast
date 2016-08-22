@@ -39,7 +39,7 @@ spots = [
     lat: 34.0016731994772,
     lon: -118.804558744648,
     surfline_id: 4947,
-    msw_id: 854,
+    msw_id: 2610,
   },
   {
     name: 'Malibu',
