@@ -16,9 +16,12 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 1. Grab some [Surfline](http://www.surfline.com/) data: `rake surfline:update`
 1. Grab some [MagicSeaweed](http://magicseaweed.com/) data (requires a valid [API key](http://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx rake msw:update`
 1. Start the server: `invoker start`
+1. Connect to https://surf.dev
 1. Score!
 
-Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)
+Note: If you get a security warning in Chrome, Click "Advanced" and then "Proceed to surf.dev (unsafe)". Nothing to worry about, you're just connecting to your own machine and it's a self-signed SSL certificate so Chrome freaks out.
+
+**Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)**
 
 ## Adding Spots
 
