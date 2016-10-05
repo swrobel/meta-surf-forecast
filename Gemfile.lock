@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/norman/friendly_id.git
+  remote: https://github.com/norman/friendly_id.git
   revision: aff0564584e84ffa505e6e278b65ca3c4ee5d698
   specs:
     friendly_id (5.2.0.beta.1)
@@ -273,4 +273,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.2
