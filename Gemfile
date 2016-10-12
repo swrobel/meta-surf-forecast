@@ -5,7 +5,7 @@ ruby `cat .ruby-version`.strip
 
 # Force github sources to use https instead of insecure git protocol
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
