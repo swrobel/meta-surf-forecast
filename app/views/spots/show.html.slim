@@ -2,42 +2,40 @@
 
 h1= raw "#{@spot.name} (#{map_link(@spot)})"
 
-table.table.table-sm.table-bordered.table-striped
+table.table.table-sm.table-striped#forecast-table
   thead.thead-default
     tr
       th
-      th.text-xs-center(colspan=2)= link_to(image_tag('Spitcast.png', alt: 'Spitcast', height: 30), Spitcast.site_url)
-      th.text-xs-center(colspan=2)= link_to(image_tag('Msw.png', alt: 'MagicSeaweed', height: 30), Msw.site_url)
-      th.text-xs-center(colspan=3)
+      th.border-left(colspan=2)= link_to(image_tag('Spitcast.png', alt: 'Spitcast', height: 30), Spitcast.site_url)
+      th.border-left(colspan=2)= link_to(image_tag('Msw.png', alt: 'MagicSeaweed', height: 30), Msw.site_url)
+      th.border-left(colspan=3)
         = link_to Surfline.site_url do
           =image_tag('Surfline.png', alt: 'Surfline', height: 30)
           span.forecast-icon-label Nearshore
-      th.text-xs-center(colspan=3)
+      th.border-left(colspan=3)
         = link_to Surfline.site_url do
           =image_tag('Surfline.png', alt: 'Surfline', height: 30)
           span.forecast-icon-label LOLA
     tr
       th Time
-      th Height
+      th.border-left Height
       th Rating
-      th Height
+      th.border-left Height
       th Rating
-      th Height
-      th Rating
-      th Optimal Wind?
-      th Height
-      th Rating
-      th Optimal Wind?
+      - 2.times do
+        th.border-left Height
+        th Rating
+        th Optimal Wind?
 
   tbody
     - @timestamps.each do |timestamp|
       tr
-        td= timestamp.strftime('%A %b %e, %l:%M%P')
+        td.text-xs-left= timestamp.strftime('%A %b %e, %l:%M%P')
         - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
-        td= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)
+        td.border-left= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)
         td= spitcast.try(:rating)
         - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
-        td= height_range(msw.try(:min_height), msw.try(:max_height))
+        td.border-left= height_range(msw.try(:min_height), msw.try(:max_height))
         td= msw.try(:rating)
         = render partial: 'surfline', locals: {surfline: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first}
         = render partial: 'surfline', locals: {surfline: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first}
