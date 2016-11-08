@@ -28,7 +28,7 @@ class Surfline < Forecast
     end
 
     def api_url(spot, use_nearshore = true)
-      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=30&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
+      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=#{num_days}&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
     end
 
     def for_chart
@@ -98,6 +98,12 @@ class Surfline < Forecast
           record.save!
         end
       end
+    end
+
+  private
+
+    def num_days
+      ENV['SURFLINE_DAYS'] || 15
     end
   end
 end
