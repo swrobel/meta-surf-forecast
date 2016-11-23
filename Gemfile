@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
 
-ruby `cat .ruby-version`.strip
+ruby "~> #{`cat .ruby-version`.strip}"
 
 # Force github sources to use https instead of insecure git protocol
 git_source(:github) do |repo_name|
