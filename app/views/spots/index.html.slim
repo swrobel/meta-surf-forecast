@@ -1,5 +1,5 @@
 - @spots.each do |spot|
-  h4= raw "#{link_to spot.name, spot} (#{map_link(spot)})"
+  h4.margin-left= raw "#{link_to spot.name, spot} (#{map_link(spot)})"
   =column_chart [\
       { name: 'Spitcast', data: round_heights(format_timestamps(spot.spitcasts.where(timestamp: spot.overlapping_timestamps).for_chart)) },
       { name: 'MSW', data: round_heights(format_timestamps(spot.msws.where(timestamp: spot.overlapping_timestamps).for_chart)) },

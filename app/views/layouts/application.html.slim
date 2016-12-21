@@ -22,6 +22,5 @@ html
         
   body
     = render partial: 'shared/github_corner' if Rails.env.production?
-    .container-fluid
-      == yield
+    == yield
       
