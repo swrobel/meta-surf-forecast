@@ -21,8 +21,7 @@ class SpotsController < ApplicationController
   end
 
   # GET /spots/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /spots
   # POST /spots.json

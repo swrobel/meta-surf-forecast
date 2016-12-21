@@ -12,17 +12,17 @@ end
 gem 'rails', '~> 5.0.0'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'chartkick'
 gem 'coffee-rails', '~> 4.2.0'
+gem 'friendly_id'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'pg', '~> 0.18'
 gem 'puma'
-gem 'slim-rails'
+gem 'slim-rails', github: 'slim-template/slim-rails'
 gem 'sprockets', '~> 4.0.0.beta2'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-gem 'chartkick'
-gem 'friendly_id', github: 'norman/friendly_id'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -32,10 +32,10 @@ group :development do
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
+  gem 'invoker'
   gem 'spring'
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'
-  gem 'invoker'
 end
 
 group :production do
