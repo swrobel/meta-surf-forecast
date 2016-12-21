@@ -22,4 +22,10 @@ module ApplicationHelper
       end
     end
   end
+
+  def round_heights(series, digits = 1)
+    series.transform_values do |value|
+      value.round(digits)
+    end
+  end
 end
