@@ -60,4 +60,13 @@ Rails.application.configure do
 
   # Suppress static asset requests from server logs
   config.assets.quiet = true
+
+  config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::Toolbar,
+                                  snippet: '<script id="__bs_script__">
+                                              //<![CDATA[
+                                                document.write("<script async src=\'https://HOST:9500/browser-sync/browser-sync-client.js\'><\/script>".replace("HOST", location.hostname));
+                                              //]]>
+                                            </script>',
+                                  insertion_point: '</head>',
+                                  insertion_method: :before
 end

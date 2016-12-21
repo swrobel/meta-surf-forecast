@@ -33,6 +33,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
   gem 'invoker'
+  gem 'rack-toolbar'
   gem 'spring'
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'

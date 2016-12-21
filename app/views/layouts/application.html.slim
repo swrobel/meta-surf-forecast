@@ -20,13 +20,6 @@ html
         ga('create', '#{ENV['GOOGLE_ANALYTICS_ID']}', 'auto');
         ga('send', 'pageview');
         
-    - if Rails.env.development?
-      javascript:
-        //<![CDATA[
-          document.write("<script async src='https://HOST:9500/browser-sync/browser-sync-client.js'><\/script>".replace("HOST", location.hostname));
-        //]]>
-
-</script>
   body
     = render partial: 'shared/github_corner' if Rails.env.production?
     .container-fluid
