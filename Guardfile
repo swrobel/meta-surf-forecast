@@ -15,6 +15,8 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
+require_relative 'config/initializers/rubocop'
+
 guard :bundler do
   require 'guard/bundler'
   require 'guard/bundler/verify'
@@ -27,7 +29,7 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
-guard :rubocop, all_on_start: true, cli: ['--rails', '--display-cop-names', '-a'] do
+guard :rubocop, all_on_start: true, cli: RUBOCOP_OPTS do
   watch(%r{.+\.rb$})
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end

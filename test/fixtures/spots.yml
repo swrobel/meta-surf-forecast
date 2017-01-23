@@ -7,7 +7,6 @@ one:
   surfline_id: 1
   msw_id: 1
   spitcast_id: 1
-  wunder_id: 1
 
 two:
   name: MyString
@@ -16,4 +15,3 @@ two:
   surfline_id: 1
   msw_id: 1
   spitcast_id: 1
-  wunder_id: 1
