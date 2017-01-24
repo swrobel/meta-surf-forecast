@@ -94,7 +94,7 @@ This is a breakdown of the querystring params available:
 Param|Values|Effect
 -----|------|------
 spot_id|integer|Surfline spot id that you want data for. A typical Surfline URL is `http://www.surfline.com/surf-report/venice-beach-southern-california_4211/` where 4211 is the `spot_id`. You can also get this from the response's `id` property.
-resources|string|Any comma-separated list of "surf,analysis,wind,weather,tide,sort". There could be more available that I haven't discovered. "Sort" gives an array of swells, periods & heights that are used for the tables on [spot forecast pages](www.surfline.com/surf-forecasts/spot/venice-beach_4211/).
+resources|string|Any comma-separated list of "surf,analysis,wind,weather,tide,sort". There could be more available that I haven't discovered. "Sort" gives an array of swells, periods & heights that are used for the tables on [spot forecast pages](http://www.surfline.com/surf-forecasts/spot/venice-beach_4211/).
 days|integer|Number of days of forecast to get. This seems to cap out at 16 for Wind and 25 for Surf.
 getAllSpots|boolean|`false` returns an object containing the single spot you requested, `true` returns an array of data for all spots in the same region as your spot, in this case "South Los Angeles"
 units|string|`e` returns American units (ft/mi), `m` uses metric
@@ -111,19 +111,13 @@ MagicSeaweed has a [well-documented JSON API](http://magicseaweed.com/developer/
 
 Spitcast provides a [list of API endpoints](http://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
 
-### [LA County Beach Grades](http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm)
-
-Doing some oldschool scraping to grab any water quality warnings.
-
 ## TODO
 
 * [ ] **Improve charts:**
-  * [x] **Fix timestamp formatting.** Chartkick supports nice timestamp formatting for the x-axis, but it only seems to work automatically on `line_chart` (screenshot below) and not the `column_chart` currently used. See [this bug](https://github.com/ankane/chartkick/issues/196). Could also switch to another charting gem/library (Chartkick supports Highcharts & Google Charts. Currently using the default Chart.js)
-    ![Chartkick line_chart automatic timestamp labels](https://cloud.githubusercontent.com/assets/157270/17811969/ec1275c8-65d9-11e6-8666-50a08d6d0b8f.png)
+  * [x] **Fix timestamp formatting.**
   * [ ] **Account for min/max size forecast. Currently charts just reflect the max.** Could simply take an average or use some clever display method to show a stacked bar. Also, worth noting that Spitcast only gives one height value, not a min/max.
   * [ ] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
-* [ ] Display water quality data in some useful way (preferably only when there's a warning). Need to do some geo magic to pick the closest sampling spot(s) to a surf spot.
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](http://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
 * [ ] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
-* [x] Refresh data on a schedule based on when new data is available (Surfline: hourly, MagicSeaweed: daily, Spitcast: daily, LA Beach Grades: hourly)
+* [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
