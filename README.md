@@ -115,7 +115,7 @@ Spitcast provides a [list of API endpoints](http://www.spitcast.com/api/docs/), 
 
 * [ ] **Improve charts:**
   * [x] **Fix timestamp formatting.**
-  * [ ] **Account for min/max size forecast. Currently charts just reflect the max.** Could simply take an average or use some clever display method to show a stacked bar. Also, worth noting that Spitcast only gives one height value, not a min/max.
+  * [x] **Account for min/max size forecast. Currently charts just reflect the max.**
   * [ ] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](http://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.

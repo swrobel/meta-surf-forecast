@@ -32,7 +32,7 @@ class Surfline < Forecast
     end
 
     def for_chart
-      pluck(:timestamp, :max_height).to_h
+      pluck('round(min_height, 1)', 'round(max_height, 1)')
     end
 
     def parse_response(_spot, request, responses)

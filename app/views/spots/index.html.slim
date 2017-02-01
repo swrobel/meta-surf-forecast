@@ -1,7 +1,33 @@
 - @spots.each do |spot|
   h4.margin-left= raw "#{link_to spot.name, spot} (#{map_link(spot)})"
+  - stamps = spot.overlapping_timestamps
+  - stamp_labels = format_timestamps(stamps)
+  - msw_data = spot.msws.where(timestamp: stamps).for_chart
+  - surfline_data = spot.surfline_nearshores.where(timestamp: stamps).for_chart
   =column_chart [\
-      { name: 'Spitcast', data: round_heights(format_timestamps(spot.spitcasts.where(timestamp: spot.overlapping_timestamps).for_chart)) },
-      { name: 'MSW', data: round_heights(format_timestamps(spot.msws.where(timestamp: spot.overlapping_timestamps).for_chart)) },
-      { name: 'Surfline', data: round_heights(format_timestamps(spot.surfline_nearshores.where(timestamp: spot.overlapping_timestamps).for_chart)) },
-    ], max: Forecast.forecasted_max.ceil
+      { name: 'Spitcast', data: stamp_labels.zip(spot.spitcasts.where(timestamp: stamps).for_chart), stack: 'Spitcast' },
+      { name: 'MSW max', data: stamp_labels.zip(get_maximum_deltas(msw_data)), stack: 'MSW'},
+      { name: 'MSW min', data: stamp_labels.zip(get_minimums(msw_data)), stack: 'MSW' },
+      { name: 'Surfline max', data: stamp_labels.zip(get_maximum_deltas(surfline_data)), stack: 'Surfline' },
+      { name: 'Surfline min', data: stamp_labels.zip(get_minimums(surfline_data)), stack: 'Surfline' },
+    ], 
+    max: Forecast.forecasted_max.ceil, 
+    stacked: true,
+    colors: [\
+      'MediumOrchid',
+      'Gold',
+      'Orange',
+      'LightSkyBlue',
+      'DodgerBlue',
+    ],
+    library: {\
+      plotOptions: {\
+        column: {\
+          borderWidth: 0,
+          groupPadding: 0.07,
+        }\
+      },
+      tooltip: {\
+        pointFormat: '{series.name}: <b>{point.total}</b>',
+      }\
+    }

@@ -10,7 +10,7 @@ class Spitcast < Forecast
     end
 
     def for_chart
-      pluck(:timestamp, :height).to_h
+      pluck('round(height, 1)')
     end
 
     def parse_response(spot, request, responses)

@@ -13,19 +13,25 @@ module ApplicationHelper
     link_to 'map', spot.map_url
   end
 
-  def format_timestamps(series)
-    series.transform_keys do |key|
-      if key.hour.zero? && key.min.zero? # Midnight
-        key.strftime('%a %b %-d')
+  def format_timestamps(timestamps)
+    timestamps.map do |stamp|
+      if stamp.hour.zero? && stamp.min.zero? # Midnight
+        stamp.strftime('%a %b %-d')
       else
-        key.strftime('%a %-I%P')
+        stamp.strftime('%a %-I%P')
       end
     end
   end
 
-  def round_heights(series, digits = 1)
-    series.transform_values do |value|
-      value.round(digits)
+  def get_minimums(heights)
+    heights.map do |height_group|
+      height_group[0]
+    end
+  end
+
+  def get_maximum_deltas(heights)
+    heights.map do |height_group|
+      height_group[1] - height_group[0]
     end
   end
 end
