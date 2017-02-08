@@ -1,15 +1,3 @@
-#
-# This file configures the New Relic Agent.  New Relic monitors Ruby, Java,
-# .NET, PHP, Python and Node applications with deep visibility and low
-# overhead.  For more information, visit www.newrelic.com.
-#
-# Generated March 28, 2016
-#
-# This configuration file is custom generated for app48899189@heroku.com
-#
-# For full documentation of agent configuration options, please refer to
-# https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
-
 common: &default_settings
   # Required license key associated with your New Relic account.
   license_key: <%= ENV['NEW_RELIC_LICENSE_KEY'] %>
