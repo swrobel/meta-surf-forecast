@@ -15,7 +15,7 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 1. Grab some [Spitcast](http://www.spitcast.com/) data: `rake spitcast:update`
 1. Grab some [Surfline](http://www.surfline.com/) data: `rake surfline:update`
 1. Grab some [MagicSeaweed](http://magicseaweed.com/) data (requires a valid [API key](http://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx rake msw:update`
-1. Start the server: `invoker start`
+1. Start the server: `bin/invoker start`
 1. Connect to https://surf.dev
 1. Score!
 
