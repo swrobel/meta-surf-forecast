@@ -5,7 +5,7 @@
 
 Rails.application.routes.draw do
   constraints(host: /.herokuapp.com/) do
-    get '/(*path)' => redirect { |_params, req| "https://#{ENV['HOST']}#{req.fullpath}" } if ENV['HOST'].present?
+    get '/(*path)' => redirect { |_params, req| "https://#{ENV['DOMAIN']}#{req.fullpath}" } if ENV['HOST'].present?
   end
 
   resources :spots, only: [:index, :show]
