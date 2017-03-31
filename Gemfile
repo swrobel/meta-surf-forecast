@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.1.0.rc1'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'chartkick'
@@ -34,6 +34,7 @@ group :development do
   gem 'guard-rubocop', require: false
   gem 'invoker'
   gem 'rack-toolbar'
+  gem 'rubocop', '~> 0.47.1'
   gem 'spring'
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'
