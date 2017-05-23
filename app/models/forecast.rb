@@ -33,8 +33,13 @@ class Forecast < ApplicationRecord
       true
     end
 
-    def forecasted_max
-      [Spitcast.maximum(:height), Msw.maximum(:max_height), SurflineNearshore.maximum(:max_height), SurflineLola.maximum(:max_height)].map { |v| v || 0 }.max
+    def forecasted_max(stamps)
+      [
+        Spitcast.where(timestamp: stamps).maximum(:height),
+        Msw.where(timestamp: stamps).maximum(:max_height),
+        SurflineNearshore.where(timestamp: stamps).maximum(:max_height),
+        SurflineLola.where(timestamp: stamps).maximum(:max_height)
+      ].map { |v| v || 0 }.max
     end
 
   private

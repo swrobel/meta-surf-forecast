@@ -11,7 +11,7 @@
       { name: 'Surfline max', data: stamp_labels.zip(get_maximum_deltas(surfline_data)), stack: 'Surfline' },
       { name: 'Surfline min', data: stamp_labels.zip(get_minimums(surfline_data)), stack: 'Surfline' },
     ], 
-    max: Forecast.forecasted_max.ceil, 
+    max: Forecast.forecasted_max(stamps).ceil,
     stacked: true,
     colors: [\
       'MediumOrchid',
