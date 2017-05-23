@@ -1,5 +1,5 @@
 - @spots.each do |spot|
-  h4.margin-left= raw "#{link_to spot.name, spot} (#{map_link(spot)})"
+  h4.margin-left.spot-header= raw "#{spot.name} #{map_link(spot)}"
   - stamps = spot.overlapping_timestamps
   - stamp_labels = format_timestamps(stamps)
   - msw_data = spot.msws.where(timestamp: stamps).for_chart

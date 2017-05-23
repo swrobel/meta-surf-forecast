@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def map_link(spot)
-    link_to 'map', spot.map_url
+    link_to image_tag('map.svg', alt: 'Map Icon'), spot.map_url, target: 'gmap'
   end
 
   def format_timestamps(timestamps)
