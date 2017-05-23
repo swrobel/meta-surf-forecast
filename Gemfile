@@ -27,6 +27,7 @@ group :development do
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
+  gem 'guard-shell', require: false
   gem 'invoker'
   gem 'rack-toolbar'
   gem 'rubocop', '~> 0.47.1'

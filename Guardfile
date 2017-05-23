@@ -33,3 +33,16 @@ guard :rubocop, all_on_start: true, cli: RUBOCOP_OPTS do
   watch(%r{.+\.rb$})
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
+
+guard :shell do
+  # Restart server when tmp/restart.txt is changed
+  watch(%r{.powrc|.powenv|.rvmrc|.ruby-version|Gemfile*|config/(application|environment|puma)\.rb|config/(environments|initializers)/.*\.rb}) do |m|
+    n 'Restarting server...', "#{m[0]} changed", :pending
+
+    # https://github.com/rails/rails/blob/master/railties/lib/rails/tasks/restart.rake
+    FileUtils.mkdir_p 'tmp'
+    FileUtils.touch 'tmp/restart.txt'
+    FileUtils.rm_f 'tmp/pids/server.pid'
+    nil
+  end
+end

@@ -95,6 +95,9 @@ GEM
     guard-rubocop (1.2.0)
       guard (~> 2.0)
       rubocop (~> 0.20)
+    guard-shell (0.7.1)
+      guard (>= 2.0.0)
+      guard-compat (~> 1.0)
     http-parser-lite (0.6.0)
     i18n (0.8.1)
     iniparse (1.4.2)
@@ -244,6 +247,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-rubocop
+  guard-shell
   invoker
   newrelic_rpm
   pg (~> 0.18)
