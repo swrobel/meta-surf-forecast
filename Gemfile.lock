@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/rails/webpacker.git
+  revision: 158987a82b605b534bcdc9468efca2602313c791
+  specs:
+    webpacker (1.2)
+      activesupport (>= 4.2)
+      multi_json (~> 1.2)
+      railties (>= 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -118,6 +127,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.2)
+    multi_json (1.12.1)
     nenv (0.3.0)
     newrelic_rpm (4.1.0.333)
     nio4r (2.0.0)
@@ -208,13 +218,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.7)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.3)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    uglifier (3.2.0)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.2.1)
     uuid (2.3.8)
       macaddr (~> 1.0)
@@ -250,9 +255,8 @@ DEPENDENCIES
   slim-rails
   spring
   terminal-notifier-guard
-  turbolinks
-  uglifier (>= 1.3.0)
   web-console (~> 3.0)
+  webpacker!
 
 RUBY VERSION
    ruby 2.4.1p111

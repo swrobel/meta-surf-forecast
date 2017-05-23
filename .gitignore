@@ -18,3 +18,5 @@
 
 .env*
 !invoker.ini
+/public/packs
+/node_modules

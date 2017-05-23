@@ -17,8 +17,7 @@ gem 'friendly_id'
 gem 'pg', '~> 0.18'
 gem 'puma'
 gem 'slim-rails'
-gem 'turbolinks'
-gem 'uglifier', '>= 1.3.0'
+gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'dotenv-rails'

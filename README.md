@@ -10,8 +10,8 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 
 1. Install postgres, if you don't have it already: `brew install postgresql`
 1. Create your database & seed it with spots: `rake db:setup`
-1. Install [Browsersync](https://www.browsersync.io/) if you want livereloading functionality: `npm install -g browser-sync
-`
+1. Install [yarn](https://yarnpkg.com): `brew install yarn`
+1. Install yarn packages: `yarn`
 1. Grab some [Spitcast](http://www.spitcast.com/) data: `rake spitcast:update`
 1. Grab some [Surfline](http://www.surfline.com/) data: `rake surfline:update`
 1. Grab some [MagicSeaweed](http://magicseaweed.com/) data (requires a valid [API key](http://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx rake msw:update`
@@ -19,7 +19,7 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 1. Connect to https://surf.dev
 1. Score!
 
-Note: If you get a security warning in Chrome, Click "Advanced" and then "Proceed to surf.dev (unsafe)". Nothing to worry about, you're just connecting to your own machine and it's a self-signed SSL certificate so Chrome freaks out.
+Note: If you get a security warning in Chrome, Click "Advanced" and then "Proceed to surf.dev (unsafe)". Nothing to worry about, you're just connecting to your own machine and it's a self-signed SSL certificate so Chrome freaks out. You will also probably need to open the [Browsersync javascript](https://surf.dev:9500/browser-sync/browser-sync-client.js) and [Webpacker bundle](https://surf.dev:9001/packs/application.js) once each to trust those certificates as well. I'm hoping to find a better workaround for this in the future...
 
 **Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)**
 
