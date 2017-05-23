@@ -4,6 +4,7 @@ AllCops:
     - bin/*
     - db/schema.rb
     - db/migrate/*
+    - node_modules/**/*
     - test/test_helper.rb
     - vendor/**/*
 
