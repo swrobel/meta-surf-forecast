@@ -21,6 +21,22 @@ spots = [
     msw_id: 2642,
   },
   {
+    name: 'Ocean Beach (SF)',
+    lat: 37.768256511796238,
+    lon: -122.51347658831379,
+    surfline_id: 4127,
+    msw_id: 255,
+    spitcast_id: 114
+  },
+  {
+    name: 'Pleasure Point',
+    lat: 36.954087622045307,
+    lon: -121.9716900628907,
+    surfline_id: 4190,
+    msw_id: 644,
+    spitcast_id: 1
+  },
+  {
     name: 'Zeros',
     lat: 34.041956,
     lon: -118.91593,
