@@ -13,7 +13,7 @@ class SpotsController < ApplicationController
             ,CASE
                WHEN extract(hour from timestamp) = 0 THEN to_char(timestamp, 'Dy Mon FMDD')
                ELSE to_char(timestamp, 'Dy FMHH12am')
-             END AS timestamp
+             END AS time
             ,count(*)
             ,round(min(min_height), 1) AS min
             ,round(avg(avg_height) - min(min_height), 1) AS avg_delta

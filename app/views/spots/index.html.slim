@@ -1,16 +1,16 @@
 - @spots.each do |data, forecast|
   h4.margin-left.spot-header= raw "#{data[:name]} #{map_link(data[:lat], data[:lon])}"
   =column_chart [\
-      { name: 'Max', data: forecast.collect {|point| [point[:timestamp], point[:max_delta]]}, stack: 'All' },
-      { name: 'Avg', type: 'line', data: forecast.collect {|point| [point[:timestamp], point[:avg_delta]]}, stack: 'All'},
-      { name: 'Min', data: forecast.collect {|point| [point[:timestamp], point[:min]]}, stack: 'All' },
+      { name: 'Max', data: forecast.collect {|point| [point[:time], point[:max_delta]]}, stack: 'All' },
+      { name: 'Avg', type: 'line', data: forecast.collect {|point| [point[:time], point[:avg_delta]]}, stack: 'All'},
+      { name: 'Min', data: forecast.collect {|point| [point[:time], point[:min]]}, stack: 'All' },
     ], 
     max: @max,
     stacked: true,
     colors: [\
       'LightSkyBlue',
       'DodgerBlue',
-      'Blue',
+      'RoyalBlue',
     ],
     library: {\
       plotOptions: {\
