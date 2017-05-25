@@ -9,8 +9,8 @@ module ApplicationHelper
     number_with_precision(value, precision: 1, strip_insignificant_zeros: true)
   end
 
-  def map_link(spot)
-    link_to image_tag('map.svg', alt: 'Map Icon'), spot.map_url, target: 'gmap'
+  def map_link(lat, lon)
+    link_to image_tag('map.svg', alt: 'Map Icon'), Spot.map_url(lat, lon), target: 'gmap'
   end
 
   def format_timestamps(timestamps)

@@ -11,8 +11,22 @@ class Spot < ApplicationRecord
   default_scope -> { order(:name) }
   scope :optimized, -> { includes(:msws, :surfline_nearshores, :surfline_lolas, :spitcasts) }
 
+  class << self
+    def map_url(lat, lon)
+      "https://www.google.com/maps/search/#{lat},#{lon}"
+    end
+  end
+
+  def num_forecasts
+    num = 0
+    num += 2 if surfline_id
+    num += 1 if msw_id
+    num += 1 if spitcast_id
+    num
+  end
+
   def map_url
-    "https://www.google.com/maps/search/#{lat},#{lon}"
+    self.class.map_url(lat, lon)
   end
 
   def unique_timestamps

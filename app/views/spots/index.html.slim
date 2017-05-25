@@ -1,33 +1,33 @@
-- @spots.each do |spot|
-  h4.margin-left.spot-header= raw "#{spot.name} #{map_link(spot)}"
-  - stamps = spot.overlapping_timestamps
-  - stamp_labels = format_timestamps(stamps)
-  - msw_data = spot.msws.where(timestamp: stamps).for_chart
-  - surfline_data = spot.surfline_nearshores.where(timestamp: stamps).for_chart
+- @spots.each do |data, forecast|
+  h4.margin-left.spot-header= raw "#{data[:name]} #{map_link(data[:lat], data[:lon])}"
   =column_chart [\
-      { name: 'Spitcast', data: stamp_labels.zip(spot.spitcasts.where(timestamp: stamps).for_chart), stack: 'Spitcast' },
-      { name: 'MSW max', data: stamp_labels.zip(get_maximum_deltas(msw_data)), stack: 'MSW'},
-      { name: 'MSW min', data: stamp_labels.zip(get_minimums(msw_data)), stack: 'MSW' },
-      { name: 'Surfline max', data: stamp_labels.zip(get_maximum_deltas(surfline_data)), stack: 'Surfline' },
-      { name: 'Surfline min', data: stamp_labels.zip(get_minimums(surfline_data)), stack: 'Surfline' },
+      { name: 'Max', data: forecast.collect {|point| [point[:timestamp], point[:max_delta]]}, stack: 'All' },
+      { name: 'Avg', type: 'line', data: forecast.collect {|point| [point[:timestamp], point[:avg_delta]]}, stack: 'All'},
+      { name: 'Min', data: forecast.collect {|point| [point[:timestamp], point[:min]]}, stack: 'All' },
     ], 
-    max: Forecast.forecasted_max(stamps).ceil,
+    max: @max,
     stacked: true,
     colors: [\
-      'MediumOrchid',
-      'Gold',
-      'Orange',
       'LightSkyBlue',
       'DodgerBlue',
+      'Blue',
     ],
     library: {\
       plotOptions: {\
         column: {\
           borderWidth: 0,
           groupPadding: 0.07,
+          dataLabels: {\
+            enabled: false,
+          }\
         }\
       },
       tooltip: {\
-        pointFormat: '{series.name}: <b>{point.total}</b>',
+        enabled: false,
+      },
+      yAxis: {\
+        stackLabels: {\
+          enabled: true,
+        }\
       }\
     }

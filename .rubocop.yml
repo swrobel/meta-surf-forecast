@@ -18,6 +18,9 @@ Metrics/CyclomaticComplexity:
   Exclude:
     - app/models/spitcast.rb
 
+Metrics/ClassLength:
+  Enabled: false
+
 Metrics/LineLength:
   Enabled: false
 

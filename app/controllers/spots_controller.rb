@@ -5,7 +5,76 @@ class SpotsController < ApplicationController
   # GET /spots
   # GET /spots.json
   def index
-    @spots = Spot.optimized
+    @spots = Spot.connection.select_all <<-SQL
+      SELECT id
+            ,name
+            ,lat
+            ,lon
+            ,CASE
+               WHEN extract(hour from timestamp) = 0 THEN to_char(timestamp, 'Dy Mon FMDD')
+               ELSE to_char(timestamp, 'Dy FMHH12am')
+             END AS timestamp
+            ,count(*)
+            ,round(min(min_height), 1) AS min
+            ,round(avg(avg_height) - min(min_height), 1) AS avg_delta
+            ,round(max(max_height) - avg(avg_height), 1) AS max_delta
+            ,max(max_height) AS max
+        FROM
+        ( SELECT 'msw',
+                 spot_id,
+                 timestamp,
+                 min_height,
+                 max_height,
+                 (min_height + max_height) / 2 AS avg_height
+         FROM msws
+         UNION SELECT 'spitcast',
+                      spot_id,
+                      timestamp,
+                      height AS min_height,
+                      height AS max_height,
+                      height AS avg_height
+         FROM spitcasts
+         UNION SELECT 'lola',
+                      spot_id,
+                      timestamp,
+                      min_height,
+                      max_height,
+                      (min_height + max_height) / 2 AS avg_height
+         FROM surfline_lolas
+         UNION SELECT 'nearshore',
+                      spot_id,
+                      timestamp,
+                      min_height,
+                      max_height,
+                      (min_height + max_height) / 2 AS avg_height
+         FROM surfline_nearshores) sub
+        JOIN spots s ON sub.spot_id = s.id
+        GROUP BY id,
+               name,
+               lat,
+               lon,
+               timestamp,
+               surfline_id,
+               msw_id,
+               spitcast_id
+        HAVING count(*) = CASE
+                            WHEN s.surfline_id IS NULL THEN 0
+                            ELSE 2
+                        END
+                        + CASE
+                          WHEN s.msw_id IS NULL THEN 0
+                          ELSE 1
+                        END
+                        + CASE
+                            WHEN s.spitcast_id IS NULL THEN 0
+                            ELSE 1
+                        END
+        ORDER BY id,
+               timestamp
+    SQL
+    @spots.map(&:symbolize_keys!)
+    @max = @spots.collect { |s| s[:max].to_d }.max
+    @spots = @spots.group_by { |s| { id: s[:id], name: s[:name], lat: s[:lat], lon: s[:lon] } }
   end
 
   # GET /spots/1
