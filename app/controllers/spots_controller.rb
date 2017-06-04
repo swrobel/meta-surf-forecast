@@ -49,7 +49,7 @@ class SpotsController < ApplicationController
                       (min_height + max_height) / 2 AS avg_height
          FROM surfline_nearshores) sub
         JOIN spots s ON sub.spot_id = s.id
-        WHERE timestamp > now()
+        WHERE timestamp > now() AT TIME ZONE 'America/Los_Angeles'
         GROUP BY id,
                name,
                lat,
@@ -71,7 +71,7 @@ class SpotsController < ApplicationController
                             ELSE 1
                         END
         ORDER BY id,
-               timestamp
+                 timestamp
     SQL
     @spots.map(&:symbolize_keys!)
     @max = @spots.collect { |s| s[:max].to_d }.max
