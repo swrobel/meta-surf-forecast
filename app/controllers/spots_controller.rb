@@ -49,6 +49,7 @@ class SpotsController < ApplicationController
                       (min_height + max_height) / 2 AS avg_height
          FROM surfline_nearshores) sub
         JOIN spots s ON sub.spot_id = s.id
+        WHERE timestamp > now()
         GROUP BY id,
                name,
                lat,
