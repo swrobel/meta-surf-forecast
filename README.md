@@ -9,12 +9,12 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 ## Developer Setup
 
 1. Install postgres, if you don't have it already: `brew install postgresql`
-1. Create your database & seed it with spots: `rake db:setup`
+1. Create your database & seed it with spots: `bin/rails db:setup`
 1. Install [yarn](https://yarnpkg.com): `brew install yarn`
 1. Install yarn packages: `yarn`
-1. Grab some [Spitcast](http://www.spitcast.com/) data: `rake spitcast:update`
-1. Grab some [Surfline](http://www.surfline.com/) data: `rake surfline:update`
-1. Grab some [MagicSeaweed](http://magicseaweed.com/) data (requires a valid [API key](http://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx rake msw:update`
+1. Grab some [Spitcast](http://www.spitcast.com/) data: `bin/rails spitcast:update`
+1. Grab some [Surfline](http://www.surfline.com/) data: `bin/rails surfline:update`
+1. Grab some [MagicSeaweed](http://magicseaweed.com/) data (requires a valid [API key](http://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update`
 1. Start the server: `bin/invoker start`
 1. Connect to https://surf.dev
 1. Score!
