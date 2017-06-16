@@ -17,7 +17,7 @@ gem 'friendly_id'
 gem 'pg', '~> 0.18'
 gem 'puma'
 gem 'slim-rails'
-gem 'webpacker', github: 'rails/webpacker'
+gem 'webpacker'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -28,7 +28,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
-  gem 'invoker'
+  gem 'invoker', '1.5.1'
   gem 'rack-toolbar'
   gem 'rubocop', '~> 0.47.1'
   gem 'spring'

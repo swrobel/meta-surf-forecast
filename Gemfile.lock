@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/rails/webpacker.git
-  revision: 158987a82b605b534bcdc9468efca2602313c791
-  specs:
-    webpacker (1.2)
-      activesupport (>= 4.2)
-      multi_json (~> 1.2)
-      railties (>= 4.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,7 +41,7 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.1.1)
+    autoprefixer-rails (7.1.1.2)
       execjs
     bindex (0.5.0)
     bootstrap (4.0.0.alpha6)
@@ -92,15 +83,15 @@ GEM
       guard (~> 2.2)
       guard-compat (~> 1.1)
     guard-compat (1.2.1)
-    guard-rubocop (1.2.0)
+    guard-rubocop (1.3.0)
       guard (~> 2.0)
       rubocop (~> 0.20)
     guard-shell (0.7.1)
       guard (>= 2.0.0)
       guard-compat (~> 1.0)
     http-parser-lite (0.6.0)
-    i18n (0.8.1)
-    iniparse (1.4.2)
+    i18n (0.8.4)
+    iniparse (1.4.3)
     invoker (1.5.1)
       dotenv (~> 2.0)
       em-proxy (~> 0.1)
@@ -122,32 +113,32 @@ GEM
     lumberjack (1.0.12)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.2.0)
     minitest (5.10.2)
     multi_json (1.12.1)
     nenv (0.3.0)
-    newrelic_rpm (4.1.0.333)
-    nio4r (2.0.0)
-    nokogiri (1.7.2)
-      mini_portile2 (~> 2.1.0)
+    newrelic_rpm (4.2.0.334)
+    nio4r (2.1.0)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
     parser (2.4.0.0)
       ast (~> 2.2)
-    pg (0.20.0)
+    pg (0.21.0)
     powerpack (0.1.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (3.8.2)
+    puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -184,8 +175,8 @@ GEM
       rake
     rake (12.0.0)
     rb-fsevent (0.9.8)
-    rb-inotify (0.9.8)
-      ffi (>= 0.5.0)
+    rb-inotify (0.9.9)
+      ffi (~> 1.0)
     rubocop (0.47.1)
       parser (>= 2.3.3.1, < 3.0)
       powerpack (~> 0.1)
@@ -231,6 +222,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webpacker (2.0)
+      activesupport (>= 4.2)
+      multi_json (~> 1.2)
+      railties (>= 4.2)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -248,7 +243,7 @@ DEPENDENCIES
   guard-bundler
   guard-rubocop
   guard-shell
-  invoker
+  invoker (= 1.5.1)
   newrelic_rpm
   pg (~> 0.18)
   puma
@@ -260,10 +255,10 @@ DEPENDENCIES
   spring
   terminal-notifier-guard
   web-console (~> 3.0)
-  webpacker!
+  webpacker
 
 RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.0
+   1.15.1

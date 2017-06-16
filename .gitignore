@@ -18,5 +18,8 @@
 
 .env*
 !invoker.ini
+
+# Webpacker
 /public/packs
+/public/packs-test
 /node_modules
