@@ -15,11 +15,15 @@ module ApplicationHelper
 
   def format_timestamps(timestamps)
     timestamps.map do |stamp|
-      if stamp.hour.zero? && stamp.min.zero? # Midnight
-        stamp.strftime('%a %b %-d')
-      else
-        stamp.strftime('%a %-I%P')
-      end
+      format_timestamp(stamp)
+    end
+  end
+
+  def format_timestamp(stamp)
+    if stamp.hour.zero? && stamp.min.zero? # Midnight
+      stamp.strftime('%a %b %-d')
+    else
+      stamp.strftime('%a %-I%P')
     end
   end
 

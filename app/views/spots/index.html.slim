@@ -1,4 +1,4 @@
-- @spots.each do |data, forecast|
+- @forecasts.each do |data, forecast|
   h4.margin-left.spot-header= raw "#{data[:name]} #{map_link(data[:lat], data[:lon])}"
   =column_chart [\
       { name: 'Max', data: forecast.collect {|point| [point[:time], point[:max_delta]]}, stack: 'All' },

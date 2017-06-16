@@ -5,16 +5,12 @@ class SpotsController < ApplicationController
   # GET /spots
   # GET /spots.json
   def index
-    @spots = Spot.connection.select_all <<-SQL
+    @forecasts = Spot.connection.select_all <<-SQL
       SELECT id
             ,name
             ,lat
             ,lon
-            ,CASE
-               WHEN extract(hour from timestamp) = 0 THEN to_char(timestamp, 'Dy Mon FMDD')
-               ELSE to_char(timestamp, 'Dy FMHH12am')
-             END AS time
-            ,count(*)
+            ,timestamp
             ,round(min(min_height), 1) AS min
             ,round(avg(avg_height) - min(min_height), 1) AS avg_delta
             ,round(max(max_height) - avg(avg_height), 1) AS max_delta
@@ -49,7 +45,7 @@ class SpotsController < ApplicationController
                       (min_height + max_height) / 2 AS avg_height
          FROM surfline_nearshores) sub
         JOIN spots s ON sub.spot_id = s.id
-        WHERE timestamp > now() AT TIME ZONE 'America/Los_Angeles'
+        WHERE timestamp > now() at time zone 'utc'
         GROUP BY id,
                name,
                lat,
@@ -73,9 +69,10 @@ class SpotsController < ApplicationController
         ORDER BY id,
                  timestamp
     SQL
-    @spots.map(&:symbolize_keys!)
-    @max = @spots.collect { |s| s[:max].to_d }.max
-    @spots = @spots.group_by { |s| { id: s[:id], name: s[:name], lat: s[:lat], lon: s[:lon] } }
+    @forecasts.map(&:symbolize_keys!)
+    @forecasts.map! { |forecast| forecast[:time] = helpers.format_timestamp(ActiveSupport::TimeZone.new('UTC').parse(forecast[:timestamp])) }
+    @max = @forecasts.collect { |s| s[:max].to_d }.max
+    @forecasts = @forecasts.group_by { |s| { id: s[:id], name: s[:name], lat: s[:lat], lon: s[:lon] } }
   end
 
   # GET /spots/1
