@@ -1,7 +1,7 @@
 - provide(:title, @spot.name)
 
 .container-fluid
-  h1= raw "#{@spot.name} (#{map_link(@spot)})"
+  h1= @spot.name
 
   table.table.table-sm.table-striped#forecast-table
     thead.thead-default
