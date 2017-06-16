@@ -70,7 +70,9 @@ class SpotsController < ApplicationController
                  timestamp
     SQL
     @forecasts.map(&:symbolize_keys!)
-    @forecasts.map! { |forecast| forecast[:time] = helpers.format_timestamp(ActiveSupport::TimeZone.new('UTC').parse(forecast[:timestamp])) }
+    @forecasts.map! do |forecast|
+      forecast[:time] = helpers.format_timestamp(Time.zone.parse("#{forecast[:timestamp]} UTC"))
+    end
     @max = @forecasts.collect { |s| s[:max].to_d }.max
     @forecasts = @forecasts.group_by { |s| { id: s[:id], name: s[:name], lat: s[:lat], lon: s[:lon] } }
   end
