@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:edit, :update, :destroy]
+  before_action :set_spot, only: %i[edit update destroy]
 
   # GET /spots
   # GET /spots.json

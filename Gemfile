@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby "~> #{`cat .ruby-version`.strip}"
@@ -30,8 +31,9 @@ group :development do
   gem 'guard-shell', require: false
   gem 'invoker', '1.5.1'
   gem 'rack-toolbar'
-  gem 'rubocop', '~> 0.47.1'
+  gem 'rubocop', '~> 0.49.1'
   gem 'spring'
+  gem 'spring-commands-rubocop', require: false
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'
 end

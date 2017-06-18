@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/(*path)' => redirect { |_params, req| "https://#{ENV['DOMAIN']}#{req.fullpath}" } if ENV['HOST'].present?
   end
 
-  resources :spots, only: [:index, :show]
+  resources :spots, only: %i[index show]
 
   root to: 'spots#index'
 end

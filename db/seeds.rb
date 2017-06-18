@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 WaterQualityDepartment.find_or_create_by(code: 'LAPH') do |dept|
   dept.name = 'Los Angeles County Department of Public Health'
   dept.url = 'http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm'

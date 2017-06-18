@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 namespace :cleanup do
   desc 'Remove forecasts that are in the past'
   task prune_past_forecasts: :environment do

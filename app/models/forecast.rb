@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Forecast < ApplicationRecord
   extend ApiMethods
   self.abstract_class = true
@@ -45,7 +46,7 @@ class Forecast < ApplicationRecord
   private
 
     def raise_not_implemented_error
-      raise NotImplementedError, "Subclass should override method '#{caller[0][/`.*'/][1..-2]}'"
+      raise NotImplementedError, "Subclass should override method '#{caller(0..0).first[/`.*'/][1..-2]}'"
     end
   end
 end

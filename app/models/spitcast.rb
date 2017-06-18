@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Spitcast < Forecast
   class << self
     def site_url

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Msw < Forecast
   def avg_height
     (min_height + max_height) / 2

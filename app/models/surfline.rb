@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Surfline < Forecast
   self.abstract_class = true
 
@@ -78,7 +79,7 @@ class Surfline < Forecast
         spot_data = forecasts[spot_id]
         # [1..-2] gets all elements except first & last
         spot_data.keys[1..-2].each_with_index do |tstamp, index|
-          next unless spot_data[:swell_rating].blank?
+          next if spot_data[:swell_rating].present?
           prev_tstamp = spot_data.keys[index] # index is already offset by 1
           next_tstamp = spot_data.keys[index + 2]
           prev_rating = spot_data[prev_tstamp][:swell_rating]

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -15,7 +16,7 @@ module MetaSurfForecast
 
     config.time_zone = 'Pacific Time (US & Canada)'
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W[#{config.root}/lib]
 
     config.force_ssl = true
   end

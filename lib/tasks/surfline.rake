@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 namespace :surfline do
   desc 'Update forecast from Surfline'
   task update: :environment do

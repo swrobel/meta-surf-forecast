@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 class Spot < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :name, use: %i[slugged finders]
 
   has_many :surfline_nearshores
   has_many :surfline_lolas

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 namespace :msw do
   desc 'Update forecast from MagicSeaweed'
   task update: :environment do
