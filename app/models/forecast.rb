@@ -42,11 +42,5 @@ class Forecast < ApplicationRecord
         SurflineLola.where(timestamp: stamps).maximum(:max_height)
       ].map { |v| v || 0 }.max
     end
-
-  private
-
-    def raise_not_implemented_error
-      raise NotImplementedError, "Subclass should override method '#{caller(0..0).first[/`.*'/][1..-2]}'"
-    end
   end
 end
