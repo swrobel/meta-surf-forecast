@@ -5,6 +5,8 @@ WaterQualityDepartment.find_or_create_by(code: 'LAPH') do |dept|
   dept.url = 'http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm'
 end
 
+LA = Region.find_or_create_by(name: 'Los Angeles')
+
 spots = [
   {
     name: 'County Line',
@@ -13,6 +15,7 @@ spots = [
     surfline_id: 4203,
     msw_id: 277,
     spitcast_id: 207,
+    region: LA,
   },
   {
     name: 'Leo Carillo',
@@ -20,12 +23,14 @@ spots = [
     lon: -118.932943,
     surfline_id: 4953,
     msw_id: 2642,
+    region: LA,
   },
   {
     name: 'Zeros',
     lat: 34.041956,
     lon: -118.91593,
     msw_id: 2643,
+    region: LA,
   },
   {
     name: 'Zuma Beach',
@@ -34,6 +39,7 @@ spots = [
     surfline_id: 4949,
     msw_id: 853,
     spitcast_id: 206,
+    region: LA,
   },
   {
     name: 'Point Dume',
@@ -41,6 +47,7 @@ spots = [
     lon: -118.804558744648,
     surfline_id: 4947,
     msw_id: 2610,
+    region: LA,
   },
   {
     name: 'Malibu',
@@ -49,6 +56,7 @@ spots = [
     surfline_id: 4209,
     msw_id: 4204,
     spitcast_id: 205,
+    region: LA,
   },
   {
     name: 'Topanga',
@@ -57,6 +65,7 @@ spots = [
     surfline_id: 4210,
     msw_id: 279,
     spitcast_id: 388,
+    region: LA,
   },
   {
     name: 'Sunset Blvd',
@@ -64,6 +73,7 @@ spots = [
     lon: -118.5535631839145,
     surfline_id: 4883,
     msw_id: 3673,
+    region: LA,
   },
   {
     name: 'Venice Breakwater',
@@ -72,6 +82,7 @@ spots = [
     surfline_id: 4211,
     msw_id: 2611,
     spitcast_id: 204,
+    region: LA,
   },
   {
     name: 'El Porto',
@@ -80,6 +91,7 @@ spots = [
     surfline_id: 4900,
     msw_id: 2677,
     spitcast_id: 402,
+    region: LA,
   },
   {
     name: 'Manhattan Beach',
@@ -88,6 +100,7 @@ spots = [
     surfline_id: 4901,
     msw_id: 281,
     spitcast_id: 203,
+    region: LA,
   },
   {
     name: 'Hermosa Beach',
@@ -96,6 +109,7 @@ spots = [
     surfline_id: 4902,
     msw_id: 2607,
     spitcast_id: 202,
+    region: LA,
   },
   {
     name: 'Redondo Breakwall',
@@ -103,6 +117,7 @@ spots = [
     lon: -118.4004837749971,
     surfline_id: 4912,
     msw_id: 4208,
+    region: LA,
   },
   {
     name: 'Torrance Beach/Haggertys',
@@ -111,6 +126,7 @@ spots = [
     surfline_id: 4910,
     msw_id: 2604,
     spitcast_id: 200,
+    region: LA,
   },
   {
     name: 'Palos Verdes Cove',
@@ -118,6 +134,7 @@ spots = [
     lon: -118.4070316699825,
     surfline_id: 4936,
     msw_id: 4207,
+    region: LA,
   },
   {
     name: 'Lunada Bay',
@@ -125,13 +142,15 @@ spots = [
     lon: -118.4268428476672,
     surfline_id: 4935,
     msw_id: 283,
+    region: LA,
   },
 ]
 
-spots.each do |spot|
-  Spot.find_or_create_by(surfline_id: spot[:surfline_id], msw_id: spot[:msw_id], spitcast_id: spot[:spitcast_id]) do |new_spot|
-    new_spot.name = spot[:name]
-    new_spot.lat = spot[:lat]
-    new_spot.lon = spot[:lon]
-  end
+spots.each do |spot_data|
+  spot = Spot.find_or_initialize_by(surfline_id: spot_data[:surfline_id], msw_id: spot_data[:msw_id], spitcast_id: spot_data[:spitcast_id])
+  spot.name = spot_data[:name]
+  spot.lat = spot_data[:lat]
+  spot.lon = spot_data[:lon]
+  spot.region = spot_data[:region]
+  spot.save!
 end
