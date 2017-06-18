@@ -2,5 +2,5 @@
 
 namespace :forecasts do
   desc 'Update forecasts from all sources'
-  multitask update: ['surfline:update', 'msw:update', 'spitcast:update']
+  task update: %w[surfline:update msw:update spitcast:update]
 end
