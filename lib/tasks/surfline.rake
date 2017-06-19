@@ -3,17 +3,17 @@
 namespace :surfline do
   desc 'Update forecast from Surfline'
   task update: :environment do
-    venice = Spot.find_by(surfline_id: 4211)
-    county_line = Spot.find_by(surfline_id: 4203)
+    spots = [
+              Spot.find_by(surfline_id: 4211),
+              Spot.find_by(surfline_id: 4203),
+              Spot.find_by(surfline_id: 4127),
+              Spot.find_by(surfline_id: 4190),
+            ]
 
-    if venice
-      SurflineNearshore.api_pull(venice)
-      SurflineLola.api_pull(venice)
-    end
-
-    if county_line
-      SurflineNearshore.api_pull(county_line)
-      SurflineLola.api_pull(county_line)
+    spots.each do |spot|
+      next unless spot
+      SurflineNearshore.api_pull(spot)
+      SurflineLola.api_pull(spot)
     end
   end
 end

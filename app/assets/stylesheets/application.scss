@@ -1,6 +1,10 @@
 @import "bootstrap";
 @import "partials/github_corner";
 
+nav {
+  background-color: #f2efee;
+}
+
 #forecast-table {
   th {
     border-bottom: 0;
@@ -37,6 +41,7 @@
 }
 
 .spot-header {
+  font-size: 2.4rem;
   $opacity: 0.65;
 
   &:first-child {

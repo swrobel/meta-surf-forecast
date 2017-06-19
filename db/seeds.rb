@@ -6,6 +6,8 @@ WaterQualityDepartment.find_or_create_by(code: 'LAPH') do |dept|
 end
 
 LA = Region.find_or_create_by(name: 'Los Angeles')
+SC = Region.find_or_create_by(name: 'Santa Cruz')
+SF = Region.find_or_create_by(name: 'San Francisco')
 
 spots = [
   {
@@ -170,6 +172,28 @@ spots = [
     msw_id: 283,
     msw_slug: 'Lunada-Bay',
     region: LA,
+  },
+  {
+    name: 'Ocean Beach',
+    lat: 37.768256511796238,
+    lon: -122.51347658831379,
+    surfline_id: 4127,
+    msw_id: 255,
+    msw_slug: 'Ocean-Beach',
+    spitcast_id: 117,
+    spitcast_slug: 'south-ocean-beach-san-francisco-ca',
+    region: SF,
+  },
+  {
+    name: 'Pleasure Point',
+    lat: 36.954087622045307,
+    lon: -121.9716900628907,
+    surfline_id: 4190,
+    msw_id: 644,
+    msw_slug: 'Pleasure-Point',
+    spitcast_id: 1,
+    spitcast_slug: 'pleasure-point-santa-cruz-ca',
+    region: SC,
   },
 ]
 
