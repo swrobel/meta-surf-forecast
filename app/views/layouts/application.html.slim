@@ -21,6 +21,6 @@ html
         ga('send', 'pageview');
         
   body
-    = render partial: 'shared/github_corner' if Rails.env.production?
     == yield
+    = render partial: 'shared/github_corner' if Rails.env.production?
       
