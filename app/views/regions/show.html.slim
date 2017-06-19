@@ -26,9 +26,13 @@ div
       ],
       library: {\
         chart: {\
+          marginRight: 2,
           style: {\
             fontFamily: 'inherit',
           }\
+        },
+        legend: {\
+          margin: 0,
         },
         plotOptions: {\
           column: {\
@@ -41,5 +45,14 @@ div
         },
         tooltip: {\
           enabled: false,
+        },
+        yAxis: {\
+          stackLabels: {\
+            enabled: true,
+            style: {\
+              fontSize: '0.65em',
+              fontWeight: 'normal',
+            }\
+          }\
         }\
       }
