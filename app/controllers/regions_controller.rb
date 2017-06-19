@@ -51,6 +51,7 @@ class RegionsController < ApplicationController
          FROM surfline_nearshores) sub
         JOIN spots s ON sub.spot_id = s.id
         WHERE sub.timestamp > now() at time zone 'utc'
+          AND sub.timestamp <= (select max(timestamp) from spitcasts)
           AND s.region_id = #{@region.id}
         GROUP BY id
                 ,name
