@@ -24,6 +24,14 @@ nav {
   }
 }
 
+.light-text {
+  font-weight: $display1-weight;
+
+  select {
+    font-weight: inherit;
+  }
+}
+
 .forecast-icon-label {
   margin-left: 10px;
   color: $gray;
@@ -41,7 +49,6 @@ nav {
 }
 
 .spot-header {
-  font-size: 2.4rem;
   $opacity: 0.65;
 
   &:first-child {
