@@ -3,7 +3,7 @@
 class Spitcast < Forecast
   class << self
     def site_url
-      'http://www.spitcast.com/'
+      'http://www.spitcast.com'
     end
 
     def api_url(spot)

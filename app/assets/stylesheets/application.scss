@@ -1,20 +1,31 @@
 @import "bootstrap";
 @import "partials/github_corner";
 
-.forecast-icon-label {
-  margin-left: 10px;
-  vertical-align: middle;
-  color: $gray;
-}
-
 #forecast-table {
   th {
     border-bottom: 0;
+    vertical-align: baseline;
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      height: 30px;
+    }
   }
 
   th, td {
     text-align: center;
   }
+}
+
+.forecast-icon-label {
+  margin-left: 10px;
+  color: $gray;
+  font-size: 28px;
+  vertical-align: middle;
+  font-weight: normal;
 }
 
 .border-left {
@@ -26,8 +37,28 @@
 }
 
 .spot-header {
+  $opacity: 0.65;
+
+  span {
+    color: black;
+    opacity: $opacity;
+  }
+
+  &:first-child {
+    margin-top: 10px
+  }
+
+  a {
+    margin-left: 18px;
+    opacity: $opacity;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   img {
-    height: 18px;
+    height: 26px;
     vertical-align: baseline;
   }
 }

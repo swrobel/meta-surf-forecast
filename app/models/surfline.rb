@@ -25,7 +25,7 @@ class Surfline < Forecast
     end
 
     def site_url
-      'http://www.surfline.com/'
+      'http://www.surfline.com'
     end
 
     def api_url(spot, use_nearshore = true)

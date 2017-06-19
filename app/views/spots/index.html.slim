@@ -1,5 +1,10 @@
 - @forecasts.each do |data, forecast|
-  h4.margin-left.spot-header= raw "#{data[:name]} #{map_link(data[:lat], data[:lon])}"
+  h2.margin-left.spot-header
+    span= data[:name]
+    = map_link(Spot.map_url(data[:lat], data[:lon]))
+    = spitcast_link(Spot.spitcast_url(data[:spitcast_slug]))
+    = msw_link(Spot.msw_url(data[:msw_slug], data[:msw_id]))
+    = surfline_link(Spot.surfline_url(data[:surfline_id]))
   =column_chart [\
       { name: 'Max', data: forecast.collect {|point| [point[:time], point[:max_delta]]}, stack: 'All' },
       { name: 'Avg', type: 'line', data: forecast.collect {|point| [point[:time], point[:avg_delta]]}, stack: 'All'},

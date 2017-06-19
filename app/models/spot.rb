@@ -17,6 +17,34 @@ class Spot < ApplicationRecord
     def map_url(lat, lon)
       "https://www.google.com/maps/search/#{lat},#{lon}"
     end
+
+    def msw_url(msw_slug, msw_id)
+      "#{Msw.site_url}/#{msw_slug}-Surf-Report/#{msw_id}/"
+    end
+
+    def spitcast_url(spitcast_slug)
+      "#{Spitcast.site_url}/surf-report/spot/#{spitcast_slug}/"
+    end
+
+    def surfline_url(surfline_id)
+      "#{Surfline.site_url}/surfdata/report-c.cfm?id=#{surfline_id}"
+    end
+  end
+
+  def map_url
+    self.class.map_url(lat, lon)
+  end
+
+  def msw_url
+    self.class.msw_url(msw_slug, msw_id)
+  end
+
+  def spitcast_url
+    self.class.spitcast_url(spitcast_id)
+  end
+
+  def surfline_url
+    self.class.surfline_url(surfline_id)
   end
 
   def num_forecasts
@@ -25,10 +53,6 @@ class Spot < ApplicationRecord
     num += 1 if msw_id
     num += 1 if spitcast_id
     num
-  end
-
-  def map_url
-    self.class.map_url(lat, lon)
   end
 
   def unique_timestamps

@@ -14,7 +14,9 @@ spots = [
     lon: -118.964,
     surfline_id: 4203,
     msw_id: 277,
+    msw_slug: 'County-Line-Yerba-Buena-Beach',
     spitcast_id: 207,
+    spitcast_slug: 'county-line-malibu-ca',
     region: LA,
   },
   {
@@ -23,6 +25,7 @@ spots = [
     lon: -118.932943,
     surfline_id: 4953,
     msw_id: 2642,
+    msw_slug: 'Leo-Carrillo',
     region: LA,
   },
   {
@@ -30,6 +33,7 @@ spots = [
     lat: 34.041956,
     lon: -118.91593,
     msw_id: 2643,
+    msw_slug: 'Zero-Nicholas-Canyon-County-Beach',
     region: LA,
   },
   {
@@ -38,7 +42,9 @@ spots = [
     lon: -118.8236361547595,
     surfline_id: 4949,
     msw_id: 853,
+    msw_slug: 'Zuma-Beach-County-Park',
     spitcast_id: 206,
+    spitcast_slug: 'zuma-beach-malibu-ca',
     region: LA,
   },
   {
@@ -47,6 +53,7 @@ spots = [
     lon: -118.804558744648,
     surfline_id: 4947,
     msw_id: 2610,
+    msw_slug: 'Point-Dume',
     region: LA,
   },
   {
@@ -55,7 +62,9 @@ spots = [
     lon: -118.677652,
     surfline_id: 4209,
     msw_id: 4204,
+    msw_slug: 'Malibu-First-Point',
     spitcast_id: 205,
+    spitcast_slug: 'malibu-malibu-ca',
     region: LA,
   },
   {
@@ -64,7 +73,9 @@ spots = [
     lon: -118.5759544372,
     surfline_id: 4210,
     msw_id: 279,
+    msw_slug: 'Topanga-State-Beach',
     spitcast_id: 388,
+    spitcast_slug: 'topanga-malibu-ca',
     region: LA,
   },
   {
@@ -73,6 +84,9 @@ spots = [
     lon: -118.5535631839145,
     surfline_id: 4883,
     msw_id: 3673,
+    msw_slug: 'Sunset-Blvd',
+    spitcast_id: 387,
+    spitcast_slug: 'sunset-pacific-palisades-ca',
     region: LA,
   },
   {
@@ -81,7 +95,9 @@ spots = [
     lon: -118.4742634651619,
     surfline_id: 4211,
     msw_id: 2611,
+    msw_slug: 'Venice-Beach',
     spitcast_id: 204,
+    spitcast_slug: 'venice-venice-ca',
     region: LA,
   },
   {
@@ -90,7 +106,9 @@ spots = [
     lon: -118.4208669620573,
     surfline_id: 4900,
     msw_id: 2677,
+    msw_slug: 'El-Porto-Beach',
     spitcast_id: 402,
+    spitcast_slug: 'el-porto-manhattan-beach-ca',
     region: LA,
   },
   {
@@ -99,7 +117,9 @@ spots = [
     lon: -118.4110175106966,
     surfline_id: 4901,
     msw_id: 281,
+    msw_slug: 'Manhattan-Beach',
     spitcast_id: 203,
+    spitcast_slug: 'manhattan-beach-manhattan-beach-ca',
     region: LA,
   },
   {
@@ -108,7 +128,9 @@ spots = [
     lon: -118.4075151286262,
     surfline_id: 4902,
     msw_id: 2607,
+    msw_slug: 'Hermosa-Beach',
     spitcast_id: 202,
+    spitcast_slug: 'hermosa-hermosa-beach-ca',
     region: LA,
   },
   {
@@ -117,6 +139,7 @@ spots = [
     lon: -118.4004837749971,
     surfline_id: 4912,
     msw_id: 4208,
+    msw_slug: 'Redondo-Beach-Breakwater',
     region: LA,
   },
   {
@@ -125,7 +148,9 @@ spots = [
     lon: -118.3933198342649,
     surfline_id: 4910,
     msw_id: 2604,
+    msw_slug: 'Torrance-Beach-Haggertys',
     spitcast_id: 200,
+    spitcast_slug: 'torrance-beach-redondo-beach-ca',
     region: LA,
   },
   {
@@ -134,6 +159,7 @@ spots = [
     lon: -118.4070316699825,
     surfline_id: 4936,
     msw_id: 4207,
+    msw_slug: 'Palos-Verdes-Cove',
     region: LA,
   },
   {
@@ -142,6 +168,7 @@ spots = [
     lon: -118.4268428476672,
     surfline_id: 4935,
     msw_id: 283,
+    msw_slug: 'Lunada-Bay',
     region: LA,
   },
 ]
@@ -152,5 +179,7 @@ spots.each do |spot_data|
   spot.lat = spot_data[:lat]
   spot.lon = spot_data[:lon]
   spot.region = spot_data[:region]
+  spot.msw_slug = spot_data[:msw_slug]
+  spot.spitcast_slug = spot_data[:spitcast_slug]
   spot.save!
 end

@@ -27,8 +27,12 @@ Note: If you get a security warning in Chrome, Click "Advanced" and then "Procee
 
 Contributing new spots is easy! Make sure you're signed into your [Github account](https://github.com/join) and edit the [seeds file](https://github.com/swrobel/meta-surf-forecast/edit/master/db/seeds.rb):
 
-1. Get the Spitcast spot id & lat/lon data using [their spot list API](http://api.spitcast.com/api/spot/all).
-1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, ex: for `http://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` it's `616`.
+1. Create a new region if necessary. For example, the LA region is created like so:
+    ```ruby
+    LA = Region.find_or_create_by(name: 'Los Angeles')
+    ```
+1. Get the Spitcast spot id, slug (unique text id) & lat/lon data using [their spot list API](http://api.spitcast.com/api/spot/nearby?longitude=-122.005261&latitude=37.02188) (you'll need to replace the lat/lon in the URL with yours, which you can get from the [Google Geocoder](https://google-developers.appspot.com/maps/documentation/utils/geocoder/)). The slug is `spot_id_char` in their API.
+1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, and the slug is the text after the slash and before `-Surf-Report`, ex: for `http://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` the slug is `Pipeline-Backdoor` and the id is `616`.
 1. Go to the Surfline page for the spot you want to add. Their spot id is also at the end of the url, ex: for `http://www.surfline.com/surf-report/venice-beach-southern-california_4211/` it's `4211`.
 1. It's strongly encouraged to add all spots for a particular county or region rather than just a single one. Be a pal!
 1. Submit a pull request and I'll get it on the site ASAP!
@@ -42,7 +46,10 @@ Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, e
     lon: -118.964,
     surfline_id: 4203,
     msw_id: 277,
+    msw_slug: 'County-Line-Yerba-Buena-Beach',
     spitcast_id: 207,
+    spitcast_slug: 'county-line-malibu-ca',
+    region: LA,
   },
 ```
 

@@ -7,7 +7,7 @@ class Msw < Forecast
 
   class << self
     def site_url
-      'http://magicseaweed.com/'
+      'http://magicseaweed.com'
     end
 
     def api_url(spot)
