@@ -134,6 +134,7 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     pg (0.21.0)
+    pgreset (0.1.1)
     powerpack (0.1.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -250,6 +251,7 @@ DEPENDENCIES
   invoker (= 1.5.1)
   newrelic_rpm
   pg (~> 0.18)
+  pgreset
   puma
   rack-toolbar
   rails (= 5.1.2)
