@@ -22,6 +22,7 @@ gem 'webpacker'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'pgreset'
 end
 
 group :development do
@@ -30,7 +31,6 @@ group :development do
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
   gem 'invoker', '1.5.1'
-  gem 'pgreset'
   gem 'rack-toolbar'
   gem 'rubocop', '~> 0.49.1'
   gem 'spring'
