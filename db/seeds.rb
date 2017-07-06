@@ -8,6 +8,7 @@ end
 LA = Region.find_or_create_by(name: 'Los Angeles')
 SC = Region.find_or_create_by(name: 'Santa Cruz')
 SF = Region.find_or_create_by(name: 'San Francisco')
+PT = Region.find_or_create_by(name: 'Portugal')
 
 spots = [
   {
@@ -194,6 +195,24 @@ spots = [
     spitcast_id: 1,
     spitcast_slug: 'pleasure-point-santa-cruz-ca',
     region: SC,
+  },
+  {
+    name: 'Carcavelos',
+    lat: 38.681209,
+    lon: -9.338022,
+    surfline_id: 6064,
+    msw_id: 912,
+    msw_slug: 'Carcavelos',
+    region: PT,
+  },
+  {,
+    name: 'Costa da Caparica',
+    lat: 38.630405,
+    lon: -9.2266,
+    surfline_id: 44509,
+    msw_id: 874,
+    msw_slug: 'Costa-da-Caparica',
+    region: PT,
   },
 ]
 
