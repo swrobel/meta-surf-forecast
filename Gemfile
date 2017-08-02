@@ -30,7 +30,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
-  gem 'invoker', '1.5.1'
+  gem 'invoker'
   gem 'rack-toolbar'
   gem 'rubocop', '~> 0.49.1'
   gem 'spring'
