@@ -13,9 +13,9 @@ const SpotChart = props => {
       type: 'column',
     },
     colors: [
-      'LightSkyBlue',
-      'DodgerBlue',
-      'RoyalBlue',
+      '#D1DCE4',
+      '#9EAAB3',
+      '#6A7177',
     ],
     credits: {
       enabled: false,
@@ -43,7 +43,23 @@ const SpotChart = props => {
       text: null,
     },
     tooltip: {
-      enabled: false,
+      formatter: function() {
+        let rating
+        let min = 0
+        let avg = 0
+        let tooltip = `<strong>${this.x}</strong>`
+        for (const point of this.points.reverse()) {
+          tooltip += `<br>${point.series.name}: ${(min + avg + point.y).toPrecision(2)} ft`
+          if (point.series.name === 'Min') {
+            rating = point.point.rating
+            min = point.y
+          }
+          if (point.series.name === 'Avg') avg = point.y
+        }
+        tooltip += `<br>Rating: ${rating}`
+        return tooltip
+      },
+      shared: true,
     },
     xAxis: {
       categories: props.xLabels,

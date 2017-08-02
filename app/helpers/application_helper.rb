@@ -58,4 +58,45 @@ module ApplicationHelper
       height_group[1] - height_group[0]
     end
   end
+
+  def rating_color(rating, series)
+    colors = {
+      0 => {
+        max: 'D9B0B7',
+        avg: 'C3818C',
+        min: 'B46270',
+      },
+      1 => {
+        max: 'F49B90',
+        avg: 'EE6352',
+        min: 'D95A4B',
+      },
+      2 => {
+        max: 'FBD698',
+        avg: 'FAC05E',
+        min: 'E4AF56',
+      },
+      3 => {
+        max: 'FEF8A1',
+        avg: 'FEF56C',
+        min: 'E7DF63',
+      },
+      4 => {
+        max: '95DFB8',
+        avg: '59CD90',
+        min: '51BB83',
+      },
+    }
+    "##{colors[rating][series]}"
+  end
+
+  def rating_text(rating)
+    {
+      0 => 'Poor',
+      1 => 'Poor - Fair',
+      2 => 'Fair',
+      3 => 'Fair - Good',
+      4 => 'Good',
+    }[rating]
+  end
 end

@@ -20,6 +20,7 @@ class RegionsController < ApplicationController
             ,round(avg(avg_height) - min(min_height), 1) AS avg_delta
             ,round(max(max_height) - avg(avg_height), 1) AS max_delta
             ,max(max_height) AS max
+            ,round(avg(rating)) AS avg_rating
         FROM
         ( SELECT 'msw'
                  ,spot_id
@@ -27,6 +28,7 @@ class RegionsController < ApplicationController
                  ,min_height
                  ,max_height
                  ,(min_height + max_height) / 2 AS avg_height
+                 ,rating
          FROM msws
          UNION SELECT 'spitcast'
                       ,spot_id
@@ -34,6 +36,7 @@ class RegionsController < ApplicationController
                       ,height AS min_height
                       ,height AS max_height
                       ,height AS avg_height
+                      ,rating - 0.5 AS rating
          FROM spitcasts
          UNION SELECT 'lola'
                       ,spot_id
@@ -41,6 +44,7 @@ class RegionsController < ApplicationController
                       ,min_height
                       ,max_height
                       ,(min_height + max_height) / 2 AS avg_height
+                      ,(swell_rating * 5 * CASE WHEN optimal_wind THEN 1 ELSE 0.5 END) AS rating
          FROM surfline_lolas
          UNION SELECT 'nearshore'
                       ,spot_id
@@ -48,10 +52,11 @@ class RegionsController < ApplicationController
                       ,min_height
                       ,max_height
                       ,(min_height + max_height) / 2 AS avg_height
+                      ,(swell_rating * 5 * CASE WHEN optimal_wind THEN 1 ELSE 0.5 END) AS rating
          FROM surfline_nearshores) sub
         JOIN spots s ON sub.spot_id = s.id
         WHERE sub.timestamp > now() at time zone 'utc'
-          AND sub.timestamp <= (select max(timestamp) from spitcasts)
+          AND sub.timestamp <= (SELECT max(timestamp) FROM spitcasts)
           AND s.region_id = #{@region.id}
         GROUP BY id
                 ,name
@@ -79,11 +84,15 @@ class RegionsController < ApplicationController
         ORDER BY id,
                  timestamp
     SQL
-    @forecasts.map(&:symbolize_keys!)
-    @forecasts.map! do |forecast|
+    @forecasts.each(&:symbolize_keys!)
+    @forecasts.each do |forecast|
       forecast[:time] = helpers.format_timestamp(Time.zone.parse("#{forecast[:timestamp]} UTC"))
+      %i[max min avg_delta max_delta].each do |field|
+        forecast[field] = forecast[field].to_f
+      end
+      forecast[:avg_rating] = forecast[:avg_rating].to_i
     end
-    @max = @forecasts.collect { |s| s[:max].to_d }.max
+    @max = @forecasts.collect { |f| f[:max] }.max
     @forecasts = @forecasts.group_by { |s| { id: s[:id], name: s[:name], lat: s[:lat], lon: s[:lon], msw_id: s[:msw_id], msw_slug: s[:msw_slug], spitcast_id: s[:spitcast_id], spitcast_slug: s[:spitcast_slug], surfline_id: s[:surfline_id], surfline_slug: s[:surfline_slug] } }
   end
 
