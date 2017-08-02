@@ -114,9 +114,25 @@ callback|string|jsonp callback function name
 
 MagicSeaweed has a [well-documented JSON API](http://magicseaweed.com/developer/forecast-api) that requires requesting an API key via email. This was a straightforward process and they got back to me quickly with my key.
 
+I've asked MagicSeaweed a few questions and added their responses below:
+
+* "Our API provides 5 days of forecast data, with segments of data provided for each 3 hour interval during that 5 day time span."
+* "Our data is updated every 3 hours."
+
 ### [Spitcast](http://www.spitcast.com/)
 
-Spitcast provides a [list of API endpoints](http://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
+Spitcast only provides a [list of API endpoints](http://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
+
+I've asked Jack from Spitcast a few questions and added his responses below:
+
+* To get more than the default 24 hour forecast for a spot? Add `dcat=week` to the querystring.
+* Why does the site show a size range, but the API only returns one `size` value? "I actually take the API number and create the max by adding 1/6 the height (in feet), and then create the min by subtracting 1/6 the height."
+* All possible values for shape:
+  * Poor
+  * Poor-Fair
+  * Fair
+  * Fair-Good
+  * Good
 
 ## TODO
 
