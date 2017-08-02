@@ -13,10 +13,10 @@ end
 gem 'rails', '5.1.2'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'chartkick'
 gem 'friendly_id'
 gem 'pg', '~> 0.18'
 gem 'puma'
+gem 'react-rails'
 gem 'slim-rails'
 gem 'webpacker'
 
