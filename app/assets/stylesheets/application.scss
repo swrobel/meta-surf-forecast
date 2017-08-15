@@ -24,8 +24,9 @@ nav {
   }
 }
 
-.light-text {
-  font-weight: $display1-weight;
+// remove after bootstrap 4 beta as it's included in master
+.font-weight-light {
+  font-weight: $display1-weight !important;
 
   select {
     font-weight: inherit;
@@ -34,7 +35,7 @@ nav {
 
 .forecast-icon-label {
   margin-left: 10px;
-  color: $gray;
+  color: $headings-color;
   font-size: 28px;
   vertical-align: middle;
   font-weight: normal;
