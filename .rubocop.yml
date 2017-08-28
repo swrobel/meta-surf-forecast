@@ -8,6 +8,13 @@ AllCops:
     - test/test_helper.rb
     - vendor/**/*
 
+Layout/AccessModifierIndentation:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Exclude:
+    - app/models/forecast.rb
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -27,15 +34,8 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Enabled: false
 
-Style/AccessModifierIndentation:
-  Enabled: false
-
 Style/Documentation:
   Enabled: false
 
 Style/TrailingCommaInLiteral:
   Enabled: false
-
-Lint/UnusedMethodArgument:
-  Exclude:
-    - app/models/forecast.rb
