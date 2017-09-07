@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906230307) do
+ActiveRecord::Schema.define(version: 20170907031133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20170906230307) do
     t.index ["spot_id", "timestamp"], name: "index_msws_on_spot_id_and_timestamp"
   end
 
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.integer "sort_order"
+    t.index ["slug"], name: "index_regions_on_slug", unique: true
+    t.index ["sort_order"], name: "index_regions_on_sort_order", unique: true
+  end
+
   create_table "spitcasts", id: :serial, force: :cascade do |t|
     t.integer "spot_id"
     t.datetime "timestamp"
@@ -75,9 +83,10 @@ ActiveRecord::Schema.define(version: 20170906230307) do
     t.string "msw_slug"
     t.string "spitcast_slug"
     t.string "surfline_slug"
+    t.integer "sort_order"
     t.index ["msw_id", "surfline_id", "spitcast_id"], name: "index_spots_on_msw_id_and_surfline_id_and_spitcast_id", unique: true
-    t.index ["slug"], name: "index_spots_on_slug", unique: true
-    t.index ["subregion_id"], name: "index_spots_on_subregion_id"
+    t.index ["subregion_id", "slug"], name: "index_spots_on_subregion_id_and_slug", unique: true
+    t.index ["subregion_id", "sort_order"], name: "index_spots_on_subregion_id_and_sort_order", unique: true
   end
 
   create_table "subregions", force: :cascade do |t|
@@ -85,7 +94,11 @@ ActiveRecord::Schema.define(version: 20170906230307) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_subregions_on_slug", unique: true
+    t.string "timezone"
+    t.bigint "region_id"
+    t.integer "sort_order"
+    t.index ["region_id", "slug"], name: "index_subregions_on_region_id_and_slug", unique: true
+    t.index ["region_id", "sort_order"], name: "index_subregions_on_region_id_and_sort_order", unique: true
   end
 
   create_table "surfline_lolas", id: :serial, force: :cascade do |t|
@@ -143,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170906230307) do
   add_foreign_key "spitcasts", "api_requests"
   add_foreign_key "spitcasts", "spots"
   add_foreign_key "spots", "subregions"
+  add_foreign_key "subregions", "regions"
   add_foreign_key "surfline_lolas", "api_requests"
   add_foreign_key "surfline_lolas", "spots"
   add_foreign_key "surfline_nearshores", "api_requests"

@@ -2,7 +2,7 @@
 
 class Spot < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: %i[slugged finders]
+  friendly_id :name, use: %i[slugged finders scoped], scope: :subregion
 
   has_many :surfline_nearshores
   has_many :surfline_lolas

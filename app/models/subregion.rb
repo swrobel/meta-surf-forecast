@@ -2,7 +2,8 @@
 
 class Subregion < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: %i[slugged finders]
+  friendly_id :name, use: %i[slugged finders scoped], scope: :region
 
-  has_many :spots
+  belongs_to :region
+  has_many :spots, -> { order(:sort_order, :id) }
 end

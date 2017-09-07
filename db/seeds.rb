@@ -5,9 +5,19 @@ WaterQualityDepartment.find_or_create_by(code: 'LAPH') do |dept|
   dept.url = 'http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm'
 end
 
-LA = Subregion.find_or_create_by(name: 'Los Angeles')
-SC = Subregion.find_or_create_by(name: 'Santa Cruz')
-SF = Subregion.find_or_create_by(name: 'San Francisco')
+CA = Region.find_or_create_by(name: 'California', sort_order: 10)
+SF = Subregion.find_or_create_by(name: 'San Francisco', region: CA)
+SF.sort_order = 10
+SF.timezone = 'Pacific Time (US & Canada)'
+SF.save!
+SC = Subregion.find_or_create_by(name: 'Santa Cruz', region: CA)
+SC.sort_order = 20
+SC.timezone = 'Pacific Time (US & Canada)'
+SC.save!
+LA = Subregion.find_or_initialize_by(name: 'Los Angeles', region: CA)
+LA.sort_order = 50
+LA.timezone = 'Pacific Time (US & Canada)'
+LA.save!
 
 spots = [
   {

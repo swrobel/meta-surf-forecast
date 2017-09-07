@@ -37,5 +37,9 @@ Metrics/MethodLength:
 Style/Documentation:
   Enabled: false
 
+Style/FormatStringToken:
+  Exclude:
+    - config/routes.rb
+
 Style/TrailingCommaInLiteral:
   Enabled: false

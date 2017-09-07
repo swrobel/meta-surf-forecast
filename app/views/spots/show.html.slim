@@ -1,7 +1,7 @@
 - provide(:title, @spot.name)
 
 .container-fluid
-  h1= @spot.name
+  h1.font-weight-light= @spot.name
 
   table.table.table-sm.table-striped#forecast-table
     thead.thead-default
@@ -36,4 +36,3 @@
           td= msw.try(:rating)
           = render partial: 'surfline', locals: {surfline: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first}
           = render partial: 'surfline', locals: {surfline: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first}
-          

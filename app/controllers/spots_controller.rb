@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
 class SpotsController < ApplicationController
-  before_action :set_spot
-
   def show
-    @timestamps = @spot.unique_timestamps
+    @timestamps = spot.unique_timestamps
   end
 
 private
 
-  def set_spot
-    @spot = Spot.optimized.find(params[:id])
+  def region
+    @region ||= Region.find(params[:region_id])
+  end
+
+  def subregion
+    @subregion ||= region.subregions.find(params[:subregion_id])
+  end
+
+  def spot
+    @spot ||= subregion.spots.optimized.find(params[:spot_id])
   end
 end

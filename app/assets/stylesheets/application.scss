@@ -58,15 +58,16 @@ nav {
 
   span {
     color: black;
-    opacity: $opacity;
   }
 
   a {
     margin-left: 18px;
     opacity: $opacity;
+    color: inherit;
 
     &:hover {
       opacity: 1;
+      text-decoration: none;
     }
   }
 
