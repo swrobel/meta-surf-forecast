@@ -129,7 +129,7 @@ Spitcast only provides a [list of API endpoints](http://www.spitcast.com/api/doc
 
 I've asked Jack from Spitcast a few questions and added his responses below:
 
-* To get more than the default 24 hour forecast for a spot? Add `dcat=week` to the querystring.
+* To get more than the default 24 hour forecast for a spot, add `dcat=week` to the querystring.
 * Why does the site show a size range, but the API only returns one `size` value? "I actually take the API number and create the max by adding 1/6 the height (in feet), and then create the min by subtracting 1/6 the height."
 * All possible values for shape:
   * Poor
@@ -140,12 +140,12 @@ I've asked Jack from Spitcast a few questions and added his responses below:
 
 ## TODO
 
-* [ ] **Improve charts:**
+* [x] **Improve charts:**
   * [x] **Fix timestamp formatting.**
   * [x] **Account for min/max size forecast. Currently charts just reflect the max.**
   * [x] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
 * [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
+* [x] Support multiple timezones as opposed to Pacific Time only
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](http://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
 * [ ] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
-* [ ] Support multiple timezones as opposed to Pacific Time only
