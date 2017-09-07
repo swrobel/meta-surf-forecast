@@ -28,8 +28,8 @@ class Surfline < Forecast
       'http://www.surfline.com'
     end
 
-    def api_url(spot, use_nearshore = true)
-      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,analysis,wind,weather,tide,sort&days=#{num_days}&getAllSpots=true&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
+    def api_url(spot, use_nearshore = true, get_all_spots = true)
+      "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,wind,sort&days=#{num_days}&getAllSpots=#{get_all_spots}&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
     end
 
     def for_chart

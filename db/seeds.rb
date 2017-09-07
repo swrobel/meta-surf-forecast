@@ -226,7 +226,7 @@ spots = [
     surfline_id: 6064,
     msw_id: 912,
     msw_slug: 'Carcavelos',
-    region: PT,
+    subregion: PT,
   },
   {
     name: 'Costa da Caparica',
@@ -235,7 +235,7 @@ spots = [
     surfline_id: 44_509,
     msw_id: 874,
     msw_slug: 'Costa-da-Caparica',
-    region: PT,
+    subregion: PT,
   },
   {
     name: 'Pascuales',
@@ -244,7 +244,7 @@ spots = [
     surfline_id: 59_564,
     msw_id: 333,
     msw_slug: 'Pascuales',
-    region: COL,
+    subregion: COL,
   },
   {
     name: 'Troncones',
@@ -253,7 +253,7 @@ spots = [
     surfline_id: 59_608,
     msw_id: 2065,
     msw_slug: 'Troncones',
-    region: GUR,
+    subregion: GUR,
   },
 ]
 
