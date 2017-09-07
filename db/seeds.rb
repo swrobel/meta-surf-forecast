@@ -18,6 +18,11 @@ LA = Subregion.find_or_initialize_by(name: 'Los Angeles', region: CA)
 LA.sort_order = 50
 LA.timezone = 'Pacific Time (US & Canada)'
 LA.save!
+EU = Region.find_or_create_by(name: 'Europe', sort_order: 50)
+PT = Subregion.find_or_initialize_by(name: 'Portugal', region: EU)
+PT.sort_order = 30
+PT.timezone = 'Lisbon'
+PT.save!
 
 spots = [
   {
@@ -204,6 +209,24 @@ spots = [
     spitcast_id: 1,
     spitcast_slug: 'pleasure-point-santa-cruz-ca',
     subregion: SC,
+  },
+  {
+    name: 'Carcavelos',
+    lat: 38.681209,
+    lon: -9.338022,
+    surfline_id: 6064,
+    msw_id: 912,
+    msw_slug: 'Carcavelos',
+    region: PT,
+  },
+  {
+    name: 'Costa da Caparica',
+    lat: 38.630405,
+    lon: -9.2266,
+    surfline_id: 44_509,
+    msw_id: 874,
+    msw_slug: 'Costa-da-Caparica',
+    region: PT,
   },
 ]
 
