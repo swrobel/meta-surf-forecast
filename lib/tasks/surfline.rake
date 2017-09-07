@@ -8,6 +8,7 @@ namespace :surfline do
       Spot.find_by(surfline_id: 4203),
       Spot.find_by(surfline_id: 4127),
       Spot.find_by(surfline_id: 4190),
+      Spot.find_by(surfline_id: 6064),
     ]
 
     spots.each do |spot|
