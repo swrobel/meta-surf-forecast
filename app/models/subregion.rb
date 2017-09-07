@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Region < ApplicationRecord
+class Subregion < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: %i[slugged finders]
 

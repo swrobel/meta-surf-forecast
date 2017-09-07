@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class RegionsController < ApplicationController
-  before_action :set_region
+class SubregionsController < ApplicationController
+  before_action :set_subregion
 
   def show
     @forecasts = Spot.connection.select_all <<-SQL
@@ -57,7 +57,7 @@ class RegionsController < ApplicationController
         JOIN spots s ON sub.spot_id = s.id
         WHERE sub.timestamp > now() at time zone 'utc'
           AND sub.timestamp <= (SELECT max(timestamp) FROM spitcasts)
-          AND s.region_id = #{@region.id}
+          AND s.subregion_id = #{@subregion.id}
         GROUP BY id
                 ,name
                 ,lat
@@ -98,7 +98,7 @@ class RegionsController < ApplicationController
 
 private
 
-  def set_region
-    @region = Region.find(params[:id])
+  def set_subregion
+    @subregion = Subregion.find(params[:id])
   end
 end

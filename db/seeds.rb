@@ -5,9 +5,9 @@ WaterQualityDepartment.find_or_create_by(code: 'LAPH') do |dept|
   dept.url = 'http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm'
 end
 
-LA = Region.find_or_create_by(name: 'Los Angeles')
-SC = Region.find_or_create_by(name: 'Santa Cruz')
-SF = Region.find_or_create_by(name: 'San Francisco')
+LA = Subregion.find_or_create_by(name: 'Los Angeles')
+SC = Subregion.find_or_create_by(name: 'Santa Cruz')
+SF = Subregion.find_or_create_by(name: 'San Francisco')
 
 spots = [
   {
@@ -19,7 +19,7 @@ spots = [
     msw_slug: 'County-Line-Yerba-Buena-Beach',
     spitcast_id: 207,
     spitcast_slug: 'county-line-malibu-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Leo Carillo',
@@ -28,7 +28,7 @@ spots = [
     surfline_id: 4953,
     msw_id: 2642,
     msw_slug: 'Leo-Carrillo',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Zeros',
@@ -36,7 +36,7 @@ spots = [
     lon: -118.91593,
     msw_id: 2643,
     msw_slug: 'Zero-Nicholas-Canyon-County-Beach',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Zuma Beach',
@@ -47,7 +47,7 @@ spots = [
     msw_slug: 'Zuma-Beach-County-Park',
     spitcast_id: 206,
     spitcast_slug: 'zuma-beach-malibu-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Point Dume',
@@ -56,7 +56,7 @@ spots = [
     surfline_id: 4947,
     msw_id: 2610,
     msw_slug: 'Point-Dume',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Malibu',
@@ -67,7 +67,7 @@ spots = [
     msw_slug: 'Malibu-First-Point',
     spitcast_id: 205,
     spitcast_slug: 'malibu-malibu-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Topanga',
@@ -78,7 +78,7 @@ spots = [
     msw_slug: 'Topanga-State-Beach',
     spitcast_id: 388,
     spitcast_slug: 'topanga-malibu-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Sunset Blvd',
@@ -89,7 +89,7 @@ spots = [
     msw_slug: 'Sunset-Blvd',
     spitcast_id: 387,
     spitcast_slug: 'sunset-pacific-palisades-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Venice Breakwater',
@@ -100,7 +100,7 @@ spots = [
     msw_slug: 'Venice-Beach',
     spitcast_id: 204,
     spitcast_slug: 'venice-venice-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'El Porto',
@@ -111,7 +111,7 @@ spots = [
     msw_slug: 'El-Porto-Beach',
     spitcast_id: 402,
     spitcast_slug: 'el-porto-manhattan-beach-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Manhattan Beach',
@@ -122,7 +122,7 @@ spots = [
     msw_slug: 'Manhattan-Beach',
     spitcast_id: 203,
     spitcast_slug: 'manhattan-beach-manhattan-beach-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Hermosa Beach',
@@ -133,7 +133,7 @@ spots = [
     msw_slug: 'Hermosa-Beach',
     spitcast_id: 202,
     spitcast_slug: 'hermosa-hermosa-beach-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Redondo Breakwall',
@@ -142,7 +142,7 @@ spots = [
     surfline_id: 4912,
     msw_id: 4208,
     msw_slug: 'Redondo-Beach-Breakwater',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Torrance Beach/Haggertys',
@@ -153,7 +153,7 @@ spots = [
     msw_slug: 'Torrance-Beach-Haggertys',
     spitcast_id: 200,
     spitcast_slug: 'torrance-beach-redondo-beach-ca',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Palos Verdes Cove',
@@ -162,7 +162,7 @@ spots = [
     surfline_id: 4936,
     msw_id: 4207,
     msw_slug: 'Palos-Verdes-Cove',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Lunada Bay',
@@ -171,7 +171,7 @@ spots = [
     surfline_id: 4935,
     msw_id: 283,
     msw_slug: 'Lunada-Bay',
-    region: LA,
+    subregion: LA,
   },
   {
     name: 'Ocean Beach',
@@ -182,7 +182,7 @@ spots = [
     msw_slug: 'Ocean-Beach',
     spitcast_id: 117,
     spitcast_slug: 'south-ocean-beach-san-francisco-ca',
-    region: SF,
+    subregion: SF,
   },
   {
     name: 'Pleasure Point',
@@ -193,7 +193,7 @@ spots = [
     msw_slug: 'Pleasure-Point',
     spitcast_id: 1,
     spitcast_slug: 'pleasure-point-santa-cruz-ca',
-    region: SC,
+    subregion: SC,
   },
 ]
 
@@ -202,7 +202,7 @@ spots.each do |spot_data|
   spot.name = spot_data[:name]
   spot.lat = spot_data[:lat]
   spot.lon = spot_data[:lon]
-  spot.region = spot_data[:region]
+  spot.subregion = spot_data[:subregion]
   spot.msw_slug = spot_data[:msw_slug]
   spot.spitcast_slug = spot_data[:spitcast_slug]
   spot.save!

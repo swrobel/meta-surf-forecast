@@ -8,7 +8,7 @@ class Spot < ApplicationRecord
   has_many :surfline_lolas
   has_many :msws
   has_many :spitcasts
-  belongs_to :region
+  belongs_to :subregion
 
   default_scope -> { order(:name) }
   scope :optimized, -> { includes(:msws, :surfline_nearshores, :surfline_lolas, :spitcasts) }

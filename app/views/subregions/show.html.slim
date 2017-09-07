@@ -2,8 +2,8 @@ nav.navbar.navbar-light.sticky-top
   .row.font-weight-light
     span.margin-left Region:
     select.margin-left onchange='window.location = this.value'
-      - Region.all.each do |region|
-        option value=region_path(region) selected=('selected' if region == @region) =region.name
+      - Subregion.all.each do |subregion|
+        option value=subregion_path(subregion) selected=('selected' if subregion == @subregion) =subregion.name
 div
   - @forecasts.each do |data, forecast|
     h2.font-weight-light.margin-left.spot-header

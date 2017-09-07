@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :spots, only: :show
-  resources :regions, only: :show
+  resources :subregions, only: :show
 
-  root to: redirect('/regions/los-angeles')
+  root to: redirect('/subregions/los-angeles')
 end

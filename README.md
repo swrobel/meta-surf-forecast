@@ -27,9 +27,9 @@ Note: If you get a security warning in Chrome, Click "Advanced" and then "Procee
 
 Contributing new spots is easy! Make sure you're signed into your [Github account](https://github.com/join) and edit the [seeds file](https://github.com/swrobel/meta-surf-forecast/edit/master/db/seeds.rb):
 
-1. Create a new region if necessary. For example, the LA region is created like so:
+1. Create a new Region if necessary. For example, Los Angeles is created like so:
     ```ruby
-    LA = Region.find_or_create_by(name: 'Los Angeles')
+    LA = Subregion.find_or_create_by(name: 'Los Angeles')
     ```
 1. Get the Spitcast spot id, slug (unique text id) & lat/lon data using [their spot list API](http://api.spitcast.com/api/spot/nearby?longitude=-122.005261&latitude=37.02188) (you'll need to replace the lat/lon in the URL with yours, which you can get from the [Google Geocoder](https://google-developers.appspot.com/maps/documentation/utils/geocoder/)). The slug is `spot_id_char` in their API.
 1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, and the slug is the text after the slash and before `-Surf-Report`, ex: for `http://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` the slug is `Pipeline-Backdoor` and the id is `616`.
@@ -49,7 +49,7 @@ Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, e
     msw_slug: 'County-Line-Yerba-Buena-Beach',
     spitcast_id: 207,
     spitcast_slug: 'county-line-malibu-ca',
-    region: LA,
+    subregion: LA,
   },
 ```
 

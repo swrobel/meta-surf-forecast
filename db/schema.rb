@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618230016) do
+ActiveRecord::Schema.define(version: 20170906230307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,14 +49,6 @@ ActiveRecord::Schema.define(version: 20170618230016) do
     t.index ["spot_id", "timestamp"], name: "index_msws_on_spot_id_and_timestamp"
   end
 
-  create_table "regions", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_regions_on_slug", unique: true
-  end
-
   create_table "spitcasts", id: :serial, force: :cascade do |t|
     t.integer "spot_id"
     t.datetime "timestamp"
@@ -79,13 +71,21 @@ ActiveRecord::Schema.define(version: 20170618230016) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.bigint "region_id"
+    t.bigint "subregion_id"
     t.string "msw_slug"
     t.string "spitcast_slug"
     t.string "surfline_slug"
     t.index ["msw_id", "surfline_id", "spitcast_id"], name: "index_spots_on_msw_id_and_surfline_id_and_spitcast_id", unique: true
-    t.index ["region_id"], name: "index_spots_on_region_id"
     t.index ["slug"], name: "index_spots_on_slug", unique: true
+    t.index ["subregion_id"], name: "index_spots_on_subregion_id"
+  end
+
+  create_table "subregions", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_subregions_on_slug", unique: true
   end
 
   create_table "surfline_lolas", id: :serial, force: :cascade do |t|
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 20170618230016) do
   add_foreign_key "msws", "spots"
   add_foreign_key "spitcasts", "api_requests"
   add_foreign_key "spitcasts", "spots"
-  add_foreign_key "spots", "regions"
+  add_foreign_key "spots", "subregions"
   add_foreign_key "surfline_lolas", "api_requests"
   add_foreign_key "surfline_lolas", "spots"
   add_foreign_key "surfline_nearshores", "api_requests"
