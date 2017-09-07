@@ -18,6 +18,15 @@ LA = Subregion.find_or_initialize_by(name: 'Los Angeles', region: CA)
 LA.sort_order = 50
 LA.timezone = 'Pacific Time (US & Canada)'
 LA.save!
+MX = Region.find_or_create_by(name: 'Mexico', sort_order: 15)
+COL = Subregion.find_or_initialize_by(name: 'Colima', region: MX)
+COL.sort_order = 30
+COL.timezone = 'Guadalajara'
+COL.save!
+GUR = Subregion.find_or_initialize_by(name: 'Guerrero', region: MX)
+GUR.sort_order = 32
+GUR.timezone = 'Guadalajara'
+GUR.save!
 EU = Region.find_or_create_by(name: 'Europe', sort_order: 50)
 PT = Subregion.find_or_initialize_by(name: 'Portugal', region: EU)
 PT.sort_order = 30
@@ -227,6 +236,24 @@ spots = [
     msw_id: 874,
     msw_slug: 'Costa-da-Caparica',
     region: PT,
+  },
+  {
+    name: 'Pascuales',
+    lat: 18.853,
+    lon: -103.962,
+    surfline_id: 59_564,
+    msw_id: 333,
+    msw_slug: 'Pascuales',
+    region: COL,
+  },
+  {
+    name: 'Troncones',
+    lat: 17.794,
+    lon: -101.749,
+    surfline_id: 59_608,
+    msw_id: 2065,
+    msw_slug: 'Troncones',
+    region: GUR,
   },
 ]
 
