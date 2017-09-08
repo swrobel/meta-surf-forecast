@@ -56,6 +56,7 @@ class SubregionsController < ApplicationController
         JOIN spots s ON sub.spot_id = s.id
         WHERE sub.timestamp > now() at time zone 'utc'
           AND sub.timestamp <= (SELECT max(timestamp) FROM spitcasts)
+          AND sub.rating IS NOT NULL
           AND s.subregion_id = #{subregion.id}
         GROUP BY id
                 ,name
