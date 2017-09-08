@@ -61,7 +61,7 @@ Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, e
 
 ### [Surfline](http://www.surfline.com/)
 
-Surfline's API is undocumented and unprotected, but is used via javascript on their website, so it was fairly easy to reverse-engineer. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
+Surfline's API is undocumented and unauthenticated, but is used via javascript on their website, so it was fairly easy to reverse-engineer. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
 
 ```json
 "Surf": {
@@ -146,6 +146,7 @@ I've asked Jack from Spitcast a few questions and added his responses below:
   * [x] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
 * [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
 * [x] Support multiple timezones as opposed to Pacific Time only
+* [ ] Don't show forecasts for nighttime hours since they just waste graph space
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](http://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
 * [ ] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
