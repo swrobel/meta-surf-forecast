@@ -86,6 +86,11 @@ module ApplicationHelper
         avg: '59CD90',
         min: '51BB83',
       },
+      5 => {
+        max: '9BFFFF',
+        avg: '54EAEA',
+        min: '00D3D3',
+      }
     }
     "##{colors[rating][series]}"
   end
@@ -97,6 +102,7 @@ module ApplicationHelper
       2 => 'Fair',
       3 => 'Fair - Good',
       4 => 'Good',
+      5 => 'Very Good',
     }[rating]
   end
 end
