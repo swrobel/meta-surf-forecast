@@ -247,6 +247,16 @@ spots = [
     subregion: COL,
   },
   {
+    name: 'Rio Nexpa',
+    lat: 18.082,
+    lon: -102.792,
+    surfline_id: 59_604,
+    msw_id: 334,
+    msw_slug: 'Rio-Nexpa',
+    subregion: GUR,
+    sort_order: 5,
+  },
+  {
     name: 'The Ranch',
     lat: 17.914,
     lon: -101.871,
