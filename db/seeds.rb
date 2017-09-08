@@ -247,23 +247,46 @@ spots = [
     subregion: COL,
   },
   {
+    name: 'The Ranch',
+    lat: 17.914,
+    lon: -101.871,
+    surfline_id: 59_606,
+    msw_id: 336,
+    msw_slug: 'The-Ranch',
+    subregion: GUR,
+    sort_order: 10,
+  },
+  {
+    name: 'La Saladita',
+    lat: 17.836,
+    lon: -101.774,
+    surfline_id: 59_607,
+    msw_id: 838,
+    msw_slug: 'La-Saladita',
+    subregion: GUR,
+    sort_order: 20,
+  },
+  {
     name: 'Troncones',
     lat: 17.794,
     lon: -101.749,
     surfline_id: 59_608,
-    msw_id: 2065,
-    msw_slug: 'Troncones',
+    msw_id: 1059,
+    msw_slug: 'Manzanillo-Bay',
     subregion: GUR,
+    sort_order: 30,
   },
 ]
 
 spots.each do |spot_data|
-  spot = Spot.find_or_initialize_by(surfline_id: spot_data[:surfline_id], msw_id: spot_data[:msw_id], spitcast_id: spot_data[:spitcast_id])
-  spot.name = spot_data[:name]
+  spot = Spot.find_or_initialize_by(name: spot_data[:name], subregion: spot_data[:subregion])
+  spot.surfline_id = spot_data[:surfline_id]
+  spot.msw_id = spot_data[:msw_id]
+  spot.spitcast_id = spot_data[:spitcast_id]
   spot.lat = spot_data[:lat]
   spot.lon = spot_data[:lon]
-  spot.subregion = spot_data[:subregion]
   spot.msw_slug = spot_data[:msw_slug]
   spot.spitcast_slug = spot_data[:spitcast_slug]
+  spot.sort_order = spot_data[:sort_order]
   spot.save!
 end
