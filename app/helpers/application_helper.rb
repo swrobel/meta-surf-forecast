@@ -43,7 +43,7 @@ module ApplicationHelper
     if stamp.hour.zero? && stamp.min.zero? # Midnight
       stamp.strftime('%a %b %-d')
     else
-      stamp.strftime('%a %-I%P')
+      stamp.strftime('%a %-I%P')[0..-2]
     end
   end
 
