@@ -1,6 +1,6 @@
 - provide(:title, "#{@subregion.name}, #{@region.name}")
 
-nav.navbar.navbar-light.sticky-top
+nav.navbar.navbar-light.fixed-top
   .row.font-weight-light
     span.margin-left Region:
     select.margin-left onchange='window.location = this.value'
@@ -8,7 +8,7 @@ nav.navbar.navbar-light.sticky-top
         optgroup label=region.name
           - region.subregions.each do |subregion|
             option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
-div
+div style='margin-top: 44px'
   - @forecasts.each do |data, forecast|
     h2.font-weight-light.margin-left.spot-header
       span= link_to data[:name], spot_path(@region, @subregion, data[:slug])
