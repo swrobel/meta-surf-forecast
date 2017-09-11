@@ -10,7 +10,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '5.1.3'
+gem 'rails', '5.1.4'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'friendly_id'
@@ -18,7 +18,7 @@ gem 'pg', '~> 0.18'
 gem 'puma'
 gem 'react-rails'
 gem 'slim-rails'
-gem 'webpacker'
+gem 'webpacker', '~> 2.0'
 
 group :development, :test do
   gem 'dotenv-rails'
