@@ -24,7 +24,6 @@ class SubregionsController < ApplicationController
       FROM all_forecasts AS sub
       JOIN spots s ON sub.spot_id = s.id
       WHERE sub.timestamp > now() at time zone 'utc'
-        AND sub.rating IS NOT NULL
         AND s.subregion_id = #{subregion.id}
       GROUP BY id
               ,name
