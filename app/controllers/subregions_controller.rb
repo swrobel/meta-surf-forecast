@@ -4,7 +4,8 @@ class SubregionsController < ApplicationController
   def show
     @forecasts ||= Spot.connection.select_all <<-SQL
       WITH
-      sub as ( SELECT 'msw' AS service
+      sub as (
+       SELECT 'msw' AS service
                ,spot_id
                ,timestamp
                ,min_height
@@ -35,7 +36,8 @@ class SubregionsController < ApplicationController
                     ,max_height
                     ,(min_height + max_height) / 2 AS avg_height
                     ,(swell_rating * 5 * CASE WHEN optimal_wind THEN 1 ELSE 0.5 END) AS rating
-       FROM surfline_nearshores)
+       FROM surfline_nearshores
+      )
       SELECT
          id
         ,name
@@ -83,7 +85,7 @@ class SubregionsController < ApplicationController
                           WHEN s.spitcast_id IS NULL THEN 0
                           ELSE 1
                       END
-            AND min(sub.timestamp) <= (SELECT min(ts) FROM (SELECT max(timestamp) as ts FROM sub GROUP BY spot_id, service) s)
+            AND timestamp <= (SELECT min(ts) FROM (SELECT max(timestamp) as ts FROM sub WHERE sub.spot_id in (select id from spots where subregion_id = #{subregion.id}) GROUP BY service) s2)
       ORDER BY sort_order
               ,id
               ,timestamp
