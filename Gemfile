@@ -17,6 +17,7 @@ gem 'friendly_id'
 gem 'pg', '~> 0.18'
 gem 'puma'
 gem 'react-rails'
+gem 'scenic'
 gem 'slim-rails'
 gem 'webpacker', '~> 2.0'
 
@@ -35,6 +36,7 @@ group :development do
   gem 'rubocop', '~> 0.49.1'
   gem 'spring'
   gem 'spring-commands-rubocop', require: false
+  gem 'spring-watcher-listen'
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'
 end

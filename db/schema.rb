@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907031133) do
+ActiveRecord::Schema.define(version: 20170918220029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,4 +162,54 @@ ActiveRecord::Schema.define(version: 20170907031133) do
   add_foreign_key "surfline_nearshores", "api_requests"
   add_foreign_key "surfline_nearshores", "spots"
   add_foreign_key "water_qualities", "water_quality_departments", column: "dept_id"
+
+  create_view "all_forecasts", materialized: true,  sql_definition: <<-SQL
+      SELECT 'msw'::text AS service,
+      msws.spot_id,
+      msws."timestamp",
+      msws.min_height,
+      msws.max_height,
+      ((msws.min_height + msws.max_height) / (2)::numeric) AS avg_height,
+      msws.rating
+     FROM msws
+  UNION
+   SELECT 'spitcast'::text AS service,
+      spitcasts.spot_id,
+      spitcasts."timestamp",
+      spitcasts.height AS min_height,
+      spitcasts.height AS max_height,
+      spitcasts.height AS avg_height,
+      ((spitcasts.rating)::numeric - 0.5) AS rating
+     FROM spitcasts
+  UNION
+   SELECT 'lola'::text AS service,
+      surfline_lolas.spot_id,
+      surfline_lolas."timestamp",
+      surfline_lolas.min_height,
+      surfline_lolas.max_height,
+      ((surfline_lolas.min_height + surfline_lolas.max_height) / (2)::numeric) AS avg_height,
+      ((surfline_lolas.swell_rating * (5)::numeric) *
+          CASE
+              WHEN surfline_lolas.optimal_wind THEN (1)::numeric
+              ELSE 0.5
+          END) AS rating
+     FROM surfline_lolas
+  UNION
+   SELECT 'nearshore'::text AS service,
+      surfline_nearshores.spot_id,
+      surfline_nearshores."timestamp",
+      surfline_nearshores.min_height,
+      surfline_nearshores.max_height,
+      ((surfline_nearshores.min_height + surfline_nearshores.max_height) / (2)::numeric) AS avg_height,
+      ((surfline_nearshores.swell_rating * (5)::numeric) *
+          CASE
+              WHEN surfline_nearshores.optimal_wind THEN (1)::numeric
+              ELSE 0.5
+          END) AS rating
+     FROM surfline_nearshores;
+  SQL
+
+  add_index "all_forecasts", ["spot_id"], name: "index_all_forecasts_on_spot_id"
+  add_index "all_forecasts", ["timestamp"], name: "index_all_forecasts_on_timestamp"
+
 end

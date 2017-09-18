@@ -3,41 +3,6 @@
 class SubregionsController < ApplicationController
   def show
     @forecasts ||= Spot.connection.select_all <<-SQL
-      WITH
-      sub as (
-       SELECT 'msw' AS service
-               ,spot_id
-               ,timestamp
-               ,min_height
-               ,max_height
-               ,(min_height + max_height) / 2 AS avg_height
-               ,rating
-       FROM msws
-       UNION SELECT 'spitcast' AS service
-                    ,spot_id
-                    ,timestamp
-                    ,height AS min_height
-                    ,height AS max_height
-                    ,height AS avg_height
-                    ,rating - 0.5 AS rating
-       FROM spitcasts
-       UNION SELECT 'lola' AS service
-                    ,spot_id
-                    ,timestamp
-                    ,min_height
-                    ,max_height
-                    ,(min_height + max_height) / 2 AS avg_height
-                    ,(swell_rating * 5 * CASE WHEN optimal_wind THEN 1 ELSE 0.5 END) AS rating
-       FROM surfline_lolas
-       UNION SELECT 'nearshore' AS service
-                    ,spot_id
-                    ,timestamp
-                    ,min_height
-                    ,max_height
-                    ,(min_height + max_height) / 2 AS avg_height
-                    ,(swell_rating * 5 * CASE WHEN optimal_wind THEN 1 ELSE 0.5 END) AS rating
-       FROM surfline_nearshores
-      )
       SELECT
          id
         ,name
@@ -56,7 +21,7 @@ class SubregionsController < ApplicationController
         ,round(max(max_height) - avg(avg_height), 1) AS max_delta
         ,max(max_height) AS max
         ,round(avg(rating)) AS avg_rating
-      FROM sub
+      FROM all_forecasts AS sub
       JOIN spots s ON sub.spot_id = s.id
       WHERE sub.timestamp > now() at time zone 'utc'
         AND sub.rating IS NOT NULL
@@ -85,7 +50,7 @@ class SubregionsController < ApplicationController
                           WHEN s.spitcast_id IS NULL THEN 0
                           ELSE 1
                       END
-            AND timestamp <= (SELECT min(ts) FROM (SELECT max(timestamp) as ts FROM sub WHERE sub.spot_id in (select id from spots where subregion_id = #{subregion.id}) GROUP BY service) s2)
+            AND timestamp <= (SELECT min(ts) FROM (SELECT max(timestamp) as ts FROM all_forecasts WHERE spot_id in (select id from spots where subregion_id = #{subregion.id}) GROUP BY service) s2)
       ORDER BY sort_order
               ,id
               ,timestamp
