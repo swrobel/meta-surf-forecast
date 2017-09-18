@@ -26,7 +26,7 @@ class Msw < Forecast
         record.max_height = response.swell.absMaxBreakingHeight
         record.rating = response.solidRating
         record.wind_effect = response.fadedRating
-        record.save
+        record.save! if record.rating.present?
       end
     end
   end

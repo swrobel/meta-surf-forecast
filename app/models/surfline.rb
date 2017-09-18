@@ -97,7 +97,7 @@ class Surfline < Forecast
           values.each do |attribute, value|
             record[attribute] = value
           end
-          record.save!
+          record.save! if record.swell_rating.present?
         end
       end
     end

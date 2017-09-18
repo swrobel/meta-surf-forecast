@@ -28,7 +28,7 @@ class Spitcast < Forecast
                         when 'Good' then 5
                         else 0
                         end
-        record.save
+        record.save! if record.rating.present?
       end
     end
   end
