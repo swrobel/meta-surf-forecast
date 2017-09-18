@@ -40,11 +40,14 @@ module ApplicationHelper
   end
 
   def format_timestamp(stamp)
-    if stamp.hour.zero? && stamp.min.zero? # Midnight
-      stamp.strftime('%a %b %-d')
-    else
-      stamp.strftime('%a %-I%P')[0..-2]
-    end
+    formatted = stamp.strftime('%a')[0..-2] # 2 character day
+    formatted += ' '
+    formatted += if stamp.hour.zero? && stamp.min.zero?
+                   stamp.strftime('%b %-d') # Midnight
+                 else
+                   stamp.strftime('%-I%P')[0..-2] # a/p rather than am/pm
+                 end
+    formatted
   end
 
   def get_minimums(heights)
