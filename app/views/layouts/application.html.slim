@@ -6,8 +6,10 @@ html
     = action_cable_meta_tag
     meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'
     meta property='og:description' content='Pulls data from Surfline, MagicSeaweed &amp; Spitcast APIs to display an aggregated surf forecast.'
-    meta property='og:image' content= image_url('wave.jpg')
-    
+    meta property='og:image' content=image_url('wave.jpg')
+    link rel='mask-icon' color='navy' href=image_url('wave.svg')
+    link rel='apple-touch-icon' href=image_url('wave.png')
+
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
     - if ENV['GOOGLE_ANALYTICS_ID']
@@ -19,8 +21,7 @@ html
 
         ga('create', '#{ENV['GOOGLE_ANALYTICS_ID']}', 'auto');
         ga('send', 'pageview');
-        
+
   body
     == yield
     = render partial: 'shared/github_corner'
-      
