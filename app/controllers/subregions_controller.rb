@@ -21,7 +21,7 @@ class SubregionsController < ApplicationController
         ,round(max(max_height) - avg(avg_height), 1) AS max_delta
         ,max(max_height) AS max
         ,round(avg(rating)) AS avg_rating
-      FROM all_forecasts AS sub
+      FROM all_forecasts sub
       JOIN spots s ON sub.spot_id = s.id
       WHERE sub.timestamp > now() at time zone 'utc'
         AND s.subregion_id = #{subregion.id}
@@ -37,7 +37,7 @@ class SubregionsController < ApplicationController
               ,msw_slug
               ,spitcast_id
               ,spitcast_slug
-      HAVING count(*) = CASE
+      HAVING count(*) >= CASE
                           WHEN s.surfline_id IS NULL THEN 0
                           ELSE 2
                       END
@@ -45,11 +45,7 @@ class SubregionsController < ApplicationController
                         WHEN s.msw_id IS NULL THEN 0
                         ELSE 1
                       END
-                      + CASE
-                          WHEN s.spitcast_id IS NULL THEN 0
-                          ELSE 1
-                      END
-            AND timestamp <= (SELECT min(ts) FROM (SELECT max(timestamp) as ts FROM all_forecasts WHERE spot_id in (select id from spots where subregion_id = #{subregion.id}) GROUP BY service) s2)
+            AND timestamp <= (SELECT min(ts) FROM (SELECT max(timestamp) AS ts FROM all_forecasts WHERE service != 'spitcast' AND spot_id IN (SELECT id FROM spots WHERE subregion_id = #{subregion.id}) GROUP BY service) s2)
       ORDER BY sort_order
               ,id
               ,timestamp
