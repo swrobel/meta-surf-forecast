@@ -45,7 +45,6 @@ class SubregionsController < ApplicationController
                         WHEN s.msw_id IS NULL THEN 0
                         ELSE 1
                       END
-            AND timestamp <= (SELECT min(ts) FROM (SELECT max(timestamp) AS ts FROM all_forecasts WHERE service != 'spitcast' AND spot_id IN (SELECT id FROM spots WHERE subregion_id = #{subregion.id}) GROUP BY service) s2)
       ORDER BY sort_order
               ,id
               ,timestamp
