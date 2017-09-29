@@ -76,7 +76,7 @@ class Surfline < Forecast
       end
 
       # Fill in blanks in swell ratings by averaging previous & next ratings
-      forecasts.keys.each do |spot_id|
+      forecasts.each_key do |spot_id|
         spot_data = forecasts[spot_id]
         # [1..-2] gets all elements except first & last
         spot_data.keys[1..-2].each_with_index do |tstamp, index|

@@ -33,7 +33,7 @@ group :development do
   gem 'guard-shell', require: false
   gem 'invoker'
   gem 'rack-toolbar'
-  gem 'rubocop', '~> 0.49.1'
+  gem 'rubocop'
   gem 'spring'
   gem 'spring-commands-rubocop', require: false
   gem 'spring-watcher-listen'

@@ -4,10 +4,10 @@ class Spot < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: %i[slugged finders scoped], scope: :subregion
 
-  has_many :surfline_nearshores
-  has_many :surfline_lolas
-  has_many :msws
-  has_many :spitcasts
+  has_many :surfline_nearshores, dependent: :delete_all
+  has_many :surfline_lolas, dependent: :delete_all
+  has_many :msws, dependent: :delete_all
+  has_many :spitcasts, dependent: :delete_all
   belongs_to :subregion
 
   scope :optimized, -> { includes(:msws, :surfline_nearshores, :surfline_lolas, :spitcasts) }
