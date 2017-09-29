@@ -1,38 +1,39 @@
-- provide(:title, @spot.name)
+- cache @spot do
+  - provide(:title, @spot.name)
 
-.container-fluid
-  h1.font-weight-light= @spot.name
+  .container-fluid
+    h1.font-weight-light= @spot.name
 
-  table.table.table-sm.table-striped#forecast-table
-    thead.thead-default
-      tr
-        th
-        th.border-left(colspan=2)= spitcast_link(@spot.spitcast_url)
-        th.border-left(colspan=2)= msw_link(@spot.msw_url)
-        th.border-left(colspan=3)
-            = surfline_link(@spot.surfline_url, 'Nearshore')
-        th.border-left(colspan=3)
-            = surfline_link(@spot.surfline_url, 'LOLA')
-      tr
-        th Time
-        th.border-left Height
-        th Rating
-        th.border-left Height
-        th Rating
-        - 2.times do
+    table.table.table-sm.table-striped#forecast-table
+      thead.thead-default
+        tr
+          th
+          th.border-left(colspan=2)= spitcast_link(@spot.spitcast_url)
+          th.border-left(colspan=2)= msw_link(@spot.msw_url)
+          th.border-left(colspan=3)
+              = surfline_link(@spot.surfline_url, 'Nearshore')
+          th.border-left(colspan=3)
+              = surfline_link(@spot.surfline_url, 'LOLA')
+        tr
+          th Time
           th.border-left Height
           th Rating
-          th Optimal Wind?
+          th.border-left Height
+          th Rating
+          - 2.times do
+            th.border-left Height
+            th Rating
+            th Optimal Wind?
 
-    tbody
-      - @timestamps.each do |timestamp|
-        tr
-          td.text-xs-left= timestamp.strftime('%A %b %e, %l:%M%P')
-          - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
-          td.border-left= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)
-          td= spitcast.try(:rating)
-          - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
-          td.border-left= height_range(msw.try(:min_height), msw.try(:max_height))
-          td= msw.try(:rating)
-          = render partial: 'surfline', locals: {surfline: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first}
-          = render partial: 'surfline', locals: {surfline: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first}
+      tbody
+        - @timestamps.each do |timestamp|
+          tr
+            td.text-xs-left= timestamp.strftime('%A %b %e, %l:%M%P')
+            - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
+            td.border-left= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)
+            td= spitcast.try(:rating)
+            - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
+            td.border-left= height_range(msw.try(:min_height), msw.try(:max_height))
+            td= msw.try(:rating)
+            = render partial: 'surfline', locals: {surfline: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first}
+            = render partial: 'surfline', locals: {surfline: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first}

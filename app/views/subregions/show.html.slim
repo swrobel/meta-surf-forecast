@@ -1,27 +1,28 @@
-- provide(:title, "#{@subregion.name}, #{@region.name}")
+- cache @subregion do
+  - provide(:title, "#{@subregion.name}, #{@region.name}")
 
-nav.navbar.navbar-light.fixed-top
-  .row.font-weight-light
-    span.margin-left Region:
-    select.margin-left onchange='window.location = this.value'
-      - Region.all.each do |region|
-        optgroup label=region.name
-          - region.subregions.each do |subregion|
-            option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
-div style='margin-top: 44px'
-  - @forecasts.each do |data, forecast|
-    h2.font-weight-light.margin-left.spot-header
-      span= link_to data[:name], spot_path(@region, @subregion, data[:slug])
-      = map_link(Spot.map_url(data[:lat], data[:lon]))
-      = spitcast_link(Spot.spitcast_url(data[:spitcast_slug])) if data[:spitcast_slug]
-      = msw_link(Spot.msw_url(data[:msw_slug], data[:msw_id])) if data[:msw_id]
-      = surfline_link(Spot.surfline_url(data[:surfline_id])) if data[:surfline_id]
-    = react_component 'SpotChart', {\
-        data: [\
-          { name: 'Max', data: forecast.collect { |point| { y: point[:max_delta], color: rating_color(point[:avg_rating], :max) } }, stack: 'All' },
-          { name: 'Avg', data: forecast.collect { |point| { y: point[:avg_delta], color: rating_color(point[:avg_rating], :avg) } }, stack: 'All'},
-          { name: 'Min', data: forecast.collect { |point| { y: point[:min], color: rating_color(point[:avg_rating], :min), rating: rating_text(point[:avg_rating]) } }, stack: 'All' },
-        ],
-        xLabels: forecast.collect { |point| point[:time] },
-        max: @max\
-      }
+  nav.navbar.navbar-light.fixed-top
+    .row.font-weight-light
+      span.margin-left Region:
+      select.margin-left onchange='window.location = this.value'
+        - Region.all.each do |region|
+          optgroup label=region.name
+            - region.subregions.each do |subregion|
+              option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
+  div style='margin-top: 44px'
+    - @forecasts.each do |data, forecast|
+      h2.font-weight-light.margin-left.spot-header
+        span= link_to data[:name], spot_path(@region, @subregion, data[:slug])
+        = map_link(Spot.map_url(data[:lat], data[:lon]))
+        = spitcast_link(Spot.spitcast_url(data[:spitcast_slug])) if data[:spitcast_slug]
+        = msw_link(Spot.msw_url(data[:msw_slug], data[:msw_id])) if data[:msw_id]
+        = surfline_link(Spot.surfline_url(data[:surfline_id])) if data[:surfline_id]
+      = react_component 'SpotChart', {\
+          data: [\
+            { name: 'Max', data: forecast.collect { |point| { y: point[:max_delta], color: rating_color(point[:avg_rating], :max) } }, stack: 'All' },
+            { name: 'Avg', data: forecast.collect { |point| { y: point[:avg_delta], color: rating_color(point[:avg_rating], :avg) } }, stack: 'All'},
+            { name: 'Min', data: forecast.collect { |point| { y: point[:min], color: rating_color(point[:avg_rating], :min), rating: rating_text(point[:avg_rating]) } }, stack: 'All' },
+          ],
+          xLabels: forecast.collect { |point| point[:time] },
+          max: @max\
+        }
