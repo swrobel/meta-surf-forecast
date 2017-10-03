@@ -14,4 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
       "unpinned": "slideUp"
     }
   }).init()
+
+  if (window.location.hash) {
+    setTimeout(() => navbar.classList.add("slideUp"), 100)
+  }
 })

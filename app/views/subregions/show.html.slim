@@ -11,7 +11,7 @@
               option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
   div style='margin-top: 44px'
     - @forecasts.each do |data, forecast|
-      h2.font-weight-light.margin-left.spot-header
+      h2.font-weight-light.margin-left.spot-header id=data[:slug]
         span= link_to data[:name], spot_path(@region, @subregion, data[:slug])
         = map_link(Spot.map_url(data[:lat], data[:lon]))
         = spitcast_link(Spot.spitcast_url(data[:spitcast_slug])) if data[:spitcast_slug]
