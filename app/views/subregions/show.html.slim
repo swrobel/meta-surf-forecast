@@ -3,7 +3,7 @@
 
   nav.navbar.navbar-light.fixed-top
     .row.font-weight-light
-      span.margin-left Region:
+      span.margin-left.text-light Region:
       select.margin-left onchange='window.location = this.value'
         - Region.all.each do |region|
           optgroup label=region.name

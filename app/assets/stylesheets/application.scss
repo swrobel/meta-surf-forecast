@@ -1,9 +1,13 @@
+$enable-gradients: true;
 @import "bootstrap";
 @import "partials/github_corner";
 @import "partials/animation";
 
 nav {
-  background-color: #f2efee;
+  $nav-opacity: 0.5;
+  $nav-begin-color: rgba(38, 143, 255, $nav-opacity);
+  $nav-end-color: rgba(0, 123, 255, $nav-opacity);
+  background: $nav-end-color linear-gradient(180deg, $nav-begin-color, $nav-end-color) repeat-x;
 }
 
 #forecast-table {
@@ -25,10 +29,7 @@ nav {
   }
 }
 
-// remove after bootstrap 4 beta as it's included in master
 .font-weight-light {
-  font-weight: $display1-weight !important;
-
   select {
     font-weight: inherit;
   }
