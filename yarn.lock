@@ -2621,10 +2621,6 @@ highcharts@^5.0.0:
   version "5.0.14"
   resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-5.0.14.tgz#0ef14cca9f1345408568b533dae1478950d96810"
 
-highcharts@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.0.2.tgz#e3c4c998a21ce6bfa79458fa2c87d967e9234abe"
-
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"

@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Highcarts from 'highcharts'
 import ReactHighcharts from 'react-highcharts'
 
 const SpotChart = props => {
