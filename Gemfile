@@ -19,7 +19,7 @@ gem 'puma'
 gem 'react-rails'
 gem 'scenic'
 gem 'slim-rails'
-gem 'webpacker', '~> 2.0'
+gem 'webpacker'
 
 group :development, :test do
   gem 'dotenv-rails'
