@@ -2,7 +2,6 @@
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
     "babel-preset-react": "^6.24.1",
-    "coffeescript": "1.12.7",
     "headroom.js": "^0.9.4",
     "highcharts": "^5.0.11",
     "prop-types": "^15.6.0",
