@@ -35,7 +35,7 @@ Contributing new spots is easy! Make sure you're signed into your [Github accoun
     LA.save!
     ```
     You can get valid timezone names from [this list](https://gist.github.com/swrobel/77626ff3d4967ca65c3028dcb336d57a#file-gistfile1-md).
-1. Get the Spitcast spot id, slug (unique text id) & lat/lon data using [their spot list API](http://api.spitcast.com/api/spot/nearby?longitude=-122.005261&latitude=37.02188) (you'll need to replace the lat/lon in the URL with yours, which you can get from the [Google Geocoder](https://google-developers.appspot.com/maps/documentation/utils/geocoder/)). The slug is `spot_id_char` in their API.
+1. Get the Spitcast spot id, slug (unique text id) & lat/lon data using [their spot list API](http://api.spitcast.com/api/county/spots/orange-county/) (you can change the county at the end of the URL). The slug is `spot_id_char` in their API.
 1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, and the slug is the text after the slash and before `-Surf-Report`, ex: for `http://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` the slug is `Pipeline-Backdoor` and the id is `616`.
 1. Go to the Surfline page for the spot you want to add. Their spot id is also at the end of the url, ex: for `http://www.surfline.com/surf-report/venice-beach-southern-california_4211/` it's `4211`.
 1. It's strongly encouraged to add all spots for a particular county or region rather than just a single one. Be a pal!
