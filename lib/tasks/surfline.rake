@@ -8,11 +8,15 @@ end
 namespace :surfline do
   desc 'Update forecast from Surfline'
   task update: :environment do
+    threads = []
     Subregion.all.each do |subregion|
       num_spots = subregion.spots.size
       get_all_spots = num_spots > 1
-      get_surfline_data(subregion.spots.first, get_all_spots)
-      get_surfline_data(subregion.spots.last, get_all_spots) if subregion.slug == 'los-angeles'
+      threads << Thread.new { get_surfline_data(subregion.spots.first, get_all_spots) }
+      if ['los-angeles', 'santa-barbara-ventura'].include? subregion.slug
+        threads << Thread.new { get_surfline_data(subregion.spots.last, get_all_spots) }
+      end
     end
+    threads.each(&:join)
   end
 end
