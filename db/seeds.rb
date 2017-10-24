@@ -26,6 +26,14 @@ SOC = Subregion.find_or_initialize_by(name: 'South Orange County', region: CA)
 SOC.sort_order = 70
 SOC.timezone = 'Pacific Time (US & Canada)'
 SOC.save!
+NSD = Subregion.find_or_initialize_by(name: 'North San Diego', region: CA)
+NSD.sort_order = 80
+NSD.timezone = 'Pacific Time (US & Canada)'
+NSD.save!
+SSD = Subregion.find_or_initialize_by(name: 'South San Diego', region: CA)
+SSD.sort_order = 90
+SSD.timezone = 'Pacific Time (US & Canada)'
+SSD.save!
 MX = Region.find_or_create_by(name: 'Mexico', sort_order: 15)
 COL = Subregion.find_or_initialize_by(name: 'Colima', region: MX)
 COL.sort_order = 30
@@ -485,6 +493,287 @@ spots = [
     spitcast_id: 239,
     spitcast_slug: 'san-onofre-san-clemente-ca',
     name: 'San Onofre'
+  },
+  {
+    subregion: SOC,
+    lat: 33.343654,
+    lon: -117.519084,
+    surfline_id: 4736,
+    msw_id: 2600,
+    msw_slug: 'Trails',
+    name: 'Trails'
+  },
+  {
+    subregion: NSD,
+    lat: 33.204228527589997,
+    lon: -117.3959770213895,
+    surfline_id: 4238,
+    spitcast_id: 238,
+    spitcast_slug: 'oceanside-harbor-oceanside-ca',
+    name: 'Oceanside Harbor'
+  },
+  {
+    subregion: NSD,
+    lat: 33.193387046160893,
+    lon: -117.3871878580306,
+    surfline_id: 68_366,
+    msw_id: 664,
+    msw_slug: 'Oceanside',
+    spitcast_id: 594,
+    spitcast_slug: 'oceanside-pier-oceanside-ca',
+    name: 'Oceanside Pier'
+  },
+  {
+    subregion: NSD,
+    lat: 33.147320395176962,
+    lon: -117.3467966641187,
+    surfline_id: 4242,
+    msw_id: 292,
+    msw_slug: 'Carlsbad',
+    spitcast_id: 237,
+    spitcast_slug: 'tamarack-carlsbad-ca',
+    name: 'Tamarack'
+  },
+  {
+    subregion: NSD,
+    lat: 33.128762503805198,
+    lon: -117.3361948822189,
+    surfline_id: 4775,
+    spitcast_id: 597,
+    spitcast_slug: 'terra-mar-carlsbad-ca',
+    name: 'Terra Mar'
+  },
+  {
+    subregion: NSD,
+    lat: 33.087034665281351,
+    lon: -117.314238172042,
+    surfline_id: 4773,
+    msw_id: 1149,
+    msw_slug: 'Ponto',
+    spitcast_id: 236,
+    spitcast_slug: 'ponto-carlsbad-ca',
+    name: 'Ponto'
+  },
+  {
+    subregion: NSD,
+    lat: 33.075484467395668,
+    lon: -117.310721142163,
+    surfline_id: 4771,
+    msw_id: 4564,
+    msw_slug: 'Grandview',
+    spitcast_id: 400,
+    spitcast_slug: 'grandview-encinitas-ca',
+    name: 'Grandview'
+  },
+  {
+    subregion: NSD,
+    lat: 33.063570212034683,
+    lon: -117.30555007900939,
+    surfline_id: 4772,
+    msw_id: 4562,
+    msw_slug: 'Beacons',
+    spitcast_id: 235,
+    spitcast_slug: 'beacons-encinitas-ca',
+    name: 'Beacons'
+  },
+  {
+    subregion: NSD,
+    lat: 33.063570212034683,
+    lon: -117.30555007900939,
+    surfline_id: 4772,
+    msw_id: 4562,
+    msw_slug: 'Beacons',
+    spitcast_id: 235,
+    spitcast_slug: 'beacons-encinitas-ca',
+    name: 'Beacons'
+  },
+  {
+    subregion: NSD,
+    lat: 33.045442274103927,
+    lon: -117.2982038691907,
+    surfline_id: 4792,
+    msw_id: 4563,
+    msw_slug: 'Moonlight',
+    spitcast_id: 401,
+    spitcast_slug: 'd-street-encinitas-ca',
+    name: 'D Street'
+  },
+  {
+    subregion: NSD,
+    lat: 33.034422931013466,
+    lon: -117.2957502535422,
+    surfline_id: 4789,
+    msw_id: 293,
+    msw_slug: 'Swamis',
+    spitcast_id: 234,
+    spitcast_slug: 'swamis-encinitas-ca',
+    name: 'Swamis'
+  },
+  {
+    subregion: NSD,
+    lat: 33.01541991675105,
+    lon: -117.283273919829,
+    surfline_id: 4786,
+    msw_id: 4663,
+    msw_slug: 'Cardiff-Reef',
+    spitcast_id: 232,
+    spitcast_slug: 'cardiff-reef-cardiff-ca',
+    name: 'Cardiff Reef'
+  },
+  {
+    subregion: NSD,
+    lat: 33.001619,
+    lon: -117.280247,
+    surfline_id: 4787,
+    msw_id: 294,
+    msw_slug: 'Solana-Beach',
+    name: 'Seaside Reef'
+  },
+  {
+    subregion: NSD,
+    lat: 32.975133,
+    lon: -117.271344,
+    surfline_id: 4785,
+    msw_id: 4663,
+    msw_slug: 'Cardiff-Reef',
+    name: 'Del Mar Rivermouth'
+  },
+  {
+    subregion: NSD,
+    lat: 32.958662325867159,
+    lon: -117.2691753574579,
+    surfline_id: 4783,
+    msw_id: 3707,
+    msw_slug: 'Del-Mar',
+    spitcast_id: 230,
+    spitcast_slug: '15th-street-del-mar-ca',
+    name: '15th Street Del Mar'
+  },
+  {
+    subregion: SSD,
+    lat: 32.93310208353217,
+    lon: -117.2617407404518,
+    surfline_id: 107_951,
+    spitcast_id: 754,
+    spitcast_slug: 'torrey-pines-state-beach-la-jolla-ca',
+    name: 'Torrey Pines State Beach'
+  },
+  {
+    subregion: SSD,
+    lat: 32.888727761985209,
+    lon: -117.25747793279859,
+    surfline_id: 4245,
+    msw_id: 294,
+    msw_slug: 'Torrey-Pines-Blacks-Beach',
+    spitcast_id: 229,
+    spitcast_slug: 'blacks-beach-la-jolla-ca',
+    name: 'Blacks'
+  },
+  {
+    subregion: SSD,
+    lat: 32.866598509332697,
+    lon: -117.2562736520856,
+    surfline_id: 4246,
+    msw_id: 296,
+    msw_slug: 'Scripps-Pier-La-Jolla',
+    spitcast_id: 228,
+    spitcast_slug: 'scripps-pier-la-jolla-ca',
+    name: 'Scripps Pier'
+  },
+  {
+    subregion: SSD,
+    lat: 32.838504,
+    lon: -117.283514,
+    surfline_id: 4247,
+    msw_id: 4210,
+    msw_slug: 'Horseshoe',
+    name: 'Horseshoe'
+  },
+  {
+    subregion: SSD,
+    lat: 32.829665321372083,
+    lon: -117.28204353957889,
+    surfline_id: 4248,
+    msw_id: 4214,
+    msw_slug: 'Windansea',
+    spitcast_id: 227,
+    spitcast_slug: 'windansea-la-jolla-ca',
+    name: 'Windansea'
+  },
+  {
+    subregion: SSD,
+    lat: 32.813424049908512,
+    lon: -117.2738442945035,
+    surfline_id: 4249,
+    msw_id: 4209,
+    msw_slug: 'Birdrock',
+    spitcast_id: 398,
+    spitcast_slug: 'bird-rock-la-jolla-ca',
+    name: 'Bird Rock'
+  },
+  {
+    subregion: SSD,
+    lat: 32.806945917515272,
+    lon: -117.2659989723968,
+    surfline_id: 4804,
+    spitcast_id: 399,
+    spitcast_slug: 'tourmaline-san-diego-ca',
+    name: 'Tourmaline'
+  },
+  {
+    subregion: SSD,
+    lat: 32.797029505435518,
+    lon: -117.25960295034579,
+    surfline_id: 4250,
+    msw_id: 663,
+    msw_slug: 'Pacific-Beach',
+    spitcast_id: 226,
+    spitcast_slug: 'pacific-beach-san-diego-ca',
+    name: 'Pacific Beach'
+  },
+  {
+    subregion: SSD,
+    lat: 32.777929007486037,
+    lon: -117.2543264821912,
+    surfline_id: 4252,
+    msw_id: 297,
+    msw_slug: 'Mission-Beach',
+    spitcast_id: 397,
+    spitcast_slug: 'mission-beach-san-diego-ca',
+    name: 'Mission Beach'
+  },
+  {
+    subregion: SSD,
+    lat: 32.749151851964093,
+    lon: -117.25534188491091,
+    surfline_id: 4253,
+    msw_id: 4212,
+    msw_slug: 'Ocean-beach',
+    spitcast_id: 225,
+    spitcast_slug: 'ocean-beach-pier-san-diego-ca',
+    name: 'Ocean Beach Pier'
+  },
+  {
+    subregion: SSD,
+    lat: 32.718998904718177,
+    lon: -117.2571632713268,
+    surfline_id: 4254,
+    msw_id: 4211,
+    msw_slug: 'Sunset-Cliffs',
+    spitcast_id: 224,
+    spitcast_slug: 'sunset-cliffs-san-diego-ca',
+    name: 'Sunset Cliffs'
+  },
+  {
+    subregion: SSD,
+    lat: 32.577928810608,
+    lon: -117.1346007967761,
+    surfline_id: 4256,
+    msw_id: 3745,
+    msw_slug: 'Imperial-Beach',
+    spitcast_id: 223,
+    spitcast_slug: 'imperial-beach-ca',
+    name: 'Imperial Beach'
   },
   {
     name: 'Ocean Beach',
