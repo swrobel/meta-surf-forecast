@@ -14,6 +14,10 @@ SC = Subregion.find_or_create_by(name: 'Santa Cruz', region: CA)
 SC.sort_order = 20
 SC.timezone = 'Pacific Time (US & Canada)'
 SC.save!
+SBVC = Subregion.find_or_initialize_by(name: 'Santa Barbara/Ventura', region: CA)
+SBVC.sort_order = 40
+SBVC.timezone = 'Pacific Time (US & Canada)'
+SBVC.save!
 LA = Subregion.find_or_initialize_by(name: 'Los Angeles', region: CA)
 LA.sort_order = 50
 LA.timezone = 'Pacific Time (US & Canada)'
@@ -50,6 +54,175 @@ PT.timezone = 'Lisbon'
 PT.save!
 
 spots = [
+  {
+    subregion: SBVC,
+    lon: -120.07331365850411,
+    lat: 34.460727859027109,
+    surfline_id: 4991,
+    msw_id: 2625,
+    msw_slug: 'Refugio-State-Beach',
+    spitcast_id: 620,
+    spitcast_slug: 'refugio-goleta-ca',
+    name: 'Refugio'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.8821432693011,
+    lat: 34.409079140926913,
+    surfline_id: 4994,
+    msw_id: 268,
+    msw_slug: 'Sands-Beach',
+    spitcast_id: 182,
+    spitcast_slug: 'sands-isla-vista-ca',
+    name: 'Sands'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.8777636727983,
+    lat: 34.4060390017938,
+    surfline_id: 4995,
+    msw_id: 4251,
+    msw_slug: 'Devereux',
+    spitcast_id: 181,
+    spitcast_slug: 'devereux-isla-vista-ca',
+    name: 'Coal Oil Point/Devereux'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.8425963704844,
+    lat: 34.40487888923785,
+    surfline_id: 4997,
+    msw_id: 269,
+    msw_slug: 'Campus-Point',
+    spitcast_id: 179,
+    spitcast_slug: 'campus-point-isla-vista-ca',
+    name: 'Campus Point'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.7020898699724,
+    lat: 34.397968880785839,
+    surfline_id: 145_542,
+    msw_id: 270,
+    msw_slug: 'Leadbetter-Beach',
+    spitcast_id: 177,
+    spitcast_slug: 'leadbetter-santa-barbara-ca',
+    name: 'Leadbetter'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.404613,
+    lat: -119.687402,
+    surfline_id: 4998,
+    msw_id: 2629,
+    msw_slug: 'Sandspit',
+    name: 'Sandspit'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.416038,
+    lat: -119.636549,
+    surfline_id: 4999,
+    msw_id: 271,
+    msw_slug: 'Hammonds-Reef',
+    name: 'Hammonds'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.391859,
+    lat: -119.525699,
+    surfline_id: 5001,
+    msw_id: 2701,
+    msw_slug: 'Tarpits-Carpinteria-State-Beach',
+    name: 'Carpinteria/Tarpits'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.4779929046033,
+    lat: 34.37256542974805,
+    surfline_id: 4197,
+    msw_id: 272,
+    msw_slug: 'Rincon-Point',
+    spitcast_id: 198,
+    spitcast_slug: 'rincon-carpinteria-ca',
+    name: 'Rincon'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.355095,
+    lat: -119.442182,
+    surfline_id: 4985,
+    msw_id: 2672,
+    msw_slug: 'Little-Rincon-Mussel-Shoals',
+    name: 'Mussel Shoals/Little Rincon'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.316750,
+    lat: -119.389240,
+    surfline_id: 4981,
+    msw_id: 274,
+    msw_slug: 'Pitas-Point-Faria-County-Park',
+    name: 'Pitas Point'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.3773753582565,
+    lat: 34.319176709938617,
+    surfline_id: 49_737,
+    spitcast_id: 193,
+    spitcast_slug: 'mondos-ventura-ca',
+    name: 'Mondos'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.309334,
+    lat: -119.358505,
+    surfline_id: 4989,
+    msw_id: 2644,
+    msw_slug: 'Solimar-Reef-and-Beach',
+    name: 'Solimar'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.3398784210307,
+    lat: 34.292337487494912,
+    surfline_id: 4980,
+    msw_id: 2646,
+    msw_slug: 'Emma-Wood',
+    spitcast_id: 191,
+    spitcast_slug: 'emma-wood-ventura-ca',
+    name: 'Emma Wood'
+  },
+  {
+    subregion: SBVC,
+    lon: -119.3001508388765,
+    lat: 34.273069869304877,
+    surfline_id: 4200,
+    msw_id: 275,
+    msw_slug: 'California-Street-C-Street',
+    spitcast_id: 190,
+    spitcast_slug: 'c-street-ventura-ca',
+    name: 'C Street'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.244158,
+    lat: -119.269073,
+    surfline_id: 4201,
+    msw_id: 2632,
+    msw_slug: 'New-Jetty-South-Jetty',
+    name: 'Ventura Harbor'
+  },
+  {
+    subregion: SBVC,
+    lon: 34.171836,
+    lat: -119.237817,
+    surfline_id: 4968,
+    msw_id: 276,
+    msw_slug: 'Silver-Strand',
+    name: 'Oxnard'
+  },
   {
     name: 'County Line',
     lat: 34.051,
