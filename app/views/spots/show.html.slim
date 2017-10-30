@@ -28,7 +28,7 @@
       tbody
         - @timestamps.each do |timestamp|
           tr
-            td.text-xs-left= timestamp.strftime('%A %b %e, %l:%M%P')
+            td.text-xs-left= timestamp.in_time_zone(@spot.subregion.timezone).strftime('%A %b %e, %l:%M%P')
             - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
             td.border-left= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)
             td= spitcast.try(:rating)
