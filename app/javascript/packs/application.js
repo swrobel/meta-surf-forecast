@@ -7,15 +7,17 @@ const Headroom = require("headroom.js")
 
 document.addEventListener("DOMContentLoaded", function() {
   const navbar = document.querySelector(".navbar")
-  new Headroom(navbar, {
-    "classes": {
-      "initial": "animated",
-      "pinned": "slideDown",
-      "unpinned": "slideUp"
-    }
-  }).init()
+  if (navbar) {
+    new Headroom(navbar, {
+      "classes": {
+        "initial": "animated",
+        "pinned": "slideDown",
+        "unpinned": "slideUp"
+      }
+    }).init()
 
-  if (window.location.hash) {
-    setTimeout(() => navbar.classList.add("slideUp"), 100)
+    if (window.location.hash) {
+      setTimeout(() => navbar.classList.add("slideUp"), 100)
+    }
   }
 })
