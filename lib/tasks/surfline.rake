@@ -9,6 +9,9 @@ namespace :surfline do
   desc 'Update forecast from Surfline'
   task update: :environment do
     threads = []
+    # Preload these classes to avoid threads causing circular dependency errors
+    SurflineNearshore
+    SurflineLola
     Subregion.all.each do |subregion|
       num_spots = subregion.spots.size
       get_all_spots = num_spots > 1
