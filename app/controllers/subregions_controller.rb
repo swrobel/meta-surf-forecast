@@ -38,11 +38,13 @@ class SubregionsController < ApplicationController
               ,spitcast_id
               ,spitcast_slug
       HAVING count(*) >= CASE
-                          WHEN s.surfline_id IS NULL THEN 2
-                          ELSE 3
-                        END
-          -- special case for Zeros
-          OR s.msw_id = 2643
+                           WHEN s.surfline_id IS NOT NULL THEN 2
+                           ELSE 1
+                         END +
+                         CASE
+                           WHEN s.spitcast_id IS NOT NULL THEN 1
+                           ELSE 0
+                         END
       ORDER BY sort_order
               ,id
               ,timestamp
