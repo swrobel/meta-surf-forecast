@@ -10,6 +10,8 @@ namespace :surfline do
   task update: :environment do
     threads = []
     # Preload these classes to avoid threads causing circular dependency errors
+    ApiRequest
+    Surfline
     SurflineNearshore
     SurflineLola
     Subregion.all.each do |subregion|
