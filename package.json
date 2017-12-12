@@ -6,7 +6,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-highcharts": "^13.0.0",
+    "react-highcharts": "^15.0.0",
     "react_ujs": "^2.3.1"
   },
   "devDependencies": {
