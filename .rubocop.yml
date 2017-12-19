@@ -7,6 +7,7 @@ AllCops:
     - node_modules/**/*
     - test/test_helper.rb
     - vendor/**/*
+  TargetRailsVersion: 5.2
 
 Layout/AccessModifierIndentation:
   Enabled: false
