@@ -4,8 +4,8 @@
     "babel-preset-react": "^6.24.1",
     "headroom.js": "^0.9.4",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-highcharts": "^15.0.0",
     "react_ujs": "^2.3.1"
   },

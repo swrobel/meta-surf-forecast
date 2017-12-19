@@ -37,12 +37,14 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Enabled: false
 
+Rails/InverseOf:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
 Style/FormatStringToken:
-  Exclude:
-    - config/routes.rb
+  Enabled: false
 
 Style/TrailingCommaInLiteral:
   Enabled: false
