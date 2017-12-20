@@ -11,7 +11,7 @@ class Msw < Forecast
     end
 
     def api_url(spot)
-      "http://magicseaweed.com/api/#{ENV['MSW_API_KEY']}/forecast?spot_id=#{spot.msw_id}&units=us"
+      "http://magicseaweed.com/api/#{ENV['MSW_API_KEY']}/forecast?spot_id=#{spot.msw_id}&units=us&fields=timestamp,solidRating,fadedRating,swell.absMinBreakingHeight,swell.absMaxBreakingHeight,swell.absHeight"
     end
 
     def for_chart
@@ -27,8 +27,8 @@ class Msw < Forecast
         end
         record = unscoped.where(spot: spot, timestamp: tstamp).first_or_initialize
         record.api_request = request
-        record.min_height = response.swell.absMinBreakingHeight
-        record.max_height = response.swell.absMaxBreakingHeight
+        record.min_height = response.swell.absMinBreakingHeight || response.swell.absHeight
+        record.max_height = response.swell.absMaxBreakingHeight || response.swell.absHeight
         record.rating = response.solidRating
         record.wind_effect = response.fadedRating
         record.save! if record.rating.present?
