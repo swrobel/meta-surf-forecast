@@ -4,7 +4,7 @@ require 'open-uri'
 
 module ApiMethods
   def api_get(url)
-    response = open(url).read
+    response = JSON.parse(open(url).read, object_class: OpenStruct)
     request = ApiRequest.create(request: url, response: response, success: true)
     return OpenStruct.new(request: request, response: response)
   rescue OpenURI::HTTPError => e
