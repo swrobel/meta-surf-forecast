@@ -20,7 +20,12 @@ class Msw < Forecast
 
     def parse_response(spot, request, responses)
       responses.each do |response|
-        record = unscoped.where(spot: spot, timestamp: Time.zone.at(response.timestamp)).first_or_initialize
+        tstamp = Time.zone.at(response.timestamp)
+        # Adjust for weird shifts in California timestamps
+        if spot.subregion.timezone == 'Pacific Time (US & Canada)' && tstamp.hour % 3 != 0
+          tstamp += 1.hour
+        end
+        record = unscoped.where(spot: spot, timestamp: tstamp).first_or_initialize
         record.api_request = request
         record.min_height = response.swell.absMinBreakingHeight
         record.max_height = response.swell.absMaxBreakingHeight
