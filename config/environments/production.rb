@@ -24,6 +24,10 @@ Rails.application.configure do
   # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
+  # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
+  # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
+  config.require_master_key = true
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
