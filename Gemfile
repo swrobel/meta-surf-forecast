@@ -12,6 +12,7 @@ end
 
 gem 'rails', '~> 5.2.0.beta2'
 
+gem 'bootsnap'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'friendly_id'
 gem 'pg', '~> 0.18'
