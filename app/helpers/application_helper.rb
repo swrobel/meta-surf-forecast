@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def forecast_link(image_file, service, target, icon_label = nil)
-    link_to target, target: service, title: "#{service} Forecast Page" do
+    link_to target, target: service, title: "#{service} Forecast Page", class: 'text-dark' do
       span_tag = tag.span(icon_label, class: 'forecast-icon-label') if icon_label
       image_tag(image_file, alt: "#{service} Logo") + span_tag
     end

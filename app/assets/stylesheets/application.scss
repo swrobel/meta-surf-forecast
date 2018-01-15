@@ -12,6 +12,7 @@ nav {
 
 #forecast-table {
   th {
+    padding-bottom: 0;
     border-bottom: 0;
     vertical-align: baseline;
 
@@ -21,6 +22,7 @@ nav {
 
     img {
       height: 30px;
+      vertical-align: text-bottom;
     }
   }
 
@@ -39,7 +41,6 @@ nav {
   margin-left: 10px;
   color: $headings-color;
   font-size: 28px;
-  vertical-align: middle;
   font-weight: normal;
 }
 
