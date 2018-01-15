@@ -31,6 +31,7 @@ end
 
 guard :rubocop, all_on_start: true, cli: RUBOCOP_OPTS do
   watch(%r{.+\.rb$})
+  watch(%r{.+\.rake$})
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
 
