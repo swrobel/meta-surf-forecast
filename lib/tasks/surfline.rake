@@ -10,17 +10,16 @@ namespace :surfline do
     SurflineNearshore
     SurflineLola
     Subregion.all.each do |subregion|
-      num_spots = subregion.spots.size
-      get_all_spots = num_spots > 1
+      get_all_spots = subregion.spots.size > 1
       spot = subregion.spots.first
       pool.post { SurflineNearshore.api_pull(spot, get_all_spots) }
       pool.post { SurflineLola.api_pull(spot, get_all_spots) }
 
       # These subregions contain two surfline regions, so we need to do two separate requests for them
       next unless ['los-angeles', 'santa-barbara-ventura'].include? subregion.slug
-      spot = subregion.spots.last
-      pool.post { SurflineNearshore.api_pull(spot, get_all_spots) }
-      pool.post { SurflineLola.api_pull(spot, get_all_spots) }
+      spot2 = subregion.spots.last
+      pool.post { SurflineNearshore.api_pull(spot2, get_all_spots) }
+      pool.post { SurflineLola.api_pull(spot2, get_all_spots) }
     end
 
     pool.shutdown
