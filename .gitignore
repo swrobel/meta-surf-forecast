@@ -19,10 +19,13 @@
 .env*
 !invoker.ini
 
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
 # Webpacker
 /public/packs
 /public/packs-test
 /node_modules
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity

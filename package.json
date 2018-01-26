@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/webpacker": "^3.0.2",
+    "@rails/webpacker": "^3.2.1",
     "babel-preset-react": "^6.24.1",
     "headroom.js": "^0.9.4",
     "prop-types": "^15.6.0",
@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "browser-sync": "^2.18.12",
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^2.11.1"
   }
 }
