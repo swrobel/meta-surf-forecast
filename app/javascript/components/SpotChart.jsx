@@ -6,6 +6,7 @@ const SpotChart = props => {
   const config = {
     chart: {
       marginRight: 2,
+      spacingLeft: 0,
       style: {
         fontFamily: 'inherit',
       },
@@ -68,6 +69,7 @@ const SpotChart = props => {
     },
     yAxis: {
       max: props.max,
+      offset: -8,
       stackLabels: {
         enabled: true,
         style: {
