@@ -1,17 +1,18 @@
 - cache @subregion do
   - provide(:title, "#{@subregion.name}, #{@region.name}")
+  - provide(:meta, ', viewport-fit=cover')
 
   nav.navbar.navbar-light.fixed-top
     .row.font-weight-light
-      span.margin-left.text-light Region:
+      span.text-light.region-label Region:
       select.margin-left onchange='window.location = this.value'
         - Region.all.each do |region|
           optgroup label=region.name
             - region.subregions.each do |subregion|
               option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
-  div style='margin-top: 44px'
+  .subregion-container.safe-padding
     - @forecasts.each do |data, forecast|
-      h2.font-weight-light.margin-left.spot-header id=data[:slug]
+      h2.font-weight-light.spot-header id=data[:slug]
         span= link_to data[:name], spot_path(@region, @subregion, data[:slug])
         = map_link(Spot.map_url(data[:lat], data[:lon]))
         = spitcast_link(Spot.spitcast_url(data[:spitcast_slug])) if data[:spitcast_slug]

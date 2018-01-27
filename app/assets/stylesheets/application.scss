@@ -2,11 +2,21 @@ $enable-gradients: true;
 @import "bootstrap";
 @import "partials/animation";
 
+@mixin padding-safe($direction) {
+  padding-#{$direction}: env(safe-area-inset-#{$direction})
+}
+
 nav {
   $nav-opacity: 0.5;
   $nav-begin-color: rgba(38, 143, 255, $nav-opacity);
   $nav-end-color: rgba(0, 123, 255, $nav-opacity);
   background: $nav-end-color linear-gradient(180deg, $nav-begin-color, $nav-end-color) repeat-x;
+
+  .region-label {
+    padding-left: 10px;
+    // Hack to avoid using sass max function and instead pass max through to css
+    padding-left: m#{a}x(10px, env(safe-area-inset-left));
+  }
 }
 
 #forecast-table {
@@ -51,8 +61,18 @@ nav {
   margin-left: 10px;
 }
 
+.subregion-container {
+  margin-top: 44px;
+}
+
+.safe-padding {
+  @include padding-safe(left);
+  @include padding-safe(right);
+}
+
 .spot-header {
   $opacity: 0.65;
+  padding-left: 5px;
 
   &:first-child {
     margin-top: 5px
@@ -63,7 +83,6 @@ nav {
   }
 
   a {
-    margin-left: 18px;
     opacity: $opacity;
     color: inherit;
 
@@ -71,6 +90,10 @@ nav {
       opacity: 1;
       text-decoration: none;
     }
+  }
+
+  .icon {
+    margin-left: 18px;
   }
 
   img {

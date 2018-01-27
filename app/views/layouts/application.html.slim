@@ -5,7 +5,7 @@
       title= "#{"#{yield(:title)} | " if content_for?(:title)}Meta Surf Forecast"
       = csrf_meta_tags
       = action_cable_meta_tag
-      meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'
+      meta name='viewport' content="width=device-width, initial-scale=1, shrink-to-fit=no#{yield(:meta)}"
       meta property='og:description' content='Pulls data from Surfline, MagicSeaweed &amp; Spitcast APIs to display an aggregated surf forecast.'
       meta property='og:image' content=image_url('wave.jpg')
       link rel='apple-touch-icon' href=image_url('wave.png')
