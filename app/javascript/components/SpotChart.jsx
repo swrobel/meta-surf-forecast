@@ -47,7 +47,9 @@ const SpotChart = props => {
         let rating
         let min = 0
         let avg = 0
-        let tooltip = `<strong>${this.x}</strong>`
+        let timestamp = new Date(this.points[0].point.timestamp)
+        let time_parts = this.x.split(' ')
+        let tooltip = `<strong>${time_parts[0]} ${timestamp.toLocaleString('en-US', {month: 'short'})} ${timestamp.getDate()}, ${time_parts[1]}m</strong>`
         for (const point of this.points.reverse()) {
           tooltip += `<br>${point.series.name}: ${(min + avg + point.y).toPrecision(2)} ft`
           if (point.series.name === 'Min') {
@@ -63,6 +65,7 @@ const SpotChart = props => {
     },
     xAxis: {
       categories: props.xLabels,
+      plotBands: props.plotBands,
       title: {
         text: null,
       },

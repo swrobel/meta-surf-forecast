@@ -11,19 +11,27 @@
             - region.subregions.each do |subregion|
               option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
   .subregion-container.safe-padding
-    - @forecasts.each do |data, forecast|
-      h2.font-weight-light.spot-header id=data[:slug]
-        span= link_to data[:name], spot_path(@region, @subregion, data[:slug])
-        = map_link(Spot.map_url(data[:lat], data[:lon]))
-        = spitcast_link(Spot.spitcast_url(data[:spitcast_slug])) if data[:spitcast_slug]
-        = msw_link(Spot.msw_url(data[:msw_slug], data[:msw_id])) if data[:msw_id]
-        = surfline_link(Spot.surfline_url(data[:surfline_id])) if data[:surfline_id]
+    - @spots.each do |meta, forecasts|
+      - from = forecasts.find_index { |p| p[:timestamp].monday? && p[:timestamp].hour < 3 }
+      - from && to = forecasts[from..-1].find_index { |p| p[:timestamp].sunday? && p[:timestamp].hour > 20 }
+      - to ? to += from : to = forecasts.size
+      h2.font-weight-light.spot-header id=meta[:slug]
+        span= link_to meta[:name], spot_path(@region, @subregion, meta[:slug])
+        = map_link(Spot.map_url(meta[:lat], meta[:lon]))
+        = spitcast_link(Spot.spitcast_url(meta[:spitcast_slug])) if meta[:spitcast_slug]
+        = msw_link(Spot.msw_url(meta[:msw_slug], meta[:msw_id])) if meta[:msw_id]
+        = surfline_link(Spot.surfline_url(meta[:surfline_id])) if meta[:surfline_id]
       = react_component 'SpotChart', {\
           data: [\
-            { name: 'Max', data: forecast.collect { |point| { y: point[:max_delta], color: rating_color(point[:avg_rating], :max) } }, stack: 'All' },
-            { name: 'Avg', data: forecast.collect { |point| { y: point[:avg_delta], color: rating_color(point[:avg_rating], :avg) } }, stack: 'All'},
-            { name: 'Min', data: forecast.collect { |point| { y: point[:min], color: rating_color(point[:avg_rating], :min), rating: rating_text(point[:avg_rating]) } }, stack: 'All' },
+            { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], color: rating_color(point[:avg_rating], :max), timestamp: point[:timestamp] } }, stack: 'All' },
+            { name: 'Avg', data: forecasts.collect { |point| { y: point[:avg_delta], color: rating_color(point[:avg_rating], :avg) } }, stack: 'All'},
+            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], color: rating_color(point[:avg_rating], :min), rating: rating_text(point[:avg_rating]) } }, stack: 'All' },
           ],
-          xLabels: forecast.collect { |point| point[:time] },
-          max: @max\
+          max: @max,
+          plotBands: from && to && [{\
+            color: '#F2F2F2',
+            from: from - 0.5,
+            to: to + 0.5,
+          }],
+          xLabels: forecasts.collect { |point| point[:time] }\
         }

@@ -2,7 +2,7 @@
 
 class SubregionsController < ApplicationController
   def show
-    @forecasts ||= Spot.connection.select_all <<-SQL
+    forecasts ||= Spot.connection.select_all <<-SQL
       SELECT
          id
         ,name
@@ -49,16 +49,18 @@ class SubregionsController < ApplicationController
               ,id
               ,timestamp
     SQL
-    @forecasts.each(&:symbolize_keys!)
-    @forecasts.each do |forecast|
-      forecast[:time] = helpers.format_timestamp(Time.zone.parse("#{forecast[:timestamp]} UTC").in_time_zone(subregion.timezone))
+    @max = 0.0
+    forecasts.each(&:symbolize_keys!)
+    forecasts.each_with_index do |forecast, _index|
+      forecast[:timestamp] = Time.zone.parse("#{forecast[:timestamp]} UTC").in_time_zone(subregion.timezone)
+      forecast[:time] = helpers.format_timestamp(forecast[:timestamp])
       %i[max min avg_delta max_delta].each do |field|
         forecast[field] = forecast[field].to_f
       end
+      @max = [forecast[:max], @max].max
       forecast[:avg_rating] = forecast[:avg_rating].to_i
     end
-    @max = @forecasts.collect { |f| f[:max] }.max
-    @forecasts = @forecasts.group_by { |s| { id: s[:id], name: s[:name], slug: s[:slug], lat: s[:lat], lon: s[:lon], msw_id: s[:msw_id], msw_slug: s[:msw_slug], spitcast_id: s[:spitcast_id], spitcast_slug: s[:spitcast_slug], surfline_id: s[:surfline_id], surfline_slug: s[:surfline_slug] } }
+    @spots = forecasts.group_by { |s| { id: s[:id], name: s[:name], slug: s[:slug], lat: s[:lat], lon: s[:lon], msw_id: s[:msw_id], msw_slug: s[:msw_slug], spitcast_id: s[:spitcast_id], spitcast_slug: s[:spitcast_slug], surfline_id: s[:surfline_id], surfline_slug: s[:surfline_slug] } }
   end
 
 private
