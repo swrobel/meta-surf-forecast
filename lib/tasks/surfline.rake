@@ -3,7 +3,7 @@
 namespace :surfline do
   desc 'Update forecast from Surfline'
   task update: :environment do
-    logger.info 'Updating Surfline data...'
+    Rails.logger.info 'Updating Surfline data...'
     pool = Concurrent::FixedThreadPool.new(ENV['MAX_WORKER_THREADS'] || 5)
     # Preload these classes to avoid threads causing circular dependency errors
     ApiRequest
