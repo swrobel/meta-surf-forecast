@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918220029) do
+ActiveRecord::Schema.define(version: 2018_02_20_044639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,7 +170,8 @@ ActiveRecord::Schema.define(version: 20170918220029) do
       msws.min_height,
       msws.max_height,
       ((msws.min_height + msws.max_height) / (2)::numeric) AS avg_height,
-      msws.rating
+      msws.rating,
+      msws.updated_at
      FROM msws
   UNION
    SELECT 'spitcast'::text AS service,
@@ -179,7 +180,8 @@ ActiveRecord::Schema.define(version: 20170918220029) do
       spitcasts.height AS min_height,
       spitcasts.height AS max_height,
       spitcasts.height AS avg_height,
-      ((spitcasts.rating)::numeric - 0.5) AS rating
+      ((spitcasts.rating)::numeric - 0.5) AS rating,
+      spitcasts.updated_at
      FROM spitcasts
   UNION
    SELECT 'lola'::text AS service,
@@ -192,7 +194,8 @@ ActiveRecord::Schema.define(version: 20170918220029) do
           CASE
               WHEN surfline_lolas.optimal_wind THEN (1)::numeric
               ELSE 0.5
-          END) AS rating
+          END) AS rating,
+      surfline_lolas.updated_at
      FROM surfline_lolas
   UNION
    SELECT 'nearshore'::text AS service,
@@ -205,7 +208,8 @@ ActiveRecord::Schema.define(version: 20170918220029) do
           CASE
               WHEN surfline_nearshores.optimal_wind THEN (1)::numeric
               ELSE 0.5
-          END) AS rating
+          END) AS rating,
+      surfline_nearshores.updated_at
      FROM surfline_nearshores;
   SQL
 
