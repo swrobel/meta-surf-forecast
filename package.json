@@ -1,4 +1,8 @@
 {
+  "engines": {
+    "node": ">= 6",
+    "yarn": ">= 1"
+  },
   "dependencies": {
     "@rails/webpacker": "^3.2.1",
     "babel-preset-react": "^6.24.1",
