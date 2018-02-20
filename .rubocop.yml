@@ -1,3 +1,6 @@
+Rails:
+  Enabled: true
+
 AllCops:
   Exclude:
     - Guardfile
