@@ -35,9 +35,6 @@ group :development do
   gem 'invoker'
   gem 'rack-toolbar'
   gem 'rubocop'
-  gem 'spring'
-  gem 'spring-commands-rubocop', require: false
-  gem 'spring-watcher-listen'
   gem 'terminal-notifier-guard'
   gem 'web-console', '~> 3.0'
 end
