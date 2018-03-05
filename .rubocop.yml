@@ -41,6 +41,9 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Enabled: false
 
+Performance/Size:
+  Enabled: true
+
 Rails/InverseOf:
   Enabled: false
 
