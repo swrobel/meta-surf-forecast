@@ -102,6 +102,7 @@ GEM
     guard-shell (0.7.1)
       guard (>= 2.0.0)
       guard-compat (~> 1.0)
+    hiredis (0.6.1)
     http-parser-lite (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -203,23 +204,10 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    readthis (2.2.0)
+      connection_pool (~> 2.1)
+      redis (>= 3.0, < 5.0)
     redis (4.0.1)
-    redis-actionpack (5.0.2)
-      actionpack (>= 4.0, < 6)
-      redis-rack (>= 1, < 3)
-      redis-store (>= 1.1.0, < 2)
-    redis-activesupport (5.0.4)
-      activesupport (>= 3, < 6)
-      redis-store (>= 1.3, < 2)
-    redis-rack (2.0.4)
-      rack (>= 1.5, < 3)
-      redis-store (>= 1.2, < 2)
-    redis-rails (5.0.2)
-      redis-actionpack (>= 5.0, < 6)
-      redis-activesupport (>= 5.0, < 6)
-      redis-store (>= 1.2, < 2)
-    redis-store (1.4.1)
-      redis (>= 2.2, < 5)
     rubocop (0.53.0)
       parallel (~> 1.10)
       parser (>= 2.5)
@@ -291,6 +279,7 @@ DEPENDENCIES
   guard-bundler
   guard-rubocop
   guard-shell
+  hiredis
   invoker
   newrelic_rpm
   pg
@@ -300,7 +289,7 @@ DEPENDENCIES
   rails (~> 5.2.0.beta2)
   rails_12factor
   react-rails
-  redis-rails
+  readthis
   rubocop
   scenic
   slim-rails
