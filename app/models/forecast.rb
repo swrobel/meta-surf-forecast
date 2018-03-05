@@ -9,7 +9,7 @@ class Forecast < ApplicationRecord
 
   class << self
     def current
-      where(timestamp: Time.now.utc..(Time.now.utc + 1.month))
+      where(timestamp: Time.now.utc..(Time.now.utc + 1.month)).where(updated_at: (Time.now.utc - 1.day)..Time.now.utc)
     end
 
     def ordered
