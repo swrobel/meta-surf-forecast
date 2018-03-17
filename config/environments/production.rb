@@ -64,10 +64,10 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   if ENV['REDIS_URL'].present?
-    config.cache_store = :readthis_store, {
+    config.cache_store = :redis_cache_store, {
       expires_in: 2.weeks.to_i,
       namespace: 'cache',
-      redis: { url: ENV['REDIS_URL'], driver: :hiredis },
+      url: ENV['REDIS_URL'],
     }
   end
 
