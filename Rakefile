@@ -9,9 +9,7 @@ Rails.application.load_tasks
 
 if Rails.env.development? || Rails.env.test?
   require 'rubocop/rake_task'
-  RuboCop::RakeTask.new(:rubocop) do |t|
-    t.options = RUBOCOP_OPTS
-  end
+  RuboCop::RakeTask.new
 
   task default: %i[test rubocop]
 end
