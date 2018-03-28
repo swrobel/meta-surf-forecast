@@ -131,7 +131,7 @@ GEM
       systemu (~> 2.6.2)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    marcel (0.3.1)
+    marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mimemagic (0.3.2)
@@ -140,7 +140,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.4)
     nenv (0.3.0)
-    newrelic_rpm (4.8.0.341)
+    newrelic_rpm (5.0.0.342)
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -161,7 +161,7 @@ GEM
     rack (2.0.4)
     rack-proxy (0.6.4)
       rack
-    rack-test (0.8.3)
+    rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rack-toolbar (0.1.4)
     rails (5.2.0.rc2)
@@ -295,7 +295,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.5.0p0
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.1
