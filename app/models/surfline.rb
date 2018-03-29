@@ -93,8 +93,8 @@ class Surfline < Forecast
         next unless (spot = Spot.find_by(surfline_id: surfline_id))
         timestamps.each do |timestamp, values|
           # Adjust for weird shifts in California timestamps
-          if zone.name == 'Pacific Time (US & Canada)' && timestamp.utc.hour % 3 != 0
-            timestamp += 1.hour
+          if zone.name == 'Pacific Time (US & Canada)' && (offset = timestamp.utc.hour % 3) != 0
+            timestamp += (3 - offset).hour
           end
           record = unscoped.where(spot_id: spot.id, timestamp: timestamp).first_or_initialize
           record.api_request = request

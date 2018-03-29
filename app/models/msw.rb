@@ -22,8 +22,8 @@ class Msw < Forecast
       responses.each do |response|
         tstamp = Time.zone.at(response.timestamp)
         # Adjust for weird shifts in California timestamps
-        if spot.subregion.timezone == 'Pacific Time (US & Canada)' && tstamp.hour % 3 != 0
-          tstamp += 1.hour
+        if spot.subregion.timezone == 'Pacific Time (US & Canada)' && (offset = tstamp.hour % 3) != 0
+          tstamp += (3 - offset).hour
         end
         record = unscoped.where(spot: spot, timestamp: tstamp).first_or_initialize
         record.api_request = request
