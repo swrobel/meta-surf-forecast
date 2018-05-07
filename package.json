@@ -4,7 +4,7 @@
     "yarn": ">= 1"
   },
   "dependencies": {
-    "@rails/webpacker": "^3.2.1",
+    "@rails/webpacker": "^3.5.3",
     "babel-preset-react": "^6.24.1",
     "headroom.js": "^0.9.4",
     "prop-types": "^15.6.0",
