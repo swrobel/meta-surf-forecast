@@ -45,7 +45,7 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (8.6.3)
+    autoprefixer-rails (8.6.4)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -64,9 +64,9 @@ GEM
     concurrent-ruby (1.0.5)
     connection_pool (2.2.2)
     crass (1.0.4)
-    dotenv (2.4.0)
-    dotenv-rails (2.4.0)
-      dotenv (= 2.4.0)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
     em-proxy (0.1.9)
       eventmachine
