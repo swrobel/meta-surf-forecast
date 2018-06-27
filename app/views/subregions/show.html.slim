@@ -23,9 +23,9 @@
         = surfline_link(Spot.surfline_url(meta[:surfline_id])) if meta[:surfline_id]
       = react_component 'SpotChart', {\
           data: [\
-            { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], color: rating_color(point[:avg_rating], :max), timestamp: point[:timestamp] } }, stack: 'All' },
+            { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], color: rating_color(point[:avg_rating], :max) } }, stack: 'All' },
             { name: 'Avg', data: forecasts.collect { |point| { y: point[:avg_delta], color: rating_color(point[:avg_rating], :avg) } }, stack: 'All'},
-            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], color: rating_color(point[:avg_rating], :min), rating: rating_text(point[:avg_rating]) } }, stack: 'All' },
+            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], color: rating_color(point[:avg_rating], :min), rating: rating_text(point[:avg_rating]), timestamp: point[:timestamp] } }, stack: 'All' },
           ],
           max: @max,
           plotBands: from && to && [{\

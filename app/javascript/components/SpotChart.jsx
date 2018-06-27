@@ -44,14 +44,15 @@ const SpotChart = props => {
     },
     tooltip: {
       formatter: function() {
-        let rating
-        let min = 0
         let avg = 0
-        let timestamp = new Date(this.points[0].point.timestamp)
-        let tooltip = `<strong>${timestamp.toLocaleString('en-US', {day: 'numeric', month: 'short', hour: 'numeric', weekday: 'short'})}</strong>`
+        let min = 0
+        let rating
+        let timestamp
+        let tooltip = ''
         for (const point of this.points.reverse()) {
           tooltip += `<br>${point.series.name}: ${(min + avg + point.y).toPrecision(2)} ft`
           if (point.series.name === 'Min') {
+            tooltip = `<strong>${new Date(point.point.timestamp).toLocaleString('en-US', {day: 'numeric', month: 'short', hour: 'numeric', weekday: 'short'})}</strong>${tooltip}`
             rating = point.point.rating
             min = point.y
           }
