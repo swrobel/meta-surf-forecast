@@ -3,7 +3,7 @@
   - provide(:meta, ', viewport-fit=cover')
 
   nav.navbar.navbar-light.fixed-top
-    .row.font-weight-light
+    .row.font-weight-light.d-flex.align-items-center
       span.text-light.region-label Region:
       select.margin-left onchange='window.location = this.value'
         - Region.all.each do |region|
