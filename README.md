@@ -103,7 +103,7 @@ This is a breakdown of the querystring params available:
 Param|Values|Effect
 -----|------|------
 spot_id|integer|Surfline spot id that you want data for. A typical Surfline URL is `http://www.surfline.com/surf-report/venice-beach-southern-california_4211/` where 4211 is the `spot_id`. You can also get this from the response's `id` property.
-resources|string|Any comma-separated list of "surf,analysis,wind,weather,tide,sort". There could be more available that I haven't discovered. "Sort" gives an array of swells, periods & heights that are used for the tables on [spot forecast pages](http://www.surfline.com/surf-forecasts/spot/venice-beach_4211/).
+resources|string|Any comma-separated list of "surf,analysis,wind,weather,tide,sort". There could be more available that I haven't discovered. "Sort" gives an array of swells, periods & heights that are used for the tables on [spot forecast pages](http://www.surfline.com/surf-forecasts/spot/venice-beach_4211/). To see the whole list, just set 'all'.
 days|integer|Number of days of forecast to get. This seems to cap out at 16 for Wind and 25 for Surf.
 getAllSpots|boolean|`false` returns an object containing the single spot you requested, `true` returns an array of data for all spots in the same region as your spot, in this case "South Los Angeles"
 units|string|`e` returns American units (ft/mi), `m` uses metric
