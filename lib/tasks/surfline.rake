@@ -18,6 +18,7 @@ namespace :surfline do
 
       # These subregions contain two surfline regions, so we need to do two separate requests for them
       next unless ['los-angeles', 'santa-barbara-ventura'].include? subregion.slug
+
       spot2 = subregion.spots.last
       pool.post { SurflineNearshore.api_pull(spot2, get_all_spots) }
       pool.post { SurflineLola.api_pull(spot2, get_all_spots) }

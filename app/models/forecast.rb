@@ -31,6 +31,7 @@ class Forecast < ApplicationRecord
     def api_pull(spot, get_all_spots = nil)
       api_url = get_all_spots.nil? ? api_url(spot) : api_url(spot, get_all_spots)
       return false unless (result = api_get(api_url))
+
       parse_response(spot, result.request, result.response)
       true
     end

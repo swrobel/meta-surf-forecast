@@ -16,6 +16,7 @@ private
 
   def check_unlocked
     return unless ENV['UNLOCK_KEY'] && cookies[:unlock] != Rails.application.credentials.unlock_secret!
+
     raise ActionController::RoutingError, 'Not Found'
   end
 end

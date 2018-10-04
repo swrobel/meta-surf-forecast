@@ -81,6 +81,7 @@ class Surfline < Forecast
         # [1..-2] gets all elements except first & last
         spot_data.keys[1..-2].each_with_index do |tstamp, index|
           next if spot_data[:swell_rating].present?
+
           prev_tstamp = spot_data.keys[index] # index is already offset by 1
           next_tstamp = spot_data.keys[index + 2]
           prev_rating = spot_data[prev_tstamp][:swell_rating]
@@ -91,6 +92,7 @@ class Surfline < Forecast
 
       forecasts.each do |surfline_id, timestamps|
         next unless (spot = Spot.find_by(surfline_id: surfline_id))
+
         timestamps.each do |timestamp, values|
           # Adjust for weird shifts in California timestamps
           if zone.name == 'Pacific Time (US & Canada)' && (offset = timestamp.utc.hour % 3) != 0
