@@ -7,15 +7,10 @@ class Forecast < ApplicationRecord
   belongs_to :api_request
   belongs_to :spot
 
+  scope :current, -> { where(timestamp: Time.now.utc..(Time.now.utc + 1.month)).where(updated_at: (Time.now.utc - 1.day)..Time.now.utc) }
+  scope :ordered, -> { order(:spot_id, :timestamp) }
+
   class << self
-    def current
-      where(timestamp: Time.now.utc..(Time.now.utc + 1.month)).where(updated_at: (Time.now.utc - 1.day)..Time.now.utc)
-    end
-
-    def ordered
-      order(:spot_id, :timestamp)
-    end
-
     def default_scope
       current.ordered
     end
