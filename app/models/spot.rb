@@ -11,6 +11,7 @@ class Spot < ApplicationRecord
   belongs_to :subregion
 
   scope :optimized, -> { includes(:msws, :surfline_nearshores, :surfline_lolas, :spitcasts) }
+  scope :ordered, -> { order(:sort_order, :id) }
 
   class << self
     def map_url(lat, lon)

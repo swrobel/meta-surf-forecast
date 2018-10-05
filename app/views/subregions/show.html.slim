@@ -6,7 +6,7 @@
     .row.font-weight-light.d-flex.align-items-center
       span.text-light.region-label Region:
       select.margin-left onchange='window.location = this.value'
-        - Region.all.each do |region|
+        - Region.ordered.each do |region|
           optgroup label=region.name
             - region.subregions.each do |subregion|
               option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
