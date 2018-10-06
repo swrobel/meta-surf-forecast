@@ -52,6 +52,13 @@ PT = Subregion.find_or_initialize_by(name: 'Portugal', region: EU)
 PT.sort_order = 30
 PT.timezone = 'Lisbon'
 PT.save!
+HI = Region.find_or_create_by(name: 'Hawaii', sort_order: 14)
+ONS = Subregion.find_or_initialize_by(name: 'Oahu - North Shore', region: HI)
+ONS.assign_attributes(sort_order: 5, timezone: 'Hawaii')
+ONS.save!
+OSS = Subregion.find_or_initialize_by(name: 'Oahu - South Shore', region: HI)
+OSS.assign_attributes(sort_order: 10, timezone: 'Hawaii')
+OSS.save!
 
 spots = [
   {
@@ -1037,6 +1044,119 @@ spots = [
     subregion: GUR,
     sort_order: 30,
   },
+  { subregion: ONS,
+    lon: '-158.033',
+    lat: '21.685',
+    surfline_id: '10833',
+    msw_id: '659',
+    msw_slug: 'Velzyland',
+    name: 'Velzyland' },
+  { subregion: ONS,
+    lon: '-158.042',
+    lat: '21.679',
+    surfline_id: '4746',
+    msw_id: '657',
+    msw_slug: 'Sunset',
+    name: 'Sunset' },
+  { subregion: ONS,
+    lon: '-158.0482006072',
+    lat: '21.670550036401',
+    surfline_id: '4748',
+    msw_id: '658',
+    msw_slug: 'Rocky-Point',
+    name: 'Rocky Point' },
+  { subregion: ONS,
+    lon: '-158.0541',
+    lat: '21.6651',
+    surfline_id: '4750',
+    msw_id: '616',
+    msw_slug: 'Pipeline-Backdoor',
+    name: 'Pipeline' },
+  { subregion: ONS,
+    lon: '-158.055',
+    lat: '21.664',
+    surfline_id: '4752',
+    msw_id: '2233',
+    msw_slug: 'Off-The-Wall',
+    name: 'Off-The-Wall' },
+  { subregion: ONS,
+    lon: '-158.057',
+    lat: '21.662',
+    surfline_id: '4753',
+    msw_id: '2234',
+    msw_slug: 'Rockpile-Heisler-Park',
+    name: 'Rockpile' },
+  { subregion: ONS,
+    lon: '-158.058',
+    lat: '21.661',
+    surfline_id: '4754',
+    msw_id: '2226',
+    msw_slug: 'Log-Cabins',
+    name: 'Log Cabins' },
+  { subregion: ONS,
+    lon: '-158.067',
+    lat: '21.643',
+    surfline_id: '4755',
+    msw_id: '549',
+    msw_slug: 'Waimea-Bay',
+    name: 'Waimea Bay' },
+  { subregion: ONS,
+    lon: '-158.088',
+    lat: '21.62',
+    surfline_id: '4759',
+    msw_id: '3672',
+    msw_slug: 'Laniakea',
+    name: 'Laniakea' },
+  { subregion: ONS,
+    lon: '-158.109',
+    lat: '21.597',
+    surfline_id: '10834',
+    msw_id: '660',
+    msw_slug: 'Haleiwa',
+    name: 'Haleiwa' },
+  {
+    subregion: OSS,
+    lon: '-158.107',
+    lat: '21.295',
+    surfline_id: '10847',
+    msw_id: '3082',
+    msw_slug: 'Barbers-Point',
+    name: 'Barbers Point'
+  },
+  {
+    subregion: OSS,
+    lon: '-157.845',
+    lat: '21.280',
+    surfline_id: '5538',
+    msw_id: '661',
+    msw_slug: 'Ala-Moana',
+    name: 'Ala Moana Bowls'
+  },
+  {
+    subregion: OSS,
+    lon: '-157.8255',
+    lat: '21.268',
+    surfline_id: '55536',
+    msw_id: '662',
+    msw_slug: 'Queens-Canoes-Waikiki',
+    name: 'Waikiki'
+  },
+  {
+    subregion: OSS,
+    lon: '-157.8264892667491',
+    lat: '21.27296681970422',
+    surfline_id: '5531',
+    name: "Queen's"
+  },
+  {
+    subregion: OSS,
+    lon: '-157.805',
+    lat: '21.252',
+    surfline_id: '4760',
+    msw_id: '4697',
+    msw_slug: 'Diamond-Head',
+    name: 'Diamond Head'
+  }
 ]
 
 spots.each do |spot_data|
