@@ -4,6 +4,8 @@
 
 Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magicseaweed.com/) & [Spitcast](http://www.spitcast.com/) APIs to display an aggregated surf forecast.
 
+![Screenshot](https://raw.githubusercontent.com/swrobel/meta-surf-forecast/master/screenshot.png)
+
 ## Developer Setup
 
 1. Install postgres, if you don't have it already: `brew install postgresql`
