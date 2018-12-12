@@ -9,6 +9,8 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 ## Developer Setup
 
 1. Install postgres, if you don't have it already: `brew install postgresql`
+1. Start postgres: `brew services start postgresql`
+1. Install Ruby dependencies: `bundle install`
 1. Create your database & seed it with spots: `bin/rails db:setup`
 1. Install [yarn](https://yarnpkg.com): `brew install yarn`
 1. Install yarn packages: `yarn`
@@ -17,6 +19,7 @@ Pull data from [Surfline](http://www.surfline.com/), [MagicSeaweed](http://magic
 1. Grab some [Spitcast](http://www.spitcast.com/) data: `bin/rails spitcast:update`
 1. Grab some [Surfline](http://www.surfline.com/) data: `bin/rails surfline:update`
 1. Grab some [MagicSeaweed](http://magicseaweed.com/) data (requires a valid [API key](http://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update`
+1. Refresh the materialized Postgres view that collates all forecast data into one table: `bin/rails database_views:refresh`
 1. Start the server: `bin/invoker start`
 1. Connect to https://surf.test
 1. Score!
