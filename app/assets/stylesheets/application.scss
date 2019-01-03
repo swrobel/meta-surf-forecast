@@ -14,8 +14,8 @@ nav {
 
   .region-label {
     padding-left: 10px;
-    // Hack to avoid using sass max function and instead pass max through to css
-    padding-left: m#{a}x(10px, env(safe-area-inset-left));
+    // calc is a hack to avoid triggering sass max(). We want the pure css one.
+    padding-left: calc(max(10px, env(safe-area-inset-left)));
   }
 }
 
