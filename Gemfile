@@ -13,7 +13,7 @@ end
 gem 'rails', '~> 5.2.0.beta2'
 
 gem 'bootsnap'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.2'
 gem 'friendly_id'
 gem 'pg'
 gem 'puma'
