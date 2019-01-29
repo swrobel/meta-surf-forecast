@@ -26,5 +26,6 @@ namespace :surfline do
 
     pool.shutdown
     pool.wait_for_termination
+    Rails.logger.info 'Finished updating Surfline data'
   end
 end

@@ -10,5 +10,6 @@ namespace :spitcast do
     end
     pool.shutdown
     pool.wait_for_termination
+      Rails.logger.info 'Finished updating Spitcast data'
   end
 end

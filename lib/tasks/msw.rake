@@ -10,5 +10,6 @@ namespace :msw do
     end
     pool.shutdown
     pool.wait_for_termination
+    Rails.logger.info 'Finished updating MagicSeaweed data'
   end
 end
