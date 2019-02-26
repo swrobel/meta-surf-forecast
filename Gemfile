@@ -10,11 +10,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.2.0.beta2'
+gem 'rails', '~> 6.0.0.beta2'
 
 gem 'bootsnap'
 gem 'bootstrap', '~> 4.2'
-gem 'friendly_id'
+gem 'friendly_id', github: 'norman/friendly_id'
 gem 'pg'
 gem 'puma'
 gem 'react-rails'
