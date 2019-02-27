@@ -40,7 +40,7 @@ class Spot < ApplicationRecord
   end
 
   def spitcast_url
-    self.class.spitcast_url(spitcast_id)
+    self.class.spitcast_url(spitcast_slug)
   end
 
   def surfline_url
