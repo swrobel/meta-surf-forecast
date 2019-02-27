@@ -1,9 +1,10 @@
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ReactHighcharts from 'react-highcharts'
 
 const SpotChart = props => {
-  const config = {
+  const options = {
     chart: {
       marginRight: 2,
       spacingLeft: 0,
@@ -87,7 +88,7 @@ const SpotChart = props => {
     },
   }
 
-  return(<ReactHighcharts config = {config}></ReactHighcharts>)
+  return(<HighchartsReact options={options} highcharts={Highcharts}></HighchartsReact>)
 }
 
 export default SpotChart
