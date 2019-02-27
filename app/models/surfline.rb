@@ -28,6 +28,7 @@ class Surfline < Forecast
 
     def api_url(spot, use_nearshore = true, get_all_spots = true)
       raise "No Surfline spot associated with #{spot.name} (#{spot.id})" if spot.surfline_id.blank?
+
       "http://api.surfline.com/v1/forecasts/#{spot.surfline_id}?resources=surf,wind,sort&days=#{num_days}&getAllSpots=#{get_all_spots}&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
     end
 
