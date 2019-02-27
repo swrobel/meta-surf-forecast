@@ -7,6 +7,7 @@ class Spitcast < Forecast
     end
 
     def api_url(spot)
+      raise "No Spitcast spot associated with #{spot.name} (#{spot.id})" if spot.spitcast_id.blank?
       "http://api.spitcast.com/api/spot/forecast/#{spot.spitcast_id}/?dcat=week"
     end
 

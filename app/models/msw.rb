@@ -11,6 +11,7 @@ class Msw < Forecast
     end
 
     def api_url(spot)
+      raise "No MagicSeaweed spot associated with #{spot.name} (#{spot.id})" if spot.msw_id.blank?
       "http://magicseaweed.com/api/#{ENV['MSW_API_KEY']}/forecast?spot_id=#{spot.msw_id}&units=us&fields=timestamp,solidRating,fadedRating,swell.absMinBreakingHeight,swell.absMaxBreakingHeight,swell.absHeight"
     end
 
