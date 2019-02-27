@@ -6,12 +6,6 @@ namespace :forecasts do
 
   desc 'Grab highest batch id from the db & increment by 1'
   task set_batch_id: :environment do
-    module UpdateBatch
-      class << self
-        attr_accessor :id
-      end
-    end
-
     UpdateBatch.id ||= (ApiRequest.maximum(:batch_id) || 0) + 1
   end
 end

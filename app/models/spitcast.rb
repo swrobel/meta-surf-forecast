@@ -16,14 +16,14 @@ class Spitcast < Forecast
       pluck('round(height, 1)')
     end
 
-    def parse_response(spot, request, responses)
-      responses.each do |response|
-        next unless response.gmt
+    def parse_data(spot, request, data)
+      data.each do |entry|
+        next unless entry.gmt
 
-        record = unscoped.where(spot: spot, timestamp: Time.zone.parse("#{response.gmt}:00 UTC")).first_or_initialize
+        record = unscoped.where(spot: spot, timestamp: Time.zone.parse("#{entry.gmt}:00 UTC")).first_or_initialize
         record.api_request = request
-        record.height = response.size_ft
-        record.rating = case response.shape_full
+        record.height = entry.size_ft
+        record.rating = case entry.shape_full
                         when 'Poor' then 1
                         when 'Poor-Fair' then 2
                         when 'Fair' then 3

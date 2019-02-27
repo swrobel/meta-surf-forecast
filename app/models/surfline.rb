@@ -36,41 +36,41 @@ class Surfline < Forecast
       pluck('round(min_height, 1)', 'round(max_height, 1)')
     end
 
-    def parse_response(spot, request, responses)
-      # If get_all_spots is false, response will be a single object instead of an array
-      responses = [responses] unless responses.is_a? Array
+    def parse_data(spot, request, data)
+      # If get_all_spots is false, entry will be a single object instead of an array
+      data = [data] unless data.is_a? Array
       forecasts = {}
       zone = ActiveSupport::TimeZone.new(spot.subregion.timezone)
 
-      responses.each do |response|
-        spot_id = response.id
+      data.each do |entry|
+        spot_id = entry.id
         forecasts[spot_id] ||= {}
-        response.Surf.dateStamp.each_with_index do |day, day_index|
+        entry.Surf.dateStamp.each_with_index do |day, day_index|
           day.each_with_index do |timestamp, timestamp_index|
             tstamp = zone.parse(timestamp)
             forecasts[spot_id][tstamp] ||= {}
-            forecasts[spot_id][tstamp][:min_height] = response.Surf.surf_min[day_index][timestamp_index]
-            forecasts[spot_id][tstamp][:max_height] = response.Surf.surf_max[day_index][timestamp_index]
+            forecasts[spot_id][tstamp][:min_height] = entry.Surf.surf_min[day_index][timestamp_index]
+            forecasts[spot_id][tstamp][:max_height] = entry.Surf.surf_max[day_index][timestamp_index]
           end
         end
 
-        response.Sort.dateStamp.each_with_index do |day, day_index|
+        entry.Sort.dateStamp.each_with_index do |day, day_index|
           day.each_with_index do |timestamp, timestamp_index|
             tstamp = zone.parse(timestamp)
             forecasts[spot_id][tstamp] ||= {}
             max_swell_rating = 0
             (1..6).each do |swell_index|
-              max_swell_rating = [max_swell_rating, response.Sort["optimal#{swell_index}"][day_index][timestamp_index].to_d].max
+              max_swell_rating = [max_swell_rating, entry.Sort["optimal#{swell_index}"][day_index][timestamp_index].to_d].max
             end
             forecasts[spot_id][tstamp][:swell_rating] = max_swell_rating
           end
         end
 
-        response.Wind.dateStamp.each_with_index do |day, day_index|
+        entry.Wind.dateStamp.each_with_index do |day, day_index|
           day.each_with_index do |timestamp, timestamp_index|
             tstamp = zone.parse(timestamp)
             forecasts[spot_id][tstamp] ||= {}
-            forecasts[spot_id][tstamp][:optimal_wind] = response.Wind.optimalWind[day_index][timestamp_index]
+            forecasts[spot_id][tstamp][:optimal_wind] = entry.Wind.optimalWind[day_index][timestamp_index]
           end
         end
       end

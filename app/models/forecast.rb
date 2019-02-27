@@ -19,15 +19,15 @@ class Forecast < ApplicationRecord
       raise_not_implemented_error
     end
 
-    def parse_response(spot, request, responses)
+    def parse_data(spot, request, data)
       raise_not_implemented_error
     end
 
-    def api_pull(spot, get_all_spots = nil)
+    def api_pull(spot, get_all_spots: nil, hydra: nil, options: {})
       api_url = get_all_spots.nil? ? api_url(spot) : api_url(spot, get_all_spots)
-      return false unless (result = api_get(api_url))
+      return false unless (result = api_get(api_url, hydra: hydra, options: options))
 
-      parse_response(spot, result.request, result.response)
+      parse_data(spot, result.request, result.data)
       true
     end
 

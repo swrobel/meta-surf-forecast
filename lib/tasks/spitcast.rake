@@ -4,12 +4,15 @@ namespace :spitcast do
   desc 'Update forecast from Spitcast'
   task update: %w[environment forecasts:set_batch_id] do
     Rails.logger.info 'Updating Spitcast data...'
-    pool = Concurrent::FixedThreadPool.new(ENV['MAX_WORKER_THREADS'] || 5)
+
+    hydra = Typhoeus::Hydra.new(max_concurrency: TYPHOEUS_CONCURRENCY)
+
     Spot.where.not(spitcast_id: nil).each do |spot|
-      pool.post { Spitcast.api_pull(spot) }
+      Spitcast.api_pull(spot, hydra: hydra)
     end
-    pool.shutdown
-    pool.wait_for_termination
+
+    hydra.run
+
     Rails.logger.info 'Finished updating Spitcast data'
   end
 end
