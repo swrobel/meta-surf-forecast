@@ -2,7 +2,7 @@
 
 namespace :msw do
   desc 'Update forecast from MagicSeaweed'
-  task update: :environment do
+  task update: %w[environment forecasts:set_batch_id] do
     Rails.logger.info 'Updating MagicSeaweed data...'
     pool = Concurrent::FixedThreadPool.new(ENV['MAX_WORKER_THREADS'] || 5)
     Spot.where.not(msw_id: nil).each do |spot|

@@ -2,7 +2,7 @@
 
 namespace :surfline do
   desc 'Update forecast from Surfline'
-  task update: :environment do
+  task update: %w[environment forecasts:set_batch_id] do
     Rails.logger.info 'Updating Surfline data...'
     pool = Concurrent::FixedThreadPool.new(ENV['MAX_WORKER_THREADS'] || 5)
     # Preload these classes to avoid threads causing circular dependency errors

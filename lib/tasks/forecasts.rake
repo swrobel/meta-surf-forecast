@@ -2,5 +2,10 @@
 
 namespace :forecasts do
   desc 'Update forecasts from all sources'
-  task update: %w[surfline:update msw:update spitcast:update database_views:refresh cache:clear]
+  task update: %w[set_batch_id surfline:update msw:update spitcast:update database_views:refresh cache:clear]
+
+  desc 'Grab highest batch id from the db & increment by 1'
+  task set_batch_id: :environment do
+    $batch_id ||= (ApiRequest.maximum(:batch_id) || 0) + 1
+  end
 end

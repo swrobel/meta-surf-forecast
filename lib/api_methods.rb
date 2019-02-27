@@ -10,10 +10,10 @@ module ApiMethods
       'Cookie' => "MSW_session=#{ENV['MSW_SESSION_ID']}"
     }
     response = JSON.parse(uri.open(open_uri_args).read, object_class: OpenStruct)
-    request = ApiRequest.create(request: url, response: response, success: true)
+    request = ApiRequest.create(request: url, response: response, success: true, batch_id: $batch_id)
     OpenStruct.new(request: request, response: response)
   rescue OpenURI::HTTPError => e
-    ApiRequest.create(request: url, response: { message: e.message, meta: e.io.meta, status: e.io.status }, success: false)
+    ApiRequest.create(request: url, response: { message: e.message, meta: e.io.meta, status: e.io.status }, success: false, batch_id: $batch_id)
     false
   end
 end
