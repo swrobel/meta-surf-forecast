@@ -42,6 +42,5 @@ end
 group :production do
   gem 'hiredis'
   gem 'newrelic_rpm'
-  gem 'rails_12factor'
   gem 'redis'
 end
