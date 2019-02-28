@@ -28,10 +28,10 @@ class Forecast < ApplicationRecord
       request.on_complete do |response|
         if response.success?
           data = JSON.parse(response.body, object_class: OpenStruct)
-          request = ApiRequest.create(request: url, response: response.body, success: true, batch_id: UpdateBatch.id)
+          request = ApiRequest.create(request: url, response: response.body, success: true, batch_id: UpdateBatch.id, response_time: response.total_time)
           parse_data(spot, request, data)
         else
-          ApiRequest.create(request: url, response: { message: response.return_message, headers: response.headers, status: response.code }, success: false, batch_id: UpdateBatch.id)
+          ApiRequest.create(request: url, response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, batch_id: UpdateBatch.id, response_time: response.total_time)
           api_get(spot: spot, url: url, hydra: hydra, options: options, retries: retries + 1) unless retries >= API_RETRIES
         end
       end
