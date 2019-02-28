@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Forecast < ApplicationRecord
-  extend ApiMethods
   self.abstract_class = true
 
   belongs_to :api_request
@@ -23,19 +22,30 @@ class Forecast < ApplicationRecord
       raise_not_implemented_error
     end
 
-    def api_pull(spot, get_all_spots: nil, hydra: nil, options: {})
-      api_url = get_all_spots.nil? ? api_url(spot) : api_url(spot, get_all_spots)
-      retries = 0
-      result = nil
+    def api_get(spot:, url:, hydra: nil, options: {}, retries: 0)
+      request = Typhoeus::Request.new(url, options.merge(followlocation: true))
 
-      until result || retries > API_RETRIES
-        result = api_get(api_url, hydra: hydra, options: options)
-        retries += 1
+      request.on_complete do |response|
+        if response.success?
+          data = JSON.parse(response.body, object_class: OpenStruct)
+          request = ApiRequest.create(request: url, response: response.body, success: true, batch_id: UpdateBatch.id)
+          parse_data(spot, request, data)
+        else
+          ApiRequest.create(request: url, response: { message: response.return_message, headers: response.headers, status: response.code }, success: false, batch_id: UpdateBatch.id)
+          api_get(spot: spot, url: url, hydra: hydra, options: options, retries: retries + 1) unless retries >= API_RETRIES
+        end
       end
 
-      return false unless result.present?
-      parse_data(spot, result.request, result.data)
-      true
+      if hydra.present?
+        hydra.queue(request)
+      else
+        request.run
+      end
+    end
+
+    def api_pull(spot, get_all_spots: nil, hydra: nil, options: {})
+      url = get_all_spots.nil? ? api_url(spot) : api_url(spot, get_all_spots)
+      api_get(spot: spot, url: url, hydra: hydra, options: options)
     end
 
     def forecasted_max(stamps)
