@@ -29,6 +29,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'gindex'
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false

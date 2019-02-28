@@ -99,6 +99,8 @@ GEM
       CFPropertyList (~> 2.2)
     ffi (1.10.0)
     formatador (0.2.5)
+    gindex (0.1.2)
+      railties
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     guard (2.15.0)
@@ -299,6 +301,7 @@ DEPENDENCIES
   bootstrap (~> 4.2)
   dotenv-rails
   friendly_id!
+  gindex
   guard
   guard-bundler
   guard-rubocop

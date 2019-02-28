@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_013628) do
+ActiveRecord::Schema.define(version: 2019_02_28_052332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_27_013628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "batch_id"
+    t.index ["batch_id"], name: "index_api_requests_on_batch_id"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
