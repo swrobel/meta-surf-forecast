@@ -5,7 +5,7 @@ namespace :spitcast do
   task update: %w[environment forecasts:set_batch_id] do
     Rails.logger.info 'Updating Spitcast data...'
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: TYPHOEUS_CONCURRENCY)
+    hydra = Typhoeus::Hydra.new(max_concurrency: API_CONCURRENCY)
 
     Spot.where.not(spitcast_id: nil).each do |spot|
       Spitcast.api_pull(spot, hydra: hydra)

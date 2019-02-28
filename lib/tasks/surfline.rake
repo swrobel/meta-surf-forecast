@@ -5,7 +5,7 @@ namespace :surfline do
   task update: %w[environment forecasts:set_batch_id] do
     Rails.logger.info 'Updating Surfline data...'
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: TYPHOEUS_CONCURRENCY)
+    hydra = Typhoeus::Hydra.new(max_concurrency: API_CONCURRENCY)
 
     Subregion.all.each do |subregion|
       get_all_spots = subregion.spots.size > 1

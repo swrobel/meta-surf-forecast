@@ -25,8 +25,15 @@ class Forecast < ApplicationRecord
 
     def api_pull(spot, get_all_spots: nil, hydra: nil, options: {})
       api_url = get_all_spots.nil? ? api_url(spot) : api_url(spot, get_all_spots)
-      return false unless (result = api_get(api_url, hydra: hydra, options: options))
+      retries = 0
+      result = nil
 
+      until result || retries > API_RETRIES
+        result = api_get(api_url, hydra: hydra, options: options)
+        retries += 1
+      end
+
+      return false unless result.present?
       parse_data(spot, result.request, result.data)
       true
     end
