@@ -1,5 +1,13 @@
 # Meta Surf Forecast
 
+* [Developer Setup](#developer-setup)
+* [Adding Spots](#adding-spots)
+* [Data Sources](#data-sources)
+  * [Surfline](#surfline)
+  * [MagicSeaweed](#magicseaweed)
+  * [Spitcast](#spitcast)
+* [TODO](#todo)
+
 ## Purpose
 
 Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://magicseaweed.com/) & [Spitcast](http://www.spitcast.com/) APIs to display an aggregated surf forecast.
@@ -66,7 +74,11 @@ Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, e
 
 ### [Surfline](https://www.surfline.com/)
 
-Surfline's API is undocumented and unauthenticated, but is used via javascript on their website, so it was fairly easy to reverse-engineer. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
+#### New API
+
+#### Old API
+
+Surfline's old API is undocumented and unauthenticated, but is used via javascript on their website, so it was fairly easy to reverse-engineer. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
 
 ```json
 "Surf": {
