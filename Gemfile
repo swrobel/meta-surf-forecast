@@ -37,8 +37,9 @@ group :development do
   gem 'invoker'
   gem 'rack-toolbar'
   gem 'rubocop'
+  gem 'rubocop-performance'
   gem 'terminal-notifier-guard'
-  gem 'web-console', '~> 3.0'
+  gem 'web-console'
 end
 
 group :production do
