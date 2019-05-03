@@ -19,7 +19,6 @@ module MetaSurfForecast
 
     config.time_zone = 'UTC'
 
-    config.autoload_paths += %W[#{config.root}/lib]
 
     config.force_ssl = true
   end
