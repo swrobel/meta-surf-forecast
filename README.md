@@ -4,6 +4,8 @@
 * [Adding Spots](#adding-spots)
 * [Data Sources](#data-sources)
   * [Surfline](#surfline)
+    * [New API](#new-api)
+    * [Old API](#old-api)
   * [MagicSeaweed](#magicseaweed)
   * [Spitcast](#spitcast)
 * [TODO](#todo)
@@ -76,9 +78,35 @@ Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, e
 
 #### New API
 
+##### Responses
+
+Surfline's new API is undocumented but easy to reverse engineer using their new website's code. Thankfully its structure is much more sane than the old API.
+
+##### Requests
+
+`http://services.surfline.com/kbyg/{type}?{params}`
+
+For reference, I believe `kbyg` stands for "Know Before You Go," which is their tagline.
+
+Param|Values|Effect
+-----|------|------
+spotId|string|Surfline spot id that you want data for. A typical Surfline URL is `https://www.surfline.com/surf-report/venice-breakwater/590927576a2e4300134fbed8` where `590927576a2e4300134fbed8` is the `spotId`
+days|integer|Number of forecast days to get (Max 6 w/o access token, Max 17 w/ premium token)
+intervalHours|integer|
+accesstoken|string|Auth token to get premium data access (optional)
+
+
+```
+const OPTIMAL_VALUE_MAP = {
+  0: 'SUBOPTIMAL',
+  1: 'GOOD',
+  2: 'OPTIMAL',
+};
+```
+
 #### Old API
 
-Surfline's old API is undocumented and unauthenticated, but is used via javascript on their website, so it was fairly easy to reverse-engineer. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
+Surfline's old API is undocumented and unauthenticated, but was used via javascript on their website, so it was fairly easy to reverse-engineer. However, they have updated their site & apps to use the new API, so this could go away at any time. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
 
 ```json
 "Surf": {
@@ -115,13 +143,13 @@ Surfline's old API is undocumented and unauthenticated, but is used via javascri
 
 Requests are structured as follows:
 
-`https://api.surfline.com/v1/forecasts/<spot_id>?resources=&days=&getAllSpots=&units=&usenearshore=&interpolate=&showOptimal=&callback=`
+`https://api.surfline.com/v1/forecasts/{spot_id}?{params}`
 
-This is a breakdown of the querystring params available:
+This is a breakdown of the params available:
 
 Param|Values|Effect
 -----|------|------
-spot_id|integer|Surfline spot id that you want data for. A typical Surfline URL is `https://www.surfline.com/surf-report/venice-beach-southern-california_4211/` where 4211 is the `spot_id`. You can also get this from the response's `id` property.
+spot_id|integer|Surfline spot id that you want data for. A typical legacy Surfline URL is `https://www.surfline.com/surf-report/venice-beach-southern-california_4211/` where 4211 is the `spot_id`. You can also get this from the response's `id` property. Unfortunately I'm no longer aware of a way to get legacy spot ids.
 resources|string|Any comma-separated list of "surf,analysis,wind,weather,tide,sort". There could be more available that I haven't discovered. "Sort" gives an array of swells, periods & heights that are used for the tables on [spot forecast pages](https://www.surfline.com/surf-forecasts/spot/venice-beach_4211/). To see the whole list, just set 'all'.
 days|integer|Number of days of forecast to get. This seems to cap out at 16 for Wind and 25 for Surf.
 getAllSpots|boolean|`false` returns an object containing the single spot you requested, `true` returns an array of data for all spots in the same region as your spot, in this case "South Los Angeles"
@@ -163,6 +191,8 @@ I've asked Jack from Spitcast a few questions and added his responses below:
   * [x] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
 * [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
 * [x] Support multiple timezones as opposed to Pacific Time only
+* [ ] New Surfline API
+* [ ] Dark Theme
 * [ ] Don't show forecasts for nighttime hours since they just waste graph space
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
