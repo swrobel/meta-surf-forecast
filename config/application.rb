@@ -19,7 +19,6 @@ module MetaSurfForecast
 
     config.time_zone = 'UTC'
 
-
     config.force_ssl = true
   end
 end

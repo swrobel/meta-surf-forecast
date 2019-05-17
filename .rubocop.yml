@@ -1,3 +1,5 @@
+require: rubocop-performance
+
 Rails:
   Enabled: true
 
