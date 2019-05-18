@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_054629) do
+ActiveRecord::Schema.define(version: 2019_09_21_022102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,11 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
     t.datetime "updated_at", null: false
     t.integer "batch_id"
     t.float "response_time"
+    t.string "requestable_type"
+    t.bigint "requestable_id"
+    t.string "service"
     t.index ["batch_id"], name: "index_api_requests_on_batch_id"
+    t.index ["requestable_type", "requestable_id"], name: "index_api_requests_on_requestable_type_and_requestable_id"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -34,8 +38,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
     t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "msws", id: :serial, force: :cascade do |t|
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
     t.string "name"
     t.float "lat"
     t.float "lon"
-    t.integer "surfline_id"
+    t.integer "surfline_v1_id"
     t.integer "msw_id"
     t.integer "spitcast_id"
     t.datetime "created_at", null: false
@@ -85,9 +88,9 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
     t.bigint "subregion_id"
     t.string "msw_slug"
     t.string "spitcast_slug"
-    t.string "surfline_slug"
     t.integer "sort_order"
-    t.index ["msw_id", "surfline_id", "spitcast_id"], name: "index_spots_on_msw_id_and_surfline_id_and_spitcast_id", unique: true
+    t.string "surfline_v2_id"
+    t.index ["msw_id", "surfline_v1_id", "surfline_v2_id", "spitcast_id"], name: "spots_unique_index", unique: true
     t.index ["subregion_id", "slug"], name: "index_spots_on_subregion_id_and_slug", unique: true
     t.index ["subregion_id", "sort_order"], name: "index_spots_on_subregion_id_and_sort_order", unique: true
   end
@@ -132,6 +135,20 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
     t.index ["spot_id", "timestamp"], name: "index_surfline_nearshores_on_spot_id_and_timestamp"
   end
 
+  create_table "surfline_v2s", force: :cascade do |t|
+    t.bigint "spot_id", null: false
+    t.datetime "timestamp"
+    t.decimal "min_height"
+    t.decimal "max_height"
+    t.integer "swell_rating"
+    t.integer "wind_rating"
+    t.bigint "api_request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["api_request_id"], name: "index_surfline_v2s_on_api_request_id"
+    t.index ["spot_id", "timestamp"], name: "index_surfline_v2s_on_spot_id_and_timestamp"
+  end
+
   create_table "water_qualities", id: :serial, force: :cascade do |t|
     t.integer "dept_id"
     t.string "site_id"
@@ -164,6 +181,8 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
   add_foreign_key "surfline_lolas", "spots"
   add_foreign_key "surfline_nearshores", "api_requests"
   add_foreign_key "surfline_nearshores", "spots"
+  add_foreign_key "surfline_v2s", "api_requests"
+  add_foreign_key "surfline_v2s", "spots"
   add_foreign_key "water_qualities", "water_quality_departments", column: "dept_id"
 
   create_view "all_forecasts", materialized: true, sql_definition: <<-SQL
@@ -180,12 +199,13 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
    SELECT 'spitcast'::text AS service,
       spitcasts.spot_id,
       spitcasts."timestamp",
-      spitcasts.height AS min_height,
-      spitcasts.height AS max_height,
-      spitcasts.height AS avg_height,
-      ((spitcasts.rating)::numeric - 0.5) AS rating,
+      avg(spitcasts.height) OVER w AS min_height,
+      avg(spitcasts.height) OVER w AS max_height,
+      avg(spitcasts.height) OVER w AS avg_height,
+      (avg(spitcasts.rating) OVER w - 0.5) AS rating,
       spitcasts.updated_at
      FROM spitcasts
+    WINDOW w AS (PARTITION BY spitcasts.spot_id ORDER BY spitcasts."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
   UNION
    SELECT 'lola'::text AS service,
       surfline_lolas.spot_id,
@@ -213,7 +233,18 @@ ActiveRecord::Schema.define(version: 2019_02_28_054629) do
               ELSE 0.5
           END) AS rating,
       surfline_nearshores.updated_at
-     FROM surfline_nearshores;
+     FROM surfline_nearshores
+  UNION
+   SELECT 'surfline_v2'::text AS service,
+      surfline_v2s.spot_id,
+      surfline_v2s."timestamp",
+      avg(surfline_v2s.min_height) OVER w AS min_height,
+      avg(surfline_v2s.max_height) OVER w AS max_height,
+      ((avg(surfline_v2s.min_height) OVER w + avg(surfline_v2s.max_height) OVER w) / (2)::numeric) AS avg_height,
+      ((avg(surfline_v2s.swell_rating) OVER w + avg(surfline_v2s.wind_rating) OVER w) + 0.5) AS rating,
+      surfline_v2s.updated_at
+     FROM surfline_v2s
+    WINDOW w AS (PARTITION BY surfline_v2s.spot_id ORDER BY surfline_v2s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING);
   SQL
   add_index "all_forecasts", ["spot_id"], name: "index_all_forecasts_on_spot_id"
   add_index "all_forecasts", ["timestamp"], name: "index_all_forecasts_on_timestamp"

@@ -62,14 +62,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.hosts << 'surf.test'
-
-  config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::Toolbar,
-                                  snippet: '<script id="__bs_script__">
-                                              //<![CDATA[
-                                                document.write("<script async src=\'https://HOST:9500/browser-sync/browser-sync-client.js\'><\/script>".replace("HOST", location.hostname));
-                                              //]]>
-                                            </script>',
-                                  insertion_point: '</head>',
-                                  insertion_method: :before
+  config.hosts << 'surf.localhost'
 end

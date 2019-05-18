@@ -2,10 +2,9 @@ require:
   - rubocop-performance
   - rubocop-rails
 
-Rails:
-  Enabled: true
-
 AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
   Exclude:
     - Guardfile
     - bin/*
@@ -14,7 +13,7 @@ AllCops:
     - node_modules/**/*
     - test/test_helper.rb
     - vendor/**/*
-  TargetRailsVersion: 5.2
+  ExtraDetails: true
 
 Layout/AccessModifierIndentation:
   Enabled: false
@@ -43,6 +42,9 @@ Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ParameterLists:
   Enabled: false
 
 Metrics/PerceivedComplexity:

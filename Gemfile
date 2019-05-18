@@ -9,13 +9,14 @@ gem 'rails', '~> 6.0.0'
 gem 'bootsnap'
 gem 'bootstrap', '~> 4.2'
 gem 'friendly_id', github: 'norman/friendly_id'
+gem 'oj'
 gem 'pg'
 gem 'puma'
 gem 'react-rails'
 gem 'scenic'
 gem 'slim-rails'
 gem 'typhoeus'
-gem 'webpacker', '~> 4.0.0.rc.7'
+gem 'webpacker', github: 'swrobel/webpacker'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -25,11 +26,10 @@ end
 group :development do
   gem 'gindex'
   gem 'guard'
-  gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
-  gem 'invoker'
-  gem 'rack-toolbar'
+  gem 'invoker', github: 'swrobel/invoker'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'

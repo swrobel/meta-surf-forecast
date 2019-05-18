@@ -44,7 +44,7 @@ module ApplicationHelper
     formatted = stamp.strftime('%a')[0..-2] # 2 character day
     formatted += ' '
     formatted += if stamp.hour.zero? && stamp.min.zero?
-                   stamp.strftime('%b %-d') # Midnight
+                   stamp.strftime('%-m/%-d') # Midnight
                  else
                    stamp.strftime('%-I%P')[0..-2] # a/p rather than am/pm
                  end

@@ -4,10 +4,11 @@
 * [Adding Spots](#adding-spots)
 * [Data Sources](#data-sources)
   * [Surfline](#surfline)
-    * [New API](#new-api)
-    * [Old API](#old-api)
+    * [New API](#new-api-v2)
+    * [Old API](#old-api-v1)
   * [MagicSeaweed](#magicseaweed)
   * [Spitcast](#spitcast)
+* [The Magic](#the-magic)
 * [TODO](#todo)
 
 ## Purpose
@@ -18,22 +19,23 @@ Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://mag
 
 ## Developer Setup
 
-1. Install postgres, if you don't have it already: `brew install postgresql`
-1. Start postgres: `brew services start postgresql`
-1. Install Ruby dependencies: `bundle install`
-1. Create your database & seed it with spots: `bin/rails db:setup`
-1. Install [yarn](https://yarnpkg.com): `brew install yarn`
-1. Install yarn packages: `yarn`
-1. Setup Invoker: `sudo bin/invoker setup --tld localhost`
+1. Install dependencies using [Homebrew](https://brew.sh/): `brew bundle`
+1. If on Linux: `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start`
+1. `mkcert -install`
+1. `cd config/ssl && mkcert surf.localhost surf-packs.localhost localhost 127.0.0.1 ::1 && cd ../../`
+1. `gem install bundler -v '>= 2.0.2'`
+1. `bundle`
+1. `yarn`
+1. `cp config/database.yml.example config/database.yml`
+1. `bin/rails db:setup`
+1. `rvmsudo bin/invoker setup --tld localhost` (help available [here](http://invoker.codemancers.com/ruby_managers.html))
 1. Grab some [Spitcast](http://www.spitcast.com/) data: `bin/rails spitcast:update`
-1. Grab some [Surfline](https://www.surfline.com/) data: `bin/rails surfline:update`
-1. Grab some [MagicSeaweed](https://magicseaweed.com/) data (requires a valid [API key](https://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update`
+1. Grab some [Surfline v2](https://www.surfline.com/) data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails surfline_v2:update`
+1. Grab some [MagicSeaweed](https://magicseaweed.com/) data (requires a valid [API key](https://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update` (replace `xxx` with your key)
 1. Refresh the materialized Postgres view that collates all forecast data into one table: `bin/rails database_views:refresh`
-1. Start the server: `bin/invoker start`
-1. Connect to https://surf.localhost
+1. `bin/server`
+1. Open https://surf.localhost
 1. Score!
-
-Note: If you get a security warning in Chrome, Click "Advanced" and then "Proceed to surf.localhost (unsafe)". Nothing to worry about, you're just connecting to your own machine and it's a self-signed SSL certificate so Chrome freaks out. You will also probably need to open the [Browsersync javascript](https://surf.localhost:9500/browser-sync/browser-sync-client.js) and [Webpacker bundle](https://surf.localhost:9001/packs/application.js) once each to trust those certificates as well. I'm hoping to find a better workaround for this in the future...
 
 **Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)**
 
@@ -51,18 +53,18 @@ Contributing new spots is easy! Make sure you're signed into your [Github accoun
     You can get valid timezone names from [this list](https://gist.github.com/swrobel/77626ff3d4967ca65c3028dcb336d57a#file-gistfile1-md).
 1. Get the Spitcast spot id, slug (unique text id) & lat/lon data using [their spot list API](http://api.spitcast.com/api/county/spots/orange-county/) (you can change the county at the end of the URL). The slug is `spot_id_char` in their API.
 1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, and the slug is the text after the slash and before `-Surf-Report`, ex: for `https://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` the slug is `Pipeline-Backdoor` and the id is `616`.
-1. Go to the Surfline page for the spot you want to add. Their spot id is also at the end of the url, ex: for `https://www.surfline.com/surf-report/venice-beach-southern-california_4211/` it's `4211`.
+1. Go to the Surfline page for the spot you want to add. Their spot id is also at the end of the url, ex: for `https://www.surfline.com/surf-report/venice-breakwater/590927576a2e4300134fbed8` it's `590927576a2e4300134fbed8`.
 1. It's strongly encouraged to add all spots for a particular county or region rather than just a single one. Be a pal!
 1. Submit a pull request and I'll get it on the site ASAP!
 
-Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, etc, if that spot doesn't exist on that particular site.
+Use the following as a template. Delete the lines for `surfline_v2_id`, `msw_id`, etc, if that spot doesn't exist on that particular site.
 
 ```ruby
   {
     name: 'County Line',
     lat: 34.051,
     lon: -118.964,
-    surfline_id: 4203,
+    surfline_v2_id: '590927576a2e4300134fbed8',
     msw_id: 277,
     msw_slug: 'County-Line-Yerba-Buena-Beach',
     spitcast_id: 207,
@@ -75,7 +77,7 @@ Use the following as a template. Delete the lines for `surfline_id`, `msw_id`, e
 
 ### [Surfline](https://www.surfline.com/)
 
-#### New API
+#### New API (v2)
 
 ##### Responses
 
@@ -83,7 +85,7 @@ Surfline's new API is undocumented but easy to reverse engineer using their new 
 
 ##### Requests
 
-`http://services.surfline.com/kbyg/{type}?{params}`
+`https://services.surfline.com/kbyg/spots/forecasts/{type}?{params}`
 
 For reference, I believe `kbyg` stands for "Know Before You Go," which is their tagline.
 
@@ -110,9 +112,11 @@ Value|Meaning
 1|Good
 2|Optimal
 
-#### Old API
+#### Old API (v1)
 
-Surfline's old API is undocumented and unauthenticated, but was used via javascript on their website, so it was fairly easy to reverse-engineer. However, they have updated their site & apps to use the new API, so this could go away at any time. They return JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
+Surfline's old API is undocumented and unauthenticated, but was used via javascript on their website, so it was fairly easy to reverse-engineer. However, they have updated their site & apps to use the new API, and it appears that they've stopped including some critical data in the responses for the old API, so it's disabled in this app for now (and probably forever).
+
+It returned JSON, but with a very odd structure, with each item that is time-sensitive containing an array of daily arrays of values that correspond to timestamps provided in a separate set of arrays. For example (lots of data left out for brevity):
 
 ```json
 "Surf": {
@@ -189,6 +193,37 @@ I've asked Jack from Spitcast a few questions and added his responses below:
   * Fair-Good
   * Good
 
+## The Magic
+
+### Surf quality ratings
+
+All of the forecasting services (including Surfline v1 vs v2) use different systems for rating waves. I've attempted to normalize them all to a 0-5 (6-point) scale as best as possible, which is perhaps easier to understand when mapped onto the commonly-used Poor-Good scale (some throw Epic in there at the top end, but I went with Very Good):
+
+* 0 => Poor
+* 1 => Poor - Fair
+* 2 => Fair
+* 3 => Fair - Good
+* 4 => Good
+* 5 => Very Good
+
+Each forecasting service is massaged onto that scale as follows:
+
+* **MagicSeaweed:** integer `fadedRating` (0-5) & `solidRating` (0-5). I simply subtract fadedRating (which is essentially the negative effect of wind) from solidRating.
+* **Spitcast:** ratings in text form:
+  * Poor
+  * Poor-Fair
+  * Fair
+  * Fair-Good
+  * Good
+
+  I massage these by assigning them a number from 0.5-4.5
+* **Surfline v1:** decimal ratings (0-1) for up to 6 different swells at each spot, as well as an `optimalWind` boolean. I take the max swell rating at any given time for that spot, multiply it by 5, and then halve it if the wind is not optimal.
+* **Surfline v2:** integer `optimalScore`s for both swell & wind (0-2). Adding these together gives a 0-4 scale, and adding 0.5 puts it on the same 0.5-4.5 scale as Spitcast.
+
+### Timestamps
+
+It took me a long time to land on a solution here, but I've finally settled on storing all timestamps in the database in the spot's local time. This defies Rails convention, but makes intuitive sense. If you pull up the forecasts table and look at the timestamp for a spot's forecast, that's the actual local time that it's forecast for (even though Rails & Postgres both think it's being stored in UTC). This is typically the format that the forecasting service gives it to us in, and what users want to see it in, so there's no point in doing all sorts of fancy conversion when it should be the same all the way through the pipeline. Now, you may ask, why am I still using the Rails default of `TIMESTAMP WITHOUT TIMEZONE`, and the answer is that shockingly enough, `TIMESTAMP WITH TIMEZONE` [doesn't actually store timezone data](https://stackoverflow.com/a/9576170/337446)!
+
 ## TODO
 
 * [x] **Improve charts:**
@@ -197,9 +232,8 @@ I've asked Jack from Spitcast a few questions and added his responses below:
   * [x] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
 * [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
 * [x] Support multiple timezones as opposed to Pacific Time only
-* [ ] New Surfline API
+* [x] New Surfline API
 * [ ] Dark Theme
-* [ ] Don't show forecasts for nighttime hours since they just waste graph space
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
 * [ ] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
