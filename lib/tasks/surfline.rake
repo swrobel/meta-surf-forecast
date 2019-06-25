@@ -14,7 +14,7 @@ namespace :surfline do
       SurflineLola.api_pull(spot, get_all_spots: get_all_spots, hydra: hydra)
 
       # These subregions contain two surfline regions, so we need to do two separate requests for them
-      next unless ['los-angeles', 'santa-barbara-ventura'].include? subregion.slug
+      next unless %w[los-angeles santa-barbara-ventura].include? subregion.slug
 
       spot2 = subregion.spots.last
       SurflineNearshore.api_pull(spot2, get_all_spots: get_all_spots, hydra: hydra)

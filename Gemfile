@@ -38,6 +38,7 @@ group :development do
   gem 'rack-toolbar'
   gem 'rubocop'
   gem 'rubocop-performance'
+  gem 'rubocop-rails'
   gem 'terminal-notifier-guard'
   gem 'web-console'
 end
