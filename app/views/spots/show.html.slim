@@ -1,5 +1,23 @@
 - cache @spot do
   - provide(:title, @spot.name)
+  
+  javascript:
+    // Derived from https://github.com/odyniec/tinyAgo-js/blob/master/tinyAgo.js
+    function timeAgo(val) {
+      val = 0 | (Date.now() - val) / 1000
+      var unit, length = { second: 60, minute: 60, hour: 24, day: 7, week: 4.35,
+          month: 12, year: 10000 }, result
+
+      for (unit in length) {
+        result = val % length[unit]
+        console.log(unit, result, val)
+        
+        if (unit === 'minute' && val < 120)
+          return `${val} minutes`
+        else if (!(val = 0 | val / length[unit]))
+          return `${result} ${(result-1 ? `${unit}s` : unit)}`
+      }
+    }
 
   .container-fluid
     h1.font-weight-light= @spot.name
@@ -30,10 +48,13 @@
           tr
             td.text-xs-left= timestamp.in_time_zone(@spot.subregion.timezone).strftime('%A %b %e, %l:%M%P')
             - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
-            td.border-left= "#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)
-            td= spitcast.try(:rating)
+            = render partial: 'cell', locals: { cls: 'border-left', forecast: spitcast, value: ("#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)) }
+            = render partial: 'cell', locals: { forecast: spitcast, value: spitcast.try(:rating) }
+              
             - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
-            td.border-left= height_range(msw.try(:min_height), msw.try(:max_height))
-            td= msw.try(:rating)
-            = render partial: 'surfline', locals: {surfline: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first}
-            = render partial: 'surfline', locals: {surfline: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first}
+            = render partial: 'cell', locals: { cls: 'border-left', forecast: msw, value: height_range(msw.try(:min_height), msw.try(:max_height)) }
+            = render partial: 'cell', locals: { forecast: msw, value: msw.try(:rating) }
+              
+            = render partial: 'surfline', locals: { surfline: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first }
+            
+            = render partial: 'surfline', locals: { surfline: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first }

@@ -1,0 +1,6 @@
+- updated = forecast.try(:updated_at)
+- cls ||= nil
+- classes = [cls]
+- classes << 'text-danger' if updated && updated < 90.minutes.ago
+td class=classes data-updated=updated onmouseover=(updated && "this.title = `Updated ${timeAgo(new Date(this.dataset.updated))} ago`")
+  = value
