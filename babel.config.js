@@ -28,6 +28,7 @@ module.exports = function(api) {
       (isProductionEnv || isDevelopmentEnv) && [
         require('@babel/preset-env').default,
         {
+          corejs: 3,
           forceAllTransforms: true,
           useBuiltIns: 'entry',
           modules: false,
@@ -62,6 +63,7 @@ module.exports = function(api) {
       [
         require('@babel/plugin-transform-runtime').default,
         {
+          corejs: false,
           helpers: false,
           regenerator: true
         }
