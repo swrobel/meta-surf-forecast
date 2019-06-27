@@ -10,7 +10,6 @@
 
       for (unit in length) {
         result = val % length[unit]
-        console.log(unit, result, val)
         
         if (unit === 'minute' && val < 120)
           return `${val} minutes`
