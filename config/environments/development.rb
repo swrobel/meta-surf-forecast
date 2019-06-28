@@ -62,9 +62,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Disable view rendering logs
-  config.action_view.logger = nil
-
   config.hosts << 'surf.test'
 
   config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::Toolbar,
