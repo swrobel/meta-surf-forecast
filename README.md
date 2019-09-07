@@ -24,17 +24,16 @@ Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://mag
 1. Create your database & seed it with spots: `bin/rails db:setup`
 1. Install [yarn](https://yarnpkg.com): `brew install yarn`
 1. Install yarn packages: `yarn`
-1. Install Invoker: `gem install invoker`
-1. Setup Invoker: `sudo invoker setup`
+1. Setup Invoker: `sudo bin/invoker setup --tld localhost`
 1. Grab some [Spitcast](http://www.spitcast.com/) data: `bin/rails spitcast:update`
 1. Grab some [Surfline](https://www.surfline.com/) data: `bin/rails surfline:update`
 1. Grab some [MagicSeaweed](https://magicseaweed.com/) data (requires a valid [API key](https://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update`
 1. Refresh the materialized Postgres view that collates all forecast data into one table: `bin/rails database_views:refresh`
 1. Start the server: `bin/invoker start`
-1. Connect to https://surf.test
+1. Connect to https://surf.localhost
 1. Score!
 
-Note: If you get a security warning in Chrome, Click "Advanced" and then "Proceed to surf.test (unsafe)". Nothing to worry about, you're just connecting to your own machine and it's a self-signed SSL certificate so Chrome freaks out. You will also probably need to open the [Browsersync javascript](https://surf.test:9500/browser-sync/browser-sync-client.js) and [Webpacker bundle](https://surf.test:9001/packs/application.js) once each to trust those certificates as well. I'm hoping to find a better workaround for this in the future...
+Note: If you get a security warning in Chrome, Click "Advanced" and then "Proceed to surf.localhost (unsafe)". Nothing to worry about, you're just connecting to your own machine and it's a self-signed SSL certificate so Chrome freaks out. You will also probably need to open the [Browsersync javascript](https://surf.localhost:9500/browser-sync/browser-sync-client.js) and [Webpacker bundle](https://surf.localhost:9001/packs/application.js) once each to trust those certificates as well. I'm hoping to find a better workaround for this in the future...
 
 **Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)**
 
