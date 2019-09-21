@@ -2,6 +2,8 @@
 
 class SubregionsController < ApplicationController
   def show
+    zone = ActiveSupport::TimeZone.new(subregion.timezone)
+    zone_id = zone.tzinfo.identifier
     forecasts ||= Spot.connection.select_all <<-SQL
       SELECT
          id
@@ -13,8 +15,8 @@ class SubregionsController < ApplicationController
         ,msw_slug
         ,spitcast_id
         ,spitcast_slug
-        ,surfline_id
-        ,surfline_slug
+        ,surfline_v1_id
+        ,surfline_v2_id
         ,timestamp
         ,round(min(min_height), 1) AS min
         ,round(avg(avg_height) - min(min_height), 1) AS avg_delta
@@ -23,8 +25,9 @@ class SubregionsController < ApplicationController
         ,round(avg(rating)) AS avg_rating
       FROM all_forecasts sub
       JOIN spots s ON sub.spot_id = s.id
-      WHERE sub.timestamp > now() at time zone 'utc'
-        AND sub.updated_at > now() at time zone 'utc' - interval '3 day'
+      WHERE sub.timestamp > now() at time zone '#{zone_id}'
+        AND sub.updated_at > now() at time zone '#{zone_id}' - interval '3 day'
+        AND extract(hour from sub.timestamp)::integer % 3 = 0
         AND s.subregion_id = #{subregion.id}
       GROUP BY id
               ,name
@@ -32,18 +35,18 @@ class SubregionsController < ApplicationController
               ,lat
               ,lon
               ,timestamp
-              ,surfline_id
-              ,surfline_slug
+              ,surfline_v1_id
               ,msw_id
               ,msw_slug
               ,spitcast_id
               ,spitcast_slug
+              ,surfline_v2_id
       HAVING count(*) >= CASE
-                           WHEN s.surfline_id IS NOT NULL THEN 2
-                           ELSE 1
+                           WHEN s.surfline_v2_id IS NOT NULL THEN 1
+                           ELSE 0
                          END +
                          CASE
-                           WHEN s.spitcast_id IS NOT NULL THEN 1
+                           WHEN s.msw_id IS NOT NULL THEN 1
                            ELSE 0
                          END
       ORDER BY sort_order
@@ -52,16 +55,16 @@ class SubregionsController < ApplicationController
     SQL
     @max = 0.0
     forecasts.each(&:symbolize_keys!)
-    forecasts.each_with_index do |forecast, _index|
-      forecast[:timestamp] = Time.zone.parse("#{forecast[:timestamp]} UTC").in_time_zone(subregion.timezone)
-      forecast[:time] = helpers.format_timestamp(forecast[:timestamp])
+    forecasts.each do |forecast|
+      forecast[:xaxis_time] = helpers.format_timestamp(forecast[:timestamp])
+      forecast[:tooltip_time] = forecast[:timestamp].strftime('%a, %b %-e, %-l %p')
       %i[max min avg_delta max_delta].each do |field|
         forecast[field] = forecast[field].to_f
       end
       @max = [forecast[:max], @max].max
       forecast[:avg_rating] = forecast[:avg_rating].to_i
     end
-    @spots = forecasts.group_by { |s| { id: s[:id], name: s[:name], slug: s[:slug], lat: s[:lat], lon: s[:lon], msw_id: s[:msw_id], msw_slug: s[:msw_slug], spitcast_id: s[:spitcast_id], spitcast_slug: s[:spitcast_slug], surfline_id: s[:surfline_id], surfline_slug: s[:surfline_slug] } }
+    @spots = forecasts.group_by { |s| { id: s[:id], name: s[:name], slug: s[:slug], lat: s[:lat], lon: s[:lon], msw_id: s[:msw_id], msw_slug: s[:msw_slug], spitcast_id: s[:spitcast_id], spitcast_slug: s[:spitcast_slug], surfline_v1_id: s[:surfline_v1_id], surfline_v2_id: s[:surfline_v2_id] } }
   end
 
 private

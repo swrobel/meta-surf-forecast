@@ -8,7 +8,7 @@ namespace :msw do
     hydra = Typhoeus::Hydra.new(max_concurrency: API_CONCURRENCY)
 
     Spot.where.not(msw_id: nil).each do |spot|
-      Msw.api_pull(spot, hydra: hydra, options: { cookie: "MSW_session=#{ENV['MSW_SESSION_ID']}" })
+      ApiRequest.new(requestable: spot, service: Msw, hydra: hydra, typhoeus_opts: { cookie: "MSW_session=#{ENV['MSW_SESSION_ID']}" }).get
     end
 
     hydra.run

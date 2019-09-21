@@ -8,7 +8,7 @@ namespace :spitcast do
     hydra = Typhoeus::Hydra.new(max_concurrency: API_CONCURRENCY)
 
     Spot.where.not(spitcast_id: nil).each do |spot|
-      Spitcast.api_pull(spot, hydra: hydra)
+      ApiRequest.new(requestable: spot, service: Spitcast, hydra: hydra).get
     end
 
     hydra.run
