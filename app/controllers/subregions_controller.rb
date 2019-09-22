@@ -26,7 +26,7 @@ class SubregionsController < ApplicationController
       FROM all_forecasts sub
       JOIN spots s ON sub.spot_id = s.id
       WHERE sub.timestamp > now() at time zone '#{zone_id}'
-        AND sub.updated_at > now() at time zone '#{zone_id}' - interval '3 day'
+        AND sub.updated_at > now() at time zone '#{zone_id}' - interval '1 day'
         AND extract(hour from sub.timestamp)::integer % 3 = 0
         AND s.subregion_id = #{subregion.id}
       GROUP BY id
