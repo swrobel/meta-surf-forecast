@@ -25,7 +25,7 @@ class ApiRequest < ApplicationRecord
       else
         self.attributes = { response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, response_time: response.total_time }
         save!
-        SurflineV2.refresh_access_token if response.code == 401 && service == 'SurflineV2' # Unauthorized
+        SurflineV2.expire_access_token if service == 'SurflineV2' && response.code == 401 # Unauthorized
         get(retries: retries + 1) unless retries >= API_RETRIES
       end
     end

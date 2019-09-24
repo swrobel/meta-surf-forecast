@@ -1,4 +1,4 @@
-- cache @subregion do
+- cache [@subregion, @region] do
   - provide(:title, "#{@subregion.name}, #{@region.name}")
   - provide(:meta, ', viewport-fit=cover')
 
@@ -7,11 +7,14 @@
       span.text-light.region-label Region:
       select.margin-left onchange='window.location = this.value'
         - Region.ordered.each do |region|
-          optgroup label=region.name
-            - region.subregions.each do |subregion|
-              option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
-  .subregion-container.safe-padding
-    - @spots.each do |meta, forecasts|
+          - cache region do
+            optgroup label=region.name
+              - region.subregions.each do |subregion|
+                - cache subregion do
+                  option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
+.subregion-container.safe-padding
+  - @spots.each do |meta, forecasts|
+    - cache [EXPIRE_ON_UPDATE_KEY, :spot_chart, meta[:spot_id]]
       - from = forecasts.find_index { |p| p[:timestamp].monday? && p[:timestamp].hour < 3 }
       - from && to = forecasts[from..-1].find_index { |p| p[:timestamp].sunday? && p[:timestamp].hour > 20 }
       - to ? to += from : to = forecasts.size

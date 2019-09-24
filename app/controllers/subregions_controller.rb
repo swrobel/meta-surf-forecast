@@ -6,7 +6,7 @@ class SubregionsController < ApplicationController
     zone_id = zone.tzinfo.identifier
     forecasts ||= Spot.connection.select_all <<-SQL
       SELECT
-         id
+         id AS spot_id
         ,name
         ,slug
         ,lat
@@ -17,6 +17,7 @@ class SubregionsController < ApplicationController
         ,spitcast_slug
         ,surfline_v1_id
         ,surfline_v2_id
+        ,s.updated_at AS spot_updated_at
         ,timestamp
         ,round(min(min_height), 1) AS min
         ,round(avg(avg_height) - min(min_height), 1) AS avg_delta
@@ -41,6 +42,7 @@ class SubregionsController < ApplicationController
               ,spitcast_id
               ,spitcast_slug
               ,surfline_v2_id
+              ,s.updated_at
       HAVING count(*) >= CASE
                            WHEN s.surfline_v2_id IS NOT NULL THEN 1
                            ELSE 0
@@ -64,7 +66,20 @@ class SubregionsController < ApplicationController
       @max = [forecast[:max], @max].max
       forecast[:avg_rating] = forecast[:avg_rating].to_i
     end
-    @spots = forecasts.group_by { |s| { id: s[:id], name: s[:name], slug: s[:slug], lat: s[:lat], lon: s[:lon], msw_id: s[:msw_id], msw_slug: s[:msw_slug], spitcast_id: s[:spitcast_id], spitcast_slug: s[:spitcast_slug], surfline_v1_id: s[:surfline_v1_id], surfline_v2_id: s[:surfline_v2_id] } }
+    @spots = forecasts.group_by do |s|
+      { spot_id: s[:spot_id],
+        name: s[:name],
+        slug: s[:slug],
+        lat: s[:lat],
+        lon: s[:lon],
+        msw_id: s[:msw_id],
+        msw_slug: s[:msw_slug],
+        spitcast_id: s[:spitcast_id],
+        spitcast_slug: s[:spitcast_slug],
+        surfline_v1_id: s[:surfline_v1_id],
+        surfline_v2_id: s[:surfline_v2_id],
+        spot_updated_at: s[:spot_updated_at] }
+    end
   end
 
 private

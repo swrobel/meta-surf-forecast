@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 namespace :cache do
-  desc 'Clear Rails cache'
-  task clear: :environment do
-    Rails.logger.info 'Clearing Rails cache...'
-    Rails.cache.clear
-    Rails.logger.info 'Finished clearing Rails cache'
+  desc 'Prune Rails cache'
+  task prune: :environment do
+    Rails.logger.info "Deleting Rails cache keys marked with #{EXPIRE_ON_UPDATE_KEY}..."
+    Rails.cache.delete_matched("*#{EXPIRE_ON_UPDATE_KEY}*")
+    Rails.logger.info 'Finished pruning Rails cache'
   end
 end

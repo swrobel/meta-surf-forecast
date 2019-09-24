@@ -25,3 +25,5 @@ module MetaSurfForecast
     config.action_view.logger = nil
   end
 end
+
+EXPIRE_ON_UPDATE_KEY = :expire_on_update
