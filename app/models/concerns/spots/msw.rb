@@ -5,8 +5,8 @@ module Spots
     extend ActiveSupport::Concern
 
     class_methods do
-      def msw_url(msw_slug, msw_id)
-        "http://magicseaweed.com/#{msw_slug}-Surf-Report/#{msw_id}/"
+      def msw_url(msw_id)
+        "http://magicseaweed.com/Surf-Report/#{msw_id}/"
       end
     end
 
@@ -14,7 +14,7 @@ module Spots
       has_many :msws, dependent: :delete_all
 
       def msw_url
-        self.class.msw_url(msw_slug, msw_id)
+        self.class.msw_url(msw_id)
       end
 
       def msw_api_url

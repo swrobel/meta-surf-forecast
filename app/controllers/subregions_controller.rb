@@ -12,7 +12,6 @@ class SubregionsController < ApplicationController
         ,lat
         ,lon
         ,msw_id
-        ,msw_slug
         ,spitcast_id
         ,spitcast_slug
         ,surfline_v1_id
@@ -38,7 +37,6 @@ class SubregionsController < ApplicationController
               ,timestamp
               ,surfline_v1_id
               ,msw_id
-              ,msw_slug
               ,spitcast_id
               ,spitcast_slug
               ,surfline_v2_id
@@ -73,7 +71,6 @@ class SubregionsController < ApplicationController
         lat: s[:lat],
         lon: s[:lon],
         msw_id: s[:msw_id],
-        msw_slug: s[:msw_slug],
         spitcast_id: s[:spitcast_id],
         spitcast_slug: s[:spitcast_slug],
         surfline_v1_id: s[:surfline_v1_id],
