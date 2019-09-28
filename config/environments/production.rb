@@ -55,6 +55,7 @@ Rails.application.configure do
     config.cache_store = :redis_cache_store, {
       expires_in: 2.weeks.to_i,
       namespace: 'cache',
+      reconnect_attempts: 1,
       url: ENV['REDIS_URL'],
     }
   end
