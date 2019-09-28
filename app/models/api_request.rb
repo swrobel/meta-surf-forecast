@@ -5,6 +5,7 @@ class ApiRequest < ApplicationRecord
 
   after_initialize :set_defaults
 
+  belongs_to :batch, class_name: 'UpdateBatch', counter_cache: :requests_count
   belongs_to :requestable, polymorphic: true
 
   include ApiRequests::Msw
@@ -52,7 +53,6 @@ class ApiRequest < ApplicationRecord
 private
 
   def set_defaults
-    self.batch_id = UpdateBatch.id
     self.options ||= {}
     self.typhoeus_opts ||= {}
   end

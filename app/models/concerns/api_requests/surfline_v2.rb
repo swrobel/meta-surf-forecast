@@ -35,7 +35,7 @@ module ApiRequests
         end
 
         # Wind request needs to be made after wave request is completed
-        ApiRequest.new(requestable: requestable, service: ::SurflineV2, request: requestable.surfline_v2_api_url(type: 'wind'), hydra: hydra, options: options.merge(type: 'wind'), typhoeus_opts: typhoeus_opts).get
+        ApiRequest.new(batch: batch, requestable: requestable, service: ::SurflineV2, request: requestable.surfline_v2_api_url(type: 'wind'), hydra: hydra, options: options.merge(type: 'wind'), typhoeus_opts: typhoeus_opts).get
       end
     end
   end

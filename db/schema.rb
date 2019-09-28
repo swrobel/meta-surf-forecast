@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_022102) do
+ActiveRecord::Schema.define(version: 2019_09_25_054209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,14 @@ ActiveRecord::Schema.define(version: 2019_09_21_022102) do
     t.index ["spot_id", "timestamp"], name: "index_surfline_v2s_on_spot_id_and_timestamp"
   end
 
+  create_table "update_batches", force: :cascade do |t|
+    t.integer "concurrency"
+    t.interval "duration"
+    t.integer "requests_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "water_qualities", id: :serial, force: :cascade do |t|
     t.integer "dept_id"
     t.string "site_id"
@@ -171,6 +179,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_022102) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "api_requests", "update_batches", column: "batch_id"
   add_foreign_key "msws", "api_requests"
   add_foreign_key "msws", "spots"
   add_foreign_key "spitcasts", "api_requests"
