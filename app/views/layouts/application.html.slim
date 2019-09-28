@@ -1,26 +1,25 @@
-- cache do
-  doctype html
-  html
-    head
-      title= "#{"#{yield(:title)} | " if content_for?(:title)}Meta Surf Forecast"
-      = csrf_meta_tags
-      = action_cable_meta_tag
-      meta name='viewport' content="width=device-width, initial-scale=1, shrink-to-fit=no#{yield(:meta)}"
-      meta property='og:description' content='Pulls data from Surfline, MagicSeaweed &amp; Spitcast APIs to display an aggregated surf forecast.'
-      meta property='og:image' content=image_url('wave.jpg')
-      link rel='apple-touch-icon' href=image_url('wave.png')
+doctype html
+html
+  head
+    title= "#{"#{yield(:title)} | " if content_for?(:title)}Meta Surf Forecast"
+    = csrf_meta_tags
+    = action_cable_meta_tag
+    meta name='viewport' content="width=device-width, initial-scale=1, shrink-to-fit=no#{yield(:meta)}"
+    meta property='og:description' content='Pulls data from Surfline, MagicSeaweed &amp; Spitcast APIs to display an aggregated surf forecast.'
+    meta property='og:image' content=image_url('wave.jpg')
+    link rel='apple-touch-icon' href=image_url('wave.png')
 
-      = stylesheet_link_tag 'application', media: 'all'
-      = javascript_pack_tag 'application'
-      - if ENV['GOOGLE_ANALYTICS_ID']
-        javascript:
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+    - if ENV['GOOGLE_ANALYTICS_ID']
+      javascript:
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-          ga('create', '#{ENV['GOOGLE_ANALYTICS_ID']}', 'auto');
-          ga('send', 'pageview');
+        ga('create', '#{ENV['GOOGLE_ANALYTICS_ID']}', 'auto');
+        ga('send', 'pageview');
 
-    body
-      == yield
+  body
+    == yield
