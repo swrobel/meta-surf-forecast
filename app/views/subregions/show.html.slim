@@ -1,17 +1,14 @@
-- cache [@subregion, @region] do
-  - provide(:title, "#{@subregion.name}, #{@region.name}")
-  - provide(:meta, ', viewport-fit=cover')
+- provide(:title, "#{@subregion.name}, #{@region.name}")
+- provide(:meta, ', viewport-fit=cover')
 
-  nav.navbar.navbar-light.fixed-top
-    .row.font-weight-light.d-flex.align-items-center.pl-1
-      span.text-light.region-label Region:
-      select.margin-left onchange='window.location = this.value'
-        - Region.ordered.each do |region|
-          - cache region do
-            optgroup label=region.name
-              - region.subregions.each do |subregion|
-                - cache subregion do
-                  option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
+nav.navbar.navbar-light.fixed-top
+  .row.font-weight-light.d-flex.align-items-center.pl-1
+    span.text-light.region-label Region:
+    select.margin-left onchange='window.location = this.value'
+      - Region.ordered.each do |region|
+        optgroup label=region.name
+          - region.subregions.each do |subregion|
+            option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
 .subregion-container.safe-padding
   - @spots.each do |meta, forecasts|
     - cache [EXPIRE_ON_UPDATE_KEY, :spot_chart, meta[:spot_id]]
