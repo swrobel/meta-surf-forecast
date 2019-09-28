@@ -225,14 +225,17 @@ It took me a long time to land on a solution here, but I've finally settled on s
 
 ## TODO
 
-* [x] **Improve charts:**
-  * [x] **Fix timestamp formatting.**
-  * [x] **Account for min/max size forecast. Currently charts just reflect the max.**
-  * [x] **Display forecast quality ratings.** Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
+* [x] Improve charts:
+  * [x] Fix timestamp formatting.
+  * [x] Account for min/max size forecast. Currently charts just reflect the max.
+  * [x] Display forecast quality ratings. Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
 * [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
 * [x] Support multiple timezones as opposed to Pacific Time only
 * [x] New Surfline API
 * [ ] Dark Theme
+* [ ] Remove asset pipeline & process CSS w/ webpacker
+* [ ] Attempt switch to Preact
+* [ ] Attempt switch to JRuby or Rubinius for better concurrency
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
 * [ ] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
