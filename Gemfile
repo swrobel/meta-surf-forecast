@@ -8,7 +8,7 @@ gem 'rails', '~> 6.0.0'
 
 gem 'bootsnap'
 gem 'bootstrap', '~> 4.2'
-gem 'friendly_id', github: 'norman/friendly_id'
+gem 'friendly_id'
 gem 'oj'
 gem 'pg'
 gem 'puma'
@@ -16,7 +16,7 @@ gem 'react-rails'
 gem 'scenic'
 gem 'slim-rails'
 gem 'typhoeus'
-gem 'webpacker', github: 'swrobel/webpacker'
+gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'dotenv-rails'
