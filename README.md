@@ -51,9 +51,11 @@ Contributing new spots is easy! Make sure you're signed into your [Github accoun
     LA.save!
     ```
     You can get valid timezone names from [this list](https://gist.github.com/swrobel/77626ff3d4967ca65c3028dcb336d57a#file-gistfile1-md).
-1. Get the Spitcast spot id, slug (unique text id) & lat/lon data using [their spot list API](http://api.spitcast.com/api/county/spots/orange-county/) (you can change the county at the end of the URL). The slug is `spot_id_char` in their API.
-1. Go to the MagicSeaweed page for the spot you want to add. Their spot id is the number at the end of the url, ex: for `https://magicseaweed.com/Pipeline-Backdoor-Surf-Report/616/` the id is `616`.
-1. Go to the Surfline page for the spot you want to add. Their spot id is also at the end of the url, ex: for `https://www.surfline.com/surf-report/venice-breakwater/590927576a2e4300134fbed8` it's `590927576a2e4300134fbed8`.
+1. Use [this tool](https://boundingbox.klokantech.com/) to draw a bounding box around the area you want to find spots for.
+1. Choose CSV from the dropdown at the bottom & copy the coordinates string.
+1. Run `rails console`, then run `SpotFinder.new('{string}').formatted_spots`.
+1. Copy the output and paste it into the spots array in `seeds.rb`, then make sure to assign each spot to the right subregion & delete extraneous fields (`msw_name`, `match_type`, `distance`).
+1. If the spot is in California, get the Spitcast spot id & slug (unique text id) [their spot list API](http://api.spitcast.com/api/county/spots/orange-county/) (you can change the county at the end of the URL). The slug is `spot_id_char` in their API.
 1. It's strongly encouraged to add all spots for a particular county or region rather than just a single one. Be a pal!
 1. Submit a pull request and I'll get it on the site ASAP!
 
@@ -232,10 +234,9 @@ It took me a long time to land on a solution here, but I've finally settled on s
 * [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
 * [x] Support multiple timezones as opposed to Pacific Time only
 * [x] New Surfline API
+* [x] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
 * [ ] Dark Theme
 * [ ] Remove asset pipeline & process CSS w/ webpacker
 * [ ] Attempt switch to Preact
-* [ ] Attempt switch to JRuby or Rubinius for better concurrency
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
-* [ ] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)

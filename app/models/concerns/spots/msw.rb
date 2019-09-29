@@ -20,7 +20,7 @@ module Spots
       def msw_api_url
         raise "No MagicSeaweed spot associated with #{name} (#{id})" if msw_id.blank?
 
-        "http://magicseaweed.com/api/#{ENV['MSW_API_KEY']}/forecast?spot_id=#{msw_id}&units=us&fields=localTimestamp,solidRating,fadedRating,swell.absMinBreakingHeight,swell.absMaxBreakingHeight,swell.absHeight"
+        "#{::Msw.base_api_url}/forecast?spot_id=#{msw_id}&units=us&fields=localTimestamp,solidRating,fadedRating,swell.absMinBreakingHeight,swell.absMaxBreakingHeight,swell.absHeight"
       end
     end
   end
