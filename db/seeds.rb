@@ -59,6 +59,15 @@ ONS.save!
 OSS = Subregion.find_or_initialize_by(name: 'Oahu - South Shore', region: HI)
 OSS.assign_attributes(sort_order: 10, timezone: 'Hawaii')
 OSS.save!
+MNS = Subregion.find_or_initialize_by(name: 'Maui - North Shore', region: HI)
+MNS.assign_attributes(sort_order: 15, timezone: 'Hawaii')
+MNS.save!
+MNW = Subregion.find_or_initialize_by(name: 'Maui - Northwest', region: HI)
+MNW.assign_attributes(sort_order: 20, timezone: 'Hawaii')
+MNW.save!
+MSW = Subregion.find_or_initialize_by(name: 'Maui - Southwest', region: HI)
+MSW.assign_attributes(sort_order: 25, timezone: 'Hawaii')
+MSW.save!
 
 spots = [
   {
@@ -70,7 +79,7 @@ spots = [
     msw_slug: 'Refugio-State-Beach',
     spitcast_id: 620,
     spitcast_slug: 'refugio-goleta-ca',
-    name: 'Refugio'
+    name: 'Refugio',
   },
   {
     subregion: SBVC,
@@ -81,7 +90,7 @@ spots = [
     msw_slug: 'Sands-Beach',
     spitcast_id: 182,
     spitcast_slug: 'sands-isla-vista-ca',
-    name: 'Sands'
+    name: 'Sands',
   },
   {
     subregion: SBVC,
@@ -92,7 +101,7 @@ spots = [
     msw_slug: 'Devereux',
     spitcast_id: 181,
     spitcast_slug: 'devereux-isla-vista-ca',
-    name: 'Coal Oil Point/Devereux'
+    name: 'Coal Oil Point/Devereux',
   },
   {
     subregion: SBVC,
@@ -103,7 +112,7 @@ spots = [
     msw_slug: 'Campus-Point',
     spitcast_id: 179,
     spitcast_slug: 'campus-point-isla-vista-ca',
-    name: 'Campus Point'
+    name: 'Campus Point',
   },
   {
     subregion: SBVC,
@@ -114,7 +123,7 @@ spots = [
     msw_slug: 'Leadbetter-Beach',
     spitcast_id: 177,
     spitcast_slug: 'leadbetter-santa-barbara-ca',
-    name: 'Leadbetter'
+    name: 'Leadbetter',
   },
   {
     subregion: SBVC,
@@ -123,7 +132,7 @@ spots = [
     surfline_v1_id: 4998,
     msw_id: 2629,
     msw_slug: 'Sandspit',
-    name: 'Sandspit'
+    name: 'Sandspit',
   },
   {
     subregion: SBVC,
@@ -132,7 +141,7 @@ spots = [
     surfline_v1_id: 4999,
     msw_id: 271,
     msw_slug: 'Hammonds-Reef',
-    name: 'Hammonds'
+    name: 'Hammonds',
   },
   {
     subregion: SBVC,
@@ -141,7 +150,7 @@ spots = [
     surfline_v1_id: 5001,
     msw_id: 2701,
     msw_slug: 'Tarpits-Carpinteria-State-Beach',
-    name: 'Carpinteria/Tarpits'
+    name: 'Carpinteria/Tarpits',
   },
   {
     subregion: SBVC,
@@ -152,7 +161,7 @@ spots = [
     msw_slug: 'Rincon-Point',
     spitcast_id: 198,
     spitcast_slug: 'rincon-carpinteria-ca',
-    name: 'Rincon'
+    name: 'Rincon',
   },
   {
     subregion: SBVC,
@@ -161,7 +170,7 @@ spots = [
     surfline_v1_id: 4985,
     msw_id: 2672,
     msw_slug: 'Little-Rincon-Mussel-Shoals',
-    name: 'Mussel Shoals/Little Rincon'
+    name: 'Mussel Shoals/Little Rincon',
   },
   {
     subregion: SBVC,
@@ -170,7 +179,7 @@ spots = [
     surfline_v1_id: 4981,
     msw_id: 274,
     msw_slug: 'Pitas-Point-Faria-County-Park',
-    name: 'Pitas Point'
+    name: 'Pitas Point',
   },
   {
     subregion: SBVC,
@@ -179,7 +188,7 @@ spots = [
     surfline_v1_id: 49_737,
     spitcast_id: 193,
     spitcast_slug: 'mondos-ventura-ca',
-    name: 'Mondos'
+    name: 'Mondos',
   },
   {
     subregion: SBVC,
@@ -188,7 +197,7 @@ spots = [
     surfline_v1_id: 4989,
     msw_id: 2644,
     msw_slug: 'Solimar-Reef-and-Beach',
-    name: 'Solimar'
+    name: 'Solimar',
   },
   {
     subregion: SBVC,
@@ -199,7 +208,7 @@ spots = [
     msw_slug: 'Emma-Wood',
     spitcast_id: 191,
     spitcast_slug: 'emma-wood-ventura-ca',
-    name: 'Emma Wood'
+    name: 'Emma Wood',
   },
   {
     subregion: SBVC,
@@ -210,7 +219,7 @@ spots = [
     msw_slug: 'California-Street-C-Street',
     spitcast_id: 190,
     spitcast_slug: 'c-street-ventura-ca',
-    name: 'C Street'
+    name: 'C Street',
   },
   {
     subregion: SBVC,
@@ -219,7 +228,7 @@ spots = [
     surfline_v1_id: 4201,
     msw_id: 2632,
     msw_slug: 'New-Jetty-South-Jetty',
-    name: 'Ventura Harbor'
+    name: 'Ventura Harbor',
   },
   {
     subregion: SBVC,
@@ -228,7 +237,7 @@ spots = [
     surfline_v1_id: 4968,
     msw_id: 276,
     msw_slug: 'Silver-Strand',
-    name: 'Oxnard'
+    name: 'Oxnard',
   },
   {
     name: 'County Line',
@@ -402,7 +411,7 @@ spots = [
     msw_slug: 'Seal-Beach-Pier',
     spitcast_id: 222,
     spitcast_slug: 'seal-beach-pier-seal-beach-ca',
-    name: 'Seal Beach Pier'
+    name: 'Seal Beach Pier',
   },
   {
     subregion: NOC,
@@ -411,7 +420,7 @@ spots = [
     surfline_v1_id: 4865,
     msw_id: 2599,
     msw_slug: '13th-Street',
-    name: '13th St Seal Beach'
+    name: '13th St Seal Beach',
   },
   {
     subregion: NOC,
@@ -422,7 +431,7 @@ spots = [
     msw_slug: 'Surfside-Jetty',
     spitcast_id: 602,
     spitcast_slug: 'surfside-jetty-north-coast-ca',
-    name: 'Surfside Jetty'
+    name: 'Surfside Jetty',
   },
   {
     subregion: NOC,
@@ -431,7 +440,7 @@ spots = [
     surfline_v1_id: 4219,
     spitcast_id: 603,
     spitcast_slug: 'anderson-st-north-coast-ca',
-    name: 'Anderson St'
+    name: 'Anderson St',
   },
   {
     subregion: NOC,
@@ -442,7 +451,7 @@ spots = [
     msw_slug: 'Bolsa-Chica',
     spitcast_id: 604,
     spitcast_slug: 'bolsa-chica-huntington-beach-ca',
-    name: 'Bolsa Chica'
+    name: 'Bolsa Chica',
   },
   {
     subregion: NOC,
@@ -453,7 +462,7 @@ spots = [
     msw_slug: 'Goldenwest',
     spitcast_id: 220,
     spitcast_slug: 'goldenwest-huntington-beach-ca',
-    name: 'Goldenwest'
+    name: 'Goldenwest',
   },
   {
     subregion: NOC,
@@ -462,7 +471,7 @@ spots = [
     surfline_v1_id: 4871,
     spitcast_id: 605,
     spitcast_slug: '17th-street-huntington-beach-ca',
-    name: '17th St Huntington'
+    name: '17th St Huntington',
   },
   {
     subregion: NOC,
@@ -473,7 +482,7 @@ spots = [
     msw_slug: 'Huntington-Pier',
     spitcast_id: 221,
     spitcast_slug: 'huntington-pier-huntington-beach-ca',
-    name: 'Huntington Pier'
+    name: 'Huntington Pier',
   },
   {
     subregion: NOC,
@@ -482,7 +491,7 @@ spots = [
     surfline_v1_id: 4875,
     spitcast_id: 643,
     spitcast_slug: 'huntington-beach-huntington-beach-ca',
-    name: 'Huntington State Beach'
+    name: 'Huntington State Beach',
   },
   {
     subregion: NOC,
@@ -491,7 +500,7 @@ spots = [
     surfline_v1_id: 103_681,
     msw_id: 2577,
     msw_slug: 'Santa-Ana-River-Jetties',
-    name: 'Santa Ana River Jetties'
+    name: 'Santa Ana River Jetties',
   },
   {
     subregion: NOC,
@@ -502,7 +511,7 @@ spots = [
     msw_slug: 'Newport-Beach',
     spitcast_id: 219,
     spitcast_slug: '56th-street-newport-beach-ca',
-    name: '56th St Newport Beach'
+    name: '56th St Newport Beach',
   },
   {
     subregion: NOC,
@@ -511,7 +520,7 @@ spots = [
     surfline_v1_id: 4225,
     spitcast_id: 607,
     spitcast_slug: '40th-street-newport-beach-ca',
-    name: '40th Street'
+    name: '40th Street',
   },
   {
     subregion: NOC,
@@ -522,7 +531,7 @@ spots = [
     msw_slug: '36th-St-Newport',
     spitcast_id: 608,
     spitcast_slug: '36th-street-newport-beach-ca',
-    name: '36th Street'
+    name: '36th Street',
   },
   {
     subregion: NOC,
@@ -533,7 +542,7 @@ spots = [
     msw_slug: 'Blackies',
     spitcast_id: 651,
     spitcast_slug: 'blackies-newport-beach-ca',
-    name: 'Blackies'
+    name: 'Blackies',
   },
   {
     subregion: NOC,
@@ -542,7 +551,7 @@ spots = [
     surfline_v1_id: 4227,
     spitcast_id: 609,
     spitcast_slug: 'newport-pier-newport-beach-ca',
-    name: 'Newport Pier'
+    name: 'Newport Pier',
   },
   {
     subregion: NOC,
@@ -553,7 +562,7 @@ spots = [
     msw_slug: 'The-Wedge',
     spitcast_id: 217,
     spitcast_slug: 'the-wedge-newport-beach-ca',
-    name: 'The Wedge'
+    name: 'The Wedge',
   },
   {
     subregion: NOC,
@@ -562,7 +571,7 @@ spots = [
     surfline_v1_id: 4879,
     msw_id: 2579,
     msw_slug: 'Corona-Del-Mar-Jetty',
-    name: 'Corona Del Mar'
+    name: 'Corona Del Mar',
   },
   {
     subregion: SOC,
@@ -573,7 +582,7 @@ spots = [
     msw_slug: 'Salt-Creek',
     spitcast_id: 214,
     spitcast_slug: 'salt-creek-dana-point-ca',
-    name: 'Salt Creek'
+    name: 'Salt Creek',
   },
   {
     subregion: SOC,
@@ -582,7 +591,7 @@ spots = [
     surfline_v1_id: 4849,
     msw_id: 4040,
     msw_slug: 'Strands-Point',
-    name: 'Strands'
+    name: 'Strands',
   },
   {
     subregion: SOC,
@@ -593,7 +602,7 @@ spots = [
     msw_slug: 'Doheny-State-Beach',
     spitcast_id: 213,
     spitcast_slug: 'doheny-dana-point-ca',
-    name: 'Doheny'
+    name: 'Doheny',
   },
   {
     subregion: SOC,
@@ -603,7 +612,7 @@ spots = [
     msw_slug: 'San-Clemente-Pier',
     spitcast_id: 212,
     spitcast_slug: 'san-clemente-pier-san-clemente-ca',
-    name: 'San Clemente Pier'
+    name: 'San Clemente Pier',
   },
   {
     subregion: SOC,
@@ -614,7 +623,7 @@ spots = [
     msw_slug: 'T-Street-Trafalgar-Street',
     spitcast_id: 211,
     spitcast_slug: 't-street-san-clemente-ca',
-    name: 'T Street'
+    name: 'T Street',
   },
   {
     subregion: SOC,
@@ -623,7 +632,7 @@ spots = [
     surfline_v1_id: 4843,
     spitcast_id: 392,
     spitcast_slug: 'state-park-san-clemente-ca',
-    name: 'San Clemente State Beach'
+    name: 'San Clemente State Beach',
   },
   {
     subregion: SOC,
@@ -632,7 +641,7 @@ spots = [
     surfline_v1_id: 4737,
     spitcast_id: 209,
     spitcast_slug: 'cottons-point-san-clemente-ca',
-    name: 'Cottons'
+    name: 'Cottons',
   },
   {
     subregion: SOC,
@@ -641,7 +650,7 @@ spots = [
     surfline_v1_id: 4738,
     spitcast_id: 623,
     spitcast_slug: 'upper-trestles-san-clemente-ca',
-    name: 'Upper Trestles'
+    name: 'Upper Trestles',
   },
   {
     subregion: SOC,
@@ -652,7 +661,7 @@ spots = [
     msw_slug: 'Trestles',
     spitcast_id: 208,
     spitcast_slug: 'lower-trestles-san-clemente-ca',
-    name: 'Lower Trestles'
+    name: 'Lower Trestles',
   },
   {
     subregion: SOC,
@@ -661,7 +670,7 @@ spots = [
     surfline_v1_id: 4741,
     spitcast_id: 625,
     spitcast_slug: 'church-san-clemente-ca',
-    name: 'Church'
+    name: 'Church',
   },
   {
     subregion: SOC,
@@ -672,7 +681,7 @@ spots = [
     msw_slug: 'San-Onofre',
     spitcast_id: 239,
     spitcast_slug: 'san-onofre-san-clemente-ca',
-    name: 'San Onofre'
+    name: 'San Onofre',
   },
   {
     subregion: SOC,
@@ -681,7 +690,7 @@ spots = [
     surfline_v1_id: 4736,
     msw_id: 2600,
     msw_slug: 'Trails',
-    name: 'Trails'
+    name: 'Trails',
   },
   {
     subregion: NSD,
@@ -690,7 +699,7 @@ spots = [
     surfline_v1_id: 4238,
     spitcast_id: 238,
     spitcast_slug: 'oceanside-harbor-oceanside-ca',
-    name: 'Oceanside Harbor'
+    name: 'Oceanside Harbor',
   },
   {
     subregion: NSD,
@@ -701,7 +710,7 @@ spots = [
     msw_slug: 'Oceanside',
     spitcast_id: 594,
     spitcast_slug: 'oceanside-pier-oceanside-ca',
-    name: 'Oceanside Pier'
+    name: 'Oceanside Pier',
   },
   {
     subregion: NSD,
@@ -712,7 +721,7 @@ spots = [
     msw_slug: 'Carlsbad',
     spitcast_id: 237,
     spitcast_slug: 'tamarack-carlsbad-ca',
-    name: 'Tamarack'
+    name: 'Tamarack',
   },
   {
     subregion: NSD,
@@ -721,7 +730,7 @@ spots = [
     surfline_v1_id: 4775,
     spitcast_id: 597,
     spitcast_slug: 'terra-mar-carlsbad-ca',
-    name: 'Terra Mar'
+    name: 'Terra Mar',
   },
   {
     subregion: NSD,
@@ -732,7 +741,7 @@ spots = [
     msw_slug: 'Ponto',
     spitcast_id: 236,
     spitcast_slug: 'ponto-carlsbad-ca',
-    name: 'Ponto'
+    name: 'Ponto',
   },
   {
     subregion: NSD,
@@ -743,7 +752,7 @@ spots = [
     msw_slug: 'Grandview',
     spitcast_id: 400,
     spitcast_slug: 'grandview-encinitas-ca',
-    name: 'Grandview'
+    name: 'Grandview',
   },
   {
     subregion: NSD,
@@ -754,7 +763,7 @@ spots = [
     msw_slug: 'Beacons',
     spitcast_id: 235,
     spitcast_slug: 'beacons-encinitas-ca',
-    name: 'Beacons'
+    name: 'Beacons',
   },
   {
     subregion: NSD,
@@ -765,7 +774,7 @@ spots = [
     msw_slug: 'Beacons',
     spitcast_id: 235,
     spitcast_slug: 'beacons-encinitas-ca',
-    name: 'Beacons'
+    name: 'Beacons',
   },
   {
     subregion: NSD,
@@ -776,7 +785,7 @@ spots = [
     msw_slug: 'Moonlight',
     spitcast_id: 401,
     spitcast_slug: 'd-street-encinitas-ca',
-    name: 'D Street'
+    name: 'D Street',
   },
   {
     subregion: NSD,
@@ -787,7 +796,7 @@ spots = [
     msw_slug: 'Swamis',
     spitcast_id: 234,
     spitcast_slug: 'swamis-encinitas-ca',
-    name: 'Swamis'
+    name: 'Swamis',
   },
   {
     subregion: NSD,
@@ -798,7 +807,7 @@ spots = [
     msw_slug: 'Cardiff-Reef',
     spitcast_id: 232,
     spitcast_slug: 'cardiff-reef-cardiff-ca',
-    name: 'Cardiff Reef'
+    name: 'Cardiff Reef',
   },
   {
     subregion: NSD,
@@ -807,7 +816,7 @@ spots = [
     surfline_v1_id: 4787,
     msw_id: 294,
     msw_slug: 'Solana-Beach',
-    name: 'Seaside Reef'
+    name: 'Seaside Reef',
   },
   {
     subregion: NSD,
@@ -816,7 +825,7 @@ spots = [
     surfline_v1_id: 4785,
     msw_id: 4663,
     msw_slug: 'Cardiff-Reef',
-    name: 'Del Mar Rivermouth'
+    name: 'Del Mar Rivermouth',
   },
   {
     subregion: NSD,
@@ -827,7 +836,7 @@ spots = [
     msw_slug: 'Del-Mar',
     spitcast_id: 230,
     spitcast_slug: '15th-street-del-mar-ca',
-    name: '15th Street Del Mar'
+    name: '15th Street Del Mar',
   },
   {
     subregion: SSD,
@@ -836,7 +845,7 @@ spots = [
     surfline_v1_id: 107_951,
     spitcast_id: 754,
     spitcast_slug: 'torrey-pines-state-beach-la-jolla-ca',
-    name: 'Torrey Pines State Beach'
+    name: 'Torrey Pines State Beach',
   },
   {
     subregion: SSD,
@@ -847,7 +856,7 @@ spots = [
     msw_slug: 'Torrey-Pines-Blacks-Beach',
     spitcast_id: 229,
     spitcast_slug: 'blacks-beach-la-jolla-ca',
-    name: 'Blacks'
+    name: 'Blacks',
   },
   {
     subregion: SSD,
@@ -858,7 +867,7 @@ spots = [
     msw_slug: 'Scripps-Pier-La-Jolla',
     spitcast_id: 228,
     spitcast_slug: 'scripps-pier-la-jolla-ca',
-    name: 'Scripps Pier'
+    name: 'Scripps Pier',
   },
   {
     subregion: SSD,
@@ -867,7 +876,7 @@ spots = [
     surfline_v1_id: 4247,
     msw_id: 4210,
     msw_slug: 'Horseshoe',
-    name: 'Horseshoe'
+    name: 'Horseshoe',
   },
   {
     subregion: SSD,
@@ -878,7 +887,7 @@ spots = [
     msw_slug: 'Windansea',
     spitcast_id: 227,
     spitcast_slug: 'windansea-la-jolla-ca',
-    name: 'Windansea'
+    name: 'Windansea',
   },
   {
     subregion: SSD,
@@ -889,7 +898,7 @@ spots = [
     msw_slug: 'Birdrock',
     spitcast_id: 398,
     spitcast_slug: 'bird-rock-la-jolla-ca',
-    name: 'Bird Rock'
+    name: 'Bird Rock',
   },
   {
     subregion: SSD,
@@ -898,7 +907,7 @@ spots = [
     surfline_v1_id: 4804,
     spitcast_id: 399,
     spitcast_slug: 'tourmaline-san-diego-ca',
-    name: 'Tourmaline'
+    name: 'Tourmaline',
   },
   {
     subregion: SSD,
@@ -909,7 +918,7 @@ spots = [
     msw_slug: 'Pacific-Beach',
     spitcast_id: 226,
     spitcast_slug: 'pacific-beach-san-diego-ca',
-    name: 'Pacific Beach'
+    name: 'Pacific Beach',
   },
   {
     subregion: SSD,
@@ -920,7 +929,7 @@ spots = [
     msw_slug: 'Mission-Beach',
     spitcast_id: 397,
     spitcast_slug: 'mission-beach-san-diego-ca',
-    name: 'Mission Beach'
+    name: 'Mission Beach',
   },
   {
     subregion: SSD,
@@ -931,7 +940,7 @@ spots = [
     msw_slug: 'Ocean-beach',
     spitcast_id: 225,
     spitcast_slug: 'ocean-beach-pier-san-diego-ca',
-    name: 'Ocean Beach Pier'
+    name: 'Ocean Beach Pier',
   },
   {
     subregion: SSD,
@@ -942,7 +951,7 @@ spots = [
     msw_slug: 'Sunset-Cliffs',
     spitcast_id: 224,
     spitcast_slug: 'sunset-cliffs-san-diego-ca',
-    name: 'Sunset Cliffs'
+    name: 'Sunset Cliffs',
   },
   {
     subregion: SSD,
@@ -953,7 +962,7 @@ spots = [
     msw_slug: 'Imperial-Beach',
     spitcast_id: 223,
     spitcast_slug: 'imperial-beach-ca',
-    name: 'Imperial Beach'
+    name: 'Imperial Beach',
   },
   {
     name: 'Ocean Beach',
@@ -1121,7 +1130,7 @@ spots = [
     surfline_v1_id: '10847',
     msw_id: '3082',
     msw_slug: 'Barbers-Point',
-    name: 'Barbers Point'
+    name: 'Barbers Point',
   },
   {
     subregion: OSS,
@@ -1130,7 +1139,7 @@ spots = [
     surfline_v1_id: '5538',
     msw_id: '661',
     msw_slug: 'Ala-Moana',
-    name: 'Ala Moana Bowls'
+    name: 'Ala Moana Bowls',
   },
   {
     subregion: OSS,
@@ -1139,14 +1148,14 @@ spots = [
     surfline_v1_id: '55536',
     msw_id: '662',
     msw_slug: 'Queens-Canoes-Waikiki',
-    name: 'Waikiki'
+    name: 'Waikiki',
   },
   {
     subregion: OSS,
     lon: '-157.8264892667491',
     lat: '21.27296681970422',
     surfline_v1_id: '5531',
-    name: "Queen's"
+    name: "Queen's",
   },
   {
     subregion: OSS,
@@ -1155,8 +1164,138 @@ spots = [
     surfline_v1_id: '4760',
     msw_id: '4697',
     msw_slug: 'Diamond-Head',
-    name: 'Diamond Head'
-  }
+    name: 'Diamond Head',
+  },
+  { subregion: MNW,
+    name: 'Honokohau Bay',
+    msw_id: 2782,
+    lat: 21.0228,
+    lon: -156.61,
+    surfline_v1_id: 10_815,
+    surfline_v2_id: '5842041f4e65fad6a7708de7' },
+  { subregion: MNW,
+    name: 'Windmills', msw_id: 1274, lat: 21.0239, lon: -156.628 },
+  { subregion: MNW,
+    name: 'Honolua Bay',
+    msw_id: 697,
+    lat: 21.0159,
+    lon: -156.641,
+    surfline_v1_id: 10_814,
+    surfline_v2_id: '5842041f4e65fad6a7708de4' },
+  { subregion: MNW,
+    name: 'Little Makaha', msw_id: 2780, lat: 20.9972, lon: -156.668 },
+  { subregion: MNW,
+    name: 'Rainbows',
+    msw_id: 2966,
+    lat: 20.9468,
+    lon: -156.694,
+    surfline_v1_id: 10_812,
+    surfline_v2_id: '5842041f4e65fad6a7708de3' },
+  { subregion: MNW,
+    name: 'Lahaina Harbor/Breakwall',
+    msw_id: 4287,
+    lat: 20.8705,
+    lon: -156.6797,
+    surfline_v1_id: 5528,
+    surfline_v2_id: '5842041f4e65fad6a7708b37' },
+  { subregion: MNW,
+    name: 'Olowalu',
+    msw_id: 4928,
+    lat: 20.808,
+    lon: -156.624,
+    surfline_v1_id: 10_809,
+    surfline_v2_id: '5842041f4e65fad6a7708de0' },
+  { subregion: MNW,
+    name: "Ma'alaea Harbor",
+    msw_id: 618,
+    lat: 20.7895,
+    lon: -156.511,
+    surfline_v1_id: 7443,
+    surfline_v2_id: '5842041f4e65fad6a7708da5' },
+  { subregion: MNS,
+    name: 'Kahului Harbor',
+    msw_id: 4927,
+    lat: 20.904,
+    lon: -156.463,
+    surfline_v1_id: 10_816,
+    surfline_v2_id: '5842041f4e65fad6a7708de6' },
+  { subregion: MNS,
+    name: 'Kanaha',
+    msw_id: 4926,
+    lat: 20.905,
+    lon: -156.442,
+    surfline_v1_id: 10_813,
+    surfline_v2_id: '5842041f4e65fad6a7708de5' },
+  { subregion: MNS,
+    name: 'Tavares Bay',
+    msw_id: 4925,
+    lat: 20.922,
+    lon: -156.374,
+    surfline_v1_id: 108_155,
+    surfline_v2_id: '584204204e65fad6a770999d' },
+  { subregion: MNS,
+    name: "Ho'okipa",
+    msw_id: 1244,
+    lat: 20.9357,
+    lon: -156.359,
+    msw_name: 'Hookipa',
+    match_type: :distance,
+    distance: 0.0002999999999993008,
+    surfline_v1_id: 10_817,
+    surfline_v2_id: '5842041f4e65fad6a7708de8' },
+  { subregion: MNS,
+    name: 'Pavilions', msw_id: 2785, lat: 20.9374, lon: -156.356 },
+  { subregion: MNS,
+    name: 'Peahi/Jaws',
+    msw_id: 617,
+    lat: 20.945,
+    lon: -156.298,
+    surfline_v1_id: 10_818,
+    surfline_v2_id: '5842041f4e65fad6a7708de9' },
+  { subregion: MNS,
+    name: 'Honomanu Bay',
+    msw_id: 4924,
+    lat: 20.866,
+    lon: -156.166,
+    surfline_v1_id: 10_819,
+    surfline_v2_id: '5842041f4e65fad6a7708deb' },
+  { subregion: MNS,
+    name: 'Hana Bay',
+    msw_id: 4923,
+    lat: 20.76,
+    lon: -155.983,
+    surfline_v1_id: 10_820,
+    surfline_v2_id: '5842041f4e65fad6a7708dea' },
+  { subregion: MSW,
+    name: 'The Cove',
+    msw_id: 4929,
+    lat: 20.728,
+    lon: -156.453,
+    surfline_v1_id: 10_810,
+    surfline_v2_id: '5842041f4e65fad6a7708de1' },
+  { subregion: MSW,
+    name: 'Oneuli Beach', msw_id: 5876, lat: 20.6412, lon: -156.4462 },
+  { subregion: MSW,
+    name: 'Makena Beach',
+    msw_id: 5875,
+    lat: 20.632,
+    lon: -156.4473,
+    surfline_v1_id: 5520,
+    surfline_v2_id: '5842041f4e65fad6a7708b2a' },
+  { subregion: MSW,
+    name: 'Aluhi Bay/Dumps',
+    msw_id: 3668,
+    lat: 20.6124,
+    lon: -156.438,
+    surfline_v1_id: 5521,
+    surfline_v2_id: '5842041f4e65fad6a7708b2b' },
+  { subregion: MSW,
+    name: 'La Perouse Bay',
+    msw_id: 4930,
+    lat: 20.591,
+    lon: -156.415,
+    surfline_v1_id: 10_811,
+    surfline_v2_id: '5842041f4e65fad6a7708de2' },
 ]
 
 spots.each do |spot_data|
