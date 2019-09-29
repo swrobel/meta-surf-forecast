@@ -12,7 +12,7 @@ class SurflineV2 < Forecast
           'Accept-Language' => 'en-US,en;q=0.5',
           'Authorization' => 'Basic NWM1OWU3YzNmMGI2Y2IxYWQwMmJhZjY2OnNrX1FxWEpkbjZOeTVzTVJ1MjdBbWcz',
           'content-type' => 'application/x-www-form-urlencoded',
-          'credentials' => 'same-origin'
+          'credentials' => 'same-origin',
         }
         response = Typhoeus.post("#{SurflineV2.base_api_url}/trusted/token?isShortLived=false", headers: headers, body: body)
         raise "Surfline access token refresh error: #{response.body}" unless response.success?

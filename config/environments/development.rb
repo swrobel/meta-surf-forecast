@@ -18,7 +18,7 @@ Rails.application.configure do
   config.action_controller.enable_fragment_cache_logging = true
 
   config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{2.days.to_i}"
+    'Cache-Control' => "public, max-age=#{2.days.to_i}",
   }
 
   # Store uploaded files on the local file system (see config/storage.yml for options).

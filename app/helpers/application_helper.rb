@@ -94,7 +94,7 @@ module ApplicationHelper
         max: '9BFFFF',
         avg: '54EAEA',
         min: '00D3D3',
-      }
+      },
     }
     "##{colors[rating][series]}"
   end

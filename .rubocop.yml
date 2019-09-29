@@ -62,8 +62,15 @@ Style/Documentation:
 Style/FormatStringToken:
   Enabled: false
 
+Style/NumericLiterals:
+  Exclude:
+    - db/seeds.rb
+
 Style/TrailingCommaInArrayLiteral:
-  Enabled: false
+  EnforcedStyleForMultiline: comma
 
 Style/TrailingCommaInHashLiteral:
-  Enabled: false
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma

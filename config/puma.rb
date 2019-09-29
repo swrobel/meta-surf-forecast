@@ -10,7 +10,7 @@ if Rails.env.development?
   plugin :tmp_restart
 
   after_worker_boot do
-    title = 'LifeWork server started'
+    title = 'MetaSurf server started'
     defined?(TerminalNotifier) && TerminalNotifier::Guard.success('', title: title)
     defined?(Libnotify) && Libnotify.show(summary: title)
     # Trick Webpack into reloading browser
