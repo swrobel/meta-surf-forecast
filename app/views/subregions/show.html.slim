@@ -11,7 +11,7 @@ nav.navbar.navbar-light.fixed-top
             option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
 .subregion-container.safe-padding
   - @spots.each do |meta, forecasts|
-    - cache [EXPIRE_ON_UPDATE_KEY, :spot_chart, meta[:spot_id]]
+    - cache [EXPIRE_ON_UPDATE_KEY, :spot_chart, meta[:spot_id], meta[:spot_updated_at]]
       - from = forecasts.find_index { |p| p[:timestamp].monday? && p[:timestamp].hour < 3 }
       - from && to = forecasts[from..-1].find_index { |p| p[:timestamp].sunday? && p[:timestamp].hour > 20 }
       - to ? to += from : to = forecasts.size
