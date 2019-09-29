@@ -25,44 +25,52 @@
       thead.thead-light
         tr
           th
-          th.border-left(colspan=2)= spitcast_link(@spot.spitcast_url)
-          th.border-left(colspan=2)= msw_link(@spot.msw_url)
+          - if @spot.spitcasts.any?
+            th.border-left(colspan=2)= spitcast_link(@spot.spitcast_url)
+          - if @spot.msws.any?
+            th.border-left(colspan=2)= msw_link(@spot.msw_url)
           - if @spot.surfline_nearshores.any?
             th.border-left(colspan=3)
               = surfline_link(@spot.surfline_url, 'Nearshore')
           - if @spot.surfline_lolas.any?
             th.border-left(colspan=3)
               = surfline_link(@spot.surfline_url, 'LOLA')
-          th.border-left(colspan=3)
-            = surfline_link(@spot.surfline_v2_url, 'v2')
+          - if @spot.surfline_v2s.any?
+            th.border-left(colspan=3)
+              = surfline_link(@spot.surfline_v2_url, 'v2')
         tr
           th Time
-          th.border-left Height
-          th Rating
-          th.border-left Height
-          th Rating
+          - if @spot.spitcasts.any?
+            th.border-left Height
+            th Rating
+          - if @spot.msws.any?
+            th.border-left Height
+            th Rating
           - [@spot.surfline_nearshores.any?, @spot.surfline_lolas.any?].count(true).times do
             th.border-left Height
             th Rating
             th Optimal Wind?
-          th.border-left Height
-          th Surf
-          th Wind
+          - if @spot.surfline_v2s.any?
+            th.border-left Height
+            th Surf
+            th Wind
 
       tbody
         - @timestamps.each do |timestamp|
           tr
             td.text-xs-left= timestamp.strftime('%A %b %e, %l:%M%P')
-            - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
-            = render partial: 'cell', locals: { cls: 'border-left', forecast: spitcast, value: ("#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)) }
-            = render partial: 'cell', locals: { forecast: spitcast, value: spitcast.try(:rating) }
+            - if @spot.spitcasts.any?
+              - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
+              = render partial: 'cell', locals: { cls: 'border-left', forecast: spitcast, value: ("#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)) }
+              = render partial: 'cell', locals: { forecast: spitcast, value: spitcast.try(:rating) }
 
-            - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
-            = render partial: 'cell', locals: { cls: 'border-left', forecast: msw, value: height_range(msw.try(:min_height), msw.try(:max_height)) }
-            = render partial: 'cell', locals: { forecast: msw, value: msw.try(:rating) }
+            - if @spot.msws.any?
+              - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
+              = render partial: 'cell', locals: { cls: 'border-left', forecast: msw, value: height_range(msw.try(:min_height), msw.try(:max_height)) }
+              = render partial: 'cell', locals: { forecast: msw, value: msw.try(:rating) }
 
             = render partial: 'surfline_v1', locals: { forecast: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_nearshores.any?
 
             = render partial: 'surfline_v1', locals: { forecast: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_lolas.any?
 
-            = render partial: 'surfline_v2', locals: { forecast: @spot.surfline_v2s.select{|x| x.timestamp == timestamp}.first }
+            = render partial: 'surfline_v2', locals: { forecast: @spot.surfline_v2s.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_v2s.any?
