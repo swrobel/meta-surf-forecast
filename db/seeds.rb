@@ -68,6 +68,10 @@ MNW.save!
 MSW = Subregion.find_or_initialize_by(name: 'Maui - Southwest', region: HI)
 MSW.assign_attributes(sort_order: 25, timezone: 'Hawaii')
 MSW.save!
+NY = Region.find_or_create_by(name: 'New York', sort_order: 16)
+ROC = Subregion.find_or_initialize_by(name: 'Rockaways', region: NY)
+ROC.timezone = 'Eastern Time (US & Canada)'
+ROC.save!
 
 spots = [
   {
@@ -1293,6 +1297,14 @@ spots = [
     lon: -156.415,
     surfline_v1_id: 10811,
     surfline_v2_id: '5842041f4e65fad6a7708de2' },
+  {
+    subregion: ROC,
+    name: '77th St. Rockaways',
+    lat: 40.58342841721757,
+    lon: -73.81182253360748,
+    surfline_v1_id: 137586,
+    surfline_v2_id: '584204214e65fad6a7709d0a',
+  },
 ]
 
 spots.each do |spot_data|
