@@ -8,7 +8,8 @@ namespace :surfline_v1 do
     start_time = Time.current
     Rails.logger.info 'Updating Surfline v1 data...'
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: 3)
+    # pipelining 1 means HTTP/1 pipelining https://curl.haxx.se/libcurl/c/CURLMOPT_PIPELINING.html
+    hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency, pipelining: 1)
 
     Subregion.all.each do |subregion|
       get_all_spots = subregion.spots.size > 1

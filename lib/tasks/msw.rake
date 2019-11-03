@@ -8,7 +8,8 @@ namespace :msw do
     start_time = Time.current
     Rails.logger.info 'Updating MagicSeaweed data...'
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
+    # pipelining 1 means HTTP/1 pipelining https://curl.haxx.se/libcurl/c/CURLMOPT_PIPELINING.html
+    hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency, pipelining: 1)
 
     Spot.where.not(msw_id: nil).each do |spot|
       ApiRequest.new(batch: @batch, requestable: spot, service: Msw, hydra: hydra, typhoeus_opts: { cookie: "MSW_session=#{ENV['MSW_SESSION_ID']}" }).get

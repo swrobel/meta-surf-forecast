@@ -15,7 +15,7 @@ class ApiRequest < ApplicationRecord
 
   def get(retries: 0)
     self.request ||= requestable.send(service_url_method)
-    call = Typhoeus::Request.new(request, typhoeus_opts.merge(followlocation: true))
+    call = Typhoeus::Request.new(request, typhoeus_opts.merge(followlocation: true, http_version: :httpv2_0))
 
     call.on_complete do |response|
       if response.success?
