@@ -5,7 +5,7 @@ class ApiRequest < ApplicationRecord
 
   after_initialize :set_defaults
 
-  belongs_to :batch, class_name: 'UpdateBatch', counter_cache: :requests_count
+  belongs_to :batch, class_name: 'UpdateBatch', counter_cache: :requests_count, optional: true
   belongs_to :requestable, polymorphic: true
 
   include ApiRequests::Msw
