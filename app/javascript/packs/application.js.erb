@@ -1,9 +1,15 @@
+import bugsnag from '@bugsnag/js'
+import bugsnagReact from '@bugsnag/plugin-react'
+
 // Support component names relative to this directory:
 const componentRequireContext = require.context("components", true)
 const ReactRailsUJS = require("react_ujs")
 ReactRailsUJS.useContext(componentRequireContext)
 
 const Headroom = require("headroom.js")
+
+window.bugsnagClient = bugsnag({ apiKey: '<%= ENV['BUGSNAG_FRONTEND'] %>', releaseStage: '<%= Rails.env %>', notifyReleaseStages: <%= NOTIFY_RELEASE_STAGES %>, appVersion: '<%= ENV['HEROKU_RELEASE_VERSION'] || 'dev' %>', logger: null })
+window.bugsnagClient.use(bugsnagReact, React)
 
 document.addEventListener("DOMContentLoaded", function() {
   const navbar = document.querySelector(".navbar")

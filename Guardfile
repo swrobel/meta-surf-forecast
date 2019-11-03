@@ -30,6 +30,6 @@ guard :shell, first_match: true do
   watch(%r{(config/locales/.+)|^app\/(views\/.+\/[^\/]*\.(?:erb|haml|slim))$}) do |m|
     p "#{m[0]} has changed. Reloading."
     # Trick Webpack into reloading browser
-    `touch app/javascript/packs/application.js`
+    `touch app/javascript/packs/application.js.erb`
   end
 end

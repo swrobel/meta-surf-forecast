@@ -86,8 +86,13 @@ const SpotChart = props => {
       },
     },
   }
+  const ErrorBoundary = window.bugsnagClient.getPlugin('react')
 
-  return(<HighchartsReact options={options} highcharts={Highcharts}></HighchartsReact>)
+  return(
+    <ErrorBoundary>
+      <HighchartsReact options={options} highcharts={Highcharts}></HighchartsReact>
+    </ErrorBoundary>
+  )
 }
 
 export default SpotChart

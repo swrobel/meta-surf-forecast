@@ -14,7 +14,7 @@ if Rails.env.development?
     defined?(TerminalNotifier) && TerminalNotifier::Guard.success('', title: title)
     defined?(Libnotify) && Libnotify.show(summary: title)
     # Trick Webpack into reloading browser
-    `touch app/javascript/packs/application.js`
+    `touch app/javascript/packs/application.js.erb`
   end
 else
   preload_app!

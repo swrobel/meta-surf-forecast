@@ -62,6 +62,9 @@ Style/Documentation:
 Style/FormatStringToken:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/NumericLiterals:
   Exclude:
     - db/seeds.rb

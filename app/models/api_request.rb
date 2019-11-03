@@ -19,10 +19,12 @@ class ApiRequest < ApplicationRecord
 
     call.on_complete do |response|
       if response.success?
-        data = JSON.parse(response.body)
-        self.attributes = { response: data, success: true, response_time: response.total_time }
-        save!
-        send(service_parse_method)
+        safely do # Handle malformed JSON, which raises
+          data = JSON.parse(response.body)
+          self.attributes = { response: data, success: true, response_time: response.total_time }
+          save!
+          send(service_parse_method)
+        end
       else
         self.attributes = { response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, response_time: response.total_time }
         save!
