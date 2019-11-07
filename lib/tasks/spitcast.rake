@@ -8,8 +8,7 @@ namespace :spitcast do
     start_time = Time.current
     Rails.logger.info 'Updating Spitcast data...'
 
-    # pipelining 1 means HTTP/1 pipelining https://curl.haxx.se/libcurl/c/CURLMOPT_PIPELINING.html
-    hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency, pipelining: 1)
+    hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
 
     Spot.where.not(spitcast_id: nil).each do |spot|
       ApiRequest.new(batch: @batch, requestable: spot, service: Spitcast, hydra: hydra).get
