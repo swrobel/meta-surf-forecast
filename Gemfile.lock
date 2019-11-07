@@ -1,6 +1,7 @@
 GIT
-  remote: https://github.com/rails/webpacker.git
-  revision: 23d5fdd66b0184ac08fb0fce855c813b4a3ee36d
+  remote: https://github.com/LuanGB/webpacker.git
+  revision: 0c7a9f750ddf3a4fd9a6ad9f91331c80b15c20fd
+  branch: webpacker-clean_with_hashes_on_manifest
   specs:
     webpacker (4.0.7)
       activesupport (>= 4.2)

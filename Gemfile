@@ -18,7 +18,7 @@ gem 'safely_block'
 gem 'scenic'
 gem 'slim-rails'
 gem 'typhoeus'
-gem 'webpacker', github: 'rails/webpacker'
+gem 'webpacker', github: 'LuanGB/webpacker', branch: 'webpacker-clean_with_hashes_on_manifest'
 
 group :development, :test do
   gem 'dotenv-rails'
