@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-# frozen_string_literal: true
-
 require 'action_dispatch/middleware/static'
 
 ActionDispatch::FileHandler.class_eval do
