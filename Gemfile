@@ -42,5 +42,6 @@ end
 group :production do
   gem 'hiredis'
   gem 'newrelic_rpm'
+  gem 'rack-brotli'
   gem 'redis'
 end
