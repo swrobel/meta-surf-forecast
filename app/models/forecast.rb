@@ -5,9 +5,12 @@ class Forecast < ApplicationRecord
 
   belongs_to :api_request
   belongs_to :spot
+  has_one :subregion, through: :spot
 
-  scope :current, -> { where(timestamp: Time.now.utc..(Time.now.utc + 1.month)).where(updated_at: (Time.now.utc - 1.day)..Time.now.utc) }
+  scope :current, -> { joins(:subregion).where("timestamp >= now() at time zone subregions.timezone AND timestamp <= now() at time zone subregions.timezone + interval '1 month' AND #{table_name}.updated_at >= now() at time zone subregions.timezone - interval '1 day'") }
   scope :ordered, -> { order(:spot_id, :timestamp) }
+
+  delegate :timezone, to: :spot
 
   def avg_height
     (min_height + max_height) / 2

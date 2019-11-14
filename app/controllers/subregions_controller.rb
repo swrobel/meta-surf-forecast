@@ -2,44 +2,43 @@
 
 class SubregionsController < ApplicationController
   def show
-    zone = ActiveSupport::TimeZone.new(subregion.timezone)
-    zone_id = zone.tzinfo.identifier
     forecasts ||= Spot.connection.select_all <<-SQL
       SELECT
-         id AS spot_id
-        ,name
-        ,slug
-        ,lat
-        ,lon
+         s.id AS spot_id
+        ,s.name
+        ,s.slug
+        ,s.lat
+        ,s.lon
         ,msw_id
-        ,spitcast_id
-        ,spitcast_slug
-        ,surfline_v1_id
-        ,surfline_v2_id
+        ,s.spitcast_id
+        ,s.spitcast_slug
+        ,s.surfline_v1_id
+        ,s.surfline_v2_id
         ,s.updated_at AS spot_updated_at
-        ,timestamp
+        ,fc.timestamp
         ,round(min(min_height), 1) AS min
         ,round(avg(avg_height) - min(min_height), 1) AS avg_delta
         ,round(max(max_height) - avg(avg_height), 1) AS max_delta
         ,max(max_height) AS max
         ,round(avg(rating)) AS avg_rating
-      FROM all_forecasts sub
-      JOIN spots s ON sub.spot_id = s.id
-      WHERE sub.timestamp > now() at time zone '#{zone_id}'
-        AND sub.updated_at > now() at time zone '#{zone_id}' - interval '1 day'
-        AND extract(hour from sub.timestamp)::integer % 3 = 0
-        AND s.subregion_id = #{subregion.id}
-      GROUP BY id
-              ,name
-              ,slug
-              ,lat
-              ,lon
-              ,timestamp
-              ,surfline_v1_id
-              ,msw_id
-              ,spitcast_id
-              ,spitcast_slug
-              ,surfline_v2_id
+      FROM all_forecasts fc
+      JOIN spots s ON fc.spot_id = s.id
+      JOIN subregions sr ON s.subregion_id = sr.id
+      WHERE fc.timestamp >= now() at time zone sr.timezone
+        AND fc.updated_at >= now() at time zone sr.timezone - interval '1 day'
+        AND extract(hour from fc.timestamp)::integer % 3 = 0
+        AND sr.id = #{subregion.id}
+      GROUP BY s.id
+              ,s.name
+              ,s.slug
+              ,s.lat
+              ,s.lon
+              ,fc.timestamp
+              ,s.surfline_v1_id
+              ,s.msw_id
+              ,s.spitcast_id
+              ,s.spitcast_slug
+              ,s.surfline_v2_id
               ,s.updated_at
       HAVING count(*) >= CASE
                            WHEN s.surfline_v2_id IS NOT NULL THEN 1
@@ -49,9 +48,9 @@ class SubregionsController < ApplicationController
                            WHEN s.msw_id IS NOT NULL THEN 1
                            ELSE 0
                          END
-      ORDER BY sort_order
-              ,id
-              ,timestamp
+      ORDER BY s.sort_order
+              ,s.id
+              ,fc.timestamp
     SQL
     @max = 0.0
     forecasts.each(&:symbolize_keys!)

@@ -47,10 +47,10 @@ Contributing new spots is easy! Make sure you're signed into your [Github accoun
     ```ruby
     CA = Region.find_or_create_by(name: 'California')
     LA = Subregion.find_or_create_by(name: 'Los Angeles', region: CA)
-    LA.timezone = 'Pacific Time (US & Canada)'
+    LA.timezone = 'America/Los_Angeles'
     LA.save!
     ```
-    You can get valid timezone names from [this list](https://gist.github.com/swrobel/77626ff3d4967ca65c3028dcb336d57a#file-gistfile1-md).
+    You can get valid timezone names from [this list](https://gist.github.com/swrobel/77626ff3d4967ca65c3028dcb336d57a).
 1. Use [this tool](https://boundingbox.klokantech.com/) to draw a bounding box around the area you want to find spots for.
 1. Choose CSV from the dropdown at the bottom & copy the coordinates string.
 1. Run `rails console`, then run `SpotFinder.new('{string}').formatted_spots`.

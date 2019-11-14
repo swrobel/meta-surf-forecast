@@ -8,65 +8,65 @@ end
 CA = Region.find_or_create_by(name: 'California', sort_order: 10)
 SF = Subregion.find_or_create_by(name: 'San Francisco', region: CA)
 SF.sort_order = 10
-SF.timezone = 'Pacific Time (US & Canada)'
+SF.timezone = 'America/Los_Angeles'
 SF.save!
 SC = Subregion.find_or_create_by(name: 'Santa Cruz', region: CA)
 SC.sort_order = 20
-SC.timezone = 'Pacific Time (US & Canada)'
+SC.timezone = 'America/Los_Angeles'
 SC.save!
 SBVC = Subregion.find_or_initialize_by(name: 'Santa Barbara/Ventura', region: CA)
 SBVC.sort_order = 40
-SBVC.timezone = 'Pacific Time (US & Canada)'
+SBVC.timezone = 'America/Los_Angeles'
 SBVC.save!
 LA = Subregion.find_or_initialize_by(name: 'Los Angeles', region: CA)
 LA.sort_order = 50
-LA.timezone = 'Pacific Time (US & Canada)'
+LA.timezone = 'America/Los_Angeles'
 LA.save!
 NOC = Subregion.find_or_initialize_by(name: 'North Orange County', region: CA)
 NOC.sort_order = 60
-NOC.timezone = 'Pacific Time (US & Canada)'
+NOC.timezone = 'America/Los_Angeles'
 NOC.save!
 SOC = Subregion.find_or_initialize_by(name: 'South Orange County', region: CA)
 SOC.sort_order = 70
-SOC.timezone = 'Pacific Time (US & Canada)'
+SOC.timezone = 'America/Los_Angeles'
 SOC.save!
 NSD = Subregion.find_or_initialize_by(name: 'North San Diego', region: CA)
 NSD.sort_order = 80
-NSD.timezone = 'Pacific Time (US & Canada)'
+NSD.timezone = 'America/Los_Angeles'
 NSD.save!
 SSD = Subregion.find_or_initialize_by(name: 'South San Diego', region: CA)
 SSD.sort_order = 90
-SSD.timezone = 'Pacific Time (US & Canada)'
+SSD.timezone = 'America/Los_Angeles'
 SSD.save!
 MX = Region.find_or_create_by(name: 'Mexico', sort_order: 15)
 COL = Subregion.find_or_initialize_by(name: 'Colima', region: MX)
 COL.sort_order = 30
-COL.timezone = 'Guadalajara'
+COL.timezone = 'America/Mexico_City'
 COL.save!
 GUR = Subregion.find_or_initialize_by(name: 'Guerrero', region: MX)
 GUR.sort_order = 32
-GUR.timezone = 'Guadalajara'
+GUR.timezone = 'America/Mexico_City'
 GUR.save!
 EU = Region.find_or_create_by(name: 'Europe', sort_order: 50)
 PT = Subregion.find_or_initialize_by(name: 'Portugal', region: EU)
 PT.sort_order = 30
-PT.timezone = 'Lisbon'
+PT.timezone = 'Europe/Lisbon'
 PT.save!
 HI = Region.find_or_create_by(name: 'Hawaii', sort_order: 14)
 ONS = Subregion.find_or_initialize_by(name: 'Oahu - North Shore', region: HI)
-ONS.assign_attributes(sort_order: 5, timezone: 'Hawaii')
+ONS.assign_attributes(sort_order: 5, timezone: 'Pacific/Honolulu')
 ONS.save!
 OSS = Subregion.find_or_initialize_by(name: 'Oahu - South Shore', region: HI)
-OSS.assign_attributes(sort_order: 10, timezone: 'Hawaii')
+OSS.assign_attributes(sort_order: 10, timezone: 'Pacific/Honolulu')
 OSS.save!
 MNS = Subregion.find_or_initialize_by(name: 'Maui - North Shore', region: HI)
-MNS.assign_attributes(sort_order: 15, timezone: 'Hawaii')
+MNS.assign_attributes(sort_order: 15, timezone: 'Pacific/Honolulu')
 MNS.save!
 MNW = Subregion.find_or_initialize_by(name: 'Maui - Northwest', region: HI)
-MNW.assign_attributes(sort_order: 20, timezone: 'Hawaii')
+MNW.assign_attributes(sort_order: 20, timezone: 'Pacific/Honolulu')
 MNW.save!
 MSW = Subregion.find_or_initialize_by(name: 'Maui - Southwest', region: HI)
-MSW.assign_attributes(sort_order: 25, timezone: 'Hawaii')
+MSW.assign_attributes(sort_order: 25, timezone: 'Pacific/Honolulu')
 MSW.save!
 
 spots = [
