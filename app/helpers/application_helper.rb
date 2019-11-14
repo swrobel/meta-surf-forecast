@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def forecast_link(image_file, service, target, icon_label = nil)
-    link_to target, target: service, title: "#{service} Forecast Page", class: 'icon text-dark' do
+    link_to target, target: service, title: "#{service} Forecast Page", class: 'icon' do
       span_tag = tag.span(icon_label, class: 'forecast-icon-label') if icon_label
       image_tag(image_file, alt: "#{service} Logo") + span_tag
     end
@@ -64,39 +64,7 @@ module ApplicationHelper
   end
 
   def rating_color(rating, series)
-    colors = {
-      0 => {
-        max: 'D9B0B7',
-        avg: 'C3818C',
-        min: 'B46270',
-      },
-      1 => {
-        max: 'F49B90',
-        avg: 'EE6352',
-        min: 'D95A4B',
-      },
-      2 => {
-        max: 'FBD698',
-        avg: 'FAC05E',
-        min: 'E4AF56',
-      },
-      3 => {
-        max: 'FEF8A1',
-        avg: 'FEF56C',
-        min: 'E7DF63',
-      },
-      4 => {
-        max: '95DFB8',
-        avg: '59CD90',
-        min: '51BB83',
-      },
-      5 => {
-        max: '9BFFFF',
-        avg: '54EAEA',
-        min: '00D3D3',
-      },
-    }
-    "##{colors[rating][series]}"
+    "##{RATING_COLORS[rating][series]}"
   end
 
   def rating_text(rating)

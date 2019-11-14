@@ -3,8 +3,7 @@
 
 nav.navbar.navbar-light.fixed-top
   .row.font-weight-light.d-flex.align-items-center.pl-1
-    span.text-light.region-label Region:
-    select.margin-left onchange='window.location = this.value'
+    select onchange='window.location = this.value'
       - Region.ordered.each do |region|
         optgroup label=region.name
           - region.subregions.each do |subregion|
@@ -23,13 +22,12 @@ nav.navbar.navbar-light.fixed-top
         = surfline_link(Spot.surfline_url(meta[:surfline_v2_id])) if meta[:surfline_v2_id]
       = react_component 'SpotChart', {\
           data: [\
-            { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], color: rating_color(point[:avg_rating], :max) } }, stack: 'All' },
-            { name: 'Avg', data: forecasts.collect { |point| { y: point[:avg_delta], color: rating_color(point[:avg_rating], :avg) } }, stack: 'All'},
-            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], color: rating_color(point[:avg_rating], :min), rating: rating_text(point[:avg_rating]), tooltip_time: point[:tooltip_time] } }, stack: 'All' },
+            { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], className: "max-#{point[:avg_rating]}" } }, stack: 'All' },
+            { name: 'Avg', data: forecasts.collect { |point| { y: point[:avg_delta], className: "avg-#{point[:avg_rating]}" } }, stack: 'All'},
+            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], className: "min-#{point[:avg_rating]}", rating: rating_text(point[:avg_rating]), tooltip_time: point[:tooltip_time] } }, stack: 'All' },
           ],
           max: @max,
           plotBands: from && to && [{\
-            color: '#F2F2F2',
             from: from - 0.5,
             to: to + 0.5,
           }],

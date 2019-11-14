@@ -235,7 +235,7 @@ It took me a long time to land on a solution here, but I've finally settled on s
 * [x] Support multiple timezones as opposed to Pacific Time only
 * [x] New Surfline API
 * [x] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
-* [ ] Dark Theme
+* [x] Dark Theme
 * [ ] Remove asset pipeline & process CSS w/ webpacker
 * [ ] Attempt switch to Preact
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)

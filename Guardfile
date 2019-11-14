@@ -27,7 +27,7 @@ guard :shell, first_match: true do
   end
 
   # Trigger webpack-dev-server refresh when views change
-  watch(%r{(config/locales/.+)|^app\/(views\/.+\/[^\/]*\.(?:erb|haml|slim))$}) do |m|
+  watch(%r{(config/locales/.+)|^app/(views\/.+\/[^\/]*\.(?:erb|haml|slim))|(assets/stylesheets/.+\.scss(\.erb)?)$}) do |m|
     p "#{m[0]} has changed. Reloading."
     # Trick Webpack into reloading browser
     `touch app/javascript/packs/application.js.erb`

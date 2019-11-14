@@ -1,0 +1,203 @@
+$enable-gradients: true;
+$enable-responsive-font-sizes: true;
+@import "bootstrap";
+@import "partials/animation";
+@import "highcharts/css/highcharts.scss";
+
+:root {
+  --black: black;
+  --white: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark: #c0c0c0; // 75% white
+    --light: #292929;
+    --black: #{$white};
+    --white: #{$black};
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+body {
+  color: var(--dark);
+  background-color: var(--white);
+}
+
+.table {
+  color: inherit;
+
+  .thead-light th {
+    background-color: var(--light);
+    color: var(--dark);
+  }
+}
+
+svg {
+  fill: currentColor;
+}
+
+.highcharts-container {
+  font-family: inherit;
+
+  <% RATING_COLORS.each do |rating, hash| %>
+    <% hash.each do |scale, color| %>
+      <%= ".#{scale}-#{rating} { fill: ##{color} !important; }" %>
+    <% end %>
+  <% end %>
+
+  .highcharts-background {
+    fill: var(--white);
+  }
+
+  .highcharts-grid-line {
+    stroke: var(--light);
+  }
+
+  .highcharts-plot-band {
+    fill: var(--light);
+    fill-opacity: 1;
+  }
+
+  .highcharts-column-series rect.highcharts-point {
+    stroke: var(--white);
+  }
+
+  .highcharts-axis-labels, .highcharts-legend-item > text {
+    fill: var(--dark);
+  }
+
+  .highcharts-color-0 {
+    fill: #D1DCE4;
+  }
+
+  .highcharts-color-1 {
+    fill: #9EAAB3;
+  }
+
+  .highcharts-color-2 {
+    fill: #6A7177;
+  }
+}
+
+@mixin padding-safe($direction) {
+  padding-#{$direction}: env(safe-area-inset-#{$direction})
+}
+
+nav {
+  $nav-opacity: 0.5;
+  $nav-begin-color: rgba(38, 143, 255, $nav-opacity);
+  --nav-begin-color: #{$nav-begin-color};
+  $nav-end-color: rgba(0, 123, 255, $nav-opacity);
+  --nav-end-color: #{$nav-end-color};
+  @media (prefers-color-scheme: dark) {
+    $darken-by: 10%;
+    --nav-begin-color: #{darken($nav-begin-color, $darken-by)};
+    --nav-end-color: #{darken($nav-end-color, $darken-by)};
+  }
+  background: var(--nav-end-color) linear-gradient(180deg, var(--nav-begin-color), var(--nav-end-color)) repeat-x;
+
+  select {
+    // calc is a hack to avoid triggering sass max(). We want the pure css one.
+    margin-left: calc(max(0, env(safe-area-inset-left)));
+  }
+}
+
+#forecast-table {
+  th {
+    padding-bottom: 0;
+    border-bottom: 0;
+    vertical-align: baseline;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      height: 30px;
+      vertical-align: text-bottom;
+    }
+  }
+
+  th, td {
+    text-align: center;
+  }
+}
+
+.font-weight-light {
+  select {
+    font-weight: inherit;
+  }
+}
+
+.forecast-icon-label {
+  margin-left: 10px;
+  color: $headings-color;
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.border-left {
+  border-left: 1px solid #ccc !important;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+.subregion-container {
+  margin-top: 44px;
+}
+
+.safe-padding {
+  @include padding-safe(left);
+  @include padding-safe(right);
+}
+
+.spot-header {
+  padding-left: 5px;
+
+  &:first-child {
+    margin-top: 5px
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: var(--black);
+      text-decoration: none;
+    }
+  }
+
+  .icon {
+    margin-left: 12px;
+  }
+
+  img {
+    height: 20px;
+    vertical-align: baseline;
+  }
+}
+
+.spot-header, #forecast-table {
+  @media (prefers-color-scheme: light) {
+    img:not(:hover) {
+      opacity: 0.75;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    img {
+      filter: invert(75%);
+    }
+
+    img:hover {
+      filter: invert(100%);
+    }
+  }
+}

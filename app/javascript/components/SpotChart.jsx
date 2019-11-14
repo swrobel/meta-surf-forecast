@@ -11,13 +11,9 @@ const SpotChart = props => {
       style: {
         fontFamily: 'inherit',
       },
+      styledMode: true,
       type: 'column',
     },
-    colors: [
-      '#D1DCE4',
-      '#9EAAB3',
-      '#6A7177',
-    ],
     credits: {
       enabled: false,
     },
