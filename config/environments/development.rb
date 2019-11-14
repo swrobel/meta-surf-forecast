@@ -54,4 +54,11 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.hosts << 'surf.localhost'
+
+  dev_server = Webpacker.config.dev_server
+  WEBPACK_SCRIPT_TAG ||= "<script src='#{'http' + (dev_server[:https] && 's')}://#{dev_server[:host]}:#{dev_server[:port]}/webpack-dev-server.js'></script>"
+  config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::Toolbar,
+                                  snippet: WEBPACK_SCRIPT_TAG,
+                                  insertion_point: '</head>',
+                                  insertion_method: :before
 end

@@ -15,6 +15,13 @@ GIT
       thor (~> 0.19)
       uuid (~> 2.3)
 
+GIT
+  remote: https://github.com/swrobel/rack-toolbar.git
+  revision: 4b270b459439a17781cd9657fdf2d0c64b714806
+  branch: rails-pages
+  specs:
+    rack-toolbar (0.1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -324,6 +331,7 @@ DEPENDENCIES
   pgreset
   puma
   rack-brotli
+  rack-toolbar!
   rails (~> 6.0.0)
   react-rails
   redis

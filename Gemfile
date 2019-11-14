@@ -32,6 +32,7 @@ group :development do
   gem 'guard-shell', require: false
   gem 'invoker', github: 'swrobel/invoker'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rack-toolbar', github: 'swrobel/rack-toolbar', branch: 'rails-pages' # Insert arbitrary code into Rails pages
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
