@@ -14,12 +14,16 @@ class ApiRequest < ApplicationRecord
   include ApiRequests::SurflineV2
 
   def get(retries: 0)
-    self.request ||= requestable.send(service_url_method)
+    # Work around ruby send bug w/ double splat
+    # https://bugs.ruby-lang.org/issues/11860
+    self.request ||= options.present? ? requestable.send(service_url_method, **options) : requestable.send(service_url_method)
     call = Typhoeus::Request.new(request, typhoeus_opts.merge(followlocation: true, http_version: :httpv2_0))
 
     call.on_complete do |response|
       if response.success?
         safely do # Handle malformed JSON, which raises
+          # Remove invalid UTF-8 chars from response, ex: Surfline v1 'S�o Jo�o'
+          response.body.delete!("^\u{0000}-\u{007F}")
           data = JSON.parse(response.body)
           self.attributes = { response: data, success: true, response_time: response.total_time }
           save!

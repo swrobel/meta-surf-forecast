@@ -7,7 +7,7 @@ module ApiRequests
     included do
       def parse_surfline_v1
         # If get_all_spots is false, entry will be a single object instead of an array
-        data = response.is_a?(Array) ? response : [reponse]
+        data = response.is_a?(Array) ? response : [response]
         forecasts = {}
 
         data.each do |entry|
@@ -63,7 +63,7 @@ module ApiRequests
 
           timestamps.each do |timestamp, values|
             # Adjust for DST-related shifts in timestamps so they're all multiples of 3
-            timestamp -= timestamp.utc.hour % 3
+            timestamp -= (timestamp.utc.hour % 3).hours
             record = service_class.unscoped.where(spot_id: forecasted_spot.id, timestamp: timestamp).first_or_initialize
             record.api_request = self
             values.each do |attribute, value|
@@ -73,6 +73,9 @@ module ApiRequests
           end
         end
       end
+
+      alias_method :parse_surfline_nearshore, :parse_surfline_v1
+      alias_method :parse_surfline_lola, :parse_surfline_v1
     end
   end
 end

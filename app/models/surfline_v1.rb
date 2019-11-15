@@ -17,9 +17,5 @@ class SurflineV1 < Forecast
     def default_scope
       super.with_rating_and_wind
     end
-
-    def api_pull(spot, hydra: nil, options: {}, typhoeus_opts: {})
-      api_get(spot: spot, url: api_url(spot, options[:get_all_spots] || false), hydra: hydra, options: options, typhoeus_opts: typhoeus_opts)
-    end
   end
 end
