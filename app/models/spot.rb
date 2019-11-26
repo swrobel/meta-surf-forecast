@@ -26,6 +26,18 @@ class Spot < ApplicationRecord
     self.class.map_url(lat, lon)
   end
 
+  memoize def timezone_obj
+    ActiveSupport::TimeZone.new(timezone)
+  end
+
+  def utc_time_to_local(time)
+    time + timezone_obj.utc_offset
+  end
+
+  def utc_stamp_to_local(stamp)
+    Time.zone.at(stamp + timezone_obj.utc_offset)
+  end
+
   memoize def overlapping_timestamps
     timestamps = msws.collect(&:timestamp)
     if surfline_v1_id

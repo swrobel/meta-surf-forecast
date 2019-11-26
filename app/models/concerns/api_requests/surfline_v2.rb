@@ -14,7 +14,7 @@ module ApiRequests
         response.dig('data', 'wind').each do |entry|
           next unless (timestamp = entry['timestamp'])
 
-          record = service_class.unscoped.find_by(spot: requestable, timestamp: Time.zone.at(timestamp))
+          record = service_class.unscoped.find_by(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp))
           next unless record
 
           record.wind_rating = entry['optimalScore']
@@ -26,7 +26,7 @@ module ApiRequests
         response.dig('data', 'wave').each do |entry|
           next unless (timestamp = entry['timestamp'])
 
-          record = service_class.unscoped.where(spot: requestable, timestamp: Time.zone.at(timestamp)).first_or_initialize
+          record = service_class.unscoped.where(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp)).first_or_initialize
           record.api_request = self
           record.min_height = entry.dig('surf', 'min')
           record.max_height = entry.dig('surf', 'max')
