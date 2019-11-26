@@ -9,6 +9,7 @@
     "@bugsnag/plugin-react": "^6.4.0",
     "@rails/webpacker": "^4.0.0-rc.7",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "bootstrap": "^4.4.0",
     "core-js": "3",
     "headroom.js": "^0.10.2",
     "highcharts": "^7.0.3",

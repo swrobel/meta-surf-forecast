@@ -7,7 +7,6 @@ ruby "~> #{`cat .ruby-version`.strip}"
 gem 'rails', '~> 6.0.0'
 
 gem 'bootsnap'
-gem 'bootstrap', '~> 4.2'
 gem 'bugsnag'
 gem 'friendly_id'
 gem 'memery' # Memoization

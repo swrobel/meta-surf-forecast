@@ -12,13 +12,13 @@ module ApplicationHelper
   end
 
   def map_link(target)
-    link_to image_tag('map.svg', alt: 'Map Icon'), target, target: 'gmap', title: 'Google Map', class: 'icon'
+    link_to image_pack_tag('map.svg', alt: 'Map Icon'), target, target: 'gmap', title: 'Google Map', class: 'icon'
   end
 
   def forecast_link(image_file, service, target, icon_label = nil)
     link_to target, target: service, title: "#{service} Forecast Page", class: 'icon' do
       span_tag = tag.span(icon_label, class: 'forecast-icon-label') if icon_label
-      image_tag(image_file, alt: "#{service} Logo") + span_tag
+      image_pack_tag(image_file, alt: "#{service} Logo") + span_tag
     end
   end
 

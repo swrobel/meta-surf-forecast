@@ -1,18 +1,20 @@
 $enable-gradients: true;
 $enable-responsive-font-sizes: true;
-@import "bootstrap";
+@import "~bootstrap";
 @import "partials/animation";
-@import "highcharts/css/highcharts.scss";
+@import "~highcharts/css/highcharts.scss";
 
 :root {
   --black: black;
   --white: white;
+  --mid-gray: #{$gray-200};
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --dark: #c0c0c0; // 75% white
     --light: #292929;
+    --mid-gray: #333;
     --black: #{$white};
     --white: #{$black};
   }
@@ -54,7 +56,7 @@ svg {
   }
 
   .highcharts-grid-line {
-    stroke: var(--light);
+    stroke: var(--mid-gray);
   }
 
   .highcharts-plot-band {

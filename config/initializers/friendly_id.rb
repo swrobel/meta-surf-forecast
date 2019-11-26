@@ -1,4 +1,5 @@
-# frozen_string_literal: true
+RESERVED_WORDS = %w[new edit index session login logout users admin
+                    stylesheets assets javascripts images].freeze
 
 # FriendlyId Global Configuration
 #
@@ -18,8 +19,7 @@ FriendlyId.defaults do |config|
   # undesirable to allow as slugs. Edit this list as needed for your app.
   config.use :reserved
 
-  config.reserved_words = %w[new edit index session login logout users admin
-                             stylesheets assets javascripts images]
+  config.reserved_words = RESERVED_WORDS
 
   #  ## Friendly Finders
   #

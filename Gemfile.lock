@@ -82,8 +82,6 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
     ast (2.4.0)
-    autoprefixer-rails (9.7.1)
-      execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -91,10 +89,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    bootstrap (4.3.1)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
-      sassc-rails (>= 2.0.0)
     brotli (0.2.3)
     bugsnag (6.12.2)
       concurrent-ruby (~> 1.0)
@@ -118,7 +112,7 @@ GEM
     facter (2.5.6)
     facter (2.5.6-universal-darwin)
       CFPropertyList (~> 2.2)
-    ffi (1.11.2)
+    ffi (1.11.3)
     formatador (0.2.5)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
@@ -153,7 +147,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.3.1)
+    loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
@@ -179,12 +173,11 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     oj (3.9.2)
-    parallel (1.18.0)
+    parallel (1.19.1)
     parser (2.6.5.0)
       ast (~> 2.4.0)
     pg (1.1.4)
     pgreset (0.1.1)
-    popper_js (1.14.5)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -244,7 +237,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
-    rubocop-performance (1.5.0)
+    rubocop-performance (1.5.1)
       rubocop (>= 0.71.0)
     rubocop-rails (2.3.2)
       rack (>= 1.1)
@@ -255,14 +248,6 @@ GEM
       eventmachine (~> 1.0.0)
     safely_block (0.3.0)
       errbase (>= 0.1.1)
-    sassc (2.2.1)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     scenic (1.5.1)
       activerecord (>= 4.0.0)
       railties (>= 4.0.0)
@@ -315,7 +300,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap (~> 4.2)
   bugsnag
   dotenv-rails
   friendly_id
