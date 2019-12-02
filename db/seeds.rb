@@ -1331,6 +1331,8 @@ spots = [
     surfline_v2_id: '5842041f4e65fad6a7708de2' },
 ]
 
+ActiveRecord::Base.connection.schema_cache.clear!
+
 spots.each do |spot_data|
   spot = Spot.find_or_initialize_by(name: spot_data[:name], subregion: spot_data[:subregion])
   spot.assign_attributes(spot_data)
