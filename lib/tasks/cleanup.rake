@@ -8,19 +8,21 @@ namespace :cleanup do
 
   desc 'Remove forecasts that are in the past'
   task prune_past_forecasts: :environment do
-    SurflineLola.unscoped.where('timestamp < now()').delete_all
-    SurflineNearshore.unscoped.where('timestamp < now()').delete_all
-    Msw.unscoped.where('timestamp < now()').delete_all
-    Spitcast.unscoped.where('timestamp < now()').delete_all
+    SurflineLola.unscoped.past.delete_all
+    SurflineNearshore.unscoped.past.delete_all
+    SurflineV2.unscoped.past.delete_all
+    Msw.unscoped.past.delete_all
+    Spitcast.unscoped.past.delete_all
     Rake::Task['cleanup:prune_api_requests'].invoke
   end
 
   desc 'Remove forecasts that are in the future'
   task wipe_future_forecasts: :environment do
-    SurflineLola.unscoped.where('timestamp > now()').delete_all
-    SurflineNearshore.unscoped.where('timestamp > now()').delete_all
-    Msw.unscoped.where('timestamp > now()').delete_all
-    Spitcast.unscoped.where('timestamp > now()').delete_all
+    SurflineLola.unscoped.future.delete_all
+    SurflineNearshore.unscoped.future.delete_all
+    SurflineV2.unscoped.future.delete_all
+    Msw.unscoped.future.delete_all
+    Spitcast.unscoped.future.delete_all
     Rake::Task['cleanup:prune_api_requests'].invoke
   end
 end

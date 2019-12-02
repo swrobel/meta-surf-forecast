@@ -8,6 +8,8 @@ class Forecast < ApplicationRecord
   has_one :subregion, through: :spot
 
   scope :current, -> { joins(:subregion).where("timestamp >= now() at time zone subregions.timezone AND timestamp <= now() at time zone subregions.timezone + interval '1 month' AND #{table_name}.updated_at >= now() at time zone subregions.timezone - interval '1 day'") }
+  scope :future, -> { joins(:subregion).where('timestamp > now() at time zone subregions.timezone') }
+  scope :past, -> { joins(:subregion).where('timestamp < now() at time zone subregions.timezone') }
   scope :ordered, -> { order(:spot_id, :timestamp) }
 
   delegate :timezone, to: :spot
