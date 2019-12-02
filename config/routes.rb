@@ -5,10 +5,6 @@ class ReservedWordConstraint
 end
 
 Rails.application.routes.draw do
-  constraints(host: /.herokuapp.com/) do
-    get '/(*path)' => redirect { |_params, req| "https://#{ENV['DOMAIN']}#{req.fullpath}" } if ENV['HOST'].present?
-  end
-
   get "/#{ENV['UNLOCK_KEY']}", to: 'application#unlock' if ENV['UNLOCK_KEY'].present?
 
   get '/regions/:id', to: redirect('/california/%{id}')
