@@ -103,8 +103,7 @@ nav {
   background: var(--nav-end-color) linear-gradient(180deg, var(--nav-begin-color), var(--nav-end-color)) repeat-x;
 
   select {
-    // calc is a hack to avoid triggering sass max(). We want the pure css one.
-    margin-left: calc(max(0, env(safe-area-inset-left)));
+    margin-left: env(safe-area-inset-left);
   }
 }
 
