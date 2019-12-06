@@ -4,5 +4,8 @@ while :
 do
   bundle exec rails forecasts:update
   wait
+  bundle exec rails cleanup:prune_past_forecasts
+  wait
   sleep 1800 # 30 minutes
+  wait
 done
