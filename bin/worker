@@ -4,4 +4,5 @@ while :
 do
   bundle exec rails forecasts:update
   wait
+  sleep 1800 # 30 minutes
 done
