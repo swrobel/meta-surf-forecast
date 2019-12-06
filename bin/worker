@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while :
+do
+  bundle exec rails forecasts:update
+  wait
+done
