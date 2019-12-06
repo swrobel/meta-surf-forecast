@@ -51,6 +51,14 @@ svg {
     <% end %>
   <% end %>
 
+  @media (prefers-color-scheme: dark) {
+    <% RATING_COLORS.each do |rating, hash| %>
+      <% hash.each do |scale, color| %>
+        <%= ".#{scale}-#{rating} { fill: darken(##{color}, 30%) !important; }" %>
+      <% end %>
+    <% end %>
+  }
+
   .highcharts-background {
     fill: var(--white);
   }
