@@ -10,18 +10,9 @@ namespace :surfline_v1 do
 
     hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
 
-    Subregion.all.each do |subregion|
-      get_all_spots = subregion.spots.size > 1
-      spot = subregion.spots.first
-      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineNearshore, options: { get_all_spots: get_all_spots }, hydra: hydra).get
-      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineLola, options: { get_all_spots: get_all_spots }, hydra: hydra).get
-
-      # These subregions contain two surfline regions, so we need to do two separate requests for them
-      next unless %w[los-angeles santa-barbara-ventura].include? subregion.slug
-
-      spot2 = subregion.spots.last
-      ApiRequest.new(batch: @batch, requestable: spot2, service: SurflineNearshore, options: { get_all_spots: get_all_spots }, hydra: hydra).get
-      ApiRequest.new(batch: @batch, requestable: spot2, service: SurflineLola, options: { get_all_spots: get_all_spots }, hydra: hydra).get
+    Spot.where.not(surfline_v1_id: nil).each do |spot|
+      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineNearshore, options: { get_all_spots: false }, hydra: hydra).get
+      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineLola, options: { get_all_spots: false }, hydra: hydra).get
     end
 
     hydra.run
