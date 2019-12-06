@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 namespace :cleanup do
-  desc 'remove api_requests not attached to forecasts'
+  desc 'remove api_requests not attached to forecasts & more than 7 days old'
   task prune_api_requests: :environment do
-    ApiRequest.where.not('id in (SELECT api_request_id FROM surfline_lolas UNION SELECT api_request_id FROM surfline_nearshores UNION SELECT api_request_id FROM spitcasts UNION SELECT api_request_id FROM msws UNION SELECT api_request_id FROM surfline_v2s)').delete_all
+    ApiRequest.where("created_at < now() - interval '7 day'").where.not('id in (SELECT api_request_id FROM surfline_lolas UNION SELECT api_request_id FROM surfline_nearshores UNION SELECT api_request_id FROM spitcasts UNION SELECT api_request_id FROM msws UNION SELECT api_request_id FROM surfline_v2s)').delete_all
   end
 
   desc 'Remove forecasts that are in the past'
