@@ -5,9 +5,9 @@ html
     = csrf_meta_tags
     meta name='viewport' content="width=device-width, initial-scale=1, shrink-to-fit=no#{yield(:meta)}"
     meta property='og:description' content='Pulls data from Surfline, MagicSeaweed &amp; Spitcast APIs to display an aggregated surf forecast.'
-    meta property='og:image' content=image_url('wave.jpg')
+    meta property='og:image' content=asset_pack_path('media/images/wave.jpg')
     meta name="color-scheme" value="light dark"
-    link rel='apple-touch-icon' href=image_url('wave.png')
+    link rel='apple-touch-icon' href=asset_pack_path('media/images/wave.png')
 
     = stylesheet_pack_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
