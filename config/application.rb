@@ -31,6 +31,10 @@ module MetaSurfForecast
   end
 end
 
+# Faster migrations: https://github.com/ankane/strong_migrations#faster-migrations
+ActiveRecord::Base.dump_schema_after_migration = Rails.env.development? &&
+                                                 `git status db/migrate/ --porcelain`.present?
+
 EXPIRE_ON_UPDATE_KEY = :expire_on_update
 RATING_COLORS = {
   0 => {
