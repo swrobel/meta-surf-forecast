@@ -14,7 +14,7 @@ class UpdateBatch < ApplicationRecord
 private
 
   def set_defaults
-    self.concurrency ||= ENV.fetch('API_CONCURRENCY', 10)
+    self.concurrency ||= ENV.fetch('API_CONCURRENCY', rand(10..50))
     self.start_time ||= Time.current
   end
 end
