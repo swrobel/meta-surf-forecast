@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_172216) do
+ActiveRecord::Schema.define(version: 2019_12_07_012940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_172216) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.bigint "subregion_id"
-    t.string "msw_slug"
     t.string "spitcast_slug"
     t.integer "sort_order"
     t.string "surfline_v2_id"
@@ -153,7 +152,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_172216) do
   create_table "update_batches", force: :cascade do |t|
     t.integer "concurrency"
     t.interval "duration"
-    t.integer "requests_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -259,4 +257,63 @@ ActiveRecord::Schema.define(version: 2019_11_26_172216) do
   add_index "all_forecasts", ["spot_id"], name: "index_all_forecasts_on_spot_id"
   add_index "all_forecasts", ["timestamp"], name: "index_all_forecasts_on_timestamp"
 
+  create_view "batch_stats", materialized: true, sql_definition: <<-SQL
+      SELECT b.id,
+      b.concurrency,
+      b.duration,
+      sum(
+          CASE
+              WHEN r.success THEN 1
+              ELSE 0
+          END) AS success,
+      sum(r.retries) AS retry,
+      sum(
+          CASE
+              WHEN r.success THEN 0
+              ELSE 1
+          END) AS fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'Msw'::text) THEN r.retries
+              ELSE 0
+          END) AS msw_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'Msw'::text)) THEN 1
+              ELSE 0
+          END) AS msw_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[])) THEN r.retries
+              ELSE 0
+          END) AS surfline_v1_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[]))) THEN 1
+              ELSE 0
+          END) AS surfline_v1_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'SurflineV2'::text) THEN r.retries
+              ELSE 0
+          END) AS surfline_v2_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'SurflineV2'::text)) THEN 1
+              ELSE 0
+          END) AS surfline_v2_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'Spitcast'::text) THEN r.retries
+              ELSE 0
+          END) AS spitcast_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'Spitcast'::text)) THEN 1
+              ELSE 0
+          END) AS spitcast_fail
+     FROM (api_requests r
+       JOIN update_batches b ON ((r.batch_id = b.id)))
+    GROUP BY b.id, b.concurrency, b.duration;
+  SQL
 end

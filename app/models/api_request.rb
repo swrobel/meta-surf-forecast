@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
 class ApiRequest < ApplicationRecord
   attr_accessor :hydra, :options, :typhoeus_opts
 
   after_initialize :set_defaults
 
-  belongs_to :batch, class_name: 'UpdateBatch', counter_cache: :requests_count, optional: true
+  belongs_to :batch, class_name: 'UpdateBatch', optional: true
   belongs_to :requestable, polymorphic: true
 
   include ApiRequests::Msw
@@ -14,6 +12,8 @@ class ApiRequest < ApplicationRecord
   include ApiRequests::SurflineV2
 
   def get(retries: 0)
+    save! && return if retries >= API_RETRIES
+
     # Work around ruby send bug w/ double splat
     # https://bugs.ruby-lang.org/issues/11860
     self.request ||= options.present? ? requestable.send(service_url_method, **options) : requestable.send(service_url_method)
@@ -21,19 +21,16 @@ class ApiRequest < ApplicationRecord
 
     call.on_complete do |response|
       if response.success?
-        safely do # Handle malformed JSON, which raises
-          # Remove invalid UTF-8 chars from response, ex: Surfline v1 'S�o Jo�o'
-          response.body.delete!("^\u{0000}-\u{007F}")
-          data = JSON.parse(response.body)
-          self.attributes = { response: data, success: true, response_time: response.total_time, retries: retries }
-          save!
-          send(service_parse_method)
-        end
+        # Remove invalid UTF-8 chars from response, ex: Surfline v1 'S�o Jo�o'
+        response.body.delete!("^\u{0000}-\u{007F}")
+        data = JSON.parse(response.body)
+        self.attributes = { response: data, success: true, response_time: response.total_time, retries: retries }
+        save!
+        send(service_parse_method)
       else
         self.attributes = { response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, response_time: response.total_time, retries: retries }
-        save!
         SurflineV2.expire_access_token if service == 'SurflineV2' && response.code == 401 # Unauthorized
-        get(retries: retries + 1) unless retries >= API_RETRIES
+        get(retries: retries + 1)
       end
     end
 
@@ -42,6 +39,12 @@ class ApiRequest < ApplicationRecord
     else
       call.run
     end
+  rescue StandardError => e
+    Safely.report_exception(e)
+    self.retries = retries
+    self.success = false
+    self.response ||= e.as_json
+    get(retries: retries + 1)
   end
 
   def service_class
