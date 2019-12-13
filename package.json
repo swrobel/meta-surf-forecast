@@ -12,7 +12,7 @@
     "bootstrap": "^4.4.0",
     "core-js": "3",
     "headroom.js": "^0.10.2",
-    "highcharts": "^7.0.3",
+    "highcharts": "^8.0.0",
     "highcharts-react-official": "^2.0.0",
     "prop-types": "^15.7.2",
     "rails-erb-loader": "^5.5.2",
