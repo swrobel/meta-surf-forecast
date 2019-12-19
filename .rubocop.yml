@@ -18,6 +18,9 @@ AllCops:
 Layout/AccessModifierIndentation:
   Enabled: false
 
+Layout/LineLength:
+  Enabled: false
+
 Lint/UnusedMethodArgument:
   Exclude:
     - app/models/forecast.rb
@@ -36,9 +39,6 @@ Metrics/CyclomaticComplexity:
   Enabled: false
 
 Metrics/ClassLength:
-  Enabled: false
-
-Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
