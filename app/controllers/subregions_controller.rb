@@ -16,10 +16,10 @@ class SubregionsController < ApplicationController
         ,s.surfline_v2_id
         ,s.updated_at AS spot_updated_at
         ,fc.timestamp
-        ,round(min(min_height), 1) AS min
+        ,round(avg(min_height), 1) AS min
         ,round(avg(avg_height) - min(min_height), 1) AS avg_delta
-        ,round(max(max_height) - avg(avg_height), 1) AS max_delta
-        ,max(max_height) AS max
+        ,round(avg(max_height) - avg(avg_height), 1) AS max_delta
+        ,avg(max_height) AS max
         ,round(avg(rating)) AS avg_rating
       FROM all_forecasts fc
       JOIN spots s ON fc.spot_id = s.id
