@@ -236,7 +236,8 @@ It took me a long time to land on a solution here, but I've finally settled on s
 * [x] New Surfline API
 * [x] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
 * [x] Dark Theme
-* [ ] Remove asset pipeline & process CSS w/ webpacker
+* [x] Remove asset pipeline & process CSS w/ webpacker
+* [ ] Explore [SSR](https://github.com/reactjs/react-rails#server-side-rendering) for possibly faster browser paint
 * [ ] Attempt switch to Preact
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
 * [ ] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
