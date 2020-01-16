@@ -71,6 +71,9 @@ const SpotChart = props => {
       offset: -8,
       stackLabels: {
         enabled: true,
+        formatter: function() {
+          return  Highcharts.numberFormat(this.total, 1);
+        },
         style: {
           fontSize: '0.65em',
           fontWeight: 'normal',
