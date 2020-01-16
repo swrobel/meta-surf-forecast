@@ -68,3 +68,11 @@ RATING_COLORS = {
     min: '00D3D3',
   },
 }.freeze
+RATING_TEXT = {
+  0 => 'Poor',
+  1 => 'Poor - Fair',
+  2 => 'Fair',
+  3 => 'Fair - Good',
+  4 => 'Good',
+  5 => 'Very Good',
+}.freeze

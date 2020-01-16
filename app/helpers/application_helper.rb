@@ -50,31 +50,4 @@ module ApplicationHelper
                  end
     formatted
   end
-
-  def get_minimums(heights)
-    heights.map do |height_group|
-      height_group[0]
-    end
-  end
-
-  def get_maximum_deltas(heights)
-    heights.map do |height_group|
-      height_group[1] - height_group[0]
-    end
-  end
-
-  def rating_color(rating, series)
-    "##{RATING_COLORS[rating][series]}"
-  end
-
-  def rating_text(rating)
-    {
-      0 => 'Poor',
-      1 => 'Poor - Fair',
-      2 => 'Fair',
-      3 => 'Fair - Good',
-      4 => 'Good',
-      5 => 'Very Good',
-    }[rating]
-  end
 end

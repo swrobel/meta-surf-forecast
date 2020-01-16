@@ -24,7 +24,7 @@ nav.navbar.navbar-light.fixed-top
           data: [\
             { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], className: "max-#{point[:avg_rating]}" } }, stack: 'All' },
             { name: 'Avg', data: forecasts.collect { |point| { y: point[:avg_delta], className: "avg-#{point[:avg_rating]}" } }, stack: 'All'},
-            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], className: "min-#{point[:avg_rating]}", rating: rating_text(point[:avg_rating]), tooltip_time: point[:tooltip_time] } }, stack: 'All' },
+            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], className: "min-#{point[:avg_rating]}", rating: RATING_TEXT[point[:avg_rating]], tooltip_time: point[:tooltip_time] } }, stack: 'All' },
           ],
           max: @max,
           plotBands: from && to && [{\
