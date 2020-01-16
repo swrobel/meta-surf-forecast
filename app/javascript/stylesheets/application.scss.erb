@@ -72,6 +72,11 @@ svg {
     fill-opacity: 1;
   }
 
+  // Fix first 2 stack labels always being shown & overlapping
+  .highcharts-stack-labels.highcharts-label:nth-child(2) {
+    opacity: 0;
+  }
+
   .highcharts-column-series rect.highcharts-point {
     stroke: var(--white);
   }
