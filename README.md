@@ -22,7 +22,7 @@ Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://mag
 1. Install dependencies using [Homebrew](https://brew.sh/): `brew bundle`
 1. If on Linux: `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start`
 1. `mkcert -install`
-1. `cd config/ssl && mkcert surf.localhost surf-packs.localhost localhost 127.0.0.1 ::1 && cd ../../`
+1. `mkdir config/ssl && cd config/ssl && mkcert surf.localhost surf-packs.localhost localhost 127.0.0.1 ::1 && cd ../../`
 1. `gem install bundler -v '>= 2.0.2'`
 1. `bundle`
 1. `yarn`

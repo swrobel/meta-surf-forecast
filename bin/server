@@ -4,5 +4,5 @@ if [ -f "$CERT" -a -f "$KEY" ]; then
   bin/invoker start --certificate=$CERT --private-key=$KEY
 else
   echo "Please run this command and then try again:"
-  echo "cd config/ssl && mkcert surf.localhost surf-packs.localhost localhost 127.0.0.1 ::1 && cd ../../"
+  echo "mkdir config/ssl && cd config/ssl && mkcert surf.localhost surf-packs.localhost localhost 127.0.0.1 ::1 && cd ../../"
 fi
