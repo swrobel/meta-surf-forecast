@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_16_024806) do
+ActiveRecord::Schema.define(version: 2020_01_17_174043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_024806) do
     t.integer "spot_id"
     t.datetime "timestamp"
     t.decimal "height"
-    t.integer "rating"
+    t.string "rating"
     t.integer "api_request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -269,7 +269,15 @@ ActiveRecord::Schema.define(version: 2020_01_16_024806) do
       NULL::numeric AS min_height,
       avg(spitcasts.height) OVER w AS max_height,
       NULL::numeric AS avg_height,
-      avg(spitcasts.rating) OVER w AS rating,
+      avg(
+          CASE spitcasts.rating
+              WHEN 'Poor'::text THEN (0)::numeric
+              WHEN 'Poor-Fair'::text THEN 1.25
+              WHEN 'Fair'::text THEN 2.5
+              WHEN 'Fair-Good'::text THEN 3.75
+              WHEN 'Good'::text THEN (5)::numeric
+              ELSE (0)::numeric
+          END) OVER w AS rating,
       spitcasts.updated_at
      FROM spitcasts
     WINDOW w AS (PARTITION BY spitcasts.spot_id ORDER BY spitcasts."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
@@ -313,9 +321,6 @@ ActiveRecord::Schema.define(version: 2020_01_16_024806) do
      FROM surfline_v2s
     WINDOW w AS (PARTITION BY surfline_v2s.spot_id ORDER BY surfline_v2s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING);
   SQL
-  add_index "all_forecasts", ["spot_id"], name: "index_all_forecasts_on_spot_id"
-  add_index "all_forecasts", ["timestamp"], name: "index_all_forecasts_on_timestamp"
-
   create_view "consolidated_forecasts", materialized: true, sql_definition: <<-SQL
       SELECT s.id AS spot_id,
       s.subregion_id,
