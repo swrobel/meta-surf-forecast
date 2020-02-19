@@ -14,9 +14,7 @@ class ApiRequest < ApplicationRecord
   def get(retries: 0)
     save! && return if retries >= API_RETRIES
 
-    # Work around ruby send bug w/ double splat
-    # https://bugs.ruby-lang.org/issues/11860
-    self.request ||= options.present? ? requestable.send(service_url_method, **options) : requestable.send(service_url_method)
+    self.request ||= requestable.send(service_url_method, **options)
     call = Typhoeus::Request.new(request, typhoeus_opts.merge(followlocation: true, http_version: :httpv2_0))
 
     call.on_complete do |response|
