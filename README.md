@@ -13,7 +13,7 @@
 
 ## Purpose
 
-Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://magicseaweed.com/) & [Spitcast](http://www.spitcast.com/) APIs to display an aggregated surf forecast.
+Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://magicseaweed.com/) & [Spitcast](https://www.spitcast.com/) APIs to display an aggregated surf forecast.
 
 ![Screenshot](https://raw.githubusercontent.com/swrobel/meta-surf-forecast/master/screenshot.png)
 
@@ -29,7 +29,6 @@ Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://mag
 1. `cp config/database.yml.example config/database.yml`
 1. `bin/rails db:setup`
 1. `rvmsudo bin/invoker setup --tld localhost` (help available [here](http://invoker.codemancers.com/ruby_managers.html))
-1. Grab some [Spitcast](http://www.spitcast.com/) data: `bin/rails spitcast:update`
 1. Grab some [Surfline v2](https://www.surfline.com/) data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails surfline_v2:update`
 1. Grab some [MagicSeaweed](https://magicseaweed.com/) data (requires a valid [API key](https://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update` (replace `xxx` with your key)
 1. Refresh the materialized Postgres view that collates all forecast data into one table: `bin/rails database_views:refresh`
@@ -55,7 +54,6 @@ Contributing new spots is easy! Make sure you're signed into your [Github accoun
 1. Choose CSV from the dropdown at the bottom & copy the coordinates string.
 1. Run `rails console`, then run `SpotFinder.new('{string}').formatted_spots`.
 1. Copy the output and paste it into the spots array in `seeds.rb`, then make sure to assign each spot to the right subregion & delete extraneous fields (`msw_name`, `match_type`, `distance`).
-1. If the spot is in California, get the Spitcast spot id & slug (unique text id) [their spot list API](http://api.spitcast.com/api/county/spots/orange-county/) (you can change the county at the end of the URL). The slug is `spot_id_char` in their API.
 1. It's strongly encouraged to add all spots for a particular county or region rather than just a single one. Be a pal!
 1. Submit a pull request and I'll get it on the site ASAP!
 
@@ -68,8 +66,6 @@ Use the following as a template. Delete the lines for `surfline_v2_id`, `msw_id`
     lon: -118.964,
     surfline_v2_id: '590927576a2e4300134fbed8',
     msw_id: 277,
-    spitcast_id: 207,
-    spitcast_slug: 'county-line-malibu-ca',
     subregion: LA,
   },
 ```
@@ -179,9 +175,11 @@ I've asked MagicSeaweed a few questions and added their responses below:
 * "Our API provides 5 days of forecast data, with segments of data provided for each 3 hour interval during that 5 day time span."
 * "Our data is updated every 3 hours."
 
-### [Spitcast](http://www.spitcast.com/)
+### [Spitcast](https://www.spitcast.com/)
 
-Spitcast only provides a [list of API endpoints](http://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
+**As of February 2020, the Spitcast API has been shut down. I'm waiting to hear back about whether their API would ever come back...**
+
+Spitcast only provides a [list of API endpoints](https://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
 
 I've asked Jack from Spitcast a few questions and added his responses below:
 

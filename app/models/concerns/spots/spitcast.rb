@@ -6,7 +6,7 @@ module Spots
 
     class_methods do
       def spitcast_url(spitcast_slug)
-        "http://www.spitcast.com/surf-report/spot/#{spitcast_slug}/"
+        "https://www.spitcast.com/surf-report/spot/#{spitcast_slug}/"
       end
     end
 
