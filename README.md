@@ -109,6 +109,8 @@ Value|Meaning
 1|Good
 2|Optimal
 
+However, I have never seen a score of 1 in any of their API responses (only 0 or 2), which is unfortunate when it comes to granularity of ratings. Hopefully this changes in the future.
+
 #### Old API (v1)
 
 Surfline's old API is undocumented and unauthenticated, but was used via javascript on their website, so it was fairly easy to reverse-engineer. However, they have updated their site & apps to use the new API, and it appears that they've stopped including some critical data in the responses for the old API, so it's disabled in this app for now (and probably forever).
