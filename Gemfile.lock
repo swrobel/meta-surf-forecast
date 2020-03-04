@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/rails/webpacker.git
+  revision: cb4e4c8c137780ffa549c71b84e66b3ec8c98575
+  specs:
+    webpacker (4.2.2)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
+      semantic_range (>= 2.3.0)
+
+GIT
   remote: https://github.com/swrobel/invoker.git
   revision: 110cb235572165e1007ab794e56cbdf0777ed438
   specs:
@@ -21,15 +31,6 @@ GIT
   branch: rails-pages
   specs:
     rack-toolbar (0.1.4)
-
-GIT
-  remote: https://github.com/swrobel/webpacker.git
-  revision: a4adbdcfa854a07e9c4b34c1c2ade3a7b0556d81
-  specs:
-    webpacker (4.2.2)
-      activesupport (>= 4.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
 
 GEM
   remote: https://rubygems.org/
@@ -264,6 +265,7 @@ GEM
     scenic (1.5.2)
       activerecord (>= 4.0.0)
       railties (>= 4.0.0)
+    semantic_range (2.3.0)
     shellany (0.0.1)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
