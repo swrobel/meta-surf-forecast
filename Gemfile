@@ -18,7 +18,7 @@ gem 'safely_block'
 gem 'scenic'
 gem 'slim-rails'
 gem 'typhoeus'
-gem 'webpacker', github: 'rails/webpacker'
+gem 'webpacker', '~> 5.0.0'
 
 group :development, :test do
   gem 'dotenv-rails'
