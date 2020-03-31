@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/swrobel/invoker.git
-  revision: 110cb235572165e1007ab794e56cbdf0777ed438
+  revision: 195cac2875d63298c450d1d3ddc1d81044233d4e
   specs:
     invoker (1.5.7)
       colorize (~> 0.8.1)
@@ -121,7 +121,7 @@ GEM
     git-version-bump (0.16.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    guard (2.16.1)
+    guard (2.16.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       lumberjack (>= 1.0.12, < 2.0)
@@ -242,7 +242,8 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     rubocop-performance (1.5.2)
       rubocop (>= 0.71.0)
-    rubocop-rails (2.4.2)
+    rubocop-rails (2.5.0)
+      activesupport
       rack (>= 1.1)
       rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
@@ -289,7 +290,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.0.0)
+    webpacker (5.0.1)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
