@@ -5,8 +5,8 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
-    "@bugsnag/js": "^6.4.3",
-    "@bugsnag/plugin-react": "^6.4.0",
+    "@bugsnag/js": "^7.0.0",
+    "@bugsnag/plugin-react": "^7.0.0",
     "@rails/webpacker": "^5.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.4.0",

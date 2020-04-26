@@ -18,7 +18,7 @@ gem 'safely_block'
 gem 'scenic'
 gem 'slim-rails'
 gem 'typhoeus'
-gem 'webpacker', '~> 5.0.0'
+gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -30,7 +30,7 @@ group :development do
   gem 'guard'
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
-  gem 'invoker', github: 'swrobel/invoker'
+  gem 'invoker'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rack-toolbar', github: 'swrobel/rack-toolbar', branch: 'rails-pages' # Insert arbitrary code into Rails pages
   gem 'rubocop'

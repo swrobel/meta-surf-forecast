@@ -85,7 +85,7 @@ const SpotChart = props => {
       },
     },
   }
-  const ErrorBoundary = window.bugsnagClient.getPlugin('react')
+  const ErrorBoundary = window.Bugsnag.getPlugin('react')
 
   return(
     <ErrorBoundary>
