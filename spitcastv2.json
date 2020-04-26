@@ -1,0 +1,5720 @@
+https://digi8szsygmni.cloudfront.net/api/spot_forecast/388/2020/4/26
+[{
+	"_id": "388_1587884400",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6781459048965697,
+	"size_ft": 2.2248882106208616,
+	"size_list": [0.6781459048965697, 0.5211456563971513, 0.3653932712446259, 0.33977611731922885, 0.3347320694924142, 0.23710188255712675],
+	"spot_id": 388,
+	"timestamp": 1587884400,
+	"warnings": []
+}, {
+	"_id": "388_1587888000",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5211456563971513, 0.35676492318519026, 0.34878448618805197, 0.3347320694924142, 0.23710188255712675],
+	"spot_id": 388,
+	"timestamp": 1587888000,
+	"warnings": []
+}, {
+	"_id": "388_1587891600",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5313641986794483, 0.35676492318519026, 0.34878448618805197, 0.3347320694924142, 0.23710188255712675],
+	"spot_id": 388,
+	"timestamp": 1587891600,
+	"warnings": []
+}, {
+	"_id": "388_1587895200",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5415827409617454, 0.37375372905115173, 0.34878448618805197, 0.3347320694924142, 0.23710188255712675],
+	"spot_id": 388,
+	"timestamp": 1587895200,
+	"warnings": []
+}, {
+	"_id": "388_1587898800",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5620198255263396, 0.3907425349171132, 0.3626264086167821, 0.34878448618805197],
+	"spot_id": 388,
+	"timestamp": 1587898800,
+	"warnings": []
+}, {
+	"_id": "388_1587902400",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5824569100909337, 0.4077313407830746, 0.37657357817896603, 0.34878448618805197],
+	"spot_id": 388,
+	"timestamp": 1587902400,
+	"warnings": []
+}, {
+	"_id": "388_1587906000",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5620198255263396, 0.42472014664903607, 0.3626264086167821, 0.34878448618805197, 0.16349667651675334],
+	"spot_id": 388,
+	"timestamp": 1587906000,
+	"warnings": []
+}, {
+	"_id": "388_1587909600",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5824569100909337, 0.44170895251499753, 0.3626264086167821, 0.34878448618805197],
+	"spot_id": 388,
+	"timestamp": 1587909600,
+	"warnings": []
+}, {
+	"_id": "388_1587913200",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5620198255263396, 0.458697758380959, 0.3626264086167821, 0.3321757011314781],
+	"spot_id": 388,
+	"timestamp": 1587913200,
+	"warnings": []
+}, {
+	"_id": "388_1587916800",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5620198255263396, 0.458697758380959, 0.4044679173033338, 0.3321757011314781],
+	"spot_id": 388,
+	"timestamp": 1587916800,
+	"warnings": []
+}, {
+	"_id": "388_1587920400",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5518012832440425, 0.47568656424692046, 0.41841508686551776, 0.3321757011314781],
+	"spot_id": 388,
+	"timestamp": 1587920400,
+	"warnings": []
+}, {
+	"_id": "388_1587924000",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5620198255263396, 0.4926753701128818, 0.4044679173033338, 0.3321757011314781],
+	"spot_id": 388,
+	"timestamp": 1587924000,
+	"warnings": []
+}, {
+	"_id": "388_1587927600",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5620198255263396, 0.5096641759788433, 0.4044679173033338, 0.3321757011314781],
+	"spot_id": 388,
+	"timestamp": 1587927600,
+	"warnings": []
+}, {
+	"_id": "388_1587931200",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6473210910376347,
+	"size_ft": 2.1237569283199136,
+	"size_list": [0.6473210910376347, 0.5620198255263396, 0.5266529818448047, 0.3905207477411499, 0.3321757011314781],
+	"spot_id": 388,
+	"timestamp": 1587931200,
+	"warnings": []
+}, {
+	"_id": "388_1587934800",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5620198255263396, 0.5266529818448047, 0.4044679173033338, 0.3321757011314781],
+	"spot_id": 388,
+	"timestamp": 1587934800,
+	"warnings": []
+}, {
+	"_id": "388_1587938400",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5722383678086367, 0.5436417877107662, 0.4044679173033338, 0.31556691607490417],
+	"spot_id": 388,
+	"timestamp": 1587938400,
+	"warnings": []
+}, {
+	"_id": "388_1587942000",
+	"date_gmt": {
+		"dd": 26,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5824569100909337, 0.5606305935767276, 0.3905207477411499, 0.31556691607490417],
+	"spot_id": 388,
+	"timestamp": 1587942000,
+	"warnings": []
+}, {
+	"_id": "388_1587945600",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.5926754523732307, 0.5606305935767276, 0.3626264086167821, 0.31556691607490417],
+	"spot_id": 388,
+	"timestamp": 1587945600,
+	"warnings": []
+}, {
+	"_id": "388_1587949200",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6627334979671021,
+	"size_ft": 2.1743225694703874,
+	"size_list": [0.6627334979671021, 0.623331079220122, 0.5776193994426891, 0.34867923905459813, 0.31556691607490417],
+	"spot_id": 388,
+	"timestamp": 1587949200,
+	"warnings": []
+}, {
+	"_id": "388_1587952800",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6744237906316075,
+	"size_ft": 2.212676549255803,
+	"size_list": [0.6744237906316075, 0.6627334979671021, 0.5946082053086504, 0.3347320694924142, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1587952800,
+	"warnings": []
+}, {
+	"_id": "388_1587956400",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7459535866076871,
+	"size_ft": 2.447354365085964,
+	"size_list": [0.7459535866076871, 0.6473210910376347, 0.5946082053086504, 0.3626264086167821, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1587956400,
+	"warnings": []
+}, {
+	"_id": "388_1587960000",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8787946362775491,
+	"size_ft": 2.883184594484834,
+	"size_list": [0.8787946362775491, 0.6473210910376347, 0.5548466494608297, 0.3347320694924142, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1587960000,
+	"warnings": []
+}, {
+	"_id": "388_1587963600",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.7611989981520506,
+	"size_ft": 2.4973721210971735,
+	"size_list": [0.7611989981520506, 0.6473210910376347, 0.5548466494608297, 0.3347320694924142, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1587963600,
+	"warnings": []
+}, {
+	"_id": "388_1587967200",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 26,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.858214556740057,
+	"size_ft": 2.8156646463350485,
+	"size_list": [0.858214556740057, 0.6473210910376347, 0.5702590563902972, 0.3207848999302303, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1587967200,
+	"warnings": []
+}, {
+	"_id": "388_1587970800",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9253791742240615,
+	"size_ft": 3.03602100996127,
+	"size_list": [0.9253791742240615, 0.6319086841081671, 0.5856714633197647, 0.3347320694924142, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1587970800,
+	"warnings": []
+}, {
+	"_id": "388_1587974400",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9776183211560651,
+	"size_ft": 3.2074092927816644,
+	"size_list": [0.9776183211560651, 0.6164962771786997, 0.6010838702492323, 0.3207848999302303, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1587974400,
+	"warnings": []
+}, {
+	"_id": "388_1587978000",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0298574680880683,
+	"size_ft": 3.378797575602058,
+	"size_list": [1.0298574680880683, 0.6164962771786997, 0.6010838702492323, 0.2928905608058624, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1587978000,
+	"warnings": []
+}, {
+	"_id": "388_1587981600",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0447829386400693,
+	"size_ft": 3.427765656407885,
+	"size_list": [1.0447829386400693, 0.6164962771786997, 0.6010838702492323, 0.2928905608058624, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1587981600,
+	"warnings": []
+}, {
+	"_id": "388_1587985200",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.037320203364069,
+	"size_ft": 3.4032816160049717,
+	"size_list": [1.037320203364069, 0.6164962771786997, 0.6010838702492323, 0.2823493459617564, 0.2789433912436785],
+	"spot_id": 388,
+	"timestamp": 1587985200,
+	"warnings": []
+}, {
+	"_id": "388_1587988800",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.007469262260067,
+	"size_ft": 3.305345454393318,
+	"size_list": [1.007469262260067, 0.6164962771786997, 0.6010838702492323, 0.2823493459617564, 0.2789433912436785],
+	"spot_id": 388,
+	"timestamp": 1587988800,
+	"warnings": []
+}, {
+	"_id": "388_1587992400",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9776183211560651,
+	"size_ft": 3.2074092927816644,
+	"size_list": [0.9776183211560651, 0.6319086841081671, 0.6010838702492323, 0.2823493459617564, 0.2789433912436785],
+	"spot_id": 388,
+	"timestamp": 1587992400,
+	"warnings": []
+}, {
+	"_id": "388_1587996000",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9626928506040641,
+	"size_ft": 3.1584412119758376,
+	"size_list": [0.9626928506040641, 0.6319086841081671, 0.6010838702492323, 0.2657405609051825, 0.26499622168149456],
+	"spot_id": 388,
+	"timestamp": 1587996000,
+	"warnings": []
+}, {
+	"_id": "388_1587999600",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9626928506040641,
+	"size_ft": 3.1584412119758376,
+	"size_list": [0.9626928506040641, 0.6319086841081671, 0.6010838702492323, 0.2657405609051825, 0.25104905211931067],
+	"spot_id": 388,
+	"timestamp": 1587999600,
+	"warnings": []
+}, {
+	"_id": "388_1588003200",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9701555858800646,
+	"size_ft": 3.182925252378751,
+	"size_list": [0.9701555858800646, 0.6319086841081671, 0.6010838702492323, 0.26499622168149456, 0.24913177584860857],
+	"spot_id": 388,
+	"timestamp": 1588003200,
+	"warnings": []
+}, {
+	"_id": "388_1588006800",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9626928506040641,
+	"size_ft": 3.1584412119758376,
+	"size_list": [0.9626928506040641, 0.6473210910376347, 0.6010838702492323, 0.26499622168149456],
+	"spot_id": 388,
+	"timestamp": 1588006800,
+	"warnings": []
+}, {
+	"_id": "388_1588010400",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9552301153280636,
+	"size_ft": 3.133957171572924,
+	"size_list": [0.9552301153280636, 0.6473210910376347, 0.6010838702492323, 0.2231547129949428],
+	"spot_id": 388,
+	"timestamp": 1588010400,
+	"warnings": []
+}, {
+	"_id": "388_1588014000",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9253791742240615,
+	"size_ft": 3.03602100996127,
+	"size_list": [0.9253791742240615, 0.6627334979671021, 0.6010838702492323, 0.20920754343275888],
+	"spot_id": 388,
+	"timestamp": 1588014000,
+	"warnings": []
+}, {
+	"_id": "388_1588017600",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.90299096839606,
+	"size_ft": 2.9625688887525294,
+	"size_list": [0.90299096839606, 0.6627334979671021, 0.6010838702492323],
+	"spot_id": 388,
+	"timestamp": 1588017600,
+	"warnings": []
+}, {
+	"_id": "388_1588021200",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.873140027292058,
+	"size_ft": 2.8646327271408754,
+	"size_list": [0.873140027292058, 0.6627334979671021, 0.6164962771786997],
+	"spot_id": 388,
+	"timestamp": 1588021200,
+	"warnings": []
+}, {
+	"_id": "388_1588024800",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8507518214640565,
+	"size_ft": 2.791180605932135,
+	"size_list": [0.8507518214640565, 0.6627334979671021, 0.6164962771786997],
+	"spot_id": 388,
+	"timestamp": 1588024800,
+	"warnings": []
+}, {
+	"_id": "388_1588028400",
+	"date_gmt": {
+		"dd": 27,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.858214556740057,
+	"size_ft": 2.8156646463350485,
+	"size_list": [0.858214556740057, 0.6781459048965697, 0.6164962771786997],
+	"spot_id": 388,
+	"timestamp": 1588028400,
+	"warnings": []
+}, {
+	"_id": "388_1588032000",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9104537036720605,
+	"size_ft": 2.9870529291554426,
+	"size_list": [0.9104537036720605, 0.6781459048965697, 0.6164962771786997],
+	"spot_id": 388,
+	"timestamp": 1588032000,
+	"warnings": []
+}, {
+	"_id": "388_1588035600",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9776183211560651,
+	"size_ft": 3.2074092927816644,
+	"size_list": [0.9776183211560651, 0.6935583118260372, 0.5856714633197647],
+	"spot_id": 388,
+	"timestamp": 1588035600,
+	"warnings": []
+}, {
+	"_id": "388_1588039200",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.037320203364069,
+	"size_ft": 3.4032816160049717,
+	"size_list": [1.037320203364069, 0.6935583118260372, 0.5394342425313622, 0.23209240818685745],
+	"spot_id": 388,
+	"timestamp": 1588039200,
+	"warnings": []
+}, {
+	"_id": "388_1588042800",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7663906711722812,
+	"size_ft": 2.514405169608867,
+	"size_list": [0.7663906711722812, 0.7089707187555047, 0.47778461481349227, 0.283668498895048],
+	"spot_id": 388,
+	"timestamp": 1588042800,
+	"warnings": []
+}, {
+	"_id": "388_1588046400",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7868277557368754,
+	"size_ft": 2.58145597413177,
+	"size_list": [0.7868277557368754, 0.6935583118260372, 0.5856714633197647],
+	"spot_id": 388,
+	"timestamp": 1588046400,
+	"warnings": []
+}, {
+	"_id": "388_1588050000",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0895593502960723,
+	"size_ft": 3.574669898825366,
+	"size_list": [1.0895593502960723, 0.6935583118260372, 0.5086094286724273, 0.25788045354095274],
+	"spot_id": 388,
+	"timestamp": 1588050000,
+	"warnings": []
+}, {
+	"_id": "388_1588053600",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 27,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.067171144468071,
+	"size_ft": 3.501217777616626,
+	"size_list": [1.067171144468071, 0.6935583118260372, 0.5086094286724273, 0.2707744762180003],
+	"spot_id": 388,
+	"timestamp": 1588053600,
+	"warnings": []
+}, {
+	"_id": "388_1588057200",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.0149319975360676,
+	"size_ft": 3.3298294947962317,
+	"size_list": [1.0149319975360676, 0.6935583118260372, 0.5240218356018947, 0.2449864308639051],
+	"spot_id": 388,
+	"timestamp": 1588057200,
+	"warnings": []
+}, {
+	"_id": "388_1588060800",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9552301153280636,
+	"size_ft": 3.133957171572924,
+	"size_list": [0.9552301153280636, 0.6935583118260372, 0.5240218356018947, 0.25788045354095274],
+	"spot_id": 388,
+	"timestamp": 1588060800,
+	"warnings": []
+}, {
+	"_id": "388_1588064400",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.888065497844059,
+	"size_ft": 2.9136008079467026,
+	"size_list": [0.888065497844059, 0.6935583118260372, 0.5240218356018947, 0.2707744762180003],
+	"spot_id": 388,
+	"timestamp": 1588064400,
+	"warnings": []
+}, {
+	"_id": "388_1588068000",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8283636156360551,
+	"size_ft": 2.717728484723395,
+	"size_list": [0.8283636156360551, 0.7089707187555047, 0.5086094286724273, 0.2707744762180003],
+	"spot_id": 388,
+	"timestamp": 1588068000,
+	"warnings": []
+}, {
+	"_id": "388_1588071600",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.7761244687040516,
+	"size_ft": 2.546340201903001,
+	"size_list": [0.7761244687040516, 0.7089707187555047, 0.5394342425313622, 0.25788045354095274],
+	"spot_id": 388,
+	"timestamp": 1588071600,
+	"warnings": []
+}, {
+	"_id": "388_1588075200",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.001417143665114,
+	"size_ft": 3.2854894216222528,
+	"size_list": [1.001417143665114, 0.7089707187555047, 0.5394342425313622, 0.25788045354095274],
+	"spot_id": 388,
+	"timestamp": 1588075200,
+	"warnings": []
+}, {
+	"_id": "388_1588078800",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9401058899713317,
+	"size_ft": 3.0843370080535437,
+	"size_list": [0.9401058899713317, 0.7089707187555047, 0.5240218356018947, 0.25788045354095274],
+	"spot_id": 388,
+	"timestamp": 1588078800,
+	"warnings": []
+}, {
+	"_id": "388_1588082400",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8992317208421433,
+	"size_ft": 2.9502353990077372,
+	"size_list": [0.8992317208421433, 0.7243831256849721, 0.49319702174295976, 0.29656252157209567],
+	"spot_id": 388,
+	"timestamp": 1588082400,
+	"warnings": []
+}, {
+	"_id": "388_1588086000",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8583575517129549,
+	"size_ft": 2.816133789961931,
+	"size_list": [0.8583575517129549, 0.7243831256849721, 0.49319702174295976, 0.29656252157209567],
+	"spot_id": 388,
+	"timestamp": 1588086000,
+	"warnings": []
+}, {
+	"_id": "388_1588089600",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8174833825837666,
+	"size_ft": 2.6820321809161247,
+	"size_list": [0.8174833825837666, 0.7243831256849721, 0.49319702174295976, 0.29656252157209567],
+	"spot_id": 388,
+	"timestamp": 1588089600,
+	"warnings": []
+}, {
+	"_id": "388_1588093200",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.7868277557368754,
+	"size_ft": 2.58145597413177,
+	"size_list": [0.7868277557368754, 0.7243831256849721, 0.49319702174295976, 0.30945654424914326, 0.24913177584860857],
+	"spot_id": 388,
+	"timestamp": 1588093200,
+	"warnings": []
+}, {
+	"_id": "388_1588096800",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7561721288899841,
+	"size_ft": 2.480879767347415,
+	"size_list": [0.7561721288899841, 0.7243831256849721, 0.41260872566552437, 0.3321757011314781, 0.29656252157209567],
+	"spot_id": 388,
+	"timestamp": 1588096800,
+	"warnings": []
+}, {
+	"_id": "388_1588100400",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7357350443253899,
+	"size_ft": 2.413828962824512,
+	"size_list": [0.7357350443253899, 0.7243831256849721, 0.45129079369666725, 0.3321757011314781, 0.2449864308639051],
+	"spot_id": 388,
+	"timestamp": 1588100400,
+	"warnings": []
+}, {
+	"_id": "388_1588104000",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.7255165020430928,
+	"size_ft": 2.3803035605630605,
+	"size_list": [0.7255165020430928, 0.7089707187555047, 0.45129079369666725, 0.3321757011314781, 0.2449864308639051],
+	"spot_id": 388,
+	"timestamp": 1588104000,
+	"warnings": []
+}, {
+	"_id": "388_1588107600",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.7152979597607958,
+	"size_ft": 2.346778158301609,
+	"size_list": [0.7152979597607958, 0.7089707187555047, 0.45129079369666725, 0.34878448618805197, 0.23209240818685745],
+	"spot_id": 388,
+	"timestamp": 1588107600,
+	"warnings": []
+}, {
+	"_id": "388_1588111200",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7255165020430928,
+	"size_ft": 2.3803035605630605,
+	"size_list": [0.7255165020430928, 0.7089707187555047, 0.45129079369666725, 0.34878448618805197, 0.23209240818685745],
+	"spot_id": 388,
+	"timestamp": 1588111200,
+	"warnings": []
+}, {
+	"_id": "388_1588114800",
+	"date_gmt": {
+		"dd": 28,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7357350443253899,
+	"size_ft": 2.413828962824512,
+	"size_list": [0.7357350443253899, 0.7243831256849721, 0.425502748342572, 0.3321757011314781, 0.2449864308639051],
+	"spot_id": 388,
+	"timestamp": 1588114800,
+	"warnings": []
+}, {
+	"_id": "388_1588118400",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7255165020430928,
+	"size_ft": 2.3803035605630605,
+	"size_list": [0.7255165020430928, 0.7089707187555047, 0.425502748342572, 0.3321757011314781, 0.2449864308639051],
+	"spot_id": 388,
+	"timestamp": 1588118400,
+	"warnings": []
+}, {
+	"_id": "388_1588122000",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7255165020430928,
+	"size_ft": 2.3803035605630605,
+	"size_list": [0.7255165020430928, 0.7089707187555047, 0.425502748342572, 0.3321757011314781, 0.2449864308639051, 0.20920754343275888],
+	"spot_id": 388,
+	"timestamp": 1588122000,
+	"warnings": []
+}, {
+	"_id": "388_1588125600",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7255165020430928,
+	"size_ft": 2.3803035605630605,
+	"size_list": [0.7255165020430928, 0.6935583118260372, 0.43839677101961966, 0.31556691607490417, 0.2449864308639051, 0.20920754343275888],
+	"spot_id": 388,
+	"timestamp": 1588125600,
+	"warnings": []
+}, {
+	"_id": "388_1588129200",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7255165020430928,
+	"size_ft": 2.3803035605630605,
+	"size_list": [0.7255165020430928, 0.6935583118260372, 0.45129079369666725, 0.2823493459617564, 0.23209240818685745, 0.2231547129949428],
+	"spot_id": 388,
+	"timestamp": 1588129200,
+	"warnings": []
+}, {
+	"_id": "388_1588132800",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7459535866076871,
+	"size_ft": 2.447354365085964,
+	"size_list": [0.7459535866076871, 0.6935583118260372, 0.43839677101961966, 0.2823493459617564, 0.23209240818685745],
+	"spot_id": 388,
+	"timestamp": 1588132800,
+	"warnings": []
+}, {
+	"_id": "388_1588136400",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7561721288899841,
+	"size_ft": 2.480879767347415,
+	"size_list": [0.7561721288899841, 0.7243831256849721, 0.425502748342572, 0.2657405609051825, 0.20630436283276218],
+	"spot_id": 388,
+	"timestamp": 1588136400,
+	"warnings": []
+}, {
+	"_id": "388_1588140000",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 28,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7663906711722812,
+	"size_ft": 2.514405169608867,
+	"size_list": [0.7663906711722812, 0.7089707187555047, 0.425502748342572, 0.2657405609051825, 0.20630436283276218],
+	"spot_id": 388,
+	"timestamp": 1588140000,
+	"warnings": []
+}, {
+	"_id": "388_1588143600",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.7561721288899841,
+	"size_ft": 2.480879767347415,
+	"size_list": [0.7561721288899841, 0.7089707187555047, 0.43839677101961966, 0.2657405609051825, 0.26499622168149456, 0.19341034015571454],
+	"spot_id": 388,
+	"timestamp": 1588143600,
+	"warnings": []
+}, {
+	"_id": "388_1588147200",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6781459048965697,
+	"size_ft": 2.2248882106208616,
+	"size_list": [0.6781459048965697, 0.43839677101961966, 0.2989581310183303, 0.25104905211931067, 0.19341034015571454],
+	"spot_id": 388,
+	"timestamp": 1588147200,
+	"warnings": []
+}, {
+	"_id": "388_1588150800",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.797958052021606,
+	"size_ft": 2.617972695394566,
+	"size_list": [0.797958052021606, 0.6781459048965697, 0.43839677101961966, 0.2989581310183303, 0.26499622168149456, 0.19341034015571454],
+	"spot_id": 388,
+	"timestamp": 1588150800,
+	"warnings": []
+}, {
+	"_id": "388_1588154400",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8476823811207121,
+	"size_ft": 2.7811102632760774,
+	"size_list": [0.8476823811207121, 0.2989581310183303, 0.2789433912436785, 0.19341034015571454],
+	"spot_id": 388,
+	"timestamp": 1588154400,
+	"warnings": []
+}, {
+	"_id": "388_1588158000",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8476823811207121,
+	"size_ft": 2.7811102632760774,
+	"size_list": [0.8476823811207121, 0.8072648403014696, 0.2989581310183303, 0.2789433912436785],
+	"spot_id": 388,
+	"timestamp": 1588158000,
+	"warnings": []
+}, {
+	"_id": "388_1588161600",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8322699741912446,
+	"size_ft": 2.730544622125603,
+	"size_list": [0.8322699741912446, 0.7868277557368754, 0.2989581310183303, 0.22480793021053583],
+	"spot_id": 388,
+	"timestamp": 1588161600,
+	"warnings": []
+}, {
+	"_id": "388_1588165200",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8322699741912446,
+	"size_ft": 2.730544622125603,
+	"size_list": [0.8322699741912446, 0.7663906711722812, 0.31556691607490417, 0.21458938792823873],
+	"spot_id": 388,
+	"timestamp": 1588165200,
+	"warnings": []
+}, {
+	"_id": "388_1588168800",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8322699741912446,
+	"size_ft": 2.730544622125603,
+	"size_list": [0.8322699741912446, 0.7357350443253899, 0.2989581310183303, 0.22480793021053583],
+	"spot_id": 388,
+	"timestamp": 1588168800,
+	"warnings": []
+}, {
+	"_id": "388_1588172400",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.7050794174784987,
+	"size_ft": 2.3132527560401575,
+	"size_list": [0.7050794174784987, 0.6473210910376347, 0.41260872566552437, 0.2989581310183303, 0.24524501477512997],
+	"spot_id": 388,
+	"timestamp": 1588172400,
+	"warnings": []
+}, {
+	"_id": "388_1588176000",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6948608751962017,
+	"size_ft": 2.279727353778706,
+	"size_list": [0.6948608751962017, 0.6627334979671021, 0.41260872566552437, 0.2657405609051825, 0.23502647249283293],
+	"spot_id": 388,
+	"timestamp": 1588176000,
+	"warnings": []
+}, {
+	"_id": "388_1588179600",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6744237906316075,
+	"size_ft": 2.212676549255803,
+	"size_list": [0.6744237906316075, 0.6627334979671021, 0.41260872566552437, 0.2823493459617564, 0.24524501477512997],
+	"spot_id": 388,
+	"timestamp": 1588179600,
+	"warnings": []
+}, {
+	"_id": "388_1588183200",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6642052483493104,
+	"size_ft": 2.1791511469943514,
+	"size_list": [0.6642052483493104, 0.6473210910376347, 0.41260872566552437, 0.2657405609051825, 0.24524501477512997],
+	"spot_id": 388,
+	"timestamp": 1588183200,
+	"warnings": []
+}, {
+	"_id": "388_1588186800",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6539867060670134,
+	"size_ft": 2.1456257447329,
+	"size_list": [0.6539867060670134, 0.6473210910376347, 0.41260872566552437, 0.2823493459617564, 0.24524501477512997],
+	"spot_id": 388,
+	"timestamp": 1588186800,
+	"warnings": []
+}, {
+	"_id": "388_1588190400",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6437681637847162,
+	"size_ft": 2.1121003424714484,
+	"size_list": [0.6437681637847162, 0.6319086841081671, 0.41260872566552437, 0.2823493459617564, 0.20437084564594166],
+	"spot_id": 388,
+	"timestamp": 1588190400,
+	"warnings": []
+}, {
+	"_id": "388_1588194000",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.623331079220122,
+	"size_ft": 2.045049537948545,
+	"size_list": [0.623331079220122, 0.6164962771786997, 0.41260872566552437, 0.31556691607490417, 0.23502647249283293],
+	"spot_id": 388,
+	"timestamp": 1588194000,
+	"warnings": []
+}, {
+	"_id": "388_1588197600",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.6164962771786997,
+	"size_ft": 2.022625646018965,
+	"size_list": [0.6164962771786997, 0.425502748342572, 0.31556691607490417, 0.22480793021053583],
+	"spot_id": 388,
+	"timestamp": 1588197600,
+	"warnings": []
+}, {
+	"_id": "388_1588201200",
+	"date_gmt": {
+		"dd": 29,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6164962771786997,
+	"size_ft": 2.022625646018965,
+	"size_list": [0.6164962771786997, 0.613112536937825, 0.425502748342572, 0.31556691607490417, 0.22480793021053583],
+	"spot_id": 388,
+	"timestamp": 1588201200,
+	"warnings": []
+}, {
+	"_id": "388_1588204800",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6164962771786997,
+	"size_ft": 2.022625646018965,
+	"size_list": [0.6164962771786997, 0.6028939946555278, 0.41260872566552437, 0.2989581310183303, 0.25546355705742707],
+	"spot_id": 388,
+	"timestamp": 1588204800,
+	"warnings": []
+}, {
+	"_id": "388_1588208400",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6335496215024191,
+	"size_ft": 2.0785749402099967,
+	"size_list": [0.6335496215024191, 0.6010838702492323, 0.41260872566552437, 0.2989581310183303, 0.25546355705742707],
+	"spot_id": 388,
+	"timestamp": 1588208400,
+	"warnings": []
+}, {
+	"_id": "388_1588212000",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.6744237906316075,
+	"size_ft": 2.212676549255803,
+	"size_list": [0.6744237906316075, 0.5856714633197647, 0.3997147029884767, 0.2989581310183303, 0.25546355705742707],
+	"spot_id": 388,
+	"timestamp": 1588212000,
+	"warnings": []
+}, {
+	"_id": "388_1588215600",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.7766092134545783,
+	"size_ft": 2.5479305718703187,
+	"size_list": [0.7766092134545783, 0.5856714633197647, 0.425502748342572, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1588215600,
+	"warnings": []
+}, {
+	"_id": "388_1588219200",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8174833825837666,
+	"size_ft": 2.6820321809161247,
+	"size_list": [0.8174833825837666, 0.5702590563902972, 0.425502748342572, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1588219200,
+	"warnings": []
+}, {
+	"_id": "388_1588222800",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8583575517129549,
+	"size_ft": 2.816133789961931,
+	"size_list": [0.8583575517129549, 0.5702590563902972, 0.425502748342572, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1588222800,
+	"warnings": []
+}, {
+	"_id": "388_1588226400",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 29,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8992317208421433,
+	"size_ft": 2.9502353990077372,
+	"size_list": [0.8992317208421433, 0.5548466494608297, 0.425502748342572, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1588226400,
+	"warnings": []
+}, {
+	"_id": "388_1588230000",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 0,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9503244322536287,
+	"size_ft": 3.1178624103149954,
+	"size_list": [0.9503244322536287, 0.7397955326144396, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1588230000,
+	"warnings": []
+}, {
+	"_id": "388_1588233600",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 1,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9809800591005199,
+	"size_ft": 3.2184386170993498,
+	"size_list": [0.9809800591005199, 0.7089707187555047, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1588233600,
+	"warnings": []
+}, {
+	"_id": "388_1588237200",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 2,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9605429745359257,
+	"size_ft": 3.1513878125764467,
+	"size_list": [0.9605429745359257, 0.7089707187555047, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1588237200,
+	"warnings": []
+}, {
+	"_id": "388_1588240800",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 3,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9401058899713317,
+	"size_ft": 3.0843370080535437,
+	"size_list": [0.9401058899713317, 0.7089707187555047, 0.2657405609051825],
+	"spot_id": 388,
+	"timestamp": 1588240800,
+	"warnings": []
+}, {
+	"_id": "388_1588244400",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 4,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9094502631244404,
+	"size_ft": 2.983760801269189,
+	"size_list": [0.9094502631244404, 0.6935583118260372, 0.2657405609051825],
+	"spot_id": 388,
+	"timestamp": 1588244400,
+	"warnings": []
+}, {
+	"_id": "388_1588248000",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 5,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8890131785598462,
+	"size_ft": 2.916709996746286,
+	"size_list": [0.8890131785598462, 0.6935583118260372],
+	"spot_id": 388,
+	"timestamp": 1588248000,
+	"warnings": []
+}, {
+	"_id": "388_1588251600",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 6,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.868576093995252,
+	"size_ft": 2.8496591922233825,
+	"size_list": [0.868576093995252, 0.6781459048965697],
+	"spot_id": 388,
+	"timestamp": 1588251600,
+	"warnings": []
+}, {
+	"_id": "388_1588255200",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 7,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8583575517129549,
+	"size_ft": 2.816133789961931,
+	"size_list": [0.8583575517129549, 0.6781459048965697, 0.1912296677645408],
+	"spot_id": 388,
+	"timestamp": 1588255200,
+	"warnings": []
+}, {
+	"_id": "388_1588258800",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 8,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8481390094306578,
+	"size_ft": 2.7826083877004795,
+	"size_list": [0.8481390094306578, 0.6627334979671021, 0.25104905211931067],
+	"spot_id": 388,
+	"timestamp": 1588258800,
+	"warnings": []
+}, {
+	"_id": "388_1588262400",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 9,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8379204671483608,
+	"size_ft": 2.7490829854390277,
+	"size_list": [0.8379204671483608, 0.6627334979671021, 0.2789433912436785],
+	"spot_id": 388,
+	"timestamp": 1588262400,
+	"warnings": []
+}, {
+	"_id": "388_1588266000",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 10,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8277019248660638,
+	"size_ft": 2.7155575831775765,
+	"size_list": [0.8277019248660638, 0.6473210910376347, 0.3207848999302303],
+	"spot_id": 388,
+	"timestamp": 1588266000,
+	"warnings": []
+}, {
+	"_id": "388_1588269600",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 11,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8174833825837666,
+	"size_ft": 2.6820321809161247,
+	"size_list": [0.8174833825837666, 0.6473210910376347, 0.34867923905459813],
+	"spot_id": 388,
+	"timestamp": 1588269600,
+	"warnings": []
+}, {
+	"_id": "388_1588273200",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 12,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8174833825837666,
+	"size_ft": 2.6820321809161247,
+	"size_list": [0.8174833825837666, 0.6473210910376347, 0.3905207477411499],
+	"spot_id": 388,
+	"timestamp": 1588273200,
+	"warnings": []
+}, {
+	"_id": "388_1588276800",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 13,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8174833825837666,
+	"size_ft": 2.6820321809161247,
+	"size_list": [0.8174833825837666, 0.6473210910376347, 0.4323622564277017],
+	"spot_id": 388,
+	"timestamp": 1588276800,
+	"warnings": []
+}, {
+	"_id": "388_1588280400",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 14,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8277019248660638,
+	"size_ft": 2.7155575831775765,
+	"size_list": [0.8277019248660638, 0.6473210910376347, 0.46025659555206955, 0.24913177584860857],
+	"spot_id": 388,
+	"timestamp": 1588280400,
+	"warnings": []
+}, {
+	"_id": "388_1588284000",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 15,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8379204671483608,
+	"size_ft": 2.7490829854390277,
+	"size_list": [0.8379204671483608, 0.6319086841081671, 0.48815093467643733, 0.24913177584860857],
+	"spot_id": 388,
+	"timestamp": 1588284000,
+	"warnings": []
+}, {
+	"_id": "388_1588287600",
+	"date_gmt": {
+		"dd": 30,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 16,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8583575517129549,
+	"size_ft": 2.816133789961931,
+	"size_list": [0.8583575517129549, 0.6319086841081671, 0.5160452738008052],
+	"spot_id": 388,
+	"timestamp": 1588287600,
+	"warnings": []
+}, {
+	"_id": "388_1588291200",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 0,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 17,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9401058899713317,
+	"size_ft": 3.0843370080535437,
+	"size_list": [0.9401058899713317, 0.6319086841081671, 0.5439396129251731, 0.24913177584860857],
+	"spot_id": 388,
+	"timestamp": 1588291200,
+	"warnings": []
+}, {
+	"_id": "388_1588294800",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 1,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 18,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8507518214640565,
+	"size_ft": 2.791180605932135,
+	"size_list": [0.8507518214640565, 0.6319086841081671, 0.5718339520495409, 0.24913177584860857],
+	"spot_id": 388,
+	"timestamp": 1588294800,
+	"warnings": []
+}, {
+	"_id": "388_1588298400",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 2,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 19,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.082096615020072,
+	"size_ft": 3.5501858584224526,
+	"size_list": [1.082096615020072, 0.6164962771786997, 0.5718339520495409, 0.2657405609051825],
+	"spot_id": 388,
+	"timestamp": 1588298400,
+	"warnings": []
+}, {
+	"_id": "388_1588302000",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 3,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 20,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.2761277321960849,
+	"size_ft": 4.186770908898203,
+	"size_list": [1.2761277321960849, 0.6164962771786997, 0.5997282911739088, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1588302000,
+	"warnings": []
+}, {
+	"_id": "388_1588305600",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 4,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 21,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9232814909017154,
+	"size_ft": 3.029138846609984,
+	"size_list": [0.9232814909017154, 0.6010838702492323, 0.5857811216117248, 0.2823493459617564],
+	"spot_id": 388,
+	"timestamp": 1588305600,
+	"warnings": []
+}, {
+	"_id": "388_1588309200",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 5,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 22,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9812887049897813,
+	"size_ft": 3.219451234878674,
+	"size_list": [0.9812887049897813, 0.5857811216117248, 0.5856714633197647, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1588309200,
+	"warnings": []
+}, {
+	"_id": "388_1588312800",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 6,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 30,
+		"hh": 23,
+		"mm": 4,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0054583775264756,
+	"size_ft": 3.2987480633239623,
+	"size_list": [1.0054583775264756, 0.5857811216117248, 0.5702590563902972, 0.2989581310183303],
+	"spot_id": 388,
+	"timestamp": 1588312800,
+	"warnings": []
+}, {
+	"_id": "388_1588316400",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 7,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 0,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0151262465411532,
+	"size_ft": 3.3304667947020774,
+	"size_list": [1.0151262465411532, 0.5857811216117248, 0.5548466494608297, 0.30472337429661694],
+	"spot_id": 388,
+	"timestamp": 1588316400,
+	"warnings": []
+}, {
+	"_id": "388_1588320000",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 8,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 1,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.019960181048492,
+	"size_ft": 3.3463261603911345,
+	"size_list": [1.019960181048492, 0.5857811216117248, 0.5548466494608297, 0.3555106033460531],
+	"spot_id": 388,
+	"timestamp": 1588320000,
+	"warnings": []
+}, {
+	"_id": "388_1588323600",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 9,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 2,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0296280500631696,
+	"size_ft": 3.378044891769249,
+	"size_list": [1.0296280500631696, 0.5857811216117248, 0.5394342425313622, 0.3555106033460531],
+	"spot_id": 388,
+	"timestamp": 1588323600,
+	"warnings": []
+}, {
+	"_id": "388_1588327200",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 10,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 3,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0247941155558309,
+	"size_ft": 3.362185526080192,
+	"size_list": [1.0247941155558309, 0.5997282911739088, 0.5240218356018947, 0.321652450646429],
+	"spot_id": 388,
+	"timestamp": 1588327200,
+	"warnings": []
+}, {
+	"_id": "388_1588330800",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 11,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 4,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0102923120338143,
+	"size_ft": 3.3146074290130194,
+	"size_list": [1.0102923120338143, 0.5857811216117248, 0.5240218356018947, 0.3385815269962411],
+	"spot_id": 388,
+	"timestamp": 1588330800,
+	"warnings": []
+}, {
+	"_id": "388_1588334400",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 12,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 5,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9812887049897813,
+	"size_ft": 3.219451234878674,
+	"size_list": [0.9812887049897813, 0.5857811216117248, 0.5086094286724273, 0.3385815269962411],
+	"spot_id": 388,
+	"timestamp": 1588334400,
+	"warnings": []
+}, {
+	"_id": "388_1588338000",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 13,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 6,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9522850979457484,
+	"size_ft": 3.1242950407443293,
+	"size_list": [0.9522850979457484, 0.557886782487357, 0.49319702174295976, 0.3385815269962411],
+	"spot_id": 388,
+	"timestamp": 1588338000,
+	"warnings": []
+}, {
+	"_id": "388_1588341600",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 14,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 7,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9232814909017154,
+	"size_ft": 3.029138846609984,
+	"size_list": [0.9232814909017154, 0.49319702174295976, 0.48815093467643733, 0.27086522159699283, 0.2231547129949428],
+	"spot_id": 388,
+	"timestamp": 1588341600,
+	"warnings": []
+}, {
+	"_id": "388_1588345200",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 15,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 8,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8991118183650214,
+	"size_ft": 2.9498420181646967,
+	"size_list": [0.8991118183650214, 0.48815093467643733, 0.47778461481349227, 0.3385815269962411, 0.2231547129949428],
+	"spot_id": 388,
+	"timestamp": 1588345200,
+	"warnings": []
+}, {
+	"_id": "388_1588348800",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 16,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 9,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8846100148430049,
+	"size_ft": 2.9022639210975245,
+	"size_list": [0.8846100148430049, 0.48815093467643733, 0.3997147029884767, 0.37243967969586517, 0.20920754343275888],
+	"spot_id": 388,
+	"timestamp": 1588348800,
+	"warnings": []
+}, {
+	"_id": "388_1588352400",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 17,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 10,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8749421458283273,
+	"size_ft": 2.8705451897194094,
+	"size_list": [0.8749421458283273, 0.4742037651142535, 0.3997147029884767, 0.37243967969586517],
+	"spot_id": 388,
+	"timestamp": 1588352400,
+	"warnings": []
+}, {
+	"_id": "388_1588356000",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 18,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 11,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8797760803356661,
+	"size_ft": 2.886404555408467,
+	"size_list": [0.8797760803356661, 0.5299924433629891, 0.3893687560456772, 0.3868206803114291],
+	"spot_id": 388,
+	"timestamp": 1588356000,
+	"warnings": []
+}, {
+	"_id": "388_1588359600",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 19,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 12,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8894439493503438,
+	"size_ft": 2.9181232867865816,
+	"size_list": [0.8894439493503438, 0.5160452738008052, 0.3893687560456772, 0.3868206803114291],
+	"spot_id": 388,
+	"timestamp": 1588359600,
+	"warnings": []
+}, {
+	"_id": "388_1588363200",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 20,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 13,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9136136218870378,
+	"size_ft": 2.997420115231869,
+	"size_list": [0.9136136218870378, 0.5160452738008052, 0.4062978323954893, 0.3868206803114291],
+	"spot_id": 388,
+	"timestamp": 1588363200,
+	"warnings": []
+}, {
+	"_id": "388_1588366800",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 21,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 14,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9619529669604261,
+	"size_ft": 3.1560137721224444,
+	"size_list": [0.9619529669604261, 0.48815093467643733, 0.3986108413577737, 0.37392665763438143],
+	"spot_id": 388,
+	"timestamp": 1588366800,
+	"warnings": []
+}, {
+	"_id": "388_1588370400",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 22,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 15,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.0296280500631696,
+	"size_ft": 3.378044891769249,
+	"size_list": [1.0296280500631696, 0.48815093467643733, 0.3820020563011998, 0.37392665763438143],
+	"spot_id": 388,
+	"timestamp": 1588370400,
+	"warnings": []
+}, {
+	"_id": "388_1588374000",
+	"date_gmt": {
+		"dd": 1,
+		"hh": 23,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 16,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.1021370676732518,
+	"size_ft": 3.6159353771051115,
+	"size_list": [1.1021370676732518, 0.48815093467643733, 0.3986108413577737, 0.37392665763438143],
+	"spot_id": 388,
+	"timestamp": 1588374000,
+	"warnings": []
+}, {
+	"_id": "388_1588377600",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 0,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 17,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.1843139542980121,
+	"size_ft": 3.8855445938190902,
+	"size_list": [1.1843139542980121, 0.43182841147092155, 0.36103263495733384, 0.26499622168149456],
+	"spot_id": 388,
+	"timestamp": 1588377600,
+	"warnings": []
+}, {
+	"_id": "388_1588381200",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 1,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 18,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.2519890374007554,
+	"size_ft": 4.107575713465894,
+	"size_list": [1.2519890374007554, 0.4152196264143476, 0.36103263495733384, 0.2231547129949428],
+	"spot_id": 388,
+	"timestamp": 1588381200,
+	"warnings": []
+}, {
+	"_id": "388_1588384800",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 2,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 19,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8552035154985335,
+	"size_ft": 2.8057859017882083,
+	"size_list": [0.8552035154985335, 0.4152196264143476, 0.36103263495733384, 0.2231547129949428],
+	"spot_id": 388,
+	"timestamp": 1588384800,
+	"warnings": ["swell"]
+}, {
+	"_id": "388_1588388400",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 3,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 20,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8805428789207121,
+	"size_ft": 2.8889202988782294,
+	"size_list": [0.8805428789207121, 0.4484371965274955, 0.3481386122802862, 0.2231547129949428],
+	"spot_id": 388,
+	"timestamp": 1588388400,
+	"warnings": ["swell"]
+}, {
+	"_id": "388_1588392000",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 4,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 21,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8900451402040293,
+	"size_ft": 2.920095697786987,
+	"size_list": [0.8900451402040293, 0.4484371965274955, 0.3481386122802862, 0.20920754343275888],
+	"spot_id": 388,
+	"timestamp": 1588392000,
+	"warnings": ["swell"]
+}, {
+	"_id": "388_1588395600",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 5,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 22,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.8805428789207121,
+	"size_ft": 2.8889202988782294,
+	"size_list": [0.8805428789207121, 0.4650459815840694, 0.33524458960323855],
+	"spot_id": 388,
+	"timestamp": 1588395600,
+	"warnings": ["swell"]
+}, {
+	"_id": "388_1588399200",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 6,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 1,
+		"hh": 23,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.8583709359263058,
+	"size_ft": 2.816177701424461,
+	"size_list": [0.8583709359263058, 0.4816547666406432, 0.33524458960323855],
+	"spot_id": 388,
+	"timestamp": 1588399200,
+	"warnings": ["swell"]
+}, {
+	"_id": "388_1588402800",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 7,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 0,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.2278193648640614,
+	"size_ft": 4.028278885020607,
+	"size_list": [1.2278193648640614, 0.4816547666406432, 0.46025659555206955, 0.3223505669261909],
+	"spot_id": 388,
+	"timestamp": 1588402800,
+	"warnings": []
+}, {
+	"_id": "388_1588406400",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 8,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 1,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.135974609224624,
+	"size_ft": 3.726950936928515,
+	"size_list": [1.135974609224624, 0.4816547666406432, 0.41841508686551776, 0.3223505669261909],
+	"spot_id": 388,
+	"timestamp": 1588406400,
+	"warnings": []
+}, {
+	"_id": "388_1588410000",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 9,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 2,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0489637880925249,
+	"size_ft": 3.4414823545254793,
+	"size_list": [1.0489637880925249, 0.49826355169721714, 0.3223505669261909],
+	"spot_id": 388,
+	"timestamp": 1588410000,
+	"warnings": []
+}, {
+	"_id": "388_1588413600",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 10,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 3,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9667869014677649,
+	"size_ft": 3.171873137811502,
+	"size_list": [0.9667869014677649, 0.4816547666406432, 0.3223505669261909],
+	"spot_id": 388,
+	"timestamp": 1588413600,
+	"warnings": []
+}, {
+	"_id": "388_1588417200",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 11,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 4,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9039457528723602,
+	"size_ft": 2.9657013838537543,
+	"size_list": [0.9039457528723602, 0.4650459815840694, 0.3223505669261909],
+	"spot_id": 388,
+	"timestamp": 1588417200,
+	"warnings": []
+}, {
+	"_id": "388_1588420800",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 12,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 5,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.3134414085760873,
+	"size_ft": 4.30919111091277,
+	"size_list": [1.3134414085760873, 0.49826355169721714, 0.30945654424914326],
+	"spot_id": 388,
+	"timestamp": 1588420800,
+	"warnings": []
+}, {
+	"_id": "388_1588424400",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 13,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 6,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.2537395263680833,
+	"size_ft": 4.113318787689463,
+	"size_list": [1.2537395263680833, 0.4816547666406432, 0.30945654424914326],
+	"spot_id": 388,
+	"timestamp": 1588424400,
+	"warnings": []
+}, {
+	"_id": "388_1588428000",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 14,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 7,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.1940376441600795,
+	"size_ft": 3.9174464644661553,
+	"size_list": [1.1940376441600795, 0.4650459815840694, 0.30945654424914326],
+	"spot_id": 388,
+	"timestamp": 1588428000,
+	"warnings": []
+}, {
+	"_id": "388_1588431600",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 15,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 8,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.141798497228076,
+	"size_ft": 3.7460581816457608,
+	"size_list": [1.141798497228076, 0.4816547666406432, 0.30945654424914326],
+	"spot_id": 388,
+	"timestamp": 1588431600,
+	"warnings": []
+}, {
+	"_id": "388_1588435200",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 16,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 9,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.097022085572073,
+	"size_ft": 3.59915393922828,
+	"size_list": [1.097022085572073, 0.4816547666406432, 0.3223505669261909],
+	"spot_id": 388,
+	"timestamp": 1588435200,
+	"warnings": []
+}, {
+	"_id": "388_1588438800",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 17,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 10,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 0.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0447829386400693,
+	"size_ft": 3.427765656407885,
+	"size_list": [1.0447829386400693, 0.49826355169721714, 0.283668498895048, 0.2620109178009474],
+	"spot_id": 388,
+	"timestamp": 1588438800,
+	"warnings": []
+}, {
+	"_id": "388_1588442400",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 18,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 11,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.0000065269840666,
+	"size_ft": 3.280861413990405,
+	"size_list": [1.0000065269840666, 0.5148723367537911, 0.283668498895048, 0.2620109178009474],
+	"spot_id": 388,
+	"timestamp": 1588442400,
+	"warnings": []
+}, {
+	"_id": "388_1588446000",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 19,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 12,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9552301153280636,
+	"size_ft": 3.133957171572924,
+	"size_list": [0.9552301153280636, 0.5148723367537911, 0.283668498895048, 0.2620109178009474],
+	"spot_id": 388,
+	"timestamp": 1588446000,
+	"warnings": []
+}, {
+	"_id": "388_1588449600",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 20,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 13,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9253791742240615,
+	"size_ft": 3.03602100996127,
+	"size_list": [0.9253791742240615, 0.531481121810365, 0.283668498895048, 0.27742332473041487],
+	"spot_id": 388,
+	"timestamp": 1588449600,
+	"warnings": []
+}, {
+	"_id": "388_1588453200",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 21,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 14,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9104537036720605,
+	"size_ft": 2.9870529291554426,
+	"size_list": [0.9104537036720605, 0.531481121810365, 0.283668498895048, 0.27742332473041487],
+	"spot_id": 388,
+	"timestamp": 1588453200,
+	"warnings": []
+}, {
+	"_id": "388_1588456800",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 22,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 15,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9104537036720605,
+	"size_ft": 2.9870529291554426,
+	"size_list": [0.9104537036720605, 0.5480899068669389, 0.283668498895048, 0.27742332473041487],
+	"spot_id": 388,
+	"timestamp": 1588456800,
+	"warnings": []
+}, {
+	"_id": "388_1588460400",
+	"date_gmt": {
+		"dd": 2,
+		"hh": 23,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 16,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 0.9477673800520631,
+	"size_ft": 3.109473131170011,
+	"size_list": [0.9477673800520631, 0.5480899068669389, 0.283668498895048, 0.27742332473041487],
+	"spot_id": 388,
+	"timestamp": 1588460400,
+	"warnings": []
+}, {
+	"_id": "388_1588464000",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 0,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 17,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 1.0,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 11,
+		"source": "wind",
+		"value": 1.0
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.037320203364069,
+	"size_ft": 3.4032816160049717,
+	"size_list": [1.037320203364069, 0.5480899068669389, 0.283668498895048, 0.27742332473041487],
+	"spot_id": 388,
+	"timestamp": 1588464000,
+	"warnings": []
+}, {
+	"_id": "388_1588467600",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 1,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 18,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.20150037943608,
+	"size_ft": 3.9419305048690685,
+	"size_list": [1.20150037943608, 0.5646986919235129, 0.27742332473041487, 0.2707744762180003],
+	"spot_id": 388,
+	"timestamp": 1588467600,
+	"warnings": []
+}, {
+	"_id": "388_1588471200",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 2,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 19,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 0.9136136218870378,
+	"size_ft": 2.997420115231869,
+	"size_list": [0.9136136218870378, 0.5646986919235129, 0.27742332473041487, 0.2707744762180003, 0.16349667651675334],
+	"spot_id": 388,
+	"timestamp": 1588471200,
+	"warnings": []
+}, {
+	"_id": "388_1588474800",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 3,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 20,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.0296280500631696,
+	"size_ft": 3.378044891769249,
+	"size_list": [1.0296280500631696, 0.5646986919235129, 0.27742332473041487, 0.2707744762180003],
+	"spot_id": 388,
+	"timestamp": 1588474800,
+	"warnings": []
+}, {
+	"_id": "388_1588478400",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 4,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 21,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.1021370676732518,
+	"size_ft": 3.6159353771051115,
+	"size_list": [1.1021370676732518, 0.5646986919235129, 0.2620109178009474, 0.25788045354095274],
+	"spot_id": 388,
+	"timestamp": 1588478400,
+	"warnings": []
+}, {
+	"_id": "388_1588482000",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 5,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 22,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.131140674717285,
+	"size_ft": 3.711091571239457,
+	"size_list": [1.131140674717285, 0.5480899068669389, 0.2620109178009474, 0.25788045354095274],
+	"spot_id": 388,
+	"timestamp": 1588482000,
+	"warnings": []
+}, {
+	"_id": "388_1588485600",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 6,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 2,
+		"hh": 23,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 0.5
+	}],
+	"size": 1.131140674717285,
+	"size_ft": 3.711091571239457,
+	"size_list": [1.131140674717285, 0.5480899068669389, 0.283668498895048],
+	"spot_id": 388,
+	"timestamp": 1588485600,
+	"warnings": []
+}, {
+	"_id": "388_1588489200",
+	"date_gmt": {
+		"dd": 3,
+		"hh": 7,
+		"mm": 5,
+		"yy": 2020
+	},
+	"date_local": {
+		"dd": 3,
+		"hh": 0,
+		"mm": 5,
+		"yy": 2020
+	},
+	"shape": 0.5,
+	"shape_list": [{
+		"influence": 16,
+		"source": "swell",
+		"value": 0.5
+	}, {
+		"influence": 6,
+		"source": "tide",
+		"value": 1.0
+	}],
+	"size": 1.1069710021805907,
+	"size_ft": 3.6317947427941695,
+	"size_list": [1.1069710021805907, 0.5480899068669389, 0.4007225801661548],
+	"spot_id": 388,
+	"timestamp": 1588489200,
+	"warnings": []
+}]
