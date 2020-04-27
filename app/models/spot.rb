@@ -5,13 +5,13 @@ class Spot < ApplicationRecord
   friendly_id :name, use: %i[slugged finders scoped], scope: :subregion
 
   include Spots::Msw
-  include Spots::Spitcast
+  include Spots::SpitcastV2
   include Spots::SurflineV1
   include Spots::SurflineV2
 
   belongs_to :subregion
 
-  scope :optimized, -> { includes(:msws, :spitcasts, :surfline_v2s) }
+  scope :optimized, -> { includes(:msws, :spitcast_v2s, :surfline_nearshores, :surfline_lolas, :surfline_v2s) }
   scope :ordered, -> { order(:sort_order, :id) }
 
   delegate :timezone, to: :subregion
@@ -30,12 +30,8 @@ class Spot < ApplicationRecord
     ActiveSupport::TimeZone.new(timezone)
   end
 
-  def utc_time_to_local(time)
-    time + timezone_obj.utc_offset
-  end
-
   def utc_stamp_to_local(stamp)
-    Time.zone.at(stamp + timezone_obj.utc_offset)
+    Time.zone.at(stamp + timezone_obj.at(stamp).utc_offset)
   end
 
   memoize def overlapping_timestamps
@@ -45,11 +41,11 @@ class Spot < ApplicationRecord
       timestamps &= surfline_lolas.collect(&:timestamp)
     end
     timestamps &= surfline_v2s.collect(&:timestamp) if surfline_v2_id
-    timestamps &= spitcasts.collect(&:timestamp) if spitcast_id
+    timestamps &= spitcast_v2s.collect(&:timestamp) if spitcast_id
     timestamps.sort
   end
 
   memoize def unique_timestamps
-    (msws.collect(&:timestamp) | surfline_nearshores.collect(&:timestamp) | surfline_lolas.collect(&:timestamp) | surfline_v2s.collect(&:timestamp) | spitcasts.collect(&:timestamp)).sort
+    (msws.collect(&:timestamp) | surfline_nearshores.collect(&:timestamp) | surfline_lolas.collect(&:timestamp) | surfline_v2s.collect(&:timestamp) | spitcast_v2s.collect(&:timestamp)).sort
   end
 end

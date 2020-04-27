@@ -17,7 +17,7 @@ nav.navbar.navbar-light.fixed-top
       h2.font-weight-light.spot-header id=meta[:slug]
         span= link_to meta[:name], spot_path(@region, @subregion, meta[:slug])
         = map_link(Spot.map_url(meta[:lat], meta[:lon]))
-        /= spitcast_link(Spot.spitcast_url(meta[:spitcast_slug])) if meta[:spitcast_slug]
+        span.icon= service_icon('Spitcast.png', 'Spitcast') if meta[:spitcast_slug]
         = msw_link(Spot.msw_url(meta[:msw_id])) if meta[:msw_id]
         = surfline_link(Spot.surfline_url(meta[:surfline_v2_id])) if meta[:surfline_v2_id]
       = react_component 'SpotChart', {\

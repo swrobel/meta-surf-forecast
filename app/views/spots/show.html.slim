@@ -27,8 +27,8 @@
           thead.thead-light
             tr
               th
-              - if @spot.spitcasts.any?
-                th.border-left(colspan=2)= spitcast_link(@spot.spitcast_url)
+              - if @spot.spitcast_v2s.any?
+                th.border-left(colspan=2)= service_icon('Spitcast.png', 'Spitcast')
               - if @spot.msws.any?
                 th.border-left(colspan=2)= msw_link(@spot.msw_url)
               - if @spot.surfline_nearshores.any?
@@ -42,7 +42,7 @@
                   = surfline_link(@spot.surfline_v2_url, 'v2')
             tr
               th Time
-              - if @spot.spitcasts.any?
+              - if @spot.spitcast_v2s.any?
                 th.border-left Height
                 th Rating
               - if @spot.msws.any?
@@ -61,8 +61,8 @@
             - @timestamps.each do |timestamp|
               tr
                 td.text-xs-left= timestamp.strftime('%A %b %e, %l:%M%P')
-                - if @spot.spitcasts.any?
-                  - spitcast = @spot.spitcasts.select{|x| x.timestamp == timestamp}.first
+                - if @spot.spitcast_v2s.any?
+                  - spitcast = @spot.spitcast_v2s.select{|x| x.timestamp == timestamp}.first
                   = render partial: 'cell', locals: { cls: 'border-left', forecast: spitcast, value: ("#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)) }
                   = render partial: 'cell', locals: { forecast: spitcast, value: spitcast.try(:rating) }
 

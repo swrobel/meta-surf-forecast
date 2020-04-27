@@ -3,7 +3,7 @@
 namespace :cleanup do
   desc 'remove api_requests not attached to forecasts & more than 7 days old'
   task prune_api_requests: :environment do
-    ApiRequest.where("created_at < now() - interval '7 day'").where.not('id in (SELECT api_request_id FROM surfline_lolas UNION SELECT api_request_id FROM surfline_nearshores UNION SELECT api_request_id FROM spitcasts UNION SELECT api_request_id FROM msws UNION SELECT api_request_id FROM surfline_v2s)').delete_all
+    ApiRequest.where("created_at < now() - interval '7 day'").where.not('id in (SELECT api_request_id FROM surfline_lolas UNION SELECT api_request_id FROM surfline_nearshores UNION SELECT api_request_id FROM spitcast_v1s UNION SELECT api_request_id FROM spitcast_v2s UNION SELECT api_request_id FROM msws UNION SELECT api_request_id FROM surfline_v2s)').delete_all
   end
 
   desc 'Remove forecasts that are in the past'
@@ -12,7 +12,8 @@ namespace :cleanup do
     SurflineNearshore.unscoped.past.delete_all
     SurflineV2.unscoped.past.delete_all
     Msw.unscoped.past.delete_all
-    Spitcast.unscoped.past.delete_all
+    SpitcastV1.unscoped.past.delete_all
+    SpitcastV2.unscoped.past.delete_all
     Rake::Task['cleanup:prune_api_requests'].invoke
   end
 
@@ -22,7 +23,8 @@ namespace :cleanup do
     SurflineNearshore.unscoped.future.delete_all
     SurflineV2.unscoped.future.delete_all
     Msw.unscoped.future.delete_all
-    Spitcast.unscoped.future.delete_all
+    SpitcastV1.unscoped.future.delete_all
+    SpitcastV2.unscoped.future.delete_all
     Rake::Task['cleanup:prune_api_requests'].invoke
   end
 end

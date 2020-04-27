@@ -7,7 +7,7 @@ class ApiRequest < ApplicationRecord
   belongs_to :requestable, polymorphic: true
 
   include ApiRequests::Msw
-  include ApiRequests::Spitcast
+  include ApiRequests::SpitcastV2
   include ApiRequests::SurflineV1
   include ApiRequests::SurflineV2
 

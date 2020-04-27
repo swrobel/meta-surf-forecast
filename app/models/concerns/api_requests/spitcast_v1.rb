@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module ApiRequests
-  module Spitcast
+  module SpitcastV1
     extend ActiveSupport::Concern
 
     included do
-      def parse_spitcast
+      def parse_spitcast_v1
         response.each do |entry|
           next unless entry['date'].present? && entry['hour'].present?
 

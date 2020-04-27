@@ -179,9 +179,9 @@ I've asked MagicSeaweed a few questions and added their responses below:
 
 ### [Spitcast](https://www.spitcast.com/)
 
-**As of February 2020, the Spitcast API has been shut down. I'm waiting to hear back about whether their API would ever come back...**
+**As of February 2020, the Spitcast API has been shut down. I'm waiting to hear back about whether their API will ever come back...**
 
-Spitcast only provides a [list of API endpoints](https://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
+Spitcast only provides a [list of API endpoints](https://web.archive.org/web/20191021104350/http://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
 
 I've asked Jack from Spitcast a few questions and added his responses below:
 
