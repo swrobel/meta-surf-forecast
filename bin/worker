@@ -1,9 +1,0 @@
-#!/bin/bash
-
-while :
-do
-  bundle exec rails forecasts:update
-  wait
-  ruby -e 'sleep rand(24..36) * 60' # 24 - 36 minutes
-  wait
-done
