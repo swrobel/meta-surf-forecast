@@ -3,7 +3,19 @@
 namespace :cleanup do
   desc 'remove api_requests not attached to forecasts & more than 7 days old'
   task prune_api_requests: :environment do
-    ApiRequest.where("created_at < now() - interval '7 day'").where.not('id in (SELECT api_request_id FROM surfline_lolas UNION SELECT api_request_id FROM surfline_nearshores UNION SELECT api_request_id FROM spitcast_v1s UNION SELECT api_request_id FROM spitcast_v2s UNION SELECT api_request_id FROM msws UNION SELECT api_request_id FROM surfline_v2s)').delete_all
+    include ActionView::Helpers::DateHelper
+
+    start_time = Time.current
+    Rails.logger.info "Pruning ApiRequests more than 7 days old without attached forecasts..."
+    ApiRequest.connection.execute <<-SQL
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'Msw' and not exists(select from msws where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'SpitcastV1' and not exists(select from spitcast_v1s where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'SpitcastV2' and not exists(select from spitcast_v2s where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineV2' and not exists(select from surfline_v2s where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and  service = 'SurflineLola' and not exists(select from surfline_lolas where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineNearshore' and not exists(select from surfline_nearshores where api_request_id = api_requests.id);
+    SQL
+    Rails.logger.info "Finished pruning ApiRequests in #{distance_of_time_in_words_to_now(start_time)}"
   end
 
   desc 'Remove forecasts that are in the past'
