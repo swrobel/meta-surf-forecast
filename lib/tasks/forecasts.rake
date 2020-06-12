@@ -5,10 +5,15 @@ namespace :forecasts do
   task update: %w[set_batch_id concurrent_update set_batch_duration database_views:refresh cache:prune cleanup:prune_api_requests]
 
   desc 'Update all forecasts indefinitely with a random wait period between'
-  task :daemon_update do
+  task daemon_update: :environment do
+    update_task = Rake::Task['forecasts:update']
     loop do
-      Rake::Task['forecasts:update'].invoke
-      sleep rand(24..36) * 60 # 24 - 36 minutes
+      update_task.reenable
+      update_task.all_prerequisite_tasks.each &:reenable
+      update_task.invoke
+      sleep_for = rand(24..36)
+      Rails.logger.info "Waiting #{sleep_for} minutes before updating forecasts again..."
+      sleep sleep_for.minutes
     end
   end
 
