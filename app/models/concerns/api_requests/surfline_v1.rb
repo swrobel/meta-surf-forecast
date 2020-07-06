@@ -13,8 +13,8 @@ module ApiRequests
         data.each do |entry|
           spot_id = entry['id']
           forecasts[spot_id] ||= {}
-          entry.dig('Surf', 'dateStamp').each_with_index do |day, day_index|
-            day.each_with_index do |timestamp, timestamp_index|
+          entry.dig('Surf', 'dateStamp')&.each_with_index do |day, day_index|
+            day&.each_with_index do |timestamp, timestamp_index|
               tstamp = Time.zone.parse(timestamp)
               forecasts[spot_id][tstamp] ||= {}
               forecasts[spot_id][tstamp][:min_height] = entry.dig('Surf', 'surf_min')[day_index][timestamp_index]
@@ -22,8 +22,8 @@ module ApiRequests
             end
           end
 
-          entry.dig('Sort', 'dateStamp').each_with_index do |day, day_index|
-            day.each_with_index do |timestamp, timestamp_index|
+          entry.dig('Sort', 'dateStamp')&.each_with_index do |day, day_index|
+            day&.each_with_index do |timestamp, timestamp_index|
               tstamp = Time.zone.parse(timestamp)
               forecasts[spot_id][tstamp] ||= {}
               max_swell_rating = 0
@@ -34,8 +34,8 @@ module ApiRequests
             end
           end
 
-          entry.dig('Wind', 'dateStamp').each_with_index do |day, day_index|
-            day.each_with_index do |timestamp, timestamp_index|
+          entry.dig('Wind', 'dateStamp')&.each_with_index do |day, day_index|
+            day&.each_with_index do |timestamp, timestamp_index|
               tstamp = Time.zone.parse(timestamp)
               forecasts[spot_id][tstamp] ||= {}
               forecasts[spot_id][tstamp][:optimal_wind] = entry.dig('Wind', 'optimalWind')[day_index][timestamp_index]
@@ -47,7 +47,7 @@ module ApiRequests
         forecasts.each_key do |spot_id|
           spot_data = forecasts[spot_id]
           # [1..-2] gets all elements except first & last
-          spot_data.keys[1..-2].each_with_index do |tstamp, index|
+          spot_data.keys[1..-2]&.each_with_index do |tstamp, index|
             next if spot_data[:swell_rating].present?
 
             prev_tstamp = spot_data.keys[index] # index is already offset by 1
