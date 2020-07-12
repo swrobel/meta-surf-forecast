@@ -2,7 +2,7 @@
 
 namespace :forecasts do
   desc 'Update forecasts from all sources'
-  task update: %w[set_batch_id concurrent_update set_batch_duration database_views:refresh cache:prune cleanup:prune_api_requests]
+  task update: %w[set_batch_id concurrent_update set_batch_duration cleanup:prune_past_forecasts database_views:refresh cache:prune]
 
   desc 'Update all forecasts indefinitely with a random wait period between'
   task daemon_update: :environment do
