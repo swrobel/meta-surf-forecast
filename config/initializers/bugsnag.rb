@@ -6,4 +6,5 @@ Bugsnag.configure do |config|
   config.send_environment = true
   config.app_version = ENV['HEROKU_RELEASE_VERSION']
   config.ignore_classes << ActiveRecord::RecordNotFound
+  config.ignore_classes << Mime::Type::InvalidMimeType
 end
