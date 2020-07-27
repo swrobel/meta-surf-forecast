@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_171646) do
+ActiveRecord::Schema.define(version: 2020_07_27_025136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -281,18 +281,18 @@ ActiveRecord::Schema.define(version: 2020_07_12_171646) do
       msws.spot_id,
       msws."timestamp",
       msws.min_height,
-      msws.max_height,
       ((msws.min_height + msws.max_height) / (2)::numeric) AS avg_height,
+      msws.max_height,
       msws.rating,
       msws.updated_at
      FROM msws
-  UNION
+  UNION ALL
    SELECT 'spitcast_v1'::text AS service,
       spitcast_v1s.spot_id,
       spitcast_v1s."timestamp",
       NULL::numeric AS min_height,
-      avg(spitcast_v1s.height) OVER w AS max_height,
-      NULL::numeric AS avg_height,
+      avg(spitcast_v1s.height) OVER w AS avg_height,
+      NULL::numeric AS max_height,
       avg(
           CASE spitcast_v1s.rating
               WHEN 'Poor'::text THEN (0)::numeric
@@ -305,24 +305,24 @@ ActiveRecord::Schema.define(version: 2020_07_12_171646) do
       spitcast_v1s.updated_at
      FROM spitcast_v1s
     WINDOW w AS (PARTITION BY spitcast_v1s.spot_id ORDER BY spitcast_v1s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
-  UNION
+  UNION ALL
    SELECT 'spitcast_v2'::text AS service,
       spitcast_v2s.spot_id,
       spitcast_v2s."timestamp",
       NULL::numeric AS min_height,
-      avg(spitcast_v2s.height) OVER w AS max_height,
-      NULL::numeric AS avg_height,
+      avg(spitcast_v2s.height) OVER w AS avg_height,
+      NULL::numeric AS max_height,
       avg(((spitcast_v2s.rating * (5)::numeric) / 1.5)) OVER w AS rating,
       spitcast_v2s.updated_at
      FROM spitcast_v2s
     WINDOW w AS (PARTITION BY spitcast_v2s.spot_id ORDER BY spitcast_v2s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
-  UNION
+  UNION ALL
    SELECT 'lola'::text AS service,
       surfline_lolas.spot_id,
       surfline_lolas."timestamp",
       surfline_lolas.min_height,
-      surfline_lolas.max_height,
       ((surfline_lolas.min_height + surfline_lolas.max_height) / (2)::numeric) AS avg_height,
+      surfline_lolas.max_height,
       ((surfline_lolas.swell_rating * (5)::numeric) *
           CASE
               WHEN surfline_lolas.optimal_wind THEN (1)::numeric
@@ -330,13 +330,14 @@ ActiveRecord::Schema.define(version: 2020_07_12_171646) do
           END) AS rating,
       surfline_lolas.updated_at
      FROM surfline_lolas
-  UNION
+    WHERE ((surfline_lolas.swell_rating IS NOT NULL) AND (surfline_lolas.optimal_wind IS NOT NULL))
+  UNION ALL
    SELECT 'nearshore'::text AS service,
       surfline_nearshores.spot_id,
       surfline_nearshores."timestamp",
       surfline_nearshores.min_height,
-      surfline_nearshores.max_height,
       ((surfline_nearshores.min_height + surfline_nearshores.max_height) / (2)::numeric) AS avg_height,
+      surfline_nearshores.max_height,
       ((surfline_nearshores.swell_rating * (5)::numeric) *
           CASE
               WHEN surfline_nearshores.optimal_wind THEN (1)::numeric
@@ -344,13 +345,14 @@ ActiveRecord::Schema.define(version: 2020_07_12_171646) do
           END) AS rating,
       surfline_nearshores.updated_at
      FROM surfline_nearshores
-  UNION
+    WHERE ((surfline_nearshores.swell_rating IS NOT NULL) AND (surfline_nearshores.optimal_wind IS NOT NULL))
+  UNION ALL
    SELECT 'surfline_v2'::text AS service,
       surfline_v2s.spot_id,
       surfline_v2s."timestamp",
       avg(surfline_v2s.min_height) OVER w AS min_height,
-      avg(surfline_v2s.max_height) OVER w AS max_height,
       ((avg(surfline_v2s.min_height) OVER w + avg(surfline_v2s.max_height) OVER w) / (2)::numeric) AS avg_height,
+      avg(surfline_v2s.max_height) OVER w AS max_height,
       ((avg(surfline_v2s.swell_rating) OVER w + avg(surfline_v2s.wind_rating) OVER w) * 1.25) AS rating,
       surfline_v2s.updated_at
      FROM surfline_v2s
