@@ -6,7 +6,7 @@ namespace :cleanup do
     include ActionView::Helpers::DateHelper
 
     start_time = Time.current
-    Rails.logger.info "Pruning ApiRequests more than 7 days old without attached forecasts..."
+    Rails.logger.info 'Pruning ApiRequests more than 7 days old without attached forecasts...'
     ApiRequest.connection.execute <<-SQL
       delete from api_requests where created_at < now() - interval '7 day' and service = 'Msw' and not exists(select from msws where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SpitcastV1' and not exists(select from spitcast_v1s where api_request_id = api_requests.id);

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-environment ENV.fetch('RAILS_ENV') { 'development' }
-port        ENV.fetch('PORT') { 3000 }
+environment ENV.fetch('RAILS_ENV', 'development')
+port        ENV.fetch('PORT', 3000)
 threads 1, 1
 workers 1
 

@@ -9,7 +9,7 @@ namespace :forecasts do
     update_task = Rake::Task['forecasts:update']
     loop do
       update_task.reenable
-      update_task.all_prerequisite_tasks.each &:reenable
+      update_task.all_prerequisite_tasks.each(&:reenable)
       update_task.invoke
       sleep_for = rand(24..36)
       Rails.logger.info "Waiting #{sleep_for} minutes before updating forecasts again..."

@@ -1,6 +1,6 @@
 class ReservedWordConstraint
   def self.matches?(request)
-    !RESERVED_WORDS.include? request.params[:region_id]
+    RESERVED_WORDS.exclude?(request.params[:region_id])
   end
 end
 
