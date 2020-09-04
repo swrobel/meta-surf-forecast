@@ -7,7 +7,7 @@ namespace :cleanup do
 
     start_time = Time.current
     Rails.logger.info 'Pruning ApiRequests more than 7 days old without attached forecasts...'
-    ApiRequest.connection.execute <<-SQL
+    ApiRequest.connection.execute <<-SQL.squish
       delete from api_requests where created_at < now() - interval '7 day' and service = 'Msw' and not exists(select from msws where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SpitcastV1' and not exists(select from spitcast_v1s where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SpitcastV2' and not exists(select from spitcast_v2s where api_request_id = api_requests.id);
