@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
-environment ENV.fetch('RAILS_ENV', 'development')
-port        ENV.fetch('PORT', 3000)
-threads 1, 1
-workers 1
+port ENV.fetch('PORT', 3000)
 
 if Rails.env.development?
+  threads 1, 1
+  workers 1
+
   # Allow puma to be restarted by `rails restart` command.
   plugin :tmp_restart
 
@@ -16,6 +14,4 @@ if Rails.env.development?
     # Trick Webpack into reloading browser
     `touch config/locales/en.yml`
   end
-else
-  preload_app!
 end
