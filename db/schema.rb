@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_23_044448) do
+ActiveRecord::Schema.define(version: 2020_10_23_065208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_10_23_044448) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["api_request_id"], name: "index_buoy_reports_on_api_request_id"
+    t.index ["buoy_id", "timestamp"], name: "index_buoy_reports_on_buoy_id_and_timestamp"
     t.index ["buoy_id"], name: "index_buoy_reports_on_buoy_id"
   end
 

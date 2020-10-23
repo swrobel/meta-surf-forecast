@@ -3,7 +3,7 @@ class Buoy < ApplicationRecord
   friendly_id :name, use: %i[slugged finders scoped], scope: :region
 
   belongs_to :region
-  has_many :buoy_reports
+  has_many :reports, class_name: 'BuoyReport'
 
   scope :ordered, -> { order(:sort_order, :lat, :lon, :id) }
 

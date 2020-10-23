@@ -2,12 +2,30 @@ class BuoyReport < ApplicationRecord
   belongs_to :api_request
   belongs_to :buoy
 
-  def swell_wave_size
-    swell_height * swell_period * 0.1
+  default_scope -> { order(:buoy_id, timestamp: :desc) }
+
+  def wave_height(swell, period)
+    swell * period * 0.1
   end
 
-  def wind_wave_size
-    wind_wave_height * wind_wave_period * 0.1
+  def wave_data(swell, period)
+    "#{wave_height(swell, period).round(1)}ft (#{swell.round(1)} @ #{period}"
+  end
+
+  def swell_wave_height
+    wave_height(ground_swell_height, ground_swell_period)
+  end
+
+  def swell_wave_data
+    wave_data(ground_swell_height, ground_swell_period)
+  end
+
+  def wind_wave_height
+    wave_height(wind_swell_height, wind_swell_period)
+  end
+
+  def wind_wave_data
+    wave_data(wind_swell_height, wind_swell_period)
   end
 
   def self.parse(body)
