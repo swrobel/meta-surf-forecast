@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_025136) do
+ActiveRecord::Schema.define(version: 2020_10_23_044448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,41 @@ ActiveRecord::Schema.define(version: 2020_07_27_025136) do
     t.integer "retries"
     t.index ["batch_id"], name: "index_api_requests_on_batch_id"
     t.index ["requestable_type", "requestable_id"], name: "index_api_requests_on_requestable_type_and_requestable_id"
+  end
+
+  create_table "buoy_reports", force: :cascade do |t|
+    t.bigint "buoy_id", null: false
+    t.datetime "timestamp", null: false
+    t.decimal "ground_swell_height"
+    t.decimal "ground_swell_period"
+    t.decimal "ground_swell_direction"
+    t.decimal "wind_swell_height"
+    t.decimal "wind_swell_period"
+    t.decimal "wind_swell_direction"
+    t.string "steepness"
+    t.decimal "sig_wave_height"
+    t.decimal "avg_period"
+    t.integer "mean_wave_direction"
+    t.bigint "api_request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["api_request_id"], name: "index_buoy_reports_on_api_request_id"
+    t.index ["buoy_id"], name: "index_buoy_reports_on_buoy_id"
+  end
+
+  create_table "buoys", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "lat", null: false
+    t.float "lon", null: false
+    t.integer "ndbc_id", null: false
+    t.string "slug", null: false
+    t.bigint "region_id", null: false
+    t.integer "sort_order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ndbc_id"], name: "index_buoys_on_ndbc_id", unique: true
+    t.index ["region_id", "slug"], name: "index_buoys_on_region_id_and_slug", unique: true
+    t.index ["region_id", "sort_order", "lat", "lon"], name: "index_buoys_on_region_id_and_sort_order_and_lat_and_lon"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -191,6 +226,9 @@ ActiveRecord::Schema.define(version: 2020_07_27_025136) do
   end
 
   add_foreign_key "api_requests", "update_batches", column: "batch_id"
+  add_foreign_key "buoy_reports", "api_requests"
+  add_foreign_key "buoy_reports", "buoys"
+  add_foreign_key "buoys", "regions"
   add_foreign_key "msws", "api_requests"
   add_foreign_key "msws", "spots"
   add_foreign_key "spitcast_v1s", "api_requests"

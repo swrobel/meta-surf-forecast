@@ -36,5 +36,9 @@ class Forecast < ApplicationRecord
         SurflineV2.where(timestamp: stamps).maximum(:max_height),
       ].map { |v| v || 0 }.max
     end
+
+    def parse(body)
+      JSON.parse(body)
+    end
   end
 end

@@ -6,6 +6,7 @@ class ApiRequest < ApplicationRecord
   belongs_to :batch, class_name: 'UpdateBatch', optional: true
   belongs_to :requestable, polymorphic: true
 
+  include ApiRequests::BuoyReport
   include ApiRequests::Msw
   include ApiRequests::SpitcastV2
   include ApiRequests::SurflineV1
@@ -21,8 +22,7 @@ class ApiRequest < ApplicationRecord
       if response.success?
         # Remove invalid UTF-8 chars from response, ex: Surfline v1 'S�o Jo�o'
         response.body.delete!("^\u{0000}-\u{007F}")
-        data = JSON.parse(response.body)
-        self.attributes = { response: data, success: true, response_time: response.total_time, retries: retries }
+        self.attributes = { response: service_class.parse(response.body), success: true, response_time: response.total_time, retries: retries }
         save!
         send(service_parse_method)
       else
@@ -38,10 +38,10 @@ class ApiRequest < ApplicationRecord
       call.run
     end
   rescue StandardError => e
-    Safely.report_exception(e)
     self.retries = retries
     self.success = false
     self.response ||= e.as_json
+    raise e
     get(retries: retries + 1)
   end
 
