@@ -1,4 +1,4 @@
-namespace :buoy do
+namespace :buoys do
   desc 'Update buoy data from NDBC'
   task update: %w[environment forecasts:set_batch_id] do
     include ActionView::Helpers::DateHelper

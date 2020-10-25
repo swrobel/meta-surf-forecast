@@ -22,6 +22,10 @@ Layout/AccessModifierIndentation:
 Layout/LineLength:
   Enabled: false
 
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - app/models/concerns/**/*
+
 Lint/UnusedMethodArgument:
   Exclude:
     - app/models/forecast.rb

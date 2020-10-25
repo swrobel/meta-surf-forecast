@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_23_065208) do
+ActiveRecord::Schema.define(version: 2020_10_23_235058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_10_23_065208) do
     t.string "name"
     t.string "slug"
     t.integer "sort_order"
+    t.string "timezone"
     t.index ["slug"], name: "index_regions_on_slug", unique: true
     t.index ["sort_order"], name: "index_regions_on_sort_order", unique: true
   end

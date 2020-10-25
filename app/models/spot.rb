@@ -8,6 +8,7 @@ class Spot < ApplicationRecord
   include Spots::SpitcastV2
   include Spots::SurflineV1
   include Spots::SurflineV2
+  include Timezones
 
   belongs_to :subregion
 
@@ -24,14 +25,6 @@ class Spot < ApplicationRecord
 
   def map_url
     self.class.map_url(lat, lon)
-  end
-
-  memoize def timezone_obj
-    ActiveSupport::TimeZone.new(timezone)
-  end
-
-  def utc_stamp_to_local(stamp)
-    Time.zone.at(stamp + timezone_obj.at(stamp).utc_offset)
   end
 
   memoize def overlapping_timestamps

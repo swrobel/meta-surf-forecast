@@ -38,10 +38,10 @@ class ApiRequest < ApplicationRecord
       call.run
     end
   rescue StandardError => e
+    Safely.report_exception(e)
     self.retries = retries
     self.success = false
     self.response ||= e.as_json
-    raise e
     get(retries: retries + 1)
   end
 
