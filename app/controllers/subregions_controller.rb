@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SubregionsController < ApplicationController
-  FIELDS = %i[max min avg_delta max_delta].freeze
+  FLOAT_FIELDS = %i[max min avg_delta max_delta].freeze
 
   def show
     forecasts ||= Spot.connection.select_all <<-SQL.squish
@@ -14,7 +14,7 @@ class SubregionsController < ApplicationController
     forecasts.each do |forecast|
       forecast[:xaxis_time] = helpers.format_timestamp(forecast[:timestamp])
       forecast[:tooltip_time] = forecast[:timestamp].strftime('%a, %b %-e, %-l %p')
-      FIELDS.each do |field|
+      FLOAT_FIELDS.each do |field|
         forecast[field] = forecast[field].to_f
       end
       @max = [forecast[:max], @max].max
