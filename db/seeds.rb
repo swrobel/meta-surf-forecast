@@ -1142,7 +1142,6 @@ spots.each do |spot_data|
 end
 
 Buoy.find_or_create_by(region: CA, ndbc_id: 46006, lat: 40.772, lon: -137.376, name: 'SE Papa')
-Buoy.find_or_create_by(region: CA, ndbc_id: 46011, lat: 34.956, lon: -121.019, name: 'Santa Maria')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46012, lat: 37.356, lon: -122.881, name: 'Half Moon Bay')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46013, lat: 38.253, lon: -123.303, name: 'Bodega Bay')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46014, lat: 39.231, lon: -123.974, name: 'Pt Arena')
@@ -1155,7 +1154,6 @@ Buoy.find_or_create_by(region: CA, ndbc_id: 46042, lat: 36.785, lon: -122.398, n
 Buoy.find_or_create_by(region: CA, ndbc_id: 46047, lat: 32.404, lon: -119.506, name: 'Tanner Bank')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46053, lat: 34.241, lon: -119.839, name: 'E Santa Barbara')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46054, lat: 34.265, lon: -120.477, name: 'W Santa Barbara')
-Buoy.find_or_create_by(region: CA, ndbc_id: 46059, lat: 38.094, lon: -129.951, name: 'W California')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46069, lat: 33.677, lon: -120.213, name: 'S Santa Rosa Island')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46086, lat: 32.499, lon: -118.052, name: 'San Clemente Basin')
 Buoy.find_or_create_by(region: CA, ndbc_id: 46114, lat: 36.699, lon: -122.343, name: 'W Monterey Bay')

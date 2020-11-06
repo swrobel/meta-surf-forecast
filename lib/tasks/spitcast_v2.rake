@@ -2,7 +2,7 @@
 
 namespace :spitcast_v2 do
   desc 'Update forecast from Spitcast v2'
-  task update: %w[environment forecasts:set_batch_id] do
+  task update: %w[environment forecasts:get_batch] do
     include ActionView::Helpers::DateHelper
 
     start_time = Time.current

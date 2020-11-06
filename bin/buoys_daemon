@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+loop do
+  system("bin/rails buoys:update")
+  puts "Waiting 5 minutes before updating buoys again..."
+  $stdout.flush # Prevents puts from getting buffered & printed after sleep finishes
+  sleep 5 * 60
+end

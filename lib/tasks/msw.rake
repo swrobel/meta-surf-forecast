@@ -2,7 +2,7 @@
 
 namespace :msw do
   desc 'Update forecast from MagicSeaweed'
-  task update: %w[environment forecasts:set_batch_id] do
+  task update: %w[environment forecasts:get_batch] do
     include ActionView::Helpers::DateHelper
 
     start_time = Time.current

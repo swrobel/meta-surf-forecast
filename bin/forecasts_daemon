@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+loop do
+  system("bin/rails forecasts:update")
+  sleep_for = rand(24..36)
+  puts "Waiting #{sleep_for} minutes before updating forecasts again..."
+  $stdout.flush # Prevents puts from getting buffered & printed after sleep finishes
+  sleep sleep_for * 60
+end

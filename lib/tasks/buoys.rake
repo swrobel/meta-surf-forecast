@@ -1,6 +1,6 @@
 namespace :buoys do
   desc 'Update buoy data from NDBC'
-  task update: %w[environment forecasts:set_batch_id] do
+  task update: %w[environment get_batch] do
     include ActionView::Helpers::DateHelper
 
     start_time = Time.current
@@ -15,5 +15,11 @@ namespace :buoys do
     hydra.run
 
     Rails.logger.info "Finished updating NDBC buoy data in #{distance_of_time_in_words_to_now(start_time)}"
+    @batch.set_duration!
+  end
+
+  desc "Create an UpdateBatch if one doesn't already exist"
+  task get_batch: :environment do
+    @batch ||= UpdateBatch.create!(kind: :buoy)
   end
 end
