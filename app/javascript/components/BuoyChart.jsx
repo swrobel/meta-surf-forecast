@@ -43,6 +43,7 @@ const BuoyChart = props => {
       },
     },
     yAxis: {
+      min: 0,
       offset: -8,
       stackLabels: {
         enabled: true,
