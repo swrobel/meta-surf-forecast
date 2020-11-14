@@ -6,9 +6,19 @@ module ApiRequests
       FEET_PER_METER = 3.2808398950131
 
       def parse_buoy_report
+        ndbc_id = requestable.ndbc_id
         response.split("\n")[2..].each do |line| # Skip first 2 (header) lines
+          next if line.strip.blank?
+
           Bugsnag.configure do |config|
-            config.add_on_error ->(report) { report.add_tab(:rake, { line: line }) }
+            config.add_on_error lambda { |report|
+              report.add_tab(:rake, {
+                               batch: batch_id,
+                               request: id,
+                               ndbc: ndbc_id,
+                               line: line,
+                             })
+            }
           end
 
           tstamp = Time.utc(*line[0..15].split(' '), 0)

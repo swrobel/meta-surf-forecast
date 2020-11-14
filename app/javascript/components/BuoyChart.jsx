@@ -23,7 +23,7 @@ const BuoyChart = props => {
     plotOptions: {
       series: {
         marker: {
-          symbol: 'url(//cdn.jsdelivr.net/npm/@mdi/svg@5.4.55/svg/navigation.svg)',
+          symbol: 'url(//cdn.jsdelivr.net/npm/@mdi/svg@5.8.55/svg/navigation.svg)',
         },
       },
     },
