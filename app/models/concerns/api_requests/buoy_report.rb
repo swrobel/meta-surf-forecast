@@ -4,24 +4,6 @@ module ApiRequests
 
     included do
       FEET_PER_METER = 3.2808398950131
-      DIRECTION_MAPPING = {
-        'N' => 0,
-        'NNE' => 22.5,
-        'NE' => 45,
-        'ENE' => 67.5,
-        'E' => 90,
-        'ESE' => 112.5,
-        'SE' => 135,
-        'SSE' => 157.5,
-        'S' => 180,
-        'SSW' => 202.5,
-        'SW' => 225,
-        'WSW' => 247.5,
-        'W' => 270,
-        'WNW' => 292.5,
-        'NW' => 315,
-        'NNW' => 337.5,
-      }.freeze
 
       def parse_buoy_report
         response.split("\n")[2..].each do |line| # Skip first 2 (header) lines

@@ -67,6 +67,15 @@ svg {
     stroke: var(--mid-gray);
   }
 
+  .highcharts-markers image.highcharts-point {
+    <% DIRECTION_MAPPING.values.each do |dir| %>
+      <%= "&.dir-#{dir.round} {" %>
+        <%= "transform: rotate(#{180+dir}deg) translate(-12px,-12px);" %>
+        transform-box: fill-box;
+      }
+    <% end %>
+  }
+
   .highcharts-plot-band {
     fill: var(--light);
     fill-opacity: 1;

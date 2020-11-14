@@ -9,8 +9,8 @@
     - to && reports.dig(to + 1, :timestamp)&.hour == 23 && to += 1
     = react_component 'BuoyChart', {\
         data: [\
-          { name: 'Swell waves', data: reports.collect { |point| { y: point[:swell_wave_height], swell: point[:ground_swell_height], period: point[:ground_swell_period], direction: point[:ground_swell_direction], tooltip_time: point[:tooltip_time] } }, marker: { symbol: 'diamond' ,} },
-          { name: 'Wind waves', data: reports.collect { |point| { y: point[:wind_wave_height], swell: point[:wind_swell_height], period: point[:wind_swell_period], direction: point[:wind_swell_direction] } } },
+          { name: 'Swell waves', data: reports.collect { |point| { y: point[:swell_wave_height], swell: point[:ground_swell_height], period: point[:ground_swell_period], direction: point[:ground_swell_direction], tooltip_time: point[:tooltip_time], className: "dir-#{point[:ground_swell_direction].round}" } } },
+          { name: 'Wind waves', data: reports.collect { |point| { y: point[:wind_wave_height], swell: point[:wind_swell_height], period: point[:wind_swell_period], direction: point[:wind_swell_direction], className: "dir-#{point[:wind_swell_direction].round}" } } },
         ],
         max: @max,
         plotBands: to && [{\
