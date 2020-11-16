@@ -23,7 +23,7 @@ class RegionsController < ApplicationController
       JOIN regions r ON b.region_id = r.id
       WHERE b.region_id = #{region.id}
       AND timestamp >= now() at time zone r.timezone - interval '1 day'
-      ORDER BY b.lat asc, timestamp asc
+      ORDER BY b.lat desc, timestamp asc
     SQL
     buoy_reports.each(&:symbolize_keys!)
     buoy_reports.each do |buoy_report|
