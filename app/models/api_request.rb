@@ -16,7 +16,7 @@ class ApiRequest < ApplicationRecord
     save! && return if retries >= API_RETRIES
 
     self.request ||= requestable.send(service_url_method, **options)
-    call = Typhoeus::Request.new(request, typhoeus_opts.merge(accept_encoding: 'gzip', followlocation: true, http_version: :httpv2_0))
+    call = Typhoeus::Request.new(request, typhoeus_opts.merge(accept_encoding: 'gzip', followlocation: true, http_version: :httpv2_0)) # rubocop:disable Naming/VariableNumber
 
     call.on_complete do |response|
       if response.success?

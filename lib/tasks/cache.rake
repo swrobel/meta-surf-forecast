@@ -10,7 +10,7 @@ namespace :cache do
     cache_key = if Rails.application.config.cache_store.first == :redis_cache_store
                   "*#{EXPIRE_ON_UPDATE_KEY}*"
                 else
-                  /#{EXPIRE_ON_UPDATE_KEY}/
+                  /#{EXPIRE_ON_UPDATE_KEY}/o
                 end
     Rails.cache.delete_matched(cache_key)
     Rails.logger.info "Finished pruning Rails cache in #{distance_of_time_in_words_to_now(start_time)}"
