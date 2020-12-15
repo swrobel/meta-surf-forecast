@@ -1,10 +1,6 @@
-# frozen_string_literal: true
-
 # This file is used by Rack-based servers to start the application.
 
-require ::File.expand_path('config/environment', __dir__)
-
-# Action Cable uses EventMachine which requires that all classes are loaded in advance
-Rails.application.eager_load!
+require_relative 'config/environment'
 
 run Rails.application
+Rails.application.load_server

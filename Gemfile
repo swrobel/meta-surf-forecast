@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby "~> #{File.read('.ruby-version').strip}"
 
-gem 'rails', '~> 6.0.3.2'
+gem 'rails', '~> 6.1.0'
 
 gem 'bootsnap'
 gem 'bugsnag'
@@ -22,7 +22,7 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'pgreset'
+  # disabled until a fix is available for Rails 6.1 compat gem 'pgreset'
 end
 
 group :development do
