@@ -99,6 +99,7 @@ spotId|string|Surfline spot id that you want data for. A typical Surfline URL is
 days|integer|Number of forecast days to get (Max 6 w/o access token, Max 17 w/ premium token)
 intervalHours|integer|Minimum of 1 (hour)
 maxHeights|boolean|`true` seems to remove min & optimal values from the wave data output
+sds|boolean|If true, use the new LOTUS forecast engine
 accesstoken|string|Auth token to get premium data access (optional)
 
 Anywhere there is an `optimalScore` the value can be interpreted as follows:
