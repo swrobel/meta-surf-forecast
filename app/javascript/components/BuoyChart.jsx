@@ -2,6 +2,7 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Bugsnag from '@bugsnag/js'
 
 const BuoyChart = props => {
   const options = {
@@ -65,7 +66,7 @@ const BuoyChart = props => {
       },
     },
   }
-  const ErrorBoundary = window.Bugsnag.getPlugin('react')
+  const ErrorBoundary = Bugsnag.getPlugin('react')?.createErrorBoundary(React) || React.Fragment
 
   return(
     <ErrorBoundary>

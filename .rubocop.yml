@@ -26,6 +26,9 @@ Lint/ConstantDefinitionInBlock:
   Exclude:
     - app/models/concerns/**/*
 
+Lint/OrAssignmentToConstant:
+  Enabled: false
+
 Lint/UnusedMethodArgument:
   Exclude:
     - app/models/forecast.rb
