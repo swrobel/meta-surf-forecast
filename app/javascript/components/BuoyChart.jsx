@@ -21,13 +21,6 @@ const BuoyChart = props => {
       borderWidth: 0,
       margin: 0,
     },
-    plotOptions: {
-      series: {
-        marker: {
-          symbol: 'url(//cdn.jsdelivr.net/npm/@mdi/svg@5.8.55/svg/navigation.svg)',
-        },
-      },
-    },
     series: props.data,
     title: {
       text: null,
