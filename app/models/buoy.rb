@@ -10,7 +10,13 @@ class Buoy < ApplicationRecord
 
   delegate :timezone, to: :region
 
+  class << self
+    def buoy_report_api_url(ndbc_id)
+      "https://www.ndbc.noaa.gov/data/5day2/#{ndbc_id}_5day.spec"
+    end
+  end
+
   def buoy_report_api_url
-    "https://www.ndbc.noaa.gov/data/5day2/#{ndbc_id}_5day.spec"
+    self.class.buoy_report_api_url(ndbc_id)
   end
 end

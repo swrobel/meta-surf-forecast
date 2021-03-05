@@ -5,6 +5,9 @@
   - @buoy_reports.each do |meta, reports|
     h2.font-weight-light.spot-header id=meta[:slug]
       span= "#{meta[:name]} (#{meta[:ndbc_id]})"
+      = map_link(meta[:lat], meta[:lon])
+      = icon_link(icon: 'web', name: 'NDBC Page', url: "https://www.ndbc.noaa.gov/station_page.php?station=#{meta[:ndbc_id]}")
+      = icon_link(icon: 'file-table', name: 'NDBC Data', url: Buoy.buoy_report_api_url(meta[:ndbc_id]))
     - to = reports.find_index { |p| p[:timestamp].hour == 23 }
     - to && reports.dig(to + 1, :timestamp)&.hour == 23 && to += 1
     = react_component 'BuoyChart', {\

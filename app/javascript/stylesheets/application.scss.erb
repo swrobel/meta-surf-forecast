@@ -199,17 +199,21 @@ nav {
 
   .icon {
     margin-left: 12px;
-  }
+    
+    img {
+      height: 22px;
+      vertical-align: baseline;
+    }
 
-  img {
-    height: 20px;
-    vertical-align: baseline;
+    &.logo img {
+      height: 20px;
+    }
   }
 }
 
 .spot-header, #forecast-table {
   @media (prefers-color-scheme: light) {
-    img:not(:hover) {
+    a img:not(:hover) {
       opacity: 0.75;
     }
   }
@@ -219,7 +223,7 @@ nav {
       filter: invert(75%);
     }
 
-    img:hover {
+    a img:hover {
       filter: invert(100%);
     }
   }

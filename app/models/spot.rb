@@ -17,16 +17,6 @@ class Spot < ApplicationRecord
 
   delegate :timezone, to: :subregion
 
-  class << self
-    def map_url(lat, lon)
-      "https://www.google.com/maps/search/#{lat},#{lon}"
-    end
-  end
-
-  def map_url
-    self.class.map_url(lat, lon)
-  end
-
   memoize def overlapping_timestamps
     timestamps = msws.collect(&:timestamp)
     if surfline_v1_id

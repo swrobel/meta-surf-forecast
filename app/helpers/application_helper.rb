@@ -11,8 +11,12 @@ module ApplicationHelper
     number_with_precision(value, precision: 1, strip_insignificant_zeros: true)
   end
 
-  def map_link(target)
-    link_to image_pack_tag('map.svg', alt: 'Map Icon'), target, target: 'gmap', title: 'Google Map', class: 'icon'
+  def icon_link(icon:, name:, url:)
+    link_to image_tag("//cdn.jsdelivr.net/npm/@mdi/svg@5.8.55/svg/#{icon}.svg", alt: "#{name} Icon"), url, target: name.parameterize, title: name, class: 'icon'
+  end
+
+  def map_link(lat, lon)
+    icon_link(icon: 'map-marker-radius', name: 'Google Map', url: "https://www.google.com/maps/?q=#{lat},#{lon}&ll=#{lat},#{lon}&z=10")
   end
 
   def service_icon(image_file, service, icon_label = nil)
@@ -21,7 +25,7 @@ module ApplicationHelper
   end
 
   def service_link(image_file, service, target, icon_label = nil)
-    link_to target, target: service, title: "#{service} Forecast Page", class: 'icon' do
+    link_to target, target: service, title: "#{service} Forecast Page", class: 'icon logo' do
       service_icon(image_file, service, icon_label)
     end
   end
