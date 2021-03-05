@@ -37,9 +37,12 @@
               - if @spot.surfline_lolas.any?
                 th.border-left(colspan=3)
                   = surfline_link(@spot.surfline_url, 'LOLA')
-              - if @spot.surfline_v2s.any?
+              - if @spot.surfline_v2_lolas.any?
                 th.border-left(colspan=3)
-                  = surfline_link(@spot.surfline_v2_url, 'v2')
+                  = surfline_link(@spot.surfline_v2_url, 'v2 LOLA')
+              - if @spot.surfline_v2_lotus.any?
+                th.border-left(colspan=3)
+                  = surfline_link(@spot.surfline_v2_url, 'v2 LOTUS')
             tr
               th Time
               - if @spot.spitcast_v2s.any?
@@ -52,7 +55,7 @@
                 th.border-left Height
                 th Rating
                 th Optimal Wind?
-              - if @spot.surfline_v2s.any?
+              - [@spot.surfline_v2_lolas.any?, @spot.surfline_v2_lotus.any?].count(true).times do
                 th.border-left Height
                 th Surf
                 th Wind
@@ -75,4 +78,6 @@
 
                 = render partial: 'surfline_v1', locals: { forecast: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_lolas.any?
 
-                = render partial: 'surfline_v2', locals: { forecast: @spot.surfline_v2s.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_v2s.any?
+                = render partial: 'surfline_v2', locals: { forecast: @spot.surfline_v2_lolas.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_v2_lolas.any?
+
+                = render partial: 'surfline_v2', locals: { forecast: @spot.surfline_v2_lotus.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_v2_lotus.any?

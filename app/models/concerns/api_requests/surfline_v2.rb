@@ -9,6 +9,8 @@ module ApiRequests
         type = options[:type] || 'wave'
         send("parse_surfline_v2_#{type}")
       end
+      alias_method :parse_surfline_v2_lola, :parse_surfline_v2
+      alias_method :parse_surfline_v2_lotus, :parse_surfline_v2
 
       def parse_surfline_v2_wind
         response.dig('data', 'wind').each do |entry|
@@ -35,7 +37,7 @@ module ApiRequests
         end
 
         # Wind request needs to be made after wave request is completed
-        ApiRequest.new(batch: batch, requestable: requestable, service: ::SurflineV2, request: requestable.surfline_v2_api_url(type: 'wind'), hydra: hydra, options: options.merge(type: 'wind'), typhoeus_opts: typhoeus_opts).get
+        ApiRequest.new(batch: batch, requestable: requestable, service: service, hydra: hydra, options: options.merge(type: 'wind'), typhoeus_opts: typhoeus_opts).get
       end
     end
   end

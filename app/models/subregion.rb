@@ -11,7 +11,8 @@ class Subregion < ApplicationRecord
   has_many :spitcast_v2s, through: :spots
   has_many :surfline_lolas, through: :spots
   has_many :surfline_nearshores, through: :spots
-  has_many :surfline_v2s, through: :spots
+  has_many :surfline_v2_lolas, through: :spots
+  has_many :surfline_v2_lotus, through: :spots
 
   scope :ordered, -> { order(:sort_order, :id) }
 end

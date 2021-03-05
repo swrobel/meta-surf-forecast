@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SurflineV2 < Forecast
+  self.abstract_class = true
   CACHE_KEY = 'surfline_token'
 
   class << self

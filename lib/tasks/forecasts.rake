@@ -4,7 +4,7 @@ namespace :forecasts do
   desc 'Update forecasts from all sources'
   task update: %w[get_batch concurrent_update set_batch_duration cleanup:prune_past_forecasts database_views:refresh cache:prune]
 
-  multitask concurrent_update: %w[surfline_v1:update surfline_v2:update spitcast_v2:update msw:update]
+  multitask concurrent_update: %w[surfline_v2:update spitcast_v2:update msw:update]
 
   desc "Create an UpdateBatch if one doesn't already exist"
   task get_batch: :environment do

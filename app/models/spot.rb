@@ -12,7 +12,7 @@ class Spot < ApplicationRecord
 
   belongs_to :subregion
 
-  scope :optimized, -> { includes(:msws, :spitcast_v2s, :surfline_nearshores, :surfline_lolas, :surfline_v2s) }
+  scope :optimized, -> { includes(:msws, :spitcast_v2s, :surfline_nearshores, :surfline_lolas, :surfline_v2_lolas, :surfline_v2_lotus) }
   scope :ordered, -> { order(:sort_order, :id) }
 
   delegate :timezone, to: :subregion
@@ -33,12 +33,15 @@ class Spot < ApplicationRecord
       timestamps &= surfline_nearshores.collect(&:timestamp)
       timestamps &= surfline_lolas.collect(&:timestamp)
     end
-    timestamps &= surfline_v2s.collect(&:timestamp) if surfline_v2_id
+    if surfline_v2_id
+      timestamps &= surfline_v2_lolas.collect(&:timestamp)
+      timestamps &= surfline_v2_lotus.collect(&:timestamp)
+    end
     timestamps &= spitcast_v2s.collect(&:timestamp) if spitcast_id
     timestamps.sort
   end
 
   memoize def unique_timestamps
-    (msws.collect(&:timestamp) | surfline_nearshores.collect(&:timestamp) | surfline_lolas.collect(&:timestamp) | surfline_v2s.collect(&:timestamp) | spitcast_v2s.collect(&:timestamp)).sort
+    (msws.collect(&:timestamp) | surfline_nearshores.collect(&:timestamp) | surfline_lolas.collect(&:timestamp) | surfline_v2_lolas.collect(&:timestamp) | surfline_v2_lotus.collect(&:timestamp) | spitcast_v2s.collect(&:timestamp)).sort
   end
 end

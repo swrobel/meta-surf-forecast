@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_024309) do
+ActiveRecord::Schema.define(version: 2021_03_05_003914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
     t.index ["spot_id", "timestamp"], name: "index_surfline_nearshores_on_spot_id_and_timestamp"
   end
 
-  create_table "surfline_v2s", force: :cascade do |t|
+  create_table "surfline_v2_lolas", force: :cascade do |t|
     t.bigint "spot_id", null: false
     t.datetime "timestamp"
     t.decimal "min_height"
@@ -194,8 +194,22 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
     t.bigint "api_request_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["api_request_id"], name: "index_surfline_v2s_on_api_request_id"
-    t.index ["spot_id", "timestamp"], name: "index_surfline_v2s_on_spot_id_and_timestamp"
+    t.index ["api_request_id"], name: "index_surfline_v2_lolas_on_api_request_id"
+    t.index ["spot_id", "timestamp"], name: "index_surfline_v2_lolas_on_spot_id_and_timestamp"
+  end
+
+  create_table "surfline_v2_lotus", force: :cascade do |t|
+    t.bigint "spot_id", null: false
+    t.datetime "timestamp"
+    t.decimal "min_height"
+    t.decimal "max_height"
+    t.integer "swell_rating"
+    t.integer "wind_rating"
+    t.bigint "api_request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["api_request_id"], name: "index_surfline_v2_lotus_on_api_request_id"
+    t.index ["spot_id", "timestamp"], name: "index_surfline_v2_lotus_on_spot_id_and_timestamp"
   end
 
   create_table "update_batches", force: :cascade do |t|
@@ -245,10 +259,85 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
   add_foreign_key "surfline_lolas", "spots"
   add_foreign_key "surfline_nearshores", "api_requests"
   add_foreign_key "surfline_nearshores", "spots"
-  add_foreign_key "surfline_v2s", "api_requests"
-  add_foreign_key "surfline_v2s", "spots"
+  add_foreign_key "surfline_v2_lolas", "api_requests"
+  add_foreign_key "surfline_v2_lolas", "spots"
+  add_foreign_key "surfline_v2_lotus", "api_requests"
+  add_foreign_key "surfline_v2_lotus", "spots"
   add_foreign_key "water_qualities", "water_quality_departments", column: "dept_id"
 
+  create_view "batch_stats", materialized: true, sql_definition: <<-SQL
+      SELECT b.id,
+      b.kind,
+      b.concurrency,
+      b.duration,
+      b.created_at,
+      b.updated_at,
+      sum(
+          CASE
+              WHEN r.success THEN 1
+              ELSE 0
+          END) AS success,
+      sum(r.retries) AS retry,
+      sum(
+          CASE
+              WHEN r.success THEN 0
+              ELSE 1
+          END) AS fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'Msw'::text) THEN r.retries
+              ELSE 0
+          END) AS msw_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'Msw'::text)) THEN 1
+              ELSE 0
+          END) AS msw_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[])) THEN r.retries
+              ELSE 0
+          END) AS surfline_v1_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[]))) THEN 1
+              ELSE 0
+          END) AS surfline_v1_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[])) THEN r.retries
+              ELSE 0
+          END) AS surfline_v2_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[]))) THEN 1
+              ELSE 0
+          END) AS surfline_v2_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'SpitcastV1'::text) THEN r.retries
+              ELSE 0
+          END) AS spitcast_v1_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'SpitcastV1'::text)) THEN 1
+              ELSE 0
+          END) AS spitcast_v1_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'SpitcastV2'::text) THEN r.retries
+              ELSE 0
+          END) AS spitcast_v2_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'SpitcastV2'::text)) THEN 1
+              ELSE 0
+          END) AS spitcast_v2_fail
+     FROM (api_requests r
+       JOIN update_batches b ON ((r.batch_id = b.id)))
+    WHERE (b.duration IS NOT NULL)
+    GROUP BY b.id, b.kind, b.created_at, b.updated_at, b.concurrency, b.duration;
+  SQL
   create_view "all_forecasts", materialized: true, sql_definition: <<-SQL
       SELECT 'msw'::text AS service,
       msws.spot_id,
@@ -290,7 +379,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
      FROM spitcast_v2s
     WINDOW w AS (PARTITION BY spitcast_v2s.spot_id ORDER BY spitcast_v2s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
   UNION ALL
-   SELECT 'lola'::text AS service,
+   SELECT 'surfline_v1_lola'::text AS service,
       surfline_lolas.spot_id,
       surfline_lolas."timestamp",
       surfline_lolas.min_height,
@@ -305,7 +394,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
      FROM surfline_lolas
     WHERE ((surfline_lolas.swell_rating IS NOT NULL) AND (surfline_lolas.optimal_wind IS NOT NULL))
   UNION ALL
-   SELECT 'nearshore'::text AS service,
+   SELECT 'surfline_v1_nearshore'::text AS service,
       surfline_nearshores.spot_id,
       surfline_nearshores."timestamp",
       surfline_nearshores.min_height,
@@ -320,16 +409,27 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
      FROM surfline_nearshores
     WHERE ((surfline_nearshores.swell_rating IS NOT NULL) AND (surfline_nearshores.optimal_wind IS NOT NULL))
   UNION ALL
-   SELECT 'surfline_v2'::text AS service,
-      surfline_v2s.spot_id,
-      surfline_v2s."timestamp",
-      avg(surfline_v2s.min_height) OVER w AS min_height,
-      ((avg(surfline_v2s.min_height) OVER w + avg(surfline_v2s.max_height) OVER w) / (2)::numeric) AS avg_height,
-      avg(surfline_v2s.max_height) OVER w AS max_height,
-      ((avg(surfline_v2s.swell_rating) OVER w + avg(surfline_v2s.wind_rating) OVER w) * 1.25) AS rating,
-      surfline_v2s.updated_at
-     FROM surfline_v2s
-    WINDOW w AS (PARTITION BY surfline_v2s.spot_id ORDER BY surfline_v2s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING);
+   SELECT 'surfline_v2_lola'::text AS service,
+      surfline_v2_lolas.spot_id,
+      surfline_v2_lolas."timestamp",
+      avg(surfline_v2_lolas.min_height) OVER w AS min_height,
+      ((avg(surfline_v2_lolas.min_height) OVER w + avg(surfline_v2_lolas.max_height) OVER w) / (2)::numeric) AS avg_height,
+      avg(surfline_v2_lolas.max_height) OVER w AS max_height,
+      ((avg(surfline_v2_lolas.swell_rating) OVER w + avg(surfline_v2_lolas.wind_rating) OVER w) * 1.25) AS rating,
+      surfline_v2_lolas.updated_at
+     FROM surfline_v2_lolas
+    WINDOW w AS (PARTITION BY surfline_v2_lolas.spot_id ORDER BY surfline_v2_lolas."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
+  UNION ALL
+   SELECT 'surfline_v2_lotus'::text AS service,
+      surfline_v2_lotus.spot_id,
+      surfline_v2_lotus."timestamp",
+      avg(surfline_v2_lotus.min_height) OVER w AS min_height,
+      ((avg(surfline_v2_lotus.min_height) OVER w + avg(surfline_v2_lotus.max_height) OVER w) / (2)::numeric) AS avg_height,
+      avg(surfline_v2_lotus.max_height) OVER w AS max_height,
+      ((avg(surfline_v2_lotus.swell_rating) OVER w + avg(surfline_v2_lotus.wind_rating) OVER w) * 1.25) AS rating,
+      surfline_v2_lotus.updated_at
+     FROM surfline_v2_lotus
+    WINDOW w AS (PARTITION BY surfline_v2_lotus.spot_id ORDER BY surfline_v2_lotus."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING);
   SQL
   create_view "consolidated_forecasts", materialized: true, sql_definition: <<-SQL
       SELECT s.id AS spot_id,
@@ -369,7 +469,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
      FROM ((all_forecasts fc
        JOIN spots s ON ((fc.spot_id = s.id)))
        JOIN subregions sr ON ((s.subregion_id = sr.id)))
-    WHERE ((((date_part('hour'::text, fc."timestamp"))::integer % 3) = 0) AND (fc."timestamp" >= timezone((sr.timezone)::text, now())) AND (fc.updated_at >= (timezone((sr.timezone)::text, now()) - '1 day'::interval)))
+    WHERE ((((date_part('hour'::text, fc."timestamp"))::integer % 3) = 0) AND (fc."timestamp" >= timezone((sr.timezone)::text, now())) AND (fc.updated_at >= (timezone((sr.timezone)::text, now()) - 'P1D'::interval)))
     GROUP BY s.id, s.name, s.slug, s.lat, s.lon, fc."timestamp", s.surfline_v1_id, s.msw_id, s.spitcast_id, s.spitcast_slug, s.surfline_v2_id, s.updated_at
    HAVING (count(*) >= (
           CASE
@@ -381,78 +481,5 @@ ActiveRecord::Schema.define(version: 2020_11_08_024309) do
               ELSE 0
           END))
     ORDER BY s.subregion_id, s.sort_order, s.id, fc."timestamp";
-  SQL
-  create_view "batch_stats", materialized: true, sql_definition: <<-SQL
-      SELECT b.id,
-      b.kind,
-      b.concurrency,
-      b.duration,
-      b.created_at,
-      b.updated_at,
-      sum(
-          CASE
-              WHEN r.success THEN 1
-              ELSE 0
-          END) AS success,
-      sum(r.retries) AS retry,
-      sum(
-          CASE
-              WHEN r.success THEN 0
-              ELSE 1
-          END) AS fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = 'Msw'::text) THEN r.retries
-              ELSE 0
-          END) AS msw_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = 'Msw'::text)) THEN 1
-              ELSE 0
-          END) AS msw_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[])) THEN r.retries
-              ELSE 0
-          END) AS surfline_v1_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[]))) THEN 1
-              ELSE 0
-          END) AS surfline_v1_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = 'SurflineV2'::text) THEN r.retries
-              ELSE 0
-          END) AS surfline_v2_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = 'SurflineV2'::text)) THEN 1
-              ELSE 0
-          END) AS surfline_v2_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = 'SpitcastV1'::text) THEN r.retries
-              ELSE 0
-          END) AS spitcast_v1_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = 'SpitcastV1'::text)) THEN 1
-              ELSE 0
-          END) AS spitcast_v1_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = 'SpitcastV2'::text) THEN r.retries
-              ELSE 0
-          END) AS spitcast_v2_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = 'SpitcastV2'::text)) THEN 1
-              ELSE 0
-          END) AS spitcast_v2_fail
-     FROM (api_requests r
-       JOIN update_batches b ON ((r.batch_id = b.id)))
-    WHERE (b.duration IS NOT NULL)
-    GROUP BY b.id, b.kind, b.created_at, b.updated_at, b.concurrency, b.duration;
   SQL
 end

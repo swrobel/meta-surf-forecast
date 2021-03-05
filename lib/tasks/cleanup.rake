@@ -11,7 +11,8 @@ namespace :cleanup do
       delete from api_requests where created_at < now() - interval '7 day' and service = 'Msw' and not exists(select from msws where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SpitcastV1' and not exists(select from spitcast_v1s where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SpitcastV2' and not exists(select from spitcast_v2s where api_request_id = api_requests.id);
-      delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineV2' and not exists(select from surfline_v2s where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineV2Lola' and not exists(select from surfline_v2_lolas where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineV2Lotus' and not exists(select from surfline_v2_lotus where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and  service = 'SurflineLola' and not exists(select from surfline_lolas where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineNearshore' and not exists(select from surfline_nearshores where api_request_id = api_requests.id);
     SQL
@@ -22,7 +23,8 @@ namespace :cleanup do
   task prune_past_forecasts: :environment do
     SurflineLola.unscoped.past.delete_all
     SurflineNearshore.unscoped.past.delete_all
-    SurflineV2.unscoped.past.delete_all
+    SurflineV2Lola.unscoped.past.delete_all
+    SurflineV2Lotus.unscoped.past.delete_all
     Msw.unscoped.past.delete_all
     SpitcastV1.unscoped.past.delete_all
     SpitcastV2.unscoped.past.delete_all
@@ -33,7 +35,8 @@ namespace :cleanup do
   task wipe_future_forecasts: :environment do
     SurflineLola.unscoped.future.delete_all
     SurflineNearshore.unscoped.future.delete_all
-    SurflineV2.unscoped.future.delete_all
+    SurflineV2Lola.unscoped.future.delete_all
+    SurflineV2Lotus.unscoped.future.delete_all
     Msw.unscoped.future.delete_all
     SpitcastV1.unscoped.future.delete_all
     SpitcastV2.unscoped.future.delete_all
