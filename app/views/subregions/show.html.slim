@@ -1,14 +1,8 @@
 - provide(:title, "#{@subregion.name}, #{@region.name}")
 - provide(:meta, ', viewport-fit=cover')
 
-nav.navbar.navbar-light.fixed-top
-  .row.font-weight-light.d-flex.align-items-center.pl-1
-    select onchange='window.location = this.value'
-      - Region.ordered.each do |region|
-        optgroup label=region.name
-          - region.subregions.each do |subregion|
-            option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
-.subregion-container.safe-padding
+= render partial: 'shared/header'
+.container-below-header.safe-padding
   - @spots.each do |meta, forecasts|
     - cache [EXPIRE_ON_UPDATE_KEY, :spot_chart, meta[:spot_id], meta[:spot_updated_at]]
       - from = forecasts.find_index { |p| p[:timestamp].monday? && p[:timestamp].hour < 3 }

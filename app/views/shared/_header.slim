@@ -1,0 +1,12 @@
+nav.navbar.navbar-light.fixed-top
+  .row.font-weight-light.d-flex.align-items-center.pl-1
+    select onchange='window.location = this.value'
+      - Region.optimized.ordered.each do |region|
+        optgroup label=region.name
+          - if region.buoys.any?
+            - selected = region == @region && !@subregion
+            - name = "Buoys"
+            - name = "#{region.name} #{name}" if selected
+            option value=buoys_path(region) selected=('selected' if selected) =name
+          - region.subregions.each do |subregion|
+            option value=subregion_path(region, subregion) selected=('selected' if subregion == @subregion) =subregion.name
