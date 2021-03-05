@@ -108,7 +108,10 @@ svg {
 }
 
 @mixin padding-safe($direction) {
-  padding-#{$direction}: env(safe-area-inset-#{$direction})
+  @supports (padding-#{$direction}: env(safe-area-inset-#{$direction})) {
+    // m#{a}x is a hack to get SASS to use CSS max() instead of its built-in version
+    padding-#{$direction}: m#{a}x(calc(env(safe-area-inset-#{$direction}) - 15px), 4px) !important
+  }
 }
 
 nav {
@@ -123,10 +126,6 @@ nav {
     --nav-end-color: #{darken($nav-end-color, $darken-by)};
   }
   background: var(--nav-end-color) linear-gradient(180deg, var(--nav-begin-color), var(--nav-end-color)) repeat-x;
-
-  select {
-    margin-left: env(safe-area-inset-left);
-  }
 }
 
 #forecast-table {
@@ -172,17 +171,29 @@ nav {
   margin-left: 10px;
 }
 
-.container-below-header {
+.container-below-nav {
   margin-top: 44px;
 }
 
 .safe-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.safe-padding-left {
   @include padding-safe(left);
+}
+
+.safe-padding-right {
   @include padding-safe(right);
 }
 
+.pl-4px {
+  padding-left: 4px;
+}
+
 .spot-header {
-  padding-left: 5px;
+  @extend .pl-4px;
 
   &:first-child {
     margin-top: 5px

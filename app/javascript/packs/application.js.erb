@@ -14,8 +14,24 @@ require.context('../images', true)
   Bugsnag.start({ apiKey: '<%= ENV['BUGSNAG_FRONTEND'] %>', releaseStage: '<%= Rails.env %>', enabledReleaseStages: <%= NOTIFY_RELEASE_STAGES %>, appVersion: '<%= ENV['HEROKU_RELEASE_VERSION'] || 'dev' %>', logger: null, plugins: [new BugsnagPluginReact()]})
 <% end %>
 
+function setSafePadding() {
+  document.querySelectorAll('.safe-padding').forEach(node => {
+    if (window.orientation == 90) { // notch is on the left
+      node.classList.add('safe-padding-left')
+      node.classList.remove('safe-padding-right')
+    } else if (window.orientation == -90) { // notch on the right
+      node.classList.remove('safe-padding-left')
+      node.classList.add('safe-padding-right')
+    } else {
+      node.classList.remove('safe-padding-left')
+      node.classList.remove('safe-padding-right')
+    }
+  })
+}
+
 const Headroom = require("headroom.js")
 document.addEventListener("DOMContentLoaded", function() {
+  setSafePadding()
   const navbar = document.querySelector(".navbar")
   if (navbar) {
     new Headroom(navbar, {
@@ -31,3 +47,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 })
+
+window.addEventListener("orientationchange", setSafePadding)

@@ -1,8 +1,8 @@
 - provide(:title, "#{@subregion.name}, #{@region.name}")
 - provide(:meta, ', viewport-fit=cover')
 
-= render partial: 'shared/header'
-.container-below-header.safe-padding
+= render partial: 'shared/nav'
+.container-below-nav.safe-padding
   - @spots.each do |meta, forecasts|
     - cache [EXPIRE_ON_UPDATE_KEY, :spot_chart, meta[:spot_id], meta[:spot_updated_at]]
       - from = forecasts.find_index { |p| p[:timestamp].monday? && p[:timestamp].hour < 3 }

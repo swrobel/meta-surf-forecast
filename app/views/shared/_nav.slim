@@ -1,5 +1,5 @@
 nav.navbar.navbar-light.fixed-top
-  .row.font-weight-light.d-flex.align-items-center.pl-1
+  .row.font-weight-light.d-flex.align-items-center.pl-4px.safe-padding
     select onchange='window.location = this.value'
       - Region.optimized.ordered.each do |region|
         optgroup label=region.name

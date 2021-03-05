@@ -1,8 +1,8 @@
 - provide(:title, "#{@region.name} Buoys")
 - provide(:meta, ', viewport-fit=cover')
 
-= render partial: 'shared/header'
-.container-below-header.safe-padding
+= render partial: 'shared/nav'
+.container-below-nav.safe-padding
   - @buoy_reports.each do |meta, reports|
     h2.font-weight-light.spot-header id=meta[:slug]
       span= "#{meta[:name]} (#{meta[:ndbc_id]})"
