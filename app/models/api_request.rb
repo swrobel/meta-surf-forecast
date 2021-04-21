@@ -13,7 +13,7 @@ class ApiRequest < ApplicationRecord
   include ApiRequests::SurflineV2
 
   def get(retries: 0)
-    save! && return if retries >= API_RETRIES
+    save! && return if retries > API_RETRIES
 
     self.request ||= requestable.send(service_url_method, **options)
     call = Typhoeus::Request.new(request, typhoeus_opts.merge(accept_encoding: 'gzip', followlocation: true, http_version: :httpv2_0)) # rubocop:disable Naming/VariableNumber
