@@ -3,6 +3,7 @@ class BuoyReport < ApplicationRecord
   belongs_to :buoy
 
   default_scope -> { order(:buoy_id, timestamp: :desc) }
+  scope :past, -> { joins(buoy: :region).where("timestamp < now() at time zone regions.timezone - interval '7 day'") }
 
   def wave_height(swell, period)
     swell * period * 0.1

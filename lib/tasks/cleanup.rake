@@ -15,6 +15,7 @@ namespace :cleanup do
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineV2Lotus' and not exists(select from surfline_v2_lotus where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and  service = 'SurflineLola' and not exists(select from surfline_lolas where api_request_id = api_requests.id);
       delete from api_requests where created_at < now() - interval '7 day' and service = 'SurflineNearshore' and not exists(select from surfline_nearshores where api_request_id = api_requests.id);
+      delete from api_requests where created_at < now() - interval '7 day' and service = 'BuoyReport' and not exists(select from buoy_reports where api_request_id = api_requests.id);
     SQL
     Rails.logger.info "Finished pruning ApiRequests in #{distance_of_time_in_words_to_now(start_time)}"
   end
@@ -28,6 +29,7 @@ namespace :cleanup do
     Msw.unscoped.past.delete_all
     SpitcastV1.unscoped.past.delete_all
     SpitcastV2.unscoped.past.delete_all
+    BuoyReport.unscoped.past.delete_all
     Rake::Task['cleanup:prune_api_requests'].invoke
   end
 
