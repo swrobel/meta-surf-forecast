@@ -16,7 +16,9 @@ class SurflineV2 < Forecast
           'credentials' => 'same-origin',
         }
         response = Typhoeus.post("#{SurflineV2.base_api_url}/trusted/token?isShortLived=false", headers: headers, body: body)
-        raise "Surfline access token refresh error: #{response.body}" unless response.success?
+        raise "Surfline v2 access token refresh error: #{response.body}" unless response.success?
+
+        Logger.info 'Surfline v2 access token refreshed!'
 
         JSON.parse(response.body)['access_token']
       end
