@@ -28,11 +28,11 @@ module Spots
       end
 
       def surfline_v2_lola_api_url(type: 'wave')
-        surfline_v2_api_url(type: type, use_lotus: false)
+        surfline_v2_api_url(type:, use_lotus: false)
       end
 
       def surfline_v2_lotus_api_url(type: 'wave')
-        surfline_v2_api_url(type: type, use_lotus: true)
+        surfline_v2_api_url(type:, use_lotus: true)
       end
     end
   end

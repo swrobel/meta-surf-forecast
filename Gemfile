@@ -22,7 +22,7 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'dotenv-rails'
-  # disabled until a fix is available for Rails 6.1 compat gem 'pgreset'
+  gem 'pgreset'
 end
 
 group :development do
@@ -31,7 +31,7 @@ group :development do
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
   gem 'invoker'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.3'
   gem 'rack-toolbar', github: 'swrobel/rack-toolbar', branch: 'rails-pages' # Insert arbitrary code into Rails pages
   gem 'rubocop'
   gem 'rubocop-performance'

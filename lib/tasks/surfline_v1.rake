@@ -11,8 +11,8 @@ namespace :surfline_v1 do
     hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
 
     Spot.where.not(surfline_v1_id: nil).each do |spot|
-      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineNearshore, options: { get_all_spots: false }, hydra: hydra).get
-      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineLola, options: { get_all_spots: false }, hydra: hydra).get
+      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineNearshore, options: { get_all_spots: false }, hydra:).get
+      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineLola, options: { get_all_spots: false }, hydra:).get
     end
 
     hydra.run

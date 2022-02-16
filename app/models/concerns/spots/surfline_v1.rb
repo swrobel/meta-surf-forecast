@@ -25,11 +25,11 @@ module Spots
       end
 
       def surfline_nearshore_api_url(get_all_spots: true)
-        surfline_v1_api_url(get_all_spots: get_all_spots, use_nearshore: true)
+        surfline_v1_api_url(get_all_spots:, use_nearshore: true)
       end
 
       def surfline_lola_api_url(get_all_spots: true)
-        surfline_v1_api_url(get_all_spots: get_all_spots, use_nearshore: false)
+        surfline_v1_api_url(get_all_spots:, use_nearshore: false)
       end
     end
   end

@@ -37,7 +37,7 @@ module ApiRequests
         end
 
         # Wind request needs to be made after wave request is completed
-        ApiRequest.new(batch: batch, requestable: requestable, service: service, hydra: hydra, options: options.merge(type: 'wind'), typhoeus_opts: typhoeus_opts).get
+        ApiRequest.new(batch:, requestable:, service:, hydra:, options: options.merge(type: 'wind'), typhoeus_opts:).get
       end
     end
   end

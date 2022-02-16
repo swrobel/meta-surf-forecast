@@ -10,7 +10,7 @@ if Rails.env.development?
 
   after_worker_boot do
     title = 'MetaSurf server started'
-    defined?(TerminalNotifier) && TerminalNotifier::Guard.success('', title: title)
+    defined?(TerminalNotifier) && TerminalNotifier::Guard.success('', title:)
     defined?(Libnotify) && Libnotify.show(summary: title)
     # Trick Webpack into reloading browser
     `touch config/locales/en.yml`

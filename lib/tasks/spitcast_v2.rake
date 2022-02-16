@@ -12,7 +12,7 @@ namespace :spitcast_v2 do
     hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency, pipelining: 2)
 
     Spot.where.not(spitcast_id: nil).each do |spot|
-      ApiRequest.new(batch: @batch, requestable: spot, service: SpitcastV2, hydra: hydra).get
+      ApiRequest.new(batch: @batch, requestable: spot, service: SpitcastV2, hydra:).get
     end
 
     hydra.run

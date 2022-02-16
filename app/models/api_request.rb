@@ -22,11 +22,11 @@ class ApiRequest < ApplicationRecord
       if response.success?
         # Remove invalid UTF-8 chars from response, ex: Surfline v1 'S�o Jo�o'
         response.body.delete!("^\u{0000}-\u{007F}")
-        self.attributes = { response: service_class.parse(response.body), success: true, response_time: response.total_time, retries: retries }
+        self.attributes = { response: service_class.parse(response.body), success: true, response_time: response.total_time, retries: }
         save!
         send(service_parse_method)
       else
-        self.attributes = { response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, response_time: response.total_time, retries: retries }
+        self.attributes = { response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, response_time: response.total_time, retries: }
         SurflineV2.expire_access_token if service == 'SurflineV2' && [401, 403].include?(response.code) # Unauthorized
         get(retries: retries + 1)
       end

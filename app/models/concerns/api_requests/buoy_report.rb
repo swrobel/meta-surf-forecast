@@ -16,7 +16,7 @@ module ApiRequests
                                batch: batch_id,
                                request: id,
                                ndbc: ndbc_id,
-                               line: line,
+                               line:,
                              })
             }
           end

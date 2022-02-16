@@ -59,12 +59,12 @@ module ApiRequests
         end
 
         forecasts.each do |surfline_v1_id, timestamps|
-          next unless (forecasted_spot = Spot.find_by(surfline_v1_id: surfline_v1_id))
+          next unless (forecasted_spot = Spot.find_by(surfline_v1_id:))
 
           timestamps.each do |timestamp, values|
             # Adjust for DST-related shifts in timestamps so they're all multiples of 3
             timestamp -= (timestamp.utc.hour % 3).hours
-            record = service_class.unscoped.where(spot_id: forecasted_spot.id, timestamp: timestamp).first_or_initialize
+            record = service_class.unscoped.where(spot_id: forecasted_spot.id, timestamp:).first_or_initialize
             record.api_request = self
             values.each do |attribute, value|
               record[attribute] = value

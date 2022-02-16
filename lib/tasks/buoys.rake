@@ -9,7 +9,7 @@ namespace :buoys do
     hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
 
     Buoy.all.each do |buoy|
-      ApiRequest.new(batch: @batch, requestable: buoy, service: BuoyReport, hydra: hydra).get
+      ApiRequest.new(batch: @batch, requestable: buoy, service: BuoyReport, hydra:).get
     end
 
     hydra.run
