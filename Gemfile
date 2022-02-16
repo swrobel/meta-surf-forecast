@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby "~> #{File.read('.ruby-version').strip}"
 
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.2'
 
 gem 'bootsnap'
 gem 'bugsnag'
@@ -31,7 +31,6 @@ group :development do
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
   gem 'invoker'
-  gem 'listen', '~> 3.3'
   gem 'rack-toolbar', github: 'swrobel/rack-toolbar', branch: 'rails-pages' # Insert arbitrary code into Rails pages
   gem 'rubocop'
   gem 'rubocop-performance'
