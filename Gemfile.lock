@@ -277,6 +277,11 @@ GEM
       activerecord (>= 4.0.0)
       railties (>= 4.0.0)
     semantic_range (3.0.0)
+    shakapacker (6.1.1)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     shellany (0.0.1)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
@@ -304,11 +309,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -347,11 +347,11 @@ DEPENDENCIES
   rubocop-rails
   safely_block
   scenic
+  shakapacker (~> 6.1.1)
   slim-rails
   terminal-notifier-guard
   typhoeus
   web-console
-  webpacker (~> 5.0)
 
 RUBY VERSION
    ruby 3.1.0p0

@@ -16,9 +16,9 @@ gem 'puma'
 gem 'react-rails'
 gem 'safely_block'
 gem 'scenic'
+gem 'shakapacker', '~> 6.1.1'
 gem 'slim-rails'
 gem 'typhoeus'
-gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'dotenv-rails'
