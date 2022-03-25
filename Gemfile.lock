@@ -347,7 +347,7 @@ DEPENDENCIES
   rubocop-rails
   safely_block
   scenic
-  shakapacker (~> 6.1.1)
+  shakapacker (~> 6.1)
   slim-rails
   terminal-notifier-guard
   typhoeus

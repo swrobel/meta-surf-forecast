@@ -1,6 +1,7 @@
 # Note: You must restart bin/webpack-dever-server for changes to take effect
 
 default: &default
+  ensure_consistent_versioning: true
   source_path: app/javascript
   source_entry_path: /
   public_root_path: public
