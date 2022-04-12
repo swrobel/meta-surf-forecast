@@ -13,10 +13,10 @@ gem 'memery' # Memoization
 gem 'oj'
 gem 'pg'
 gem 'puma'
-gem 'react-rails'
+gem 'react-rails', github: 'reactjs/react-rails', branch: 'update-react-18'
 gem 'safely_block'
 gem 'scenic'
-gem 'shakapacker', '~> 6.1'
+gem 'shakapacker', '6.2.0'
 gem 'slim-rails'
 gem 'typhoeus'
 

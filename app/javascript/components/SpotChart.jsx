@@ -1,7 +1,6 @@
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Bugsnag from '@bugsnag/js'
 
 const SpotChart = props => {

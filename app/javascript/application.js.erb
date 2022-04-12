@@ -1,16 +1,16 @@
 import Bugsnag from '@bugsnag/js'
 import BugsnagPluginReact from '@bugsnag/plugin-react'
 
+<% if ENV['BUGSNAG_FRONTEND'] %>
+  Bugsnag.start({ apiKey: '<%= ENV['BUGSNAG_FRONTEND'] %>', releaseStage: '<%= Rails.env %>', enabledReleaseStages: <%= NOTIFY_RELEASE_STAGES %>, appVersion: '<%= ENV['HEROKU_RELEASE_VERSION'] || 'dev' %>', logger: null, plugins: [new BugsnagPluginReact()]})
+<% end %>
+
 // Support component names relative to this directory:
 const componentRequireContext = require.context("components", true)
 const ReactRailsUJS = require("react_ujs")
 ReactRailsUJS.useContext(componentRequireContext)
 
 require.context('images', true)
-
-<% if ENV['BUGSNAG_FRONTEND'] %>
-  Bugsnag.start({ apiKey: '<%= ENV['BUGSNAG_FRONTEND'] %>', releaseStage: '<%= Rails.env %>', enabledReleaseStages: <%= NOTIFY_RELEASE_STAGES %>, appVersion: '<%= ENV['HEROKU_RELEASE_VERSION'] || 'dev' %>', logger: null, plugins: [new BugsnagPluginReact()]})
-<% end %>
 
 function setSafePadding() {
   document.querySelectorAll('.safe-padding')?.forEach(node => {
