@@ -41,7 +41,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }).init()
 
     if (window.location.hash) {
-      setTimeout(() => navbar.classList.add("slideUp"), 100)
+      setTimeout(() => {
+        document.getElementById(window.location.hash.slice(1))?.scrollIntoView()
+        navbar.classList.add("slideUp")
+      }, 1000)
     }
   }
 })
