@@ -28,7 +28,7 @@ class RegionsController < ApplicationController
     buoy_reports.each(&:symbolize_keys!)
     buoy_reports.each do |buoy_report|
       buoy_report[:xaxis_time] = buoy_report[:timestamp].strftime('%-l:%M%P')[0..-2]
-      buoy_report[:tooltip_time] = buoy_report[:timestamp].strftime('%a, %b %-e, %-l:%M %p')
+      buoy_report[:tooltip_time] = buoy_report[:timestamp].strftime('%a, %-m/%-e, %-l:%M%P')
       FLOAT_FIELDS.each do |field|
         buoy_report[field] = buoy_report[field].to_f
       end

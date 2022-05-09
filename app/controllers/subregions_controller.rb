@@ -13,7 +13,7 @@ class SubregionsController < ApplicationController
     forecasts.each(&:symbolize_keys!)
     forecasts.each do |forecast|
       forecast[:xaxis_time] = helpers.format_timestamp(forecast[:timestamp])
-      forecast[:tooltip_time] = forecast[:timestamp].strftime('%a, %b %-e, %-l %p')
+      forecast[:tooltip_time] = forecast[:timestamp].strftime('%a %-m/%-e %-l%P')
       FLOAT_FIELDS.each do |field|
         forecast[field] = forecast[field].to_f
       end

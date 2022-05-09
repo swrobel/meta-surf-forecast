@@ -43,17 +43,20 @@ const SpotChart = props => {
       formatter: function() {
         let avg = 0
         let min = 0
+        let max = 0
         let rating
         let tooltip = ''
         for (const point of this.points.reverse()) {
-          tooltip += `<br>${point.series.name}: ${(min + avg + point.y).toPrecision(2)} ft`
           if (point.series.name === 'Min') {
             tooltip = `<strong>${point.point.tooltip_time}</strong>${tooltip}`
             rating = point.point.rating
             min = point.y
-          }
-          if (point.series.name === 'Avg') avg = point.y
+          } else if (point.series.name === 'Avg') avg = point.y
+          else max = point.y
         }
+        tooltip += `<br>Max: ${(min + avg + max).toPrecision(2)} ft`
+        tooltip += `<br>Avg: ${(min + avg).toPrecision(2)} ft`
+        tooltip += `<br>Min: ${min.toPrecision(2)} ft`
         tooltip += `<br>${rating}`
         return tooltip
       },
