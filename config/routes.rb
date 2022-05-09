@@ -5,7 +5,7 @@ class ReservedWordConstraint
 end
 
 Rails.application.routes.draw do
-  get "/#{ENV['UNLOCK_KEY']}", to: 'application#unlock' if ENV['UNLOCK_KEY'].present?
+  get "/#{ENV.fetch('UNLOCK_KEY', nil)}", to: 'application#unlock' if ENV['UNLOCK_KEY'].present?
 
   get '/regions/:id', to: redirect('/california/%{id}')
   constraints(ReservedWordConstraint) do

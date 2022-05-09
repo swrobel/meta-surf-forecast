@@ -11,7 +11,7 @@ namespace :msw do
     hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
 
     Spot.where.not(msw_id: nil).each do |spot|
-      ApiRequest.new(batch: @batch, requestable: spot, service: Msw, hydra:, typhoeus_opts: { cookie: "MSW_session=#{ENV['MSW_SESSION_ID']}" }).get
+      ApiRequest.new(batch: @batch, requestable: spot, service: Msw, hydra:, typhoeus_opts: { cookie: "MSW_session=#{ENV.fetch('MSW_SESSION_ID', nil)}" }).get
     end
 
     hydra.run

@@ -55,7 +55,7 @@ Rails.application.configure do
       expires_in: 2.weeks.to_i,
       namespace: 'cache',
       reconnect_attempts: 1,
-      url: ENV['REDIS_URL'],
+      url: ENV.fetch('REDIS_URL', nil),
     }
   end
 

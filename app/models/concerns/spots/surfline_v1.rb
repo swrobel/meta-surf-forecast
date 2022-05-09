@@ -21,7 +21,7 @@ module Spots
       def surfline_v1_api_url(get_all_spots:, use_nearshore:)
         raise "No Surfline spot associated with #{name} (#{id})" if surfline_v1_id.blank?
 
-        "http://api.surfline.com/v1/forecasts/#{surfline_v1_id}?resources=surf,wind,sort&days=#{ENV['SURFLINE_DAYS'] || 15}&getAllSpots=#{get_all_spots}&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
+        "http://api.surfline.com/v1/forecasts/#{surfline_v1_id}?resources=surf,wind,sort&days=#{ENV.fetch('SURFLINE_DAYS', 15)}&getAllSpots=#{get_all_spots}&units=e&interpolate=true&showOptimal=true&usenearshore=#{use_nearshore}"
       end
 
       def surfline_nearshore_api_url(get_all_spots: true)

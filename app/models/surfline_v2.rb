@@ -12,8 +12,8 @@ class SurflineV2 < Forecast
           authorizationString: AUTH_STRING,
           grant_type: :password,
           forced: true,
-          username: ENV['SURFLINE_EMAIL'],
-          password: ENV['SURFLINE_PASSWORD'],
+          username: ENV.fetch('SURFLINE_EMAIL', nil),
+          password: ENV.fetch('SURFLINE_PASSWORD', nil),
           device_id: 'Firefox-91.0',
           device_type: 'Firefox 91.0 on OS X 10.15',
         }.to_json
