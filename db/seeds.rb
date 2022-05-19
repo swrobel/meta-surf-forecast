@@ -5,6 +5,7 @@ WaterQualityDepartment.find_or_create_by(code: 'LAPH') do |dept|
   dept.url = 'http://www.publichealth.lacounty.gov/phcommon/public/eh/water_quality/beach_grades.cfm'
 end
 
+# California
 CA = Region.find_or_create_by(name: 'California', sort_order: 10)
 CA.timezone = 'America/Los_Angeles'
 CA.save!
@@ -40,6 +41,8 @@ SSD = Subregion.find_or_initialize_by(name: 'South San Diego', region: CA)
 SSD.sort_order = 90
 SSD.timezone = 'America/Los_Angeles'
 SSD.save!
+
+# Mexico
 MX = Region.find_or_create_by(name: 'Mexico', sort_order: 15)
 COL = Subregion.find_or_initialize_by(name: 'Colima', region: MX)
 COL.sort_order = 30
@@ -49,11 +52,15 @@ GUR = Subregion.find_or_initialize_by(name: 'Guerrero', region: MX)
 GUR.sort_order = 32
 GUR.timezone = 'America/Mexico_City'
 GUR.save!
+
+# Europe
 EU = Region.find_or_create_by(name: 'Europe', sort_order: 50)
 PT = Subregion.find_or_initialize_by(name: 'Portugal', region: EU)
 PT.sort_order = 30
 PT.timezone = 'Europe/Lisbon'
 PT.save!
+
+# Hawaii
 HI = Region.find_or_create_by(name: 'Hawaii', sort_order: 14)
 HI.timezone = 'Pacific/Honolulu'
 HI.save!
@@ -72,6 +79,10 @@ MNW.save!
 MSW = Subregion.find_or_initialize_by(name: 'Maui - Southwest', region: HI)
 MSW.assign_attributes(sort_order: 25, timezone: 'Pacific/Honolulu')
 MSW.save!
+
+# Fiji
+FJ = Region.find_or_create_by(name: 'Fiji', sort_order: 40, timezone: 'Pacific/Fiji')
+NT = Subregion.find_or_create_by(name: 'Namotu/Tavarua', region: FJ, timezone: 'Pacific/Fiji')
 
 spots = [
   { subregion: LA,
@@ -1133,6 +1144,40 @@ spots = [
     surfline_v2_id: '5842041f4e65fad6a7708de2',
     msw_id: 4930,
     name: 'La Perouse Bay' },
+  { subregion: NT,
+    name: "Wilkes Pass",
+    msw_id: 4217,
+    lat: -17.8421,
+    lon: 177.17,
+    surfline_v1_id: 7285,
+    surfline_v2_id: "5842041f4e65fad6a7708d5c" },
+  { subregion: NT,
+    name: "Namotu Left",
+    msw_id: 3682,
+    lat: -17.8453,
+    lon: 177.1781,
+    surfline_v1_id: 7284,
+    surfline_v2_id: "5842041f4e65fad6a7708d5a"},
+  { subregion: NT,
+    name: "Swimming Pools",
+    lat: -17.8459,
+    lon: 177.178,
+    surfline_v1_id: 7283,
+    surfline_v2_id: "5842041f4e65fad6a7708d5d"},
+  { subregion: NT,
+    name: "Restaurants",
+    msw_id: 4486,
+    lat: -17.8529,
+    lon: 177.2002,
+    surfline_v1_id: 8494,
+    surfline_v2_id: "5842041f4e65fad6a7708dc2"},
+  { subregion: NT,
+    name: "Cloudbreak",
+    msw_id: 669,
+    lat: -17.8869,
+    lon: 177.1855,
+    surfline_v1_id: 8493,
+    surfline_v2_id: "5842041f4e65fad6a7708dc5"},
 ]
 
 spots.each do |spot_data|
