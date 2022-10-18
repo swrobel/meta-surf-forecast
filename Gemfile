@@ -16,7 +16,7 @@ gem 'puma'
 gem 'react-rails', github: 'reactjs/react-rails', branch: 'update-react-18'
 gem 'safely_block'
 gem 'scenic'
-gem 'shakapacker', '6.5.1'
+gem 'shakapacker', '6.5.2'
 gem 'slim-rails'
 gem 'typhoeus'
 
@@ -40,8 +40,8 @@ group :development do
 end
 
 group :production do
-  gem 'hiredis'
+  gem 'hiredis-client'
   gem 'newrelic_rpm'
   gem 'rack-brotli'
-  gem 'redis'
+  gem 'redis', '~> 5'
 end
