@@ -22,13 +22,13 @@
     "react_ujs": "^2.7.0-alpha.1",
     "sass": "^1.49.7",
     "sass-loader": "^13.0.0",
-    "shakapacker": "6.5.2",
+    "shakapacker": "6.5.4",
     "style-loader": "^3.3.1",
     "swc-loader": "^0.2.0",
     "terser-webpack-plugin": "5",
     "webpack": "5",
     "webpack-assets-manifest": "5",
-    "webpack-cli": "4",
+    "webpack-cli": "5",
     "webpack-merge": "5"
   },
   "devDependencies": {
