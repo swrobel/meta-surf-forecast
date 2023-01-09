@@ -25,8 +25,6 @@ module MetaSurfForecast
 
     config.time_zone = 'UTC'
 
-    config.force_ssl = true
-
     # Disable view rendering logs
     config.action_view.logger = nil
   end

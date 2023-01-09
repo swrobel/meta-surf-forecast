@@ -52,8 +52,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.hosts << 'surf.localhost'
-
   dev_server = Webpacker.config.dev_server
   WEBPACK_SCRIPT_TAG ||= "<script src='#{"http#{dev_server[:https] && 's'}"}://#{dev_server[:host]}:#{dev_server[:port]}/webpack-dev-server.js'></script>".freeze
   config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::Toolbar,

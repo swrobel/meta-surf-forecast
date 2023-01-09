@@ -1,15 +1,21 @@
 # Meta Surf Forecast
 
-* [Developer Setup](#developer-setup)
-* [Adding Spots](#adding-spots)
-* [Data Sources](#data-sources)
-  * [Surfline](#surfline)
-    * [New API](#new-api-v2)
-    * [Old API](#old-api-v1)
-  * [MagicSeaweed](#magicseaweed)
-  * [Spitcast](#spitcast)
-* [The Magic](#the-magic)
-* [TODO](#todo)
+- [Meta Surf Forecast](#meta-surf-forecast)
+  - [Purpose](#purpose)
+  - [Developer Setup](#developer-setup)
+  - [Adding Spots](#adding-spots)
+  - [Data Sources](#data-sources)
+    - [Surfline](#surfline)
+      - [New API (v2)](#new-api-v2)
+        - [Responses](#responses)
+        - [Requests](#requests)
+      - [Old API (v1)](#old-api-v1)
+    - [MagicSeaweed](#magicseaweed)
+    - [Spitcast](#spitcast)
+  - [The Magic](#the-magic)
+    - [Surf quality ratings](#surf-quality-ratings)
+    - [Timestamps](#timestamps)
+  - [TODO](#todo)
 
 ## Purpose
 
@@ -21,20 +27,17 @@ Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://mag
 
 1. Install dependencies using [Homebrew](https://brew.sh/): `brew bundle`
 1. If on Linux: `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start`
-1. `mkcert -install`
-1. `mkdir config/ssl && cd config/ssl && mkcert surf.localhost surf-packs.localhost localhost 127.0.0.1 ::1 && cd ../../`
 1. `gem install bundler -v '>= 2.0.2'`
 1. `bundle`
 1. `yarn`
 1. `cp config/database.yml.example config/database.yml`
 1. `bin/rails db:setup`
-1. `rvmsudo bin/invoker setup --tld localhost` (help available [here](http://invoker.codemancers.com/ruby_managers.html))
 1. Grab some [Surfline v2](https://www.surfline.com/) data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails surfline_v2:update`
 1. Grab some [MagicSeaweed](https://magicseaweed.com/) data (requires a valid [API key](https://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update` (replace `xxx` with your key)
 1. Refresh the materialized Postgres view that collates all forecast data into one table: `bin/rails database_views:refresh`
-1. `bin/server`
-1. Open https://surf.localhost
-1. Score!
+1. `bin/foreman start -f Procfile.dev`
+1. Open http://localhost:5000
+1. Any changes you make to view files will auto-reload the browser
 
 **Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)**
 

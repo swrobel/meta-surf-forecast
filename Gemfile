@@ -26,11 +26,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'foreman'
   gem 'gindex'
   gem 'guard'
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
-  gem 'invoker'
   gem 'rack-toolbar', github: 'swrobel/rack-toolbar', branch: 'rails-pages' # Insert arbitrary code into Rails pages
   gem 'rubocop'
   gem 'rubocop-performance'
