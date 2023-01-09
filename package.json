@@ -22,7 +22,7 @@
     "react_ujs": "^2.7.0-alpha.1",
     "sass": "^1.49.7",
     "sass-loader": "^13.0.0",
-    "shakapacker": "6.5.4",
+    "shakapacker": "6.5.5",
     "style-loader": "^3.3.1",
     "swc-loader": "^0.2.0",
     "terser-webpack-plugin": "5",
