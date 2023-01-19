@@ -118,7 +118,7 @@ GEM
       activerecord (>= 4.0.0)
     gindex (0.3.0)
       railties (>= 5.2)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     guard (2.18.0)
       formatador (>= 0.2.4)
