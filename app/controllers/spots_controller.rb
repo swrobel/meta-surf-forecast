@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SpotsController < ApplicationController
+  before_action :check_unlocked
+
   def show
     @timestamps = spot.unique_timestamps
   end
