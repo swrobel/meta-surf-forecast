@@ -2,7 +2,7 @@
 
 class SubregionsController < ApplicationController
   before_action :check_unlocked
-  
+
   FLOAT_FIELDS = %i[max min avg_delta max_delta].freeze
 
   def show
