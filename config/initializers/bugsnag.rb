@@ -7,4 +7,5 @@ Bugsnag.configure do |config|
   config.app_version = ENV.fetch('HEROKU_RELEASE_VERSION', nil)
   config.ignore_classes << ActiveRecord::RecordNotFound
   config.ignore_classes << Mime::Type::InvalidMimeType
+  config.ignore_classes << ActionController::RoutingError
 end
