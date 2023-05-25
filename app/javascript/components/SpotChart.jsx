@@ -24,6 +24,7 @@ const SpotChart = props => {
     plotOptions: {
       areaspline: {},
       column: {
+        borderRadius: 0,
         borderWidth: 0,
         groupPadding: 0.07,
         dataLabels: {

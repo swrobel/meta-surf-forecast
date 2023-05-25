@@ -2,7 +2,7 @@ $enable-gradients: true;
 $enable-responsive-font-sizes: true;
 @import "~bootstrap";
 @import "stylesheets/partials/animation";
-@import "~highcharts/css/highcharts.scss";
+@import "~highcharts/css/highcharts";
 
 :root {
   --black: black;
@@ -44,6 +44,7 @@ svg {
 
 .highcharts-container {
   font-family: inherit;
+  font-size: 14px;
 
   <% RATING_COLORS.each do |rating, hash| %>
     <% hash.each do |scale, color| %>
@@ -81,12 +82,7 @@ svg {
     fill-opacity: 1;
   }
 
-  // Fix first 2 stack labels always being shown & overlapping
-  .highcharts-stack-labels.highcharts-label:nth-child(2) {
-    opacity: 0;
-  }
-
-  .highcharts-column-series rect.highcharts-point {
+  .highcharts-series path.highcharts-point {
     stroke: var(--white);
   }
 
