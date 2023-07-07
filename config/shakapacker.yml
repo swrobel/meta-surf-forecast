@@ -11,6 +11,10 @@ default: &default
   webpack_compile_output: false
   webpack_loader: 'swc'
 
+  # If nested_entries is true, then we'll pick up subdirectories within the source_entry_path.
+  # You cannot set this option to true if you set source_entry_path to '/'
+  nested_entries: false
+
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
   resolved_paths: []

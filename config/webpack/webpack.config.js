@@ -1,4 +1,5 @@
-const { webpackConfig, merge, env } = require('shakapacker')
+const { generateWebpackConfig, merge, env } = require('shakapacker')
+const webpackConfig = generateWebpackConfig()
 const customConfig = {
   resolve: {
     extensions: ['.css']
