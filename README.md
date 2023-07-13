@@ -184,14 +184,12 @@ I've asked MagicSeaweed a few questions and added their responses below:
 
 ### [Spitcast](https://www.spitcast.com/)
 
-**As of February 2020, the Spitcast API has been shut down. I'm waiting to hear back about whether their API will ever come back...**
+Spitcast has a [documented API](https://github.com/jackmullis/spitcast-api-docs).
 
-Spitcast only provides a [list of API endpoints](https://web.archive.org/web/20191021104350/http://www.spitcast.com/api/docs/), but the data is sanely-structured JSON so it's pretty easy to parse.
+I've also asked Jack from Spitcast a few questions and added his responses below:
 
-I've asked Jack from Spitcast a few questions and added his responses below:
-
-* To get more than the default 24 hour forecast for a spot, add `dcat=week` to the querystring.
-* Why does the site show a size range, but the API only returns one `size` value? "I actually take the API number and create the max by adding 1/6 the height (in feet), and then create the min by subtracting 1/6 the height."
+* Why does the site show a size range, but the API only returns one `size` value?
+  > I actually take the API number and create the max by adding 1/6 the height (in feet), and then create the min by subtracting 1/6 the height."
 * All possible values for shape:
   * Poor
   * Poor-Fair
@@ -216,13 +214,12 @@ Each forecasting service is massaged onto that scale as follows:
 
 * **MagicSeaweed:** integer `fadedRating` (0-5) & `solidRating` (0-5). I simply subtract fadedRating (which is essentially the negative effect of wind) from solidRating.
 * **Spitcast:** ratings in text form:
-  * Poor
-  * Poor-Fair
-  * Fair
-  * Fair-Good
-  * Good
+  * 0.0 => Poor
+  * 0.5 => Poor-Fair
+  * 1.0 => Fair
+  * 1.5 => Good
 
-  I massage these by assigning them a number from 0.5-4.5
+  I massage these by multiplying by 5/1.5 (essentially 3.3̅) to get a 0-5 scale.
 * **Surfline v1:** decimal ratings (0-1) for up to 6 different swells at each spot, as well as an `optimalWind` boolean. I take the max swell rating at any given time for that spot, multiply it by 5, and then halve it if the wind is not optimal.
 * **Surfline v2:** integer `optimalScore`s for both swell & wind (0-2). Adding these together gives a 0-4 scale, and adding 0.5 puts it on the same 0.5-4.5 scale as Spitcast.
 
