@@ -91,6 +91,7 @@ For reference, I believe `kbyg` stands for "Know Before You Go," which is their 
 
 Type|Data
 ----|----
+rating|array of human-readable and numeric (0-6) ratings
 wave|array of min/max sizes & optimal scores
 wind|array of wind directions/speeds & optimal scores
 tides|array of types & heights
@@ -231,6 +232,7 @@ It took me a long time to land on a solution here, but I've finally settled on s
 
 ## TODO
 
+* [ ] Update Surfline v2 API to use their new [7-point rating scale](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)
 * [ ] Figure out a way to convey forecast certainty in charts (ie: most forecasts are in agreement, or they disagree by a wide margin)
 * [ ] Explore [lazy-loading components](https://github.com/twobin/react-lazyload)
 * [ ] Explore [SSR](https://github.com/reactjs/react-rails#server-side-rendering) for possibly faster browser paint
