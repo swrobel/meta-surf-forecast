@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_033624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,8 +18,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
     t.string "request"
     t.json "response"
     t.boolean "success"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "batch_id"
     t.float "response_time"
     t.string "requestable_type"
@@ -33,7 +32,7 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
 
   create_table "buoy_reports", force: :cascade do |t|
     t.bigint "buoy_id", null: false
-    t.datetime "timestamp", null: false
+    t.datetime "timestamp", precision: nil, null: false
     t.decimal "ground_swell_height"
     t.decimal "ground_swell_period"
     t.decimal "ground_swell_direction"
@@ -45,8 +44,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
     t.decimal "avg_period"
     t.integer "mean_wave_direction"
     t.bigint "api_request_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["api_request_id"], name: "index_buoy_reports_on_api_request_id"
     t.index ["buoy_id"], name: "index_buoy_reports_on_buoy_id"
     t.index ["timestamp"], name: "index_buoy_reports_on_timestamp"
@@ -60,8 +59,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
     t.string "slug", null: false
     t.bigint "region_id", null: false
     t.integer "sort_order"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["ndbc_id"], name: "index_buoys_on_ndbc_id", unique: true
     t.index ["region_id", "slug"], name: "index_buoys_on_region_id_and_slug", unique: true
     t.index ["region_id", "sort_order", "lat", "lon"], name: "index_buoys_on_region_id_and_sort_order_and_lat_and_lon"
@@ -72,7 +71,7 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
     t.string "scope"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
@@ -80,14 +79,14 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
 
   create_table "msws", id: :serial, force: :cascade do |t|
     t.integer "spot_id"
-    t.datetime "timestamp"
+    t.datetime "timestamp", precision: nil
     t.decimal "min_height"
     t.decimal "max_height"
     t.integer "rating"
     t.integer "wind_effect"
     t.integer "api_request_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["api_request_id"], name: "index_msws_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_msws_on_spot_id_and_timestamp"
   end
@@ -103,24 +102,24 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
 
   create_table "spitcast_v1s", id: :serial, force: :cascade do |t|
     t.integer "spot_id"
-    t.datetime "timestamp"
+    t.datetime "timestamp", precision: nil
     t.decimal "height"
     t.string "rating"
     t.integer "api_request_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["api_request_id"], name: "index_spitcast_v1s_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_spitcast_v1s_on_spot_id_and_timestamp"
   end
 
   create_table "spitcast_v2s", force: :cascade do |t|
     t.bigint "spot_id", null: false
-    t.datetime "timestamp", null: false
+    t.datetime "timestamp", precision: nil, null: false
     t.decimal "height", null: false
     t.decimal "rating", null: false
     t.bigint "api_request_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["api_request_id"], name: "index_spitcast_v2s_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_spitcast_v2s_on_spot_id_and_timestamp"
   end
@@ -132,8 +131,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
     t.integer "surfline_v1_id"
     t.integer "msw_id"
     t.integer "spitcast_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
     t.bigint "subregion_id"
     t.string "spitcast_slug"
@@ -147,8 +146,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
   create_table "subregions", force: :cascade do |t|
     t.string "name"
     t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "timezone"
     t.bigint "region_id"
     t.integer "sort_order"
@@ -158,56 +157,58 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
 
   create_table "surfline_lolas", id: :serial, force: :cascade do |t|
     t.integer "spot_id"
-    t.datetime "timestamp"
+    t.datetime "timestamp", precision: nil
     t.decimal "min_height"
     t.decimal "max_height"
     t.decimal "swell_rating"
     t.boolean "optimal_wind"
     t.integer "api_request_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["api_request_id"], name: "index_surfline_lolas_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_surfline_lolas_on_spot_id_and_timestamp"
   end
 
   create_table "surfline_nearshores", id: :serial, force: :cascade do |t|
     t.integer "spot_id"
-    t.datetime "timestamp"
+    t.datetime "timestamp", precision: nil
     t.decimal "min_height"
     t.decimal "max_height"
     t.decimal "swell_rating"
     t.boolean "optimal_wind"
     t.integer "api_request_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["api_request_id"], name: "index_surfline_nearshores_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_surfline_nearshores_on_spot_id_and_timestamp"
   end
 
   create_table "surfline_v2_lolas", force: :cascade do |t|
     t.bigint "spot_id", null: false
-    t.datetime "timestamp"
+    t.datetime "timestamp", precision: nil
     t.decimal "min_height"
     t.decimal "max_height"
     t.integer "swell_rating"
     t.integer "wind_rating"
     t.bigint "api_request_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "seven_point_rating"
     t.index ["api_request_id"], name: "index_surfline_v2_lolas_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_surfline_v2_lolas_on_spot_id_and_timestamp"
   end
 
   create_table "surfline_v2_lotus", force: :cascade do |t|
     t.bigint "spot_id", null: false
-    t.datetime "timestamp"
+    t.datetime "timestamp", precision: nil
     t.decimal "min_height"
     t.decimal "max_height"
     t.integer "swell_rating"
     t.integer "wind_rating"
     t.bigint "api_request_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "seven_point_rating"
     t.index ["api_request_id"], name: "index_surfline_v2_lotus_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_surfline_v2_lotus_on_spot_id_and_timestamp"
   end
@@ -215,8 +216,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
   create_table "update_batches", force: :cascade do |t|
     t.integer "concurrency"
     t.interval "duration"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "kind"
     t.index ["kind"], name: "index_update_batches_on_kind"
   end
@@ -224,14 +225,14 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
   create_table "water_qualities", id: :serial, force: :cascade do |t|
     t.integer "dept_id"
     t.string "site_id"
-    t.datetime "timestamp"
+    t.datetime "timestamp", precision: nil
     t.string "name"
     t.boolean "ok"
     t.string "comments"
     t.float "lat"
     t.float "lon"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["dept_id", "site_id", "timestamp"], name: "index_water_qualities_on_dept_id_and_site_id_and_timestamp"
   end
 
@@ -239,8 +240,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
     t.string "name"
     t.string "code"
     t.string "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   add_foreign_key "api_requests", "update_batches", column: "batch_id"
@@ -295,22 +296,22 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
           END) AS msw_fail,
       sum(
           CASE
-              WHEN ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[])) THEN r.retries
+              WHEN ((r.service)::text = ANY (ARRAY[('SurflineLola'::character varying)::text, ('SurflineNearshore'::character varying)::text])) THEN r.retries
               ELSE 0
           END) AS surfline_v1_retry,
       sum(
           CASE
-              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineLola'::character varying, 'SurflineNearshore'::character varying])::text[]))) THEN 1
+              WHEN ((r.success = false) AND ((r.service)::text = ANY (ARRAY[('SurflineLola'::character varying)::text, ('SurflineNearshore'::character varying)::text]))) THEN 1
               ELSE 0
           END) AS surfline_v1_fail,
       sum(
           CASE
-              WHEN ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[])) THEN r.retries
+              WHEN ((r.service)::text = ANY (ARRAY[('SurflineV2Lola'::character varying)::text, ('SurflineV2Lotus'::character varying)::text])) THEN r.retries
               ELSE 0
           END) AS surfline_v2_retry,
       sum(
           CASE
-              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[]))) THEN 1
+              WHEN ((r.success = false) AND ((r.service)::text = ANY (ARRAY[('SurflineV2Lola'::character varying)::text, ('SurflineV2Lotus'::character varying)::text]))) THEN 1
               ELSE 0
           END) AS surfline_v2_fail,
       sum(
@@ -426,7 +427,10 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
       avg(surfline_v2_lotus.min_height) OVER w AS min_height,
       ((avg(surfline_v2_lotus.min_height) OVER w + avg(surfline_v2_lotus.max_height) OVER w) / (2)::numeric) AS avg_height,
       avg(surfline_v2_lotus.max_height) OVER w AS max_height,
-      ((avg(surfline_v2_lotus.swell_rating) OVER w + avg(surfline_v2_lotus.wind_rating) OVER w) * 1.25) AS rating,
+          CASE
+              WHEN (surfline_v2_lotus.seven_point_rating > (6)::numeric) THEN (5)::numeric
+              ELSE GREATEST((surfline_v2_lotus.seven_point_rating - (1)::numeric), (0)::numeric)
+          END AS rating,
       surfline_v2_lotus.updated_at
      FROM surfline_v2_lotus
     WINDOW w AS (PARTITION BY surfline_v2_lotus.spot_id ORDER BY surfline_v2_lotus."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING);
@@ -469,7 +473,7 @@ ActiveRecord::Schema[6.1].define(version: 2021_03_05_032617) do
      FROM ((all_forecasts fc
        JOIN spots s ON ((fc.spot_id = s.id)))
        JOIN subregions sr ON ((s.subregion_id = sr.id)))
-    WHERE ((((date_part('hour'::text, fc."timestamp"))::integer % 3) = 0) AND (fc."timestamp" >= timezone((sr.timezone)::text, now())) AND (fc.updated_at >= (timezone((sr.timezone)::text, now()) - 'P1D'::interval)))
+    WHERE ((((EXTRACT(hour FROM fc."timestamp"))::integer % 3) = 0) AND (fc."timestamp" >= (now() AT TIME ZONE sr.timezone)) AND (fc.updated_at >= ((now() AT TIME ZONE sr.timezone) - 'P1D'::interval)))
     GROUP BY s.id, s.name, s.slug, s.lat, s.lon, fc."timestamp", s.surfline_v1_id, s.msw_id, s.spitcast_id, s.spitcast_slug, s.surfline_v2_id, s.updated_at
    HAVING (count(*) >= (
           CASE
