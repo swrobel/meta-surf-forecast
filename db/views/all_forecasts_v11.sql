@@ -77,10 +77,7 @@ SELECT 'surfline_v2_lotus' AS service
        ,avg(min_height) OVER w AS min_height
        ,(avg(min_height) OVER w + avg(max_height) OVER w) / 2 AS avg_height
        ,avg(max_height) OVER w AS max_height
-       ,CASE
-              WHEN seven_point_rating > 6 THEN 5
-              ELSE GREATEST(seven_point_rating - 1, 0)
-       END AS rating
+       ,(avg(seven_point_rating) OVER w) * 5 / 6 AS rating
        ,updated_at
 FROM surfline_v2_lotus
 WINDOW w AS (PARTITION BY spot_id ORDER BY timestamp ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
