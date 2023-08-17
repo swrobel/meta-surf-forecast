@@ -24,6 +24,18 @@ module ApiRequests
         end
       end
 
+      def parse_surfline_v2_rating
+        response.dig('data', 'rating').each do |entry|
+          next unless (timestamp = entry['timestamp'])
+
+          record = service_class.unscoped.find_by(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp))
+          next unless record
+
+          record.seven_point_rating = entry.dig('rating', 'value')
+          record.save! if record.seven_point_rating.present?
+        end
+      end
+
       def parse_surfline_v2_wave
         response.dig('data', 'wave').each do |entry|
           next unless (timestamp = entry['timestamp'])
@@ -36,6 +48,8 @@ module ApiRequests
           record.save! if record.swell_rating.present?
         end
 
+        # Rating request needs to be made after wave request is completed
+        ApiRequest.new(batch:, requestable:, service:, hydra:, options: options.merge(type: 'rating'), typhoeus_opts:).get
         # Wind request needs to be made after wave request is completed
         ApiRequest.new(batch:, requestable:, service:, hydra:, options: options.merge(type: 'wind'), typhoeus_opts:).get
       end
