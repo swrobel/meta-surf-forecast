@@ -13,7 +13,7 @@ module ApiRequests
       alias_method :parse_surfline_v2_lotus, :parse_surfline_v2
 
       def parse_surfline_v2_wind
-        response.dig('data', 'wind').each do |entry|
+        response.dig('data', 'wind')&.each do |entry|
           next unless (timestamp = entry['timestamp'])
 
           record = service_class.unscoped.find_by(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp))
@@ -25,7 +25,7 @@ module ApiRequests
       end
 
       def parse_surfline_v2_rating
-        response.dig('data', 'rating').each do |entry|
+        response.dig('data', 'rating')&.each do |entry|
           next unless (timestamp = entry['timestamp'])
 
           record = service_class.unscoped.find_by(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp))
@@ -37,7 +37,7 @@ module ApiRequests
       end
 
       def parse_surfline_v2_wave
-        response.dig('data', 'wave').each do |entry|
+        response.dig('data', 'wave')&.each do |entry|
           next unless (timestamp = entry['timestamp'])
 
           record = service_class.unscoped.where(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp)).first_or_initialize
