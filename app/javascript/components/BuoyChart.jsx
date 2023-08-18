@@ -5,6 +5,9 @@ import Bugsnag from '@bugsnag/js'
 
 const BuoyChart = props => {
   const options = {
+    accessibility: {
+      enabled: false,
+    },
     chart: {
       marginRight: 2,
       spacingLeft: 0,
@@ -58,7 +61,7 @@ const BuoyChart = props => {
       },
     },
   }
-  const ErrorBoundary = Bugsnag.getPlugin('react')?.createErrorBoundary(React) || React.Fragment
+  const ErrorBoundary = Bugsnag.client ? Bugsnag.getPlugin('react')?.createErrorBoundary(React) : React.Fragment
 
   return(
     <ErrorBoundary>

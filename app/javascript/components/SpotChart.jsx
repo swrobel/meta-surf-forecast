@@ -5,6 +5,9 @@ import Bugsnag from '@bugsnag/js'
 
 const SpotChart = props => {
   const options = {
+    accessibility: {
+      enabled: false,
+    },
     chart: {
       marginRight: 2,
       spacingLeft: 0,
@@ -89,7 +92,7 @@ const SpotChart = props => {
       },
     },
   }
-  const ErrorBoundary = Bugsnag.getPlugin('react')?.createErrorBoundary(React) || React.Fragment
+  const ErrorBoundary = Bugsnag.client ? Bugsnag.getPlugin('react')?.createErrorBoundary(React) : React.Fragment
 
   return(
     <ErrorBoundary>
