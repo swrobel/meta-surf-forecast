@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_033624) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_17_235411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -340,36 +340,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_033624) do
     GROUP BY b.id, b.kind, b.created_at, b.updated_at, b.concurrency, b.duration;
   SQL
   create_view "all_forecasts", materialized: true, sql_definition: <<-SQL
-      SELECT 'msw'::text AS service,
-      msws.spot_id,
-      msws."timestamp",
-      msws.min_height,
-      ((msws.min_height + msws.max_height) / (2)::numeric) AS avg_height,
-      msws.max_height,
-      msws.rating,
-      msws.updated_at
-     FROM msws
-  UNION ALL
-   SELECT 'spitcast_v1'::text AS service,
-      spitcast_v1s.spot_id,
-      spitcast_v1s."timestamp",
-      NULL::numeric AS min_height,
-      avg(spitcast_v1s.height) OVER w AS avg_height,
-      NULL::numeric AS max_height,
-      avg(
-          CASE spitcast_v1s.rating
-              WHEN 'Poor'::text THEN (0)::numeric
-              WHEN 'Poor-Fair'::text THEN 1.25
-              WHEN 'Fair'::text THEN 2.5
-              WHEN 'Fair-Good'::text THEN 3.75
-              WHEN 'Good'::text THEN (5)::numeric
-              ELSE (0)::numeric
-          END) OVER w AS rating,
-      spitcast_v1s.updated_at
-     FROM spitcast_v1s
-    WINDOW w AS (PARTITION BY spitcast_v1s.spot_id ORDER BY spitcast_v1s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
-  UNION ALL
-   SELECT 'spitcast_v2'::text AS service,
+      SELECT 'spitcast_v2'::text AS service,
       spitcast_v2s.spot_id,
       spitcast_v2s."timestamp",
       NULL::numeric AS min_height,
@@ -380,57 +351,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_033624) do
      FROM spitcast_v2s
     WINDOW w AS (PARTITION BY spitcast_v2s.spot_id ORDER BY spitcast_v2s."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
   UNION ALL
-   SELECT 'surfline_v1_lola'::text AS service,
-      surfline_lolas.spot_id,
-      surfline_lolas."timestamp",
-      surfline_lolas.min_height,
-      ((surfline_lolas.min_height + surfline_lolas.max_height) / (2)::numeric) AS avg_height,
-      surfline_lolas.max_height,
-      ((surfline_lolas.swell_rating * (5)::numeric) *
-          CASE
-              WHEN surfline_lolas.optimal_wind THEN (1)::numeric
-              ELSE 0.5
-          END) AS rating,
-      surfline_lolas.updated_at
-     FROM surfline_lolas
-    WHERE ((surfline_lolas.swell_rating IS NOT NULL) AND (surfline_lolas.optimal_wind IS NOT NULL))
-  UNION ALL
-   SELECT 'surfline_v1_nearshore'::text AS service,
-      surfline_nearshores.spot_id,
-      surfline_nearshores."timestamp",
-      surfline_nearshores.min_height,
-      ((surfline_nearshores.min_height + surfline_nearshores.max_height) / (2)::numeric) AS avg_height,
-      surfline_nearshores.max_height,
-      ((surfline_nearshores.swell_rating * (5)::numeric) *
-          CASE
-              WHEN surfline_nearshores.optimal_wind THEN (1)::numeric
-              ELSE 0.5
-          END) AS rating,
-      surfline_nearshores.updated_at
-     FROM surfline_nearshores
-    WHERE ((surfline_nearshores.swell_rating IS NOT NULL) AND (surfline_nearshores.optimal_wind IS NOT NULL))
-  UNION ALL
-   SELECT 'surfline_v2_lola'::text AS service,
-      surfline_v2_lolas.spot_id,
-      surfline_v2_lolas."timestamp",
-      avg(surfline_v2_lolas.min_height) OVER w AS min_height,
-      ((avg(surfline_v2_lolas.min_height) OVER w + avg(surfline_v2_lolas.max_height) OVER w) / (2)::numeric) AS avg_height,
-      avg(surfline_v2_lolas.max_height) OVER w AS max_height,
-      ((avg(surfline_v2_lolas.swell_rating) OVER w + avg(surfline_v2_lolas.wind_rating) OVER w) * 1.25) AS rating,
-      surfline_v2_lolas.updated_at
-     FROM surfline_v2_lolas
-    WINDOW w AS (PARTITION BY surfline_v2_lolas.spot_id ORDER BY surfline_v2_lolas."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)
-  UNION ALL
    SELECT 'surfline_v2_lotus'::text AS service,
       surfline_v2_lotus.spot_id,
       surfline_v2_lotus."timestamp",
       avg(surfline_v2_lotus.min_height) OVER w AS min_height,
       ((avg(surfline_v2_lotus.min_height) OVER w + avg(surfline_v2_lotus.max_height) OVER w) / (2)::numeric) AS avg_height,
       avg(surfline_v2_lotus.max_height) OVER w AS max_height,
-          CASE
-              WHEN (surfline_v2_lotus.seven_point_rating > (6)::numeric) THEN (5)::numeric
-              ELSE GREATEST((surfline_v2_lotus.seven_point_rating - (1)::numeric), (0)::numeric)
-          END AS rating,
+      ((avg(surfline_v2_lotus.seven_point_rating) OVER w * (5)::numeric) / (6)::numeric) AS rating,
       surfline_v2_lotus.updated_at
      FROM surfline_v2_lotus
     WINDOW w AS (PARTITION BY surfline_v2_lotus.spot_id ORDER BY surfline_v2_lotus."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING);
@@ -475,15 +402,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_033624) do
        JOIN subregions sr ON ((s.subregion_id = sr.id)))
     WHERE ((((EXTRACT(hour FROM fc."timestamp"))::integer % 3) = 0) AND (fc."timestamp" >= (now() AT TIME ZONE sr.timezone)) AND (fc.updated_at >= ((now() AT TIME ZONE sr.timezone) - 'P1D'::interval)))
     GROUP BY s.id, s.name, s.slug, s.lat, s.lon, fc."timestamp", s.surfline_v1_id, s.msw_id, s.spitcast_id, s.spitcast_slug, s.surfline_v2_id, s.updated_at
-   HAVING (count(*) >= (
-          CASE
-              WHEN (s.surfline_v2_id IS NOT NULL) THEN 1
-              ELSE 0
-          END +
-          CASE
-              WHEN (s.msw_id IS NOT NULL) THEN 1
-              ELSE 0
-          END))
+   HAVING (count(*) >= 1)
     ORDER BY s.subregion_id, s.sort_order, s.id, fc."timestamp";
   SQL
 end

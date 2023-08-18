@@ -135,7 +135,7 @@ spots = [
     spitcast_id: 205,
     spitcast_slug: 'malibu-malibu-ca',
     name: 'Malibu' },
-  { subregion: LA, 
+  { subregion: LA,
     lon: -118.5759544372,
     lat: 34.038649057421,
     surfline_v1_id: 4210,
