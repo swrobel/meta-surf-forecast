@@ -42,8 +42,8 @@ module ApiRequests
 
           record = service_class.unscoped.where(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp)).first_or_initialize
           record.api_request = self
-          record.min_height = entry.dig('surf', 'min')
-          record.max_height = entry.dig('surf', 'max')
+          record.min_height = entry.dig('surf', 'raw', 'min')
+          record.max_height = entry.dig('surf', 'raw', 'max')
           record.swell_rating = entry.dig('surf', 'optimalScore')
           record.save! if record.swell_rating.present?
         end
