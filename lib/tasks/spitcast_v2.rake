@@ -11,7 +11,7 @@ namespace :spitcast_v2 do
     # pipelining 2 means HTTP/2 multiplexing https://curl.haxx.se/libcurl/c/CURLMOPT_PIPELINING.html
     hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency, pipelining: 2)
 
-    Spot.where.not(spitcast_id: nil).each do |spot|
+    Spot.where.not(spitcast_id: nil).find_each do |spot|
       ApiRequest.new(batch: @batch, requestable: spot, service: SpitcastV2, hydra:).get
     end
 

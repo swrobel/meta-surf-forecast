@@ -10,7 +10,7 @@ namespace :surfline_v2 do
 
     hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
 
-    Spot.where.not(surfline_v2_id: nil).each do |spot|
+    Spot.where.not(surfline_v2_id: nil).find_each do |spot|
       ApiRequest.new(batch: @batch, requestable: spot, service: SurflineV2Lotus, hydra:).get
     end
 

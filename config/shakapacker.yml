@@ -71,11 +71,12 @@ development:
     hmr: false
     # Inline should be set to true if using HMR
     inline: true
-    overlay: true
     compress: true
     disable_host_check: true
     use_local_ip: false
     quiet: false
+    client:
+      overlay: false
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:
