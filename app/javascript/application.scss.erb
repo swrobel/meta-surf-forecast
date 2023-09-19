@@ -86,8 +86,12 @@ svg {
     stroke: var(--white);
   }
 
-  .highcharts-axis-labels, .highcharts-legend-item > text {
-    fill: var(--dark);
+  .highcharts-tooltip-box {
+    fill: var(--light);
+  }
+
+  .highcharts-axis-labels, .highcharts-legend-item > text, .highcharts-tooltip text {
+    fill: var(--dark) !important;
   }
 
   .highcharts-color-0 {
