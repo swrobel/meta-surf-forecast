@@ -9,9 +9,9 @@
       - [New API (v2)](#new-api-v2)
         - [Responses](#responses)
         - [Requests](#requests)
-      - [Old API (v1)](#old-api-v1)
-    - [MagicSeaweed](#magicseaweed)
+      - [Old API (v1 - no longer supported)](#old-api-v1---no-longer-supported)
     - [Spitcast](#spitcast)
+    - [MagicSeaweed (no longer supported)](#magicseaweed-no-longer-supported)
   - [The Magic](#the-magic)
     - [Surf quality ratings](#surf-quality-ratings)
     - [Timestamps](#timestamps)
@@ -19,7 +19,7 @@
 
 ## Purpose
 
-Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://magicseaweed.com/) & [Spitcast](https://www.spitcast.com/) APIs to display an aggregated surf forecast.
+Pull data from [Surfline](https://www.surfline.com/) & [Spitcast](https://www.spitcast.com/) APIs to display an aggregated surf forecast.
 
 ![Screenshot](https://raw.githubusercontent.com/swrobel/meta-surf-forecast/master/screenshot.png)
 
@@ -32,9 +32,7 @@ Pull data from [Surfline](https://www.surfline.com/), [MagicSeaweed](https://mag
 1. `yarn`
 1. `cp config/database.yml.example config/database.yml`
 1. `bin/rails db:setup`
-1. Grab some [Surfline v2](https://www.surfline.com/) data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails surfline_v2:update`
-1. Grab some [MagicSeaweed](https://magicseaweed.com/) data (requires a valid [API key](https://magicseaweed.com/developer/sign-up)): `MSW_API_KEY=xxx bin/rails msw:update` (replace `xxx` with your key)
-1. Refresh the materialized Postgres view that collates all forecast data into one table: `bin/rails database_views:refresh`
+1. Grab some data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails forecasts:update`
 1. `bin/foreman start -f Procfile.dev`
 1. Open http://localhost:5000
 1. Any changes you make to view files will auto-reload the browser
@@ -116,7 +114,7 @@ Value|Meaning
 
 However, I have never seen a score of 1 in any of their API responses (only 0 or 2), which is unfortunate when it comes to granularity of ratings. Hopefully this changes in the future.
 
-#### Old API (v1)
+#### Old API (v1 - no longer supported)
 
 Surfline's old API is undocumented and unauthenticated, but was used via javascript on their website, so it was fairly easy to reverse-engineer. However, they have updated their site & apps to use the new API, and it appears that they've stopped including some critical data in the responses for the old API, so it's disabled in this app for now (and probably forever).
 
@@ -173,15 +171,6 @@ interpolate|boolean|Provide "forecasts" every 3 hours instead of ever 6. These i
 showOptimal|boolean|Includes arrays of 0's & 1's indicating whether each wind & swell forecast is optimal for this spot or not. Unfortunately the optimal swell data is only provided if you include the "sort" resource - it is not included in the "surf" resource.
 callback|string|jsonp callback function name
 
-### [MagicSeaweed](https://magicseaweed.com/)
-
-MagicSeaweed has a [well-documented JSON API](https://magicseaweed.com/developer/forecast-api) that requires requesting an API key via email. This was a straightforward process and they got back to me quickly with my key.
-
-I've asked MagicSeaweed a few questions and added their responses below:
-
-* "Our API provides 5 days of forecast data, with segments of data provided for each 3 hour interval during that 5 day time span."
-* "Our data is updated every 3 hours."
-
 ### [Spitcast](https://www.spitcast.com/)
 
 Spitcast has a [documented API](https://github.com/jackmullis/spitcast-api-docs).
@@ -196,6 +185,15 @@ I've also asked Jack from Spitcast a few questions and added his responses below
   * Fair
   * Fair-Good
   * Good
+
+### [MagicSeaweed](https://magicseaweed.com/) (no longer supported)
+
+MagicSeaweed was acquired by Surfline an shut down in 2023. Prior to this, MagicSeaweed had a [well-documented JSON API](https://magicseaweed.com/developer/forecast-api) that required requesting an API key via email. This was a straightforward process and they got back to me quickly with my key.
+
+I've asked MagicSeaweed a few questions and added their responses below:
+
+* "Our API provides 5 days of forecast data, with segments of data provided for each 3 hour interval during that 5 day time span."
+* "Our data is updated every 3 hours."
 
 ## The Magic
 
@@ -212,16 +210,19 @@ All of the forecasting services (including Surfline v1 vs v2) use different syst
 
 Each forecasting service is massaged onto that scale as follows:
 
-* **MagicSeaweed:** integer `fadedRating` (0-5) & `solidRating` (0-5). I simply subtract fadedRating (which is essentially the negative effect of wind) from solidRating.
+* **Surfline v2:** "[Seven point](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)" decimal ratings (0-6). These are massaged by multiplying by 5/6 to get a 0-5 scale.
 * **Spitcast:** ratings in text form:
   * 0.0 => Poor
   * 0.5 => Poor-Fair
   * 1.0 => Fair
   * 1.5 => Good
 
-  I massage these by multiplying by 5/1.5 (essentially 3.3̅) to get a 0-5 scale.
+  These are massaged by multiplying by 5/1.5 (essentially 3.3̅) to get a 0-5 scale.
+
+For record-keeping, these are the formulae for formerly-supported services:
+
+* **MagicSeaweed:** integer `fadedRating` (0-5) & `solidRating` (0-5). I simply subtract fadedRating (which is essentially the negative effect of wind) from solidRating.
 * **Surfline v1:** decimal ratings (0-1) for up to 6 different swells at each spot, as well as an `optimalWind` boolean. I take the max swell rating at any given time for that spot, multiply it by 5, and then halve it if the wind is not optimal.
-* **Surfline v2:** integer `optimalScore`s for both swell & wind (0-2). Adding these together gives a 0-4 scale, and adding 0.5 puts it on the same 0.5-4.5 scale as Spitcast.
 
 ### Timestamps
 
@@ -229,11 +230,11 @@ It took me a long time to land on a solution here, but I've finally settled on s
 
 ## TODO
 
-* [ ] Update Surfline v2 API to use their new [7-point rating scale](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)
 * [ ] Figure out a way to convey forecast certainty in charts (ie: most forecasts are in agreement, or they disagree by a wide margin)
 * [ ] Explore [lazy-loading components](https://github.com/twobin/react-lazyload)
 * [ ] Explore [SSR](https://github.com/reactjs/react-rails#server-side-rendering) for possibly faster browser paint
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
+* [x] Update Surfline v2 API to use their new [7-point rating scale](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)
 * [x] Improve charts:
   * [x] Fix timestamp formatting.
   * [x] Account for min/max size forecast. Currently charts just reflect the max.

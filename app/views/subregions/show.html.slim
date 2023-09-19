@@ -12,7 +12,6 @@
         span= link_to meta[:name], spot_path(@region, @subregion, meta[:slug])
         = map_link(meta[:lat], meta[:lon])
         span.icon= service_icon('Spitcast.png', 'Spitcast') if meta[:spitcast_slug]
-        = msw_link(Spot.msw_url(meta[:msw_id])) if meta[:msw_id]
         = surfline_link(Spot.surfline_url(meta[:surfline_v2_id])) if meta[:surfline_v2_id]
       = react_component 'SpotChart', {\
           data: [\
