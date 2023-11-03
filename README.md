@@ -4,6 +4,7 @@
   - [Purpose](#purpose)
   - [Developer Setup](#developer-setup)
   - [Adding Spots](#adding-spots)
+  - [TODO](#todo)
   - [Data Sources](#data-sources)
     - [Surfline](#surfline)
       - [New API (v2)](#new-api-v2)
@@ -15,7 +16,6 @@
   - [The Magic](#the-magic)
     - [Surf quality ratings](#surf-quality-ratings)
     - [Timestamps](#timestamps)
-  - [TODO](#todo)
 
 ## Purpose
 
@@ -25,17 +25,49 @@ Pull data from [Surfline](https://www.surfline.com/) & [Spitcast](https://www.sp
 
 ## Developer Setup
 
-1. Install dependencies using [Homebrew](https://brew.sh/): `brew bundle`
-1. If on Linux: `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start`
-1. `gem install bundler -v '>= 2.0.2'`
-1. `bundle`
-1. `yarn`
-1. `cp config/database.yml.example config/database.yml`
-1. `bin/rails db:setup`
-1. Grab some data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails forecasts:update`
-1. `bin/foreman start -f Procfile.dev`
-1. Open http://localhost:5000
-1. Any changes you make to view files will auto-reload the browser
+### Prerequisites
+Before you begin, ensure that you have Ruby and all necessary dependencies installed on your system.
+
+### Check Ruby version
+ruby -v
+
+If Ruby is not installed or you need a different version, follow the Ruby Installation Guide here:
+https://www.ruby-lang.org/en/documentation/installation/
+
+## Setup Instructions
+
+1. **Install Homebrew Dependencies**:
+   Run `brew bundle` to install the necessary dependencies using [Homebrew](https://brew.sh/).
+
+2. **Start PostgreSQL (Linux-specific)**:
+   If you are on a Linux system, start PostgreSQL with: `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start`.
+
+3. **Install Bundler**:
+   Use `gem install bundler -v '>= 2.0.2'` to install the Bundler gem.
+
+4. **Install Gem Dependencies**:
+   Run `bundle` to install the Ruby gem dependencies.
+
+5. **Install Yarn Packages**:
+   Execute `yarn` to install JavaScript packages.
+
+6. **Configure Database**:
+   Copy the database configuration template: `cp config/database.yml.example config/database.yml`.
+
+7. **Set Up Database**:
+   Initialize the database with `bin/rails db:setup`.
+
+8. **Fetch Initial Data**:
+   Populate your local database with the command: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails forecasts:update`, replacing `xxx` and `yyy` with your Surfine credentials.
+
+9. **Start the Development Server**:
+   Launch the development server using: `bin/foreman start -f Procfile.dev`.
+
+10. **Access the Local Server**:
+    Open your web browser and go to [http://localhost:5000](http://localhost:5000) to view the application.
+
+11. **Auto-Reload**:
+    Any changes made to view files will automatically reload the browser, reflecting your updates in real-time.
 
 **Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)**
 
@@ -71,6 +103,25 @@ Use the following as a template. Delete the lines for `surfline_v2_id`, `msw_id`
   },
 ```
 
+## TODO
+
+* [ ] Figure out a way to convey forecast certainty in charts (ie: most forecasts are in agreement, or they disagree by a wide margin)
+* [ ] Explore [lazy-loading components](https://github.com/twobin/react-lazyload)
+* [ ] Explore [SSR](https://github.com/reactjs/react-rails#server-side-rendering) for possibly faster browser paint
+* [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
+* [x] Update Surfline v2 API to use their new [7-point rating scale](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)
+* [x] Improve charts:
+  * [x] Fix timestamp formatting.
+  * [x] Account for min/max size forecast. Currently charts just reflect the max.
+  * [x] Display forecast quality ratings. Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
+* [x] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
+* [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
+* [x] Support multiple timezones as opposed to Pacific Time only
+* [x] New Surfline API
+* [x] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
+* [x] Dark Theme
+* [x] Remove asset pipeline & process CSS w/ webpacker
+      
 ## Data Sources
 
 ### [Surfline](https://www.surfline.com/)
@@ -227,22 +278,3 @@ For record-keeping, these are the formulae for formerly-supported services:
 ### Timestamps
 
 It took me a long time to land on a solution here, but I've finally settled on storing all timestamps in the database in the spot's local time. This defies Rails convention, but makes intuitive sense. If you pull up the forecasts table and look at the timestamp, that's the actual local time at that spot that it's forecast for (even though Rails & Postgres both think it's being stored in UTC). This is typically the format that the forecasting service gives it to us in, and what users want to see it in, so there's no point in doing all sorts of fancy conversion when it should be the same all the way through the pipeline. Now, you may ask, why am I still using the Rails default of `TIMESTAMP WITHOUT TIMEZONE`, and the answer is that shockingly enough, `TIMESTAMP WITH TIMEZONE` [doesn't actually store timezone data](https://stackoverflow.com/a/9576170/337446)!
-
-## TODO
-
-* [ ] Figure out a way to convey forecast certainty in charts (ie: most forecasts are in agreement, or they disagree by a wide margin)
-* [ ] Explore [lazy-loading components](https://github.com/twobin/react-lazyload)
-* [ ] Explore [SSR](https://github.com/reactjs/react-rails#server-side-rendering) for possibly faster browser paint
-* [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
-* [x] Update Surfline v2 API to use their new [7-point rating scale](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)
-* [x] Improve charts:
-  * [x] Fix timestamp formatting.
-  * [x] Account for min/max size forecast. Currently charts just reflect the max.
-  * [x] Display forecast quality ratings. Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
-* [x] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
-* [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
-* [x] Support multiple timezones as opposed to Pacific Time only
-* [x] New Surfline API
-* [x] Stop manually seeding the db and figure out a way to pull all spots from each data source and automatically associate them to a canonical spot record (probably using geocoding)
-* [x] Dark Theme
-* [x] Remove asset pipeline & process CSS w/ webpacker
