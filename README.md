@@ -27,11 +27,8 @@ Pull data from [Surfline](https://www.surfline.com/) & [Spitcast](https://www.sp
 
 ### Prerequisites
 Before you begin, ensure that you have Ruby and all necessary dependencies installed on your system.
-
-### Check Ruby version
-ruby -v
-
-If Ruby is not installed or you need a different version, follow the Ruby Installation Guide here:
+Check with 'ruby -v' in your terminal.
+If Ruby is not installed or you need a different version, follow the Ruby Installation Guide:
 https://www.ruby-lang.org/en/documentation/installation/
 
 ## Setup Instructions
