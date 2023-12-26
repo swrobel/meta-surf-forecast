@@ -1,4 +1,4 @@
-guard :rubocop, all_on_start: true, cli: %w[--autocorrect --display-cop-names] do
+guard :rubocop, all_on_start: true, cli: %w[-A --display-cop-names] do
   watch(/.+\.(rb|rake)$/)
   watch('Gemfile')
   watch(%r{(?:.+/)?\.?rubocop(?:_todo)?\.yml$}) { '.' }

@@ -7,7 +7,7 @@ module ApiRequests
     included do
       def parse_surfline_v2
         type = options[:type] || 'wave'
-        send("parse_surfline_v2_#{type}")
+        send(:"parse_surfline_v2_#{type}")
       end
       alias_method :parse_surfline_v2_lola, :parse_surfline_v2
       alias_method :parse_surfline_v2_lotus, :parse_surfline_v2
