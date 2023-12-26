@@ -9,4 +9,12 @@ class Region < ApplicationRecord
 
   scope :ordered, -> { order(:sort_order, :id) }
   scope :optimized, -> { includes(:buoys, :subregions) }
+
+  validates :name, uniqueness: true
+
+private
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 end

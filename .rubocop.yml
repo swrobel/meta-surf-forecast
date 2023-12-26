@@ -13,6 +13,7 @@ AllCops:
     - node_modules/**/*
     - test/test_helper.rb
     - vendor/**/*
+    - db/data_schema.rb
   ExtraDetails: true
   NewCops: enable
 

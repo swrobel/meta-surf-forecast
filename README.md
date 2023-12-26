@@ -31,13 +31,13 @@ Pull data from [Surfline](https://www.surfline.com/) & [Spitcast](https://www.sp
 1. `bundle`
 1. `yarn`
 1. `cp config/database.yml.example config/database.yml`
-1. `bin/rails db:setup`
+1. `bin/rails db:create db:schema:load:with_data db:seed`
 1. Grab some data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails forecasts:update`
 1. `bin/foreman start -f Procfile.dev`
 1. Open http://localhost:5000
 1. Any changes you make to view files will auto-reload the browser
 
-**Pull requests welcome, especially around new data sources/better data visualization (see [TODO](#todo) for suggestions)**
+**Whenever you run migrations, be sure to `bin/rails db:migrate:with_data` to include Data Migrations.**
 
 ## Adding Spots
 

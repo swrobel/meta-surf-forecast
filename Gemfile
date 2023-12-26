@@ -8,6 +8,7 @@ gem 'rails', '~> 7.0.2'
 
 gem 'bootsnap'
 gem 'bugsnag'
+gem 'data_migrate'
 gem 'friendly_id'
 gem 'memery' # Memoization
 gem 'oj'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_17_235411) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_26_194331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_235411) do
     t.index ["region_id", "sort_order", "lat", "lon"], name: "index_buoys_on_region_id_and_sort_order_and_lat_and_lon"
   end
 
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -96,6 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_235411) do
     t.string "slug"
     t.integer "sort_order"
     t.string "timezone"
+    t.index ["name"], name: "index_regions_on_name", unique: true
     t.index ["slug"], name: "index_regions_on_slug", unique: true
     t.index ["sort_order"], name: "index_regions_on_sort_order", unique: true
   end

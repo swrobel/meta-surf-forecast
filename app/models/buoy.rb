@@ -19,4 +19,10 @@ class Buoy < ApplicationRecord
   def buoy_report_api_url
     self.class.buoy_report_api_url(ndbc_id)
   end
+
+private
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 end

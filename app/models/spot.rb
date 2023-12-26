@@ -26,4 +26,10 @@ class Spot < ApplicationRecord
   memoize def unique_timestamps
     (surfline_v2_lotus.collect(&:timestamp) | spitcast_v2s.collect(&:timestamp)).sort
   end
+
+private
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 end

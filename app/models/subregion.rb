@@ -15,4 +15,10 @@ class Subregion < ApplicationRecord
   has_many :surfline_v2_lotus, through: :spots
 
   scope :ordered, -> { order(:sort_order, :id) }
+
+private
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 end
