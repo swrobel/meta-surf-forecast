@@ -38,10 +38,10 @@
                 th.border-left(colspan=3)
                   = surfline_link(@spot.surfline_url, 'LOLA')
               - if @spot.surfline_v2_lolas.any?
-                th.border-left(colspan=3)
+                th.border-left(colspan=4)
                   = surfline_link(@spot.surfline_v2_url, 'v2 LOLA')
               - if @spot.surfline_v2_lotus.any?
-                th.border-left(colspan=3)
+                th.border-left(colspan=4)
                   = surfline_link(@spot.surfline_v2_url, 'v2 LOTUS')
             tr
               th Time
