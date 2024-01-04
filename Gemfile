@@ -17,7 +17,7 @@ gem 'puma'
 gem 'react-rails', '~> 3.1.0'
 gem 'safely_block'
 gem 'scenic'
-gem 'shakapacker', '7.1.0'
+gem 'shakapacker', '7.2.1'
 gem 'slim-rails'
 gem 'typhoeus'
 
