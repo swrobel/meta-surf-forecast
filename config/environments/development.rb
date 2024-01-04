@@ -55,6 +55,9 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
+  # Faster migrations: https://github.com/ankane/strong_migrations#faster-migrations
+  config.active_record.dump_schema_after_migration = `git status db/migrate/ --porcelain`.present?
+
   dev_server = Shakapacker.config.dev_server
   WEBPACK_SCRIPT_TAG ||= "<script src='#{"http#{dev_server[:https] && 's'}"}://#{dev_server[:host]}:#{dev_server[:port]}/webpack-dev-server.js'></script>".freeze
   config.middleware.insert_before ActionDispatch::ShowExceptions, Rack::Toolbar,
