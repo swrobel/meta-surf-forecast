@@ -40,12 +40,22 @@ const BuoyChart = props => {
     },
     xAxis: {
       categories: props.xLabels,
+      labels: {
+        style: {
+          color: null,
+        }
+      },
       plotBands: props.plotBands,
       title: {
         text: null,
       },
     },
     yAxis: {
+      labels: {
+        style: {
+          color: null,
+        }
+      },
       min: 0,
       offset: -8,
       stackLabels: {
