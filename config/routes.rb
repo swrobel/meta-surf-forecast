@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     get '/:region_id/:subregion_id/:spot_id', to: 'spots#show', as: 'spot'
   end
 
-  root to: redirect('/southern-california/los-angeles')
+  root to: 'application#root'
 end
