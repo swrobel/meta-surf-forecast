@@ -1,8 +1,11 @@
 # Meta Surf Forecast
 
 - [Meta Surf Forecast](#meta-surf-forecast)
-  - [Purpose](#purpose)
+  - [Purposes](#purposes)
   - [Developer Setup](#developer-setup)
+    - [Prerequisites](#prerequisites)
+    - [Steps](#steps)
+    - [Tips](#tips)
   - [Adding Spots](#adding-spots)
   - [Data Sources](#data-sources)
     - [Surfline](#surfline)
@@ -17,31 +20,45 @@
     - [Timestamps](#timestamps)
   - [TODO](#todo)
 
-## Purpose
-
-Pull data from [Surfline](https://www.surfline.com/) & [Spitcast](https://www.spitcast.com/) APIs to display an aggregated surf forecast.
-
-![Screenshot](https://raw.githubusercontent.com/swrobel/meta-surf-forecast/master/screenshot.png)
+## Purposes
+1. Display a chart of approximate wave height (swell height * period * 0.1) for the last 24 hours from [NDBC Buoys](https://www.ndbc.noaa.gov/)
+  ![Screenshot](https://raw.githubusercontent.com/swrobel/meta-surf-forecast/main/screenshot-buoy.png)
+1. Query the [Surfline](https://www.surfline.com/) & [Spitcast](https://www.spitcast.com/) APIs to display an aggregated surf forecast.
+  ![Screenshot](https://raw.githubusercontent.com/swrobel/meta-surf-forecast/main/screenshot-forecast.png)
 
 ## Developer Setup
 
+### Prerequisites
+* `ruby 3.3.x`
+* `node 20.x`
+* `yarn 1.x`
+* `postgresql`
+
+### Steps
 1. Install dependencies using [Homebrew](https://brew.sh/): `brew bundle`
 1. If on Linux: `pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start`
-1. `gem install bundler -v '>= 2.0.2'`
+1. `gem install bundler -v=$(cat Gemfile.lock | tail -1 | tr -d " ")`
 1. `bundle`
 1. `yarn`
 1. `cp config/database.yml.example config/database.yml`
 1. `bin/rails db:create db:schema:load:with_data db:seed`
-1. Grab some data: `SURFLINE_EMAIL=xxx SURFLINE_PASSWORD=yyy bin/rails forecasts:update`
+1. Grab some data: `bin/rails buoys:update forecasts:update`
 1. `bin/foreman start -f Procfile.dev`
 1. Open http://localhost:5000
 1. Any changes you make to view files will auto-reload the browser
 
-**Whenever you run migrations, be sure to `bin/rails db:migrate:with_data` to include Data Migrations.**
+### Tips
+* You will not get Surfline forecast data without a valid Surfline premium login. Add your credentials to `.env.development`:
+  ```
+  SURFLINE_EMAIL=xxx
+  SURFLINE_PASSWORD=yyy
+  ```
+  Then run `bin/rails forecasts:update` again
+* When running migrations, use `bin/rails db:migrate:with_data` to include Data Migrations
 
 ## Adding Spots
 
-Contributing new spots is easy! Make sure you're signed into your [Github account](https://github.com/join) and edit the [seeds file](https://github.com/swrobel/meta-surf-forecast/edit/master/db/seeds.rb):
+Contributing new spots is easy! Make sure you're signed into your [Github account](https://github.com/join) and edit the [seeds file](https://github.com/swrobel/meta-surf-forecast/edit/main/db/seeds.rb):
 
 1. Create a new Region/Subregion if necessary. For example, Los Angeles is created like so:
     ```ruby
@@ -238,7 +255,7 @@ It took me a long time to land on a solution here, but I've finally settled on s
 * [x] Improve charts:
   * [x] Fix timestamp formatting.
   * [x] Account for min/max size forecast. Currently charts just reflect the max.
-  * [x] Display forecast quality ratings. Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/master/app/models/surfline.rb#L5) method - improvements welcome.
+  * [x] Display forecast quality ratings. Perhaps color each bar different depending on how good the rating is. Surfline also has an `optimal_wind` boolean that is being crudely integrated into the [`display_swell_rating`](https://github.com/swrobel/meta-surf-forecast/blob/main/app/models/surfline.rb#L5) method - improvements welcome.
 * [x] Fetch & display [recent buoy trends](https://www.ndbc.noaa.gov/show_plot.php?station=46025&meas=wvht&uom=E&time_diff=-7&time_label=PDT) that are relevant to each spot to give an idea of when swell is actually arriving.
 * [x] Refresh data on a schedule based on when new data is available (refreshing all forecast sources hourly)
 * [x] Support multiple timezones as opposed to Pacific Time only
