@@ -36,6 +36,9 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
+  gem 'solargraph'
+  gem 'solargraph-rails', github: 'masamitsu-murase/solargraph-rails', branch: 'fix_incompatibility_with_rails7.1'
+  gem 'solargraph-syntax-suggest'
   gem 'terminal-notifier-guard'
   gem 'web-console'
 end

@@ -1,0 +1,6 @@
+reporters:
+  - rubocop
+  - syntax_suggest
+plugins:
+  - solargraph-rails
+  - solargraph_syntax_suggest
