@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title= "#{"#{yield(:title)} | " if content_for?(:title)}Meta Surf Forecast"
+    title="#{"#{yield(:title)} | " if content_for?(:title)}Meta Surf Forecast"
     = csrf_meta_tags
     meta name='viewport' content="width=device-width, initial-scale=1, shrink-to-fit=no#{yield(:meta)}"
     meta name='description' property='og:description' content=h('Modern swell buoy charts + Aggregated surf forecast from Surfline & Spitcast APIs.')
