@@ -4,7 +4,7 @@ html
     title= "#{"#{yield(:title)} | " if content_for?(:title)}Meta Surf Forecast"
     = csrf_meta_tags
     meta name='viewport' content="width=device-width, initial-scale=1, shrink-to-fit=no#{yield(:meta)}"
-    meta name='description' property='og:description' content='Modern swell buoy charts + Aggregated surf forecast from Surfline & Spitcast APIs.'
+    meta name='description' property='og:description' content=h('Modern swell buoy charts + Aggregated surf forecast from Surfline & Spitcast APIs.')
     meta property='og:image' content=asset_pack_path('static/images/wave.jpg')
     meta name="color-scheme" content="light dark"
     link rel='apple-touch-icon' href=asset_pack_path('static/images/wave.png')
