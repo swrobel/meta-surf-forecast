@@ -22,7 +22,7 @@ gem 'slim-rails'
 gem 'typhoeus'
 
 group :development, :test do
-  gem 'dotenv-rails'
+  gem 'dotenv'
   gem 'pgreset'
 end
 
