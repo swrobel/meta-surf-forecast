@@ -11,7 +11,7 @@ module Spots
         raise "No Spitcast spot associated with #{name} (#{id})" if spitcast_id.blank?
 
         d = Date.current
-        "https://digi8szsygmni.cloudfront.net/api/spot_forecast/#{spitcast_id}/#{d.year}/#{d.month}/#{d.day}"
+        "https://api.spitcast.com/api/spot_forecast/#{spitcast_id}/#{d.year}/#{d.month}/#{d.day}"
       end
     end
   end
