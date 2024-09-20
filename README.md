@@ -247,6 +247,7 @@ It took me a long time to land on a solution here, but I've finally settled on s
 
 ## TODO
 
+* [ ] Use [SoFar API](https://docs.sofarocean.com/spotter-and-smart-mooring/spotter-data/latest-data) to get data from additional buoys
 * [ ] Figure out a way to convey forecast certainty in charts (ie: most forecasts are in agreement, or they disagree by a wide margin)
 * [ ] Explore [lazy-loading components](https://github.com/twobin/react-lazyload)
 * [ ] Explore [SSR](https://github.com/reactjs/react-rails#server-side-rendering) for possibly faster browser paint
