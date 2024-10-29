@@ -4,8 +4,8 @@
     "yarn": "1.x"
   },
   "dependencies": {
-    "@bugsnag/js": "^7.0.0",
-    "@bugsnag/plugin-react": "^7.0.0",
+    "@bugsnag/js": "^8.0.0",
+    "@bugsnag/plugin-react": "^8.0.0",
     "@swc/core": "^1.2.141",
     "bootstrap": "^4.4.0",
     "compression-webpack-plugin": "11",
