@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby "~> #{File.read('.ruby-version').strip}"
 
-gem 'rails', '~> 7.1.2'
+gem 'rails', '~> 7.2.2'
 
 gem 'bootsnap'
 gem 'bugsnag'
