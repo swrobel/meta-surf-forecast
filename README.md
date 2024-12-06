@@ -39,7 +39,6 @@
 1. `gem install bundler -v=$(cat Gemfile.lock | tail -1 | tr -d " ")`
 1. `bundle`
 1. `yarn`
-1. `cp config/database.yml.example config/database.yml`
 1. `bin/rails db:create db:schema:load:with_data db:seed`
 1. Grab some data: `bin/rails buoys:update forecasts:update`
 1. `bin/foreman start -f Procfile.dev`
