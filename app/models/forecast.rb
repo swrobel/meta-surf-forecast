@@ -34,8 +34,6 @@ class Forecast < ApplicationRecord
       ].map { |v| v || 0 }.max
     end
 
-    def parse(body)
-      JSON.parse(body)
-    end
+    delegate :parse, to: :JSON
   end
 end
