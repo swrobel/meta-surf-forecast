@@ -19,7 +19,7 @@ gem 'safely_block'
 gem 'scenic'
 gem 'shakapacker', '7.2.3'
 gem 'slim-rails'
-gem 'typhoeus'
+gem 'typhoeus' # HTTP client
 
 group :development, :test do
   gem 'dotenv'
@@ -42,6 +42,7 @@ end
 
 group :production do
   gem 'hiredis-client'
+  gem 'lograge' # More concise logs
   gem 'newrelic_rpm'
   gem 'rack-brotli'
   gem 'redis', '~> 5'

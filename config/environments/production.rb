@@ -99,6 +99,30 @@ Rails.application.configure do
 
   config.middleware.use Rack::Brotli::Deflater
 
+  config.lograge.enabled = true
+  config.lograge.custom_payload do |controller|
+    { user_agent: controller.request.user_agent }
+  end
+  config.lograge.custom_options = lambda do |event|
+    exceptions = %w[_method
+                    action
+                    authenticity_token
+                    base
+                    code
+                    commit
+                    controller
+                    format
+                    id
+                    mode
+                    path
+                    utf8
+                    spot_id
+                    region_id
+                    subregion_id]
+    params = event.payload[:params].except(*exceptions).deep_symbolize_keys
+    params.present? ? { params: } : nil
+  end
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write

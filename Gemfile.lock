@@ -152,6 +152,11 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.6.6)
+    lograge (0.14.0)
+      actionpack (>= 4)
+      activesupport (>= 4)
+      railties (>= 4)
+      request_store (~> 1.0)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -273,6 +278,8 @@ GEM
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
+    request_store (1.7.0)
+      rack (>= 1.4)
     rubocop (1.72.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -360,6 +367,7 @@ DEPENDENCIES
   guard-rubocop
   guard-shell
   hiredis-client
+  lograge
   memery
   newrelic_rpm
   oj
