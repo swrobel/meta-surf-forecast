@@ -21,7 +21,7 @@ module ApplicationHelper
 
   def service_icon(image_file, service, icon_label = nil)
     span_tag = tag.span(icon_label, class: 'forecast-icon-label') if icon_label
-    image_pack_tag("static/images/#{image_file}", alt: "#{service} Logo") + span_tag
+    image_pack_tag("images/#{image_file}", alt: "#{service} Logo") + span_tag
   end
 
   def service_link(image_file, service, target, icon_label = nil)
