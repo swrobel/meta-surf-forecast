@@ -41,7 +41,7 @@ class ApiRequest < ApplicationRecord
     Safely.report_exception(e)
     self.retries = retries
     self.success = false
-    self.response ||= e.as_json
+    self.response ||= e
     get(retries: retries + 1)
   end
 
