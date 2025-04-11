@@ -1,23 +1,24 @@
 # Meta Surf Forecast
 
-- [Purposes](#purposes)
-- [Developer Setup](#developer-setup)
-  - [Prerequisites](#prerequisites)
-  - [Steps](#steps)
-  - [Tips](#tips)
-- [Adding Spots](#adding-spots)
-- [Data Sources](#data-sources)
-  - [Surfline](#surfline)
-    - [New API (v2)](#new-api-v2)
-      - [Responses](#responses)
-      - [Requests](#requests)
-    - [Old API (v1 - no longer supported)](#old-api-v1---no-longer-supported)
-  - [Spitcast](#spitcast)
-  - [MagicSeaweed (no longer supported)](#magicseaweed-no-longer-supported)
-- [The Magic](#the-magic)
-  - [Surf quality ratings](#surf-quality-ratings)
-  - [Timestamps](#timestamps)
-- [TODO](#todo)
+- [Meta Surf Forecast](#meta-surf-forecast)
+  - [Purposes](#purposes)
+  - [Developer Setup](#developer-setup)
+    - [Prerequisites](#prerequisites)
+    - [Steps](#steps)
+    - [Tips](#tips)
+  - [Adding Spots](#adding-spots)
+  - [Data Sources](#data-sources)
+    - [Surfline](#surfline)
+      - [New API (v2)](#new-api-v2)
+        - [Responses](#responses)
+        - [Requests](#requests)
+      - [Old API (v1 - no longer supported)](#old-api-v1---no-longer-supported)
+    - [Spitcast](#spitcast)
+    - [MagicSeaweed (no longer supported)](#magicseaweed-no-longer-supported)
+  - [The Magic](#the-magic)
+    - [Surf quality ratings](#surf-quality-ratings)
+    - [Timestamps](#timestamps)
+  - [TODO](#todo)
 
 ## Purposes
 1. Display a chart of approximate wave height (swell height * period * 0.1) for the last 24 hours from [NDBC Buoys](https://www.ndbc.noaa.gov/)
@@ -225,7 +226,7 @@ All of the forecasting services (including Surfline v1 vs v2) use different syst
 
 Each forecasting service is massaged onto that scale as follows:
 
-* **Surfline v2:** "[Seven point](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)" decimal ratings (0-6). These are massaged by multiplying by 5/6 to get a 0-5 scale.
+* **Surfline v2:** "[Traffic Light](https://support.surfline.com/hc/en-us/articles/9780949042843-Surf-Ratings-Colors)" ratings, which equate to decimal values (0-6). These are massaged by multiplying by 5/6 to get a 0-5 scale.
 * **Spitcast:** ratings in text form:
   * 0.0 => Poor
   * 0.5 => Poor-Fair
