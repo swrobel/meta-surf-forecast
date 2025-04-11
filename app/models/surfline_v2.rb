@@ -14,8 +14,8 @@ class SurflineV2 < Forecast
           forced: true,
           username: ENV.fetch('SURFLINE_EMAIL', nil),
           password: ENV.fetch('SURFLINE_PASSWORD', nil),
-          device_id: 'Firefox-91.0',
-          device_type: 'Firefox 91.0 on OS X 10.15',
+          device_id: 'Firefox-137.0',
+          device_type: 'Firefox 137.0 on OS X 10.15',
         }.to_json
         headers = {
           'Accept' => 'application/json',
