@@ -8,13 +8,21 @@ namespace :surfline_v2 do
     start_time = Time.current
     Rails.logger.info 'Updating Surfline v2 data...'
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
+    surfline_v2_spots = Spot.where.not(surfline_v2_id: nil)
+    first_spot = surfline_v2_spots.first
 
-    Spot.where.not(surfline_v2_id: nil).find_each do |spot|
-      ApiRequest.new(batch: @batch, requestable: spot, service: SurflineV2Lotus, hydra:).get
+    first_quest = ApiRequest.new(batch: @batch, requestable: first_spot, service: SurflineV2Lotus)
+    first_quest.get
+    # Early exit if the first request fails, usually because of an access token issue. Don't want to stampede Surfline in that case.
+    if first_quest.success?
+      hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)
+
+      surfline_v2_spots.where.not(id: first_spot.id).find_each do |spot|
+        ApiRequest.new(batch: @batch, requestable: spot, service: SurflineV2Lotus, hydra:).get
+      end
+
+      hydra.run
     end
-
-    hydra.run
 
     Rails.logger.info "Finished updating Surfline v2 data in #{distance_of_time_in_words_to_now(start_time)}"
   end
