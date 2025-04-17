@@ -80,10 +80,6 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
     ast (2.4.3)
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     base64 (0.2.0)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
@@ -107,7 +103,6 @@ GEM
     erubi (1.13.1)
     ethon (0.16.0)
       ffi (>= 1.15.0)
-    execjs (2.10.0)
     ffi (1.17.2)
     ffi (1.17.2-x86_64-darwin)
     foreman (0.88.1)
@@ -266,12 +261,6 @@ GEM
       ffi (~> 1.0)
     rdoc (6.13.1)
       psych (>= 4.0.0)
-    react-rails (3.2.1)
-      babel-transpiler (>= 0.7.0)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     redis (5.4.0)
       redis-client (>= 0.22.0)
     redis-client (0.24.0)
@@ -380,7 +369,6 @@ DEPENDENCIES
   rack-brotli
   rack-toolbar!
   rails (~> 8.0.2)
-  react-rails
   redis (~> 5)
   rubocop
   rubocop-performance

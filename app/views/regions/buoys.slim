@@ -11,15 +11,31 @@
       = icon_link(icon: 'file-table', name: 'NDBC Data', url: Buoy.buoy_report_api_url(meta[:ndbc_id]))
     - to = reports.find_index { |p| p[:timestamp].hour == 23 }
     - to && reports.dig(to + 1, :timestamp)&.hour == 23 && to += 1
-    = react_component 'BuoyChart', {\
-        data: [\
-          { name: 'Swell waves', color: '#C3874B', marker: {symbol: "url(#{asset_pack_path('static/images/swell-marker.svg')})"}, data: reports.collect { |point| { y: point[:swell_wave_height], swell: point[:ground_swell_height], period: point[:ground_swell_period], direction: point[:ground_swell_direction], tooltip_time: point[:tooltip_time], className: "dir-#{point[:ground_swell_direction].round}" } } },
-          { name: 'Wind waves', color: '#4799E6', marker: {symbol: "url(#{asset_pack_path('static/images/wind-marker.svg')})"}, data: reports.collect { |point| { y: point[:wind_wave_height], swell: point[:wind_swell_height], period: point[:wind_swell_period], direction: point[:wind_swell_direction], className: "dir-#{point[:wind_swell_direction].round}" } } },
-        ],
-        max: @max,
-        plotBands: to && [{\
-          from: -0.5,
-          to: to + 0.5,
-        }],
-        xLabels: reports.collect { |point| point[:xaxis_time] },
+    - swell_data = {\
+        name: 'Swell waves',\
+        color: '#C3874B',\
+        marker: {symbol: "url(#{asset_pack_path('static/images/swell-marker.svg')})"},\
+        data: reports.collect { |point| {\
+          y: point[:swell_wave_height],\
+          swell: point[:ground_swell_height],\
+          period: point[:ground_swell_period],\
+          direction: point[:ground_swell_direction],\
+          tooltip_time: point[:tooltip_time],\
+          className: "dir-#{point[:ground_swell_direction].round}"\
+        }}\
       }
+    - wind_data = {\
+        name: 'Wind waves',
+        color: '#4799E6',\
+        marker: {symbol: "url(#{asset_pack_path('static/images/wind-marker.svg')})"},\
+        data: reports.collect { |point| {\
+          y: point[:wind_wave_height],\
+          swell: point[:wind_swell_height],\
+          period: point[:wind_swell_period],\
+          direction: point[:wind_swell_direction],\
+          className: "dir-#{point[:wind_swell_direction].round}"\
+        }}\
+      }
+    - plot_bands = to && [{ from: -0.5, to: to + 0.5 }].to_json
+    - x_labels = reports.collect { |point| point[:xaxis_time] }.to_json
+    .buoy-chart data-data=[wind_data, swell_data].to_json data-plotbands=plot_bands data-xlabels=x_labels

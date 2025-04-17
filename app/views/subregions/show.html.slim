@@ -8,21 +8,20 @@
       - from = forecasts.find_index { |p| p[:timestamp].monday? && p[:timestamp].hour < 3 }
       - from && to = forecasts[from..-1].find_index { |p| p[:timestamp].sunday? && p[:timestamp].hour > 20 }
       - to ? to += from : to = forecasts.size
+      - data = [\
+          { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], className: "max-#{point[:avg_rating]}" } }, stack: 'All' },\
+          { name: 'Avg', data: forecasts.collect { |point| { y: point[:avg_delta], className: "avg-#{point[:avg_rating]}" } }, stack: 'All'},\
+          { name: 'Min', data: forecasts.collect { |point| { y: point[:min], className: "min-#{point[:avg_rating]}", rating: RATING_TEXT[point[:avg_rating]], tooltip_time: point[:tooltip_time] } }, stack: 'All' },\
+        ].to_json
+      - plot_bands = from && to && [{\
+          from: from - 0.5,\
+          to: to + 0.5,\
+        }].to_json
+      - x_labels = forecasts.collect { |point| point[:xaxis_time] }.to_json
       h2.font-weight-light.spot-header id=meta[:slug]
         span= link_to meta[:name], spot_path(@region, @subregion, meta[:slug])
         = map_link(meta[:lat], meta[:lon])
         span.icon= service_icon('Spitcast.png', 'Spitcast') if meta[:spitcast_slug]
         = surfline_link(Spot.surfline_url(meta[:surfline_v2_id])) if meta[:surfline_v2_id]
-      = react_component 'SpotChart', {\
-          data: [\
-            { name: 'Max', data: forecasts.collect { |point| { y: point[:max_delta], className: "max-#{point[:avg_rating]}" } }, stack: 'All' },
-            { name: 'Avg', data: forecasts.collect { |point| { y: point[:avg_delta], className: "avg-#{point[:avg_rating]}" } }, stack: 'All'},
-            { name: 'Min', data: forecasts.collect { |point| { y: point[:min], className: "min-#{point[:avg_rating]}", rating: RATING_TEXT[point[:avg_rating]], tooltip_time: point[:tooltip_time] } }, stack: 'All' },
-          ],
-          max: @max,
-          plotBands: from && to && [{\
-            from: from - 0.5,
-            to: to + 0.5,
-          }],
-          xLabels: forecasts.collect { |point| point[:xaxis_time] }\
-        }
+        
+      .spot-chart data-data=data data-max=@max data-plotbands=plot_bands data-xlabels=x_labels

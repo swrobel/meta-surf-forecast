@@ -1,14 +1,12 @@
 import Bugsnag from '@bugsnag/js'
-import BugsnagPluginReact from '@bugsnag/plugin-react'
+import Headroom from 'headroom.js'
+
+import BuoyChart from './components/BuoyChart'
+import SpotChart from './components/SpotChart'
 
 <% if ENV['BUGSNAG_FRONTEND'] %>
-  Bugsnag.start({ apiKey: '<%= ENV['BUGSNAG_FRONTEND'] %>', releaseStage: '<%= Rails.env %>', enabledReleaseStages: <%= NOTIFY_RELEASE_STAGES %>, appVersion: '<%= ENV['HEROKU_RELEASE_VERSION'] || 'dev' %>', logger: null, plugins: [new BugsnagPluginReact()]})
+  Bugsnag.start({ apiKey: '<%= ENV['BUGSNAG_FRONTEND'] %>', releaseStage: '<%= Rails.env %>', enabledReleaseStages: <%= NOTIFY_RELEASE_STAGES %>, appVersion: '<%= ENV['HEROKU_RELEASE_VERSION'] || 'dev' %>', logger: null})
 <% end %>
-
-// Support component names relative to this directory:
-const componentRequireContext = require.context("components", true)
-const ReactRailsUJS = require("react_ujs")
-ReactRailsUJS.useContext(componentRequireContext)
 
 require.context('images', true)
 
@@ -27,8 +25,28 @@ function setSafePadding() {
   })
 }
 
-const Headroom = require("headroom.js")
 document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.buoy-chart').forEach(container => {
+    const props = {
+      data: JSON.parse(container.dataset.data || '[]'),
+      xLabels: JSON.parse(container.dataset.xlabels || '[]'),
+      plotBands: JSON.parse(container.dataset.plotbands || '[]')
+    }
+    
+    BuoyChart.render(container, props)
+  })
+  
+  document.querySelectorAll('.spot-chart').forEach(container => {
+    const props = {
+      data: JSON.parse(container.dataset.data || '[]'),
+      max: JSON.parse(container.dataset.max || '[]'),
+      xLabels: JSON.parse(container.dataset.xlabels || '[]'),
+      plotBands: JSON.parse(container.dataset.plotbands || '[]')
+    }
+    
+    SpotChart.render(container, props)
+  })
+
   setSafePadding()
   const navbar = document.querySelector(".navbar")
   if (navbar) {

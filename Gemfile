@@ -14,7 +14,6 @@ gem 'memery' # Memoization
 gem 'oj'
 gem 'pg'
 gem 'puma'
-gem 'react-rails'
 gem 'safely_block'
 gem 'scenic'
 gem 'shakapacker', '8.2.0'
