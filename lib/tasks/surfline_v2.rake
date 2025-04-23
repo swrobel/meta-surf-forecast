@@ -12,7 +12,7 @@ namespace :surfline_v2 do
     first_spot = surfline_v2_spots.first
 
     first_quest = ApiRequest.new(batch: @batch, requestable: first_spot, service: SurflineV2Lotus)
-    first_quest.get
+    first_quest.get(max_retries: 0)
     # Early exit if the first request fails, usually because of an access token issue. Don't want to stampede Surfline in that case.
     if first_quest.success?
       hydra = Typhoeus::Hydra.new(max_concurrency: @batch.concurrency)

@@ -12,8 +12,8 @@ class ApiRequest < ApplicationRecord
   include ApiRequests::SurflineV1
   include ApiRequests::SurflineV2
 
-  def get(retries: 0)
-    save! && return if retries > API_RETRIES
+  def get(retries: 0, max_retries: API_RETRIES)
+    save! && return if retries > max_retries
 
     self.request ||= requestable.send(service_url_method, **options)
     call = Typhoeus::Request.new(request, typhoeus_opts.merge(accept_encoding: 'gzip', followlocation: true, http_version: :httpv2_0)) # rubocop:disable Naming/VariableNumber
@@ -28,7 +28,7 @@ class ApiRequest < ApplicationRecord
       else
         self.attributes = { response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, response_time: response.total_time, retries: }
         SurflineV2.expire_access_token if service == 'SurflineV2Lotus' && [401, 403].include?(response.code) # Unauthorized
-        get(retries: retries + 1) unless response.code == 404
+        get(retries: retries + 1, max_retries:) unless response.code == 404
       end
     end
 
@@ -42,7 +42,7 @@ class ApiRequest < ApplicationRecord
     self.retries = retries
     self.success = false
     self.response ||= e
-    get(retries: retries + 1)
+    get(retries: retries + 1, max_retries:)
   end
 
   def service_class
