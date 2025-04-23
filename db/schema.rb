@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_26_194331) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "api_requests", id: :serial, force: :cascade do |t|
     t.string "request"
@@ -270,79 +270,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_194331) do
   add_foreign_key "surfline_v2_lotus", "spots"
   add_foreign_key "water_qualities", "water_quality_departments", column: "dept_id"
 
-  create_view "batch_stats", materialized: true, sql_definition: <<-SQL
-      SELECT b.id,
-      b.kind,
-      b.concurrency,
-      b.duration,
-      b.created_at,
-      b.updated_at,
-      sum(
-          CASE
-              WHEN r.success THEN 1
-              ELSE 0
-          END) AS success,
-      sum(r.retries) AS retry,
-      sum(
-          CASE
-              WHEN r.success THEN 0
-              ELSE 1
-          END) AS fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = 'Msw'::text) THEN r.retries
-              ELSE 0
-          END) AS msw_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = 'Msw'::text)) THEN 1
-              ELSE 0
-          END) AS msw_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = ANY (ARRAY[('SurflineLola'::character varying)::text, ('SurflineNearshore'::character varying)::text])) THEN r.retries
-              ELSE 0
-          END) AS surfline_v1_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = ANY (ARRAY[('SurflineLola'::character varying)::text, ('SurflineNearshore'::character varying)::text]))) THEN 1
-              ELSE 0
-          END) AS surfline_v1_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = ANY (ARRAY[('SurflineV2Lola'::character varying)::text, ('SurflineV2Lotus'::character varying)::text])) THEN r.retries
-              ELSE 0
-          END) AS surfline_v2_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = ANY (ARRAY[('SurflineV2Lola'::character varying)::text, ('SurflineV2Lotus'::character varying)::text]))) THEN 1
-              ELSE 0
-          END) AS surfline_v2_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = 'SpitcastV1'::text) THEN r.retries
-              ELSE 0
-          END) AS spitcast_v1_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = 'SpitcastV1'::text)) THEN 1
-              ELSE 0
-          END) AS spitcast_v1_fail,
-      sum(
-          CASE
-              WHEN ((r.service)::text = 'SpitcastV2'::text) THEN r.retries
-              ELSE 0
-          END) AS spitcast_v2_retry,
-      sum(
-          CASE
-              WHEN ((r.success = false) AND ((r.service)::text = 'SpitcastV2'::text)) THEN 1
-              ELSE 0
-          END) AS spitcast_v2_fail
-     FROM (api_requests r
-       JOIN update_batches b ON ((r.batch_id = b.id)))
-    WHERE (b.duration IS NOT NULL)
-    GROUP BY b.id, b.kind, b.created_at, b.updated_at, b.concurrency, b.duration;
-  SQL
   create_view "all_forecasts", materialized: true, sql_definition: <<-SQL
       SELECT 'spitcast_v2'::text AS service,
       spitcast_v2s.spot_id,
@@ -408,5 +335,59 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_194331) do
     GROUP BY s.id, s.name, s.slug, s.lat, s.lon, fc."timestamp", s.surfline_v1_id, s.msw_id, s.spitcast_id, s.spitcast_slug, s.surfline_v2_id, s.updated_at
    HAVING (count(*) >= 1)
     ORDER BY s.subregion_id, s.sort_order, s.id, fc."timestamp";
+  SQL
+  create_view "batch_stats", materialized: true, sql_definition: <<-SQL
+      SELECT b.id,
+      b.kind,
+      b.concurrency,
+      b.duration,
+      b.created_at,
+      b.updated_at,
+      sum(
+          CASE
+              WHEN r.success THEN 1
+              ELSE 0
+          END) AS success,
+      sum(r.retries) AS retry,
+      sum(
+          CASE
+              WHEN r.success THEN 0
+              ELSE 1
+          END) AS fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'BuoyReport'::text) THEN r.retries
+              ELSE 0
+          END) AS buoy_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'BuoyReport'::text)) THEN 1
+              ELSE 0
+          END) AS buoy_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[])) THEN r.retries
+              ELSE 0
+          END) AS surfline_v2_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[]))) THEN 1
+              ELSE 0
+          END) AS surfline_v2_fail,
+      sum(
+          CASE
+              WHEN ((r.service)::text = 'SpitcastV2'::text) THEN r.retries
+              ELSE 0
+          END) AS spitcast_v2_retry,
+      sum(
+          CASE
+              WHEN ((r.success = false) AND ((r.service)::text = 'SpitcastV2'::text)) THEN 1
+              ELSE 0
+          END) AS spitcast_v2_fail
+     FROM (api_requests r
+       JOIN update_batches b ON ((r.batch_id = b.id)))
+    WHERE (b.duration IS NOT NULL)
+    GROUP BY b.id, b.kind, b.created_at, b.updated_at, b.concurrency, b.duration
+    ORDER BY b.created_at DESC;
   SQL
 end
