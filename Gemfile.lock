@@ -92,7 +92,7 @@ GEM
     builder (3.3.0)
     coderay (1.1.3)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.1)
+    connection_pool (2.5.3)
     crass (1.0.6)
     data_migrate (11.3.0)
       activerecord (>= 6.1)
@@ -109,8 +109,8 @@ GEM
     formatador (1.1.0)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
-    gindex (0.4.0)
-      railties (>= 6.1)
+    gindex (0.5.0)
+      railties (>= 7.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     guard (2.19.1)
@@ -140,7 +140,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.10.2)
+    json (2.11.3)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
     listen (3.9.0)
@@ -169,7 +169,7 @@ GEM
     minitest (5.25.5)
     msgpack (1.8.0)
     nenv (0.3.0)
-    net-imap (0.5.6)
+    net-imap (0.5.8)
       date
       net-protocol
     net-pop (0.1.2)
@@ -178,12 +178,12 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    newrelic_rpm (9.18.0)
+    newrelic_rpm (9.19.0)
     nio4r (2.7.4)
-    nokogiri (1.18.7)
+    nokogiri (1.18.8)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.18.7-x86_64-darwin)
+    nokogiri (1.18.8-x86_64-darwin)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -206,19 +206,19 @@ GEM
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.3)
+    psych (5.2.4)
       date
       stringio
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.13)
+    rack (3.1.14)
     rack-brotli (2.0.0)
       brotli (>= 0.3)
       rack (>= 3)
     rack-proxy (0.7.7)
       rack
-    rack-session (2.1.0)
+    rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
     rack-test (2.2.0)
@@ -270,7 +270,7 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
-    rubocop (1.75.2)
+    rubocop (1.75.5)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -301,7 +301,7 @@ GEM
       railties (>= 4.0.0)
     securerandom (0.4.1)
     semantic_range (3.1.0)
-    shakapacker (8.2.0)
+    shakapacker (8.3.0)
       activesupport (>= 5.2)
       package_json
       rack-proxy (>= 0.6.1)
@@ -315,7 +315,7 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 6.0, != 5.0.0)
-    stringio (3.1.6)
+    stringio (3.1.7)
     temple (0.10.3)
     terminal-notifier-guard (1.7.0)
     thor (1.3.2)
@@ -375,7 +375,7 @@ DEPENDENCIES
   rubocop-rails
   safely_block
   scenic
-  shakapacker (= 8.2.0)
+  shakapacker (= 8.3.0)
   slim-rails
   terminal-notifier-guard
   typhoeus
