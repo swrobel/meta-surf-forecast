@@ -24,9 +24,16 @@ class SurflineV2 < Forecast
           'Authorization' => AUTH_STRING,
           'Content-Type' => 'application/json',
           'Origin' => ORIGIN,
+          'Priority' => 'u=1, i',
           'Referer' => "#{ORIGIN}/",
+          'sec-ch-ua' => '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
+          'sec-ch-ua-mobile' => '?0',
+          'sec-ch-ua-platform' => '"macOS"',
+          'sec-fetch-dest' => 'empty',
+          'sec-fetch-mode' => 'cors',
+          'sec-fetch-site' => 'same-origin',
         }
-        response = Typhoeus.post("#{SurflineV2.base_api_url}/trusted/token?isShortLived=false", headers:, body:)
+        response = Typhoeus.post("#{SurflineV2.base_api_url}/trusted/token?isShortLived=false", headers:, body:, accept_encoding: 'gzip')
         raise "Surfline v2 access token refresh error code #{response.code}: #{response.body}" unless response.success?
 
         logger.info 'Surfline v2 access token refreshed!'
