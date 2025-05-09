@@ -4,7 +4,7 @@ class SurflineV2 < Forecast
   self.abstract_class = true
   AUTH_STRING = 'Basic NWM1OWU3YzNmMGI2Y2IxYWQwMmJhZjY2OnNrX1FxWEpkbjZOeTVzTVJ1MjdBbWcz'
   CACHE_KEY = 'surfline_token'
-  ORIGIN = 'https://www.surfline.com/'
+  ORIGIN = 'https://www.surfline.com'
 
   class << self
     def access_token
@@ -15,16 +15,16 @@ class SurflineV2 < Forecast
           forced: true,
           username: ENV.fetch('SURFLINE_EMAIL', nil),
           password: ENV.fetch('SURFLINE_PASSWORD', nil),
-          device_id: 'Firefox-137.0',
-          device_type: 'Firefox 137.0 on OS X 10.15',
+          device_id: 'Chrome-136.0.0.0',
+          device_type: 'Chrome 136.0.0.0 on OS X 10.15.7 64-bit',
         }.to_json
         headers = {
           'Accept' => 'application/json',
-          'Accept-Language' => 'en-US,en;q=0.5',
+          'Accept-Language' => 'en-US,en;q=0.9',
           'Authorization' => AUTH_STRING,
           'Content-Type' => 'application/json',
           'Origin' => ORIGIN,
-          'Referer' => ORIGIN,
+          'Referer' => "#{ORIGIN}/",
         }
         response = Typhoeus.post("#{SurflineV2.base_api_url}/trusted/token?isShortLived=false", headers:, body:)
         raise "Surfline v2 access token refresh error code #{response.code}: #{response.body}" unless response.success?
