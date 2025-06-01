@@ -21,7 +21,7 @@
       h2.font-weight-light.spot-header id=meta[:slug]
         span= link_to meta[:name], spot_path(@region, @subregion, meta[:slug])
         = map_link(meta[:lat], meta[:lon])
-        span.icon= service_icon('Spitcast.png', 'Spitcast') if meta[:spitcast_slug]
+        = spitcast_link(Spot.spitcast_url(meta[:spitcast_slug])) if meta[:spitcast_slug]
         = surfline_link(Spot.surfline_url(meta[:surfline_v2_id])) if meta[:surfline_v2_id]
         
       .spot-chart data-data=data data-max=@max data-plotbands=plot_bands data-xlabels=x_labels

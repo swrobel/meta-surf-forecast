@@ -8,7 +8,6 @@ module Spots
       def surfline_v2_url(surfline_v2_id)
         "https://www.surfline.com/surf-report/_/#{surfline_v2_id}"
       end
-
       alias_method :surfline_url, :surfline_v2_url
     end
 
