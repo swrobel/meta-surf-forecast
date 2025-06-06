@@ -121,6 +121,7 @@ spots = [
   { subregion: LA,
     lon: -118.91593,
     lat: 34.041956,
+    surfline_v2_id: '640a3f824eb375f0b99455c0',
     msw_id: 2643,
     name: 'Zeros' },
   { subregion: LA,
