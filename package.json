@@ -6,7 +6,6 @@
   "dependencies": {
     "@bugsnag/js": "^8.0.0",
     "@swc/core": "^1.2.141",
-    "bootstrap": "^4.4.0",
     "compression-webpack-plugin": "11",
     "css-loader": "7",
     "css-minimizer-webpack-plugin": "7",
