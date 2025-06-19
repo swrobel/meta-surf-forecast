@@ -4,7 +4,6 @@
   },
   "packageManager": "yarn@1.22.22",
   "dependencies": {
-    "@bugsnag/js": "^8.0.0",
     "@swc/core": "^1.2.141",
     "compression-webpack-plugin": "11",
     "css-loader": "7",

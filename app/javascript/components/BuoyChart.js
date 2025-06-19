@@ -1,5 +1,4 @@
 import Highcharts from 'highcharts'
-import Bugsnag from '@bugsnag/js'
 
 const BuoyChart = {
   /**
@@ -83,9 +82,6 @@ const BuoyChart = {
       // Create and return the chart
       return Highcharts.chart(container, options)
     } catch (error) {
-      if (Bugsnag.client) {
-        Bugsnag.notify(error)
-      }
       console.error('Error rendering buoy chart:', error)
       
       // Display error message in container

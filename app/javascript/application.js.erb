@@ -1,12 +1,7 @@
-import Bugsnag from '@bugsnag/js'
 import Headroom from 'headroom.js'
 
 import BuoyChart from './components/BuoyChart'
 import SpotChart from './components/SpotChart'
-
-<% if ENV['BUGSNAG_FRONTEND'] %>
-  Bugsnag.start({ apiKey: '<%= ENV['BUGSNAG_FRONTEND'] %>', releaseStage: '<%= Rails.env %>', enabledReleaseStages: <%= NOTIFY_RELEASE_STAGES %>, appVersion: '<%= ENV['HEROKU_RELEASE_VERSION'] || 'dev' %>', logger: null})
-<% end %>
 
 require.context('images', true)
 
