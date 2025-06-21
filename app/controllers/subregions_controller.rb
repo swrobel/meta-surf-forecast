@@ -28,10 +28,8 @@ class SubregionsController < ApplicationController
         slug: s[:slug],
         lat: s[:lat],
         lon: s[:lon],
-        msw_id: s[:msw_id],
         spitcast_id: s[:spitcast_id],
         spitcast_slug: s[:spitcast_slug],
-        surfline_v1_id: s[:surfline_v1_id],
         surfline_v2_id: s[:surfline_v2_id],
         spot_updated_at: s[:spot_updated_at] }
     end

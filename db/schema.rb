@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_21_182343) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -80,20 +80,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "msws", id: :serial, force: :cascade do |t|
-    t.integer "spot_id"
-    t.datetime "timestamp", precision: nil
-    t.decimal "min_height"
-    t.decimal "max_height"
-    t.integer "rating"
-    t.integer "wind_effect"
-    t.integer "api_request_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["api_request_id"], name: "index_msws_on_api_request_id"
-    t.index ["spot_id", "timestamp"], name: "index_msws_on_spot_id_and_timestamp"
-  end
-
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -102,18 +88,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
     t.index ["name"], name: "index_regions_on_name", unique: true
     t.index ["slug"], name: "index_regions_on_slug", unique: true
     t.index ["sort_order"], name: "index_regions_on_sort_order", unique: true
-  end
-
-  create_table "spitcast_v1s", id: :serial, force: :cascade do |t|
-    t.integer "spot_id"
-    t.datetime "timestamp", precision: nil
-    t.decimal "height"
-    t.string "rating"
-    t.integer "api_request_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["api_request_id"], name: "index_spitcast_v1s_on_api_request_id"
-    t.index ["spot_id", "timestamp"], name: "index_spitcast_v1s_on_spot_id_and_timestamp"
   end
 
   create_table "spitcast_v2s", force: :cascade do |t|
@@ -132,8 +106,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
     t.string "name"
     t.float "lat"
     t.float "lon"
-    t.integer "surfline_v1_id"
-    t.integer "msw_id"
     t.integer "spitcast_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -142,7 +114,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
     t.string "spitcast_slug"
     t.integer "sort_order"
     t.string "surfline_v2_id"
-    t.index ["msw_id", "surfline_v1_id", "surfline_v2_id", "spitcast_id"], name: "spots_unique_index", unique: true
     t.index ["subregion_id", "slug"], name: "index_spots_on_subregion_id_and_slug", unique: true
     t.index ["subregion_id", "sort_order"], name: "index_spots_on_subregion_id_and_sort_order", unique: true
   end
@@ -159,49 +130,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
     t.index ["region_id", "sort_order"], name: "index_subregions_on_region_id_and_sort_order", unique: true
   end
 
-  create_table "surfline_lolas", id: :serial, force: :cascade do |t|
-    t.integer "spot_id"
-    t.datetime "timestamp", precision: nil
-    t.decimal "min_height"
-    t.decimal "max_height"
-    t.decimal "swell_rating"
-    t.boolean "optimal_wind"
-    t.integer "api_request_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["api_request_id"], name: "index_surfline_lolas_on_api_request_id"
-    t.index ["spot_id", "timestamp"], name: "index_surfline_lolas_on_spot_id_and_timestamp"
-  end
-
-  create_table "surfline_nearshores", id: :serial, force: :cascade do |t|
-    t.integer "spot_id"
-    t.datetime "timestamp", precision: nil
-    t.decimal "min_height"
-    t.decimal "max_height"
-    t.decimal "swell_rating"
-    t.boolean "optimal_wind"
-    t.integer "api_request_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["api_request_id"], name: "index_surfline_nearshores_on_api_request_id"
-    t.index ["spot_id", "timestamp"], name: "index_surfline_nearshores_on_spot_id_and_timestamp"
-  end
-
-  create_table "surfline_v2_lolas", force: :cascade do |t|
-    t.bigint "spot_id", null: false
-    t.datetime "timestamp", precision: nil
-    t.decimal "min_height"
-    t.decimal "max_height"
-    t.integer "swell_rating"
-    t.integer "wind_rating"
-    t.bigint "api_request_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.decimal "seven_point_rating"
-    t.index ["api_request_id"], name: "index_surfline_v2_lolas_on_api_request_id"
-    t.index ["spot_id", "timestamp"], name: "index_surfline_v2_lolas_on_spot_id_and_timestamp"
-  end
-
   create_table "surfline_v2_lotus", force: :cascade do |t|
     t.bigint "spot_id", null: false
     t.datetime "timestamp", precision: nil
@@ -212,7 +140,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
     t.bigint "api_request_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "seven_point_rating"
+    t.decimal "rating"
     t.index ["api_request_id"], name: "index_surfline_v2_lotus_on_api_request_id"
     t.index ["spot_id", "timestamp"], name: "index_surfline_v2_lotus_on_spot_id_and_timestamp"
   end
@@ -252,20 +180,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
   add_foreign_key "buoy_reports", "api_requests"
   add_foreign_key "buoy_reports", "buoys"
   add_foreign_key "buoys", "regions"
-  add_foreign_key "msws", "api_requests"
-  add_foreign_key "msws", "spots"
-  add_foreign_key "spitcast_v1s", "api_requests"
-  add_foreign_key "spitcast_v1s", "spots"
   add_foreign_key "spitcast_v2s", "api_requests"
   add_foreign_key "spitcast_v2s", "spots"
   add_foreign_key "spots", "subregions"
   add_foreign_key "subregions", "regions"
-  add_foreign_key "surfline_lolas", "api_requests"
-  add_foreign_key "surfline_lolas", "spots"
-  add_foreign_key "surfline_nearshores", "api_requests"
-  add_foreign_key "surfline_nearshores", "spots"
-  add_foreign_key "surfline_v2_lolas", "api_requests"
-  add_foreign_key "surfline_v2_lolas", "spots"
   add_foreign_key "surfline_v2_lotus", "api_requests"
   add_foreign_key "surfline_v2_lotus", "spots"
   add_foreign_key "water_qualities", "water_quality_departments", column: "dept_id"
@@ -288,7 +206,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
       avg(surfline_v2_lotus.min_height) OVER w AS min_height,
       ((avg(surfline_v2_lotus.min_height) OVER w + avg(surfline_v2_lotus.max_height) OVER w) / (2)::numeric) AS avg_height,
       avg(surfline_v2_lotus.max_height) OVER w AS max_height,
-      ((avg(surfline_v2_lotus.seven_point_rating) OVER w * (5)::numeric) / (6)::numeric) AS rating,
+      ((avg(surfline_v2_lotus.rating) OVER w * (5)::numeric) / (4)::numeric) AS rating,
       surfline_v2_lotus.updated_at
      FROM surfline_v2_lotus
     WINDOW w AS (PARTITION BY surfline_v2_lotus.spot_id ORDER BY surfline_v2_lotus."timestamp" ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING);
@@ -300,10 +218,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
       s.slug,
       s.lat,
       s.lon,
-      s.msw_id,
       s.spitcast_id,
       s.spitcast_slug,
-      s.surfline_v1_id,
       s.surfline_v2_id,
       s.updated_at AS spot_updated_at,
       fc."timestamp",
@@ -332,7 +248,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
        JOIN spots s ON ((fc.spot_id = s.id)))
        JOIN subregions sr ON ((s.subregion_id = sr.id)))
     WHERE ((((EXTRACT(hour FROM fc."timestamp"))::integer % 3) = 0) AND (fc."timestamp" >= (now() AT TIME ZONE sr.timezone)) AND (fc.updated_at >= ((now() AT TIME ZONE sr.timezone) - 'P1D'::interval)))
-    GROUP BY s.id, s.name, s.slug, s.lat, s.lon, fc."timestamp", s.surfline_v1_id, s.msw_id, s.spitcast_id, s.spitcast_slug, s.surfline_v2_id, s.updated_at
+    GROUP BY s.id, s.name, s.slug, s.lat, s.lon, fc."timestamp", s.spitcast_id, s.spitcast_slug, s.surfline_v2_id, s.updated_at
    HAVING (count(*) >= 1)
     ORDER BY s.subregion_id, s.sort_order, s.id, fc."timestamp";
   SQL
@@ -366,12 +282,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_223051) do
           END) AS buoy_fail,
       sum(
           CASE
-              WHEN ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[])) THEN r.retries
+              WHEN ((r.service)::text = 'SurflineV2Lotus'::text) THEN r.retries
               ELSE 0
           END) AS surfline_v2_retry,
       sum(
           CASE
-              WHEN ((r.success = false) AND ((r.service)::text = ANY ((ARRAY['SurflineV2Lola'::character varying, 'SurflineV2Lotus'::character varying])::text[]))) THEN 1
+              WHEN ((r.success = false) AND ((r.service)::text = 'SurflineV2Lotus'::text)) THEN 1
               ELSE 0
           END) AS surfline_v2_fail,
       sum(

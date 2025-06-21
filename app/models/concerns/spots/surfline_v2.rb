@@ -12,7 +12,6 @@ module Spots
     end
 
     included do
-      has_many :surfline_v2_lolas, dependent: :delete_all
       has_many :surfline_v2_lotus, dependent: :delete_all
 
       def surfline_v2_url
@@ -20,18 +19,14 @@ module Spots
       end
       alias_method :surfline_url, :surfline_v2_url
 
-      def surfline_v2_api_url(type:, use_lotus:)
+      def surfline_v2_api_url(type:)
         raise "No Surfline v2 spot associated with #{name} (#{id})" if surfline_v2_id.blank?
 
-        "#{::SurflineV2.base_api_url}/kbyg/spots/forecasts/#{type}?spotId=#{surfline_v2_id}&sds=#{use_lotus}&days=17&intervalHours=1&maxHeights=false&accesstoken=#{::SurflineV2.access_token}"
-      end
-
-      def surfline_v2_lola_api_url(type: 'wave')
-        surfline_v2_api_url(type:, use_lotus: false)
+        "#{::SurflineV2.base_api_url}/kbyg/spots/forecasts/#{type}?spotId=#{surfline_v2_id}&days=17&intervalHours=1&maxHeights=false&accesstoken=#{::SurflineV2.access_token}"
       end
 
       def surfline_v2_lotus_api_url(type: 'wave')
-        surfline_v2_api_url(type:, use_lotus: true)
+        surfline_v2_api_url(type:)
       end
     end
   end

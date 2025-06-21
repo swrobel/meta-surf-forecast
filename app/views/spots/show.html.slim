@@ -29,17 +29,6 @@
               th
               - if @spot.spitcast_v2s.any?
                 th.border-left(colspan=2)= service_icon('Spitcast.png', 'Spitcast')
-              - if @spot.msws.any?
-                th.border-left(colspan=2)= msw_link(@spot.msw_url)
-              - if @spot.surfline_nearshores.any?
-                th.border-left(colspan=3)
-                  = surfline_link(@spot.surfline_url, 'Nearshore')
-              - if @spot.surfline_lolas.any?
-                th.border-left(colspan=3)
-                  = surfline_link(@spot.surfline_url, 'LOLA')
-              - if @spot.surfline_v2_lolas.any?
-                th.border-left(colspan=4)
-                  = surfline_link(@spot.surfline_v2_url, 'v2 LOLA')
               - if @spot.surfline_v2_lotus.any?
                 th.border-left(colspan=4)
                   = surfline_link(@spot.surfline_v2_url, 'v2 LOTUS')
@@ -48,14 +37,7 @@
               - if @spot.spitcast_v2s.any?
                 th.border-left Height
                 th Rating
-              - if @spot.msws.any?
-                th.border-left Height
-                th Rating
-              - [@spot.surfline_nearshores.any?, @spot.surfline_lolas.any?].count(true).times do
-                th.border-left Height
-                th Rating
-                th Optimal Wind?
-              - [@spot.surfline_v2_lolas.any?, @spot.surfline_v2_lotus.any?].count(true).times do
+              - if @spot.surfline_v2_lotus.any?
                 th.border-left Height
                 th Rating
                 th Swell
@@ -69,16 +51,5 @@
                   - spitcast = @spot.spitcast_v2s.select{|x| x.timestamp == timestamp}.first
                   = render partial: 'cell', locals: { cls: 'border-left', forecast: spitcast, value: ("#{number_with_precision(spitcast.try(:height), precision: 1)} ft" if spitcast.try(:height)) }
                   = render partial: 'cell', locals: { forecast: spitcast, value: spitcast.try(:rating) }
-
-                - if @spot.msws.any?
-                  - msw = @spot.msws.select{|x| x.timestamp == timestamp}.first
-                  = render partial: 'cell', locals: { cls: 'border-left', forecast: msw, value: height_range(msw.try(:min_height), msw.try(:max_height)) }
-                  = render partial: 'cell', locals: { forecast: msw, value: msw.try(:rating) }
-
-                = render partial: 'surfline_v1', locals: { forecast: @spot.surfline_nearshores.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_nearshores.any?
-
-                = render partial: 'surfline_v1', locals: { forecast: @spot.surfline_lolas.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_lolas.any?
-
-                = render partial: 'surfline_v2', locals: { forecast: @spot.surfline_v2_lolas.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_v2_lolas.any?
 
                 = render partial: 'surfline_v2', locals: { forecast: @spot.surfline_v2_lotus.select{|x| x.timestamp == timestamp}.first } if @spot.surfline_v2_lotus.any?

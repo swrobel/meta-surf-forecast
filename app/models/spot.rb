@@ -4,9 +4,7 @@ class Spot < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: %i[slugged finders scoped], scope: :subregion
 
-  include Spots::Msw
   include Spots::SpitcastV2
-  include Spots::SurflineV1
   include Spots::SurflineV2
   include Timezones
 

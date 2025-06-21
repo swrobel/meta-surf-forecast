@@ -70,11 +70,11 @@ Contributing new spots is easy! Make sure you're signed into your [Github accoun
 1. Use [this tool](https://boundingbox.klokantech.com/) to draw a bounding box around the area you want to find spots for.
 1. Choose CSV from the dropdown at the bottom & copy the coordinates string.
 1. Run `rails console`, then run `SpotFinder.new('{string}').formatted_spots`.
-1. Copy the output and paste it into the spots array in `seeds.rb`, then make sure to assign each spot to the right subregion & delete extraneous fields (`msw_name`, `match_type`, `distance`).
+1. Copy the output and paste it into the spots array in `seeds.rb`, then make sure to assign each spot to the right subregion & delete extraneous fields (`match_type`, `distance`).
 1. It's strongly encouraged to add all spots for a particular county or region rather than just a single one. Be a pal!
 1. Submit a pull request and I'll get it on the site ASAP!
 
-Use the following as a template. Delete the lines for `surfline_v2_id`, `msw_id`, etc, if that spot doesn't exist on that particular site.
+Use the following as a template. Add `spitcast_v2_id
 
 ```ruby
   {
@@ -82,7 +82,6 @@ Use the following as a template. Delete the lines for `surfline_v2_id`, `msw_id`
     lat: 34.051,
     lon: -118.964,
     surfline_v2_id: '590927576a2e4300134fbed8',
-    msw_id: 277,
     subregion: LA,
   },
 ```
@@ -117,7 +116,6 @@ spotId|string|Surfline spot id that you want data for. A typical Surfline URL is
 days|integer|Number of forecast days to get (Max 6 w/o access token, Max 17 w/ premium token)
 intervalHours|integer|Minimum of 1 (hour)
 maxHeights|boolean|`true` seems to remove min & optimal values from the wave data output
-sds|boolean|If true, use the new LOTUS forecast engine
 accesstoken|string|Auth token to get premium data access (optional)
 
 Anywhere there is an `optimalScore` the value can be interpreted as follows:
@@ -226,7 +224,7 @@ All of the forecasting services (including Surfline v1 vs v2) use different syst
 
 Each forecasting service is massaged onto that scale as follows:
 
-* **Surfline v2:** "[Traffic Light](https://support.surfline.com/hc/en-us/articles/9780949042843-Surf-Ratings-Colors)" ratings, which equate to decimal values (0-6). These are massaged by multiplying by 5/6 to get a 0-5 scale.
+* **Surfline v2:** "[5-point ratings](https://support.surfline.com/hc/en-us/articles/36277684017819-Surf-Ratings-Colors), which equate to decimal values (0-4). These are massaged by multiplying by 5/4 to get a 0-5 scale. In theory, the scale can go up to 6, but apparently the top 2 values require a human forecaster override, and in practice have never been seen via the API.
 * **Spitcast:** ratings in text form:
   * 0.0 => Poor
   * 0.5 => Poor-Fair

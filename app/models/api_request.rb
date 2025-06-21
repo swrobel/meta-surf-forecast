@@ -7,9 +7,7 @@ class ApiRequest < ApplicationRecord
   belongs_to :requestable, polymorphic: true
 
   include ApiRequests::BuoyReport
-  include ApiRequests::Msw
   include ApiRequests::SpitcastV2
-  include ApiRequests::SurflineV1
   include ApiRequests::SurflineV2
 
   def get(retries: 0, max_retries: API_RETRIES)

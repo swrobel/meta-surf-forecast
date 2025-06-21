@@ -30,10 +30,6 @@ module ApplicationHelper
     end
   end
 
-  def msw_link(target)
-    service_link('Msw.svg', 'MagicSeaweed', target)
-  end
-
   def spitcast_link(target)
     service_link('Spitcast.png', 'Spitcast', target)
   end

@@ -9,7 +9,6 @@ module ApiRequests
         type = options[:type] || 'wave'
         send(:"parse_surfline_v2_#{type}")
       end
-      alias_method :parse_surfline_v2_lola, :parse_surfline_v2
       alias_method :parse_surfline_v2_lotus, :parse_surfline_v2
 
       def parse_surfline_v2_wind
@@ -31,8 +30,8 @@ module ApiRequests
           record = service_class.unscoped.find_by(spot: requestable, timestamp: requestable.utc_stamp_to_local(timestamp))
           next unless record
 
-          record.seven_point_rating = entry.dig('rating', 'value')
-          record.save! if record.seven_point_rating.present?
+          record.rating = entry.dig('rating', 'value')
+          record.save! if record.rating.present?
         end
       end
 
