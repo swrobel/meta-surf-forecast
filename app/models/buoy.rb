@@ -1,6 +1,7 @@
 class Buoy < ApplicationRecord
   include Timezones
   extend FriendlyId
+
   friendly_id :name, use: %i[slugged finders scoped], scope: :region
 
   belongs_to :region

@@ -2,6 +2,7 @@
 
 class Spot < ApplicationRecord
   extend FriendlyId
+
   friendly_id :name, use: %i[slugged finders scoped], scope: :subregion
 
   include Spots::SpitcastV2

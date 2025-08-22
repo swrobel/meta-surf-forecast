@@ -2,6 +2,7 @@
 
 class Subregion < ApplicationRecord
   extend FriendlyId
+
   friendly_id :name, use: %i[slugged finders scoped], scope: :region
 
   belongs_to :region
