@@ -102,7 +102,7 @@ GEM
     drb (2.2.3)
     erb (5.0.2)
     erubi (1.13.1)
-    ethon (0.17.0)
+    ethon (0.15.0)
       ffi (>= 1.15.0)
     ffi (1.17.2)
     ffi (1.17.2-x86_64-darwin)
@@ -158,7 +158,7 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lumberjack (1.4.0)
+    lumberjack (1.4.1)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -172,7 +172,7 @@ GEM
     minitest (5.25.5)
     msgpack (1.8.0)
     nenv (0.3.0)
-    net-imap (0.5.9)
+    net-imap (0.5.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -326,8 +326,8 @@ GEM
     thor (1.4.0)
     tilt (2.6.1)
     timeout (0.4.3)
-    typhoeus (1.4.1)
-      ethon (>= 0.9.0)
+    typhoeus (1.5.0)
+      ethon (>= 0.9.0, < 0.16.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.1.5)
@@ -383,7 +383,7 @@ DEPENDENCIES
   shakapacker (= 8.3.0)
   slim-rails
   terminal-notifier-guard
-  typhoeus
+  typhoeus (~> 1.5.0)
   web-console
 
 RUBY VERSION
