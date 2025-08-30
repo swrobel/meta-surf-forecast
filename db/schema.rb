@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_21_182343) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_30_210313) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_182343) do
     t.decimal "sig_wave_height"
     t.decimal "avg_period"
     t.integer "mean_wave_direction"
-    t.bigint "api_request_id", null: false
+    t.bigint "api_request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["api_request_id"], name: "index_buoy_reports_on_api_request_id"
@@ -95,7 +95,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_182343) do
     t.datetime "timestamp", precision: nil, null: false
     t.decimal "height", null: false
     t.decimal "rating", null: false
-    t.bigint "api_request_id", null: false
+    t.bigint "api_request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["api_request_id"], name: "index_spitcast_v2s_on_api_request_id"
@@ -137,7 +137,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_182343) do
     t.decimal "max_height"
     t.integer "swell_rating"
     t.integer "wind_rating"
-    t.bigint "api_request_id", null: false
+    t.bigint "api_request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "rating"
@@ -177,14 +177,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_21_182343) do
   end
 
   add_foreign_key "api_requests", "update_batches", column: "batch_id"
-  add_foreign_key "buoy_reports", "api_requests"
+  add_foreign_key "buoy_reports", "api_requests", on_delete: :nullify
   add_foreign_key "buoy_reports", "buoys"
   add_foreign_key "buoys", "regions"
-  add_foreign_key "spitcast_v2s", "api_requests"
+  add_foreign_key "spitcast_v2s", "api_requests", on_delete: :nullify
   add_foreign_key "spitcast_v2s", "spots"
   add_foreign_key "spots", "subregions"
   add_foreign_key "subregions", "regions"
-  add_foreign_key "surfline_v2_lotus", "api_requests"
+  add_foreign_key "surfline_v2_lotus", "api_requests", on_delete: :nullify
   add_foreign_key "surfline_v2_lotus", "spots"
   add_foreign_key "water_qualities", "water_quality_departments", column: "dept_id"
 

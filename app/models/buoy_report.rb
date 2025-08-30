@@ -1,5 +1,5 @@
 class BuoyReport < ApplicationRecord
-  belongs_to :api_request
+  belongs_to :api_request, optional: true
   belongs_to :buoy
 
   default_scope -> { order(:buoy_id, timestamp: :desc) }

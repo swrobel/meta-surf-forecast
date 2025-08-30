@@ -3,7 +3,7 @@
 class Forecast < ApplicationRecord
   self.abstract_class = true
 
-  belongs_to :api_request
+  belongs_to :api_request, optional: true
   belongs_to :spot
   has_one :subregion, through: :spot
 
