@@ -15,6 +15,8 @@ if defined?(Lograge) && Rails.application.config.lograge.enabled
           }
           formatted_message = Lograge.formatter.call(data)
           logger(request).send(Lograge.log_level, formatted_message)
+        elsif exception.is_a?(ActiveRecord::RecordNotFound)
+          false
         else
           old_log_error request, wrapper
         end
