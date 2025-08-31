@@ -63,10 +63,10 @@ const SpotChart = {
               } else if (point.series.name === 'Avg') avg = point.y
               else max = point.y
             }
+            tooltip += `<br><i>${rating}</i>`
             tooltip += `<br>Max: ${(min + avg + max).toPrecision(2)} ft`
             tooltip += `<br>Avg: ${(min + avg).toPrecision(2)} ft`
             tooltip += `<br>Min: ${min.toPrecision(2)} ft`
-            tooltip += `<br>${rating}`
             return tooltip
           },
           shared: true,
