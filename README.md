@@ -43,7 +43,7 @@
 1. `bin/rails db:create db:schema:load:with_data db:seed`
 1. Grab some data: `bin/rails buoys:update forecasts:update`
 1. `bin/foreman start -f Procfile.dev`
-1. Open http://localhost:5000
+1. Open http://localhost:5001
 1. Any changes you make to view files will auto-reload the browser
 
 ### Tips
