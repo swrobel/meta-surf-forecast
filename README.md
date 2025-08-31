@@ -217,8 +217,8 @@ I've asked MagicSeaweed a few questions and added their responses below:
 
 All of the forecasting services (including Surfline v1 vs v2) use different systems for rating waves. I've attempted to normalize them all to a 0-6 (6-point) scale as best as possible, which is perhaps easier to understand when mapped onto the commonly-used Poor-Good scale. At the top-end, Very Good is the typical top end, while Epic is allowed for in the rare occasions where Surfline's rating goes above 5:
 
-<!-- -->|<!-- -->
--|-
+Value|Meaning
+-----|-------
 0|Poor
 1|Poor - Fair
 2|Fair
@@ -231,8 +231,9 @@ Each forecasting service is massaged onto that scale as follows:
 
 #### Surfline v2
 [5-point ratings](https://support.surfline.com/hc/en-us/articles/36277684017819-Surf-Ratings-Colors), which equate to decimal values (0-4). These are massaged by multiplying by 5/4 to get a 0-5 scale. The scale can go above 4, but the top 2 values require a human forecaster override, so they are rarely seen.
-<!-- -->|<!-- -->
--|-
+
+Value|Meaning
+-----|-------
 0|Very Poor
 1|Poor
 2|Poor - Fair
@@ -241,8 +242,9 @@ Each forecasting service is massaged onto that scale as follows:
 5|Good
 6|Epic
 #### Spitcast
-<!-- -->|<!-- -->
--|-
+
+Value|Meaning
+-----|-------
 0.0|Poor
 0.5|Poor-Fair
 1.0|Fair
