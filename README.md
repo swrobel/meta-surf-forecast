@@ -17,6 +17,8 @@
     - [MagicSeaweed (no longer supported)](#magicseaweed-no-longer-supported)
   - [The Magic](#the-magic)
     - [Surf quality ratings](#surf-quality-ratings)
+      - [Surfline v2](#surfline-v2)
+      - [Spitcast](#spitcast-1)
     - [Timestamps](#timestamps)
   - [TODO](#todo)
 
@@ -213,25 +215,40 @@ I've asked MagicSeaweed a few questions and added their responses below:
 
 ### Surf quality ratings
 
-All of the forecasting services (including Surfline v1 vs v2) use different systems for rating waves. I've attempted to normalize them all to a 0-5 (6-point) scale as best as possible, which is perhaps easier to understand when mapped onto the commonly-used Poor-Good scale (some throw Epic in there at the top end, but I went with Very Good):
+All of the forecasting services (including Surfline v1 vs v2) use different systems for rating waves. I've attempted to normalize them all to a 0-6 (6-point) scale as best as possible, which is perhaps easier to understand when mapped onto the commonly-used Poor-Good scale. At the top-end, Very Good is the typical top end, while Epic is allowed for in the rare occasions where Surfline's rating goes above 5:
 
-* 0 => Poor
-* 1 => Poor - Fair
-* 2 => Fair
-* 3 => Fair - Good
-* 4 => Good
-* 5 => Very Good
+<!-- -->|<!-- -->
+-|-
+0|Poor
+1|Poor - Fair
+2|Fair
+3|Fair - Good
+4|Good
+5|Very Good
+6+|Epic
 
 Each forecasting service is massaged onto that scale as follows:
 
-* **Surfline v2:** "[5-point ratings](https://support.surfline.com/hc/en-us/articles/36277684017819-Surf-Ratings-Colors), which equate to decimal values (0-4). These are massaged by multiplying by 5/4 to get a 0-5 scale. In theory, the scale can go up to 6, but apparently the top 2 values require a human forecaster override, and in practice have never been seen via the API.
-* **Spitcast:** ratings in text form:
-  * 0.0 => Poor
-  * 0.5 => Poor-Fair
-  * 1.0 => Fair
-  * 1.5 => Good
+#### Surfline v2
+[5-point ratings](https://support.surfline.com/hc/en-us/articles/36277684017819-Surf-Ratings-Colors), which equate to decimal values (0-4). These are massaged by multiplying by 5/4 to get a 0-5 scale. The scale can go above 4, but the top 2 values require a human forecaster override, so they are rarely seen.
+<!-- -->|<!-- -->
+-|-
+0|Very Poor
+1|Poor
+2|Poor - Fair
+3|Fair
+4|Fair - Good
+5|Good
+6|Epic
+#### Spitcast
+<!-- -->|<!-- -->
+-|-
+0.0|Poor
+0.5|Poor-Fair
+1.0|Fair
+1.5|Good
 
-  These are massaged by multiplying by 5/1.5 (essentially 3.3̅) to get a 0-5 scale.
+These are massaged by multiplying by 5/1.5 (essentially 3.3̅) to get a 0-5 scale.
 
 For record-keeping, these are the formulae for formerly-supported services:
 

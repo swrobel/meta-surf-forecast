@@ -97,7 +97,7 @@ svg {
   @media (prefers-color-scheme: dark) {
     <% RATING_COLORS.each do |rating, hash| %>
       <% hash.each do |scale, color| %>
-        <%= ".#{scale}-#{rating} { fill: darken(##{color}, 30%) !important; }" %>
+        <%= ".#{scale}-#{rating} { fill: darken(##{color}, 15%) !important; }" %>
       <% end %>
     <% end %>
   }

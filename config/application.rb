@@ -85,6 +85,11 @@ RATING_COLORS = {
     avg: '54EAEA',
     min: '00D3D3',
   },
+  6 => {
+    max: 'C8D0FF',
+    avg: 'A8B8F0',
+    min: '8898E0',
+  },
 }.freeze
 RATING_TEXT = {
   0 => 'Poor',
@@ -93,4 +98,5 @@ RATING_TEXT = {
   3 => 'Fair - Good',
   4 => 'Good',
   5 => 'Very Good',
+  6 => 'Epic',
 }.freeze
