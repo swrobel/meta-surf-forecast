@@ -266,7 +266,7 @@ It took me a long time to land on a solution here, but I've finally settled on s
 * [ ] Use [SoFar API](https://docs.sofarocean.com/spotter-and-smart-mooring/spotter-data/latest-data) to get data from additional buoys
 * [ ] Figure out a way to convey forecast certainty in charts (ie: most forecasts are in agreement, or they disagree by a wide margin)
 * [ ] Fetch & display tide/wind/water temperature data from [NOAA](https://tidesandcurrents.noaa.gov/waterlevels.html?id=9410840) (they actually have a decent [API](https://tidesandcurrents.noaa.gov/api/)!)
-* [x] Update Surfline v2 API to use their new [7-point rating scale](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating)
+* [x] Update Surfline v2 API to use their new [7-point rating scale](https://support.surfline.com/hc/en-us/articles/14006471584411-Surfline-s-surf-rating) ([thanks @smmuirhead100](https://github.com/swrobel/meta-surf-forecast/pull/61)!)
 * [x] Improve charts:
   * [x] Fix timestamp formatting.
   * [x] Account for min/max size forecast. Currently charts just reflect the max.
