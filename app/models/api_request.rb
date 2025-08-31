@@ -27,6 +27,7 @@ class ApiRequest < ApplicationRecord
         self.attributes = { response: { message: response.status_message, headers: response.headers, status: response.code }, success: false, response_time: response.total_time, retries: }
         if service == 'SurflineV2Lotus' && [401, 403].include?(response.code) # Unauthorized
           save!
+          SurflineV2.expire_access_token
           raise "Surfline request failed with #{response.code}"
         end
         get(retries: retries + 1, max_retries:) unless response.code == 404
