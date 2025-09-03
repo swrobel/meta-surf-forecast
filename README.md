@@ -230,7 +230,10 @@ Value|Meaning
 Each forecasting service is massaged onto that scale as follows:
 
 #### Surfline v2
-[5-point ratings](https://support.surfline.com/hc/en-us/articles/36277684017819-Surf-Ratings-Colors), which equate to decimal values (0-4). These are massaged by multiplying by 5/4 to get a 0-5 scale. The scale can go above 4, but the top 2 values require a human forecaster override, so they are rarely seen.
+[5-point ratings](https://support.surfline.com/hc/en-us/articles/36277684017819-Surf-Ratings-Colors), which equate to decimal values (0-4). These are massaged by multiplying by 5/4 to get a 0-5 scale.
+
+The scale can go above 4, but the top 2 values require a human forecaster override, so they are rarely seen.
+![Spinal Tap - It Goes to 11](https://i.imgflip.com/a4zyg1.jpg)
 
 Value|Meaning
 -----|-------
