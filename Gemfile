@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+source 'https://gem.coop'
 
 ruby "~> #{File.read('.ruby-version').strip}"
 
@@ -16,7 +16,7 @@ gem 'pg'
 gem 'puma'
 gem 'safely_block'
 gem 'scenic'
-gem 'shakapacker', '8.4.0'
+gem 'shakapacker', '9.0.0'
 gem 'slim-rails'
 gem 'typhoeus' # HTTP client
 

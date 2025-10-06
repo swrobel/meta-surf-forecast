@@ -9,7 +9,7 @@ default: &default
   cache_path: tmp/cache/webpacker
   check_yarn_integrity: false
   webpack_compile_output: false
-  webpack_loader: 'swc'
+  javascript_transpiler: 'swc'
 
   # If nested_entries is true, then we'll pick up subdirectories within the source_entry_path.
   # You cannot set this option to true if you set source_entry_path to '/'
