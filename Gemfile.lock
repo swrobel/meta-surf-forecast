@@ -311,7 +311,7 @@ GEM
       railties (>= 4.0.0)
     securerandom (0.4.1)
     semantic_range (3.1.0)
-    shakapacker (9.3.0)
+    shakapacker (9.3.1)
       activesupport (>= 5.2)
       package_json
       rack-proxy (>= 0.6.1)
@@ -386,7 +386,7 @@ DEPENDENCIES
   rubocop-rails
   safely_block
   scenic
-  shakapacker (= 9.3.0)
+  shakapacker (= 9.3.1)
   slim-rails
   terminal-notifier-guard
   typhoeus
