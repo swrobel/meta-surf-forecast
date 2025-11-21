@@ -1,9 +1,11 @@
 const { rspack } = require("@rspack/core")
 const { merge } = require("webpack-merge")
-const baseConfig = require("shakapacker")
 const ReactRefreshPlugin = require("@rspack/plugin-react-refresh")
+const { generateRspackConfig } = require('shakapacker/rspack')
 
-module.exports = merge(baseConfig, {
+const rspackConfig = generateRspackConfig()
+
+module.exports = merge(rspackConfig, {
   module: {
     plugins: [new rspack.CssExtractRspackPlugin(), new ReactRefreshPlugin(), new rspack.HotModuleReplacementPlugin(), new rspack.SwcJsMinimizerRspackPlugin()],
     rules: [
