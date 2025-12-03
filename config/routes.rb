@@ -5,6 +5,8 @@ class ReservedWordConstraint
 end
 
 Rails.application.routes.draw do
+  mount PgHero::Engine, at: 'pghero'
+
   get "/#{ENV.fetch('UNLOCK_KEY', nil)}", to: 'application#unlock' if ENV['UNLOCK_KEY'].present?
 
   get '/regions/:id', to: redirect('/southern-california/%{id}')

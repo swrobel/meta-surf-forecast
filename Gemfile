@@ -43,6 +43,9 @@ group :production do
   gem 'hiredis-client'
   gem 'lograge' # More concise logs
   gem 'newrelic_rpm'
+  gem 'pghero'
+  gem 'pghero_assets'
+  gem 'pg_query', '>= 2'
   gem 'rack-brotli'
   gem 'redis', '~> 5'
 end

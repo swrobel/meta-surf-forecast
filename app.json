@@ -1,0 +1,12 @@
+{
+  "cron": [
+    {
+      "command": "rake pghero:capture_query_stats",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "command": "rake pghero:capture_space_stats pghero:clean_query_stats pghero:clean_space_stats",
+      "schedule": "@daily"
+    }
+  ]
+}
