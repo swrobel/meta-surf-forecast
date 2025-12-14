@@ -31,7 +31,6 @@ group :development do
   gem 'guard'
   gem 'guard-rubocop', require: false
   gem 'guard-shell', require: false
-  gem 'rack-toolbar', github: 'swrobel/rack-toolbar', branch: 'rails-pages' # Insert arbitrary code into Rails pages
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'

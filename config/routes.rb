@@ -5,7 +5,7 @@ class ReservedWordConstraint
 end
 
 Rails.application.routes.draw do
-  mount PgHero::Engine, at: 'pghero'
+  mount PgHero::Engine, at: 'pghero' if defined?(PgHero)
 
   get "/#{ENV.fetch('UNLOCK_KEY', nil)}", to: 'application#unlock' if ENV['UNLOCK_KEY'].present?
 
