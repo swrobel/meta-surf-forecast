@@ -40,6 +40,7 @@ group :development do
 end
 
 group :production do
+  gem 'connection_pool', '< 3' # Locked until new Rails version with compat
   gem 'hiredis-client'
   gem 'lograge' # More concise logs
   gem 'newrelic_rpm'
