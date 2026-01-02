@@ -1,7 +1,7 @@
 GEM
   remote: https://gem.coop/
   specs:
-    action_text-trix (2.1.15)
+    action_text-trix (2.1.16)
       railties
     actioncable (8.1.1)
       actionpack (= 8.1.1)
@@ -99,8 +99,8 @@ GEM
     erubi (1.13.1)
     ethon (0.15.0)
       ffi (>= 1.15.0)
-    ffi (1.17.2)
-    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.3)
+    ffi (1.17.3-x86_64-darwin)
     foreman (0.90.0)
       thor (~> 1.4)
     formatador (1.2.3)
@@ -203,8 +203,8 @@ GEM
     parser (3.3.10.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.2)
-    pg (1.6.2-x86_64-darwin)
+    pg (1.6.3)
+    pg (1.6.3-x86_64-darwin)
     pg_query (6.1.0)
       google-protobuf (>= 3.25.3)
     pghero (3.7.0)
