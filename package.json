@@ -13,7 +13,7 @@
     "rspack-manifest-plugin": "^5.1.0",
     "sass": "^1.49.7",
     "sass-loader": "16",
-    "shakapacker": "9.4.0",
+    "shakapacker": "9.5.0",
     "style-loader": "4"
   },
   "devDependencies": {

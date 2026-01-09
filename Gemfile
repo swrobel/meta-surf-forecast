@@ -16,7 +16,7 @@ gem 'pg'
 gem 'puma'
 gem 'safely_block'
 gem 'scenic'
-gem 'shakapacker', '9.4.0'
+gem 'shakapacker', '9.5.0'
 gem 'slim-rails'
 gem 'typhoeus' # HTTP client
 
