@@ -13,7 +13,12 @@ const SpotChart = {
         accessibility: {
           enabled: false,
         },
+        boost: {
+          useGPUTranslations: true,
+          usePreAllocated: true
+        },
         chart: {
+          animation: false, // Disable animation for faster rendering
           marginRight: 2,
           spacingLeft: 0,
           style: {
@@ -30,8 +35,11 @@ const SpotChart = {
           margin: 0,
         },
         plotOptions: {
-          areaspline: {},
+          areaspline: {
+            animation: false
+          },
           column: {
+            animation: false, // Disable column animation
             borderRadius: 0,
             borderWidth: 0,
             groupPadding: 0.07,
@@ -40,8 +48,10 @@ const SpotChart = {
             },
           },
           series: {
+            animation: false,
             marker: {},
             stacking: 'normal',
+            turboThreshold: 1000 // Increase threshold for boost module
           },
         },
         series: props.data,
@@ -49,6 +59,7 @@ const SpotChart = {
           text: null,
         },
         tooltip: {
+          animation: false, // Disable tooltip animation for better performance
           formatter: function() {
             let avg = 0
             let min = 0

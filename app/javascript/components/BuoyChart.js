@@ -13,7 +13,12 @@ const BuoyChart = {
         accessibility: {
           enabled: false,
         },
+        boost: {
+          useGPUTranslations: true,
+          usePreAllocated: true
+        },
         chart: {
+          animation: false, // Disable animation for faster rendering
           marginRight: 2,
           spacingLeft: 0,
           style: {
@@ -28,11 +33,18 @@ const BuoyChart = {
           borderWidth: 0,
           margin: 0,
         },
+        plotOptions: {
+          series: {
+            animation: false, // Disable series animation
+            turboThreshold: 1000 // Increase threshold for boost module
+          }
+        },
         series: props.data,
         title: {
           text: null,
         },
         tooltip: {
+          animation: false, // Disable tooltip animation for better performance
           formatter: function() {
             let tooltip = ''
             let tooltip_time = ''
