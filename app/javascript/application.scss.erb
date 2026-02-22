@@ -84,6 +84,60 @@ svg {
   fill: currentColor;
 }
 
+// Chart loading states
+.chart-pending {
+  min-height: 200px;
+  background: linear-gradient(90deg, var(--mid-gray) 25%, var(--light) 50%, var(--mid-gray) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+  border-radius: 4px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--dark);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.chart-loaded {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.chart-error {
+  padding: 2rem;
+  text-align: center;
+  color: var(--red);
+  background-color: var(--light);
+  border-radius: 4px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .highcharts-container {
   font-family: inherit;
   font-size: 14px;
