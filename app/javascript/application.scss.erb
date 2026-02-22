@@ -84,9 +84,17 @@ svg {
   fill: currentColor;
 }
 
+// Chart container heights
+.spot-chart,
+.buoy-chart {
+  min-height: 400px;
+  width: 100%;
+  display: block;
+}
+
 // Chart loading states
 .chart-pending {
-  min-height: 200px;
+  min-height: 400px;
   background: linear-gradient(90deg, var(--mid-gray) 25%, var(--light) 50%, var(--mid-gray) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s ease-in-out infinite;
@@ -132,7 +140,7 @@ svg {
   color: var(--red);
   background-color: var(--light);
   border-radius: 4px;
-  min-height: 200px;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
