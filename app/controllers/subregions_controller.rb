@@ -6,7 +6,7 @@ class SubregionsController < ApplicationController
   FLOAT_FIELDS = %i[max min avg_delta max_delta].freeze
 
   def show
-    forecasts ||= Spot.connection.select_all <<-SQL.squish
+    forecasts ||= Spot.connection.select_all <<~SQL.squish
       SELECT *
       FROM consolidated_forecasts
       WHERE subregion_id = #{subregion.id}

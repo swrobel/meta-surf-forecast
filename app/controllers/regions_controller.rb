@@ -2,7 +2,7 @@ class RegionsController < ApplicationController
   FLOAT_FIELDS = %i[swell_wave_height ground_swell_height ground_swell_period ground_swell_direction wind_wave_height wind_swell_height wind_swell_period wind_swell_direction].freeze
 
   def buoys
-    buoy_reports ||= Buoy.connection.select_all <<-SQL.squish
+    buoy_reports ||= Buoy.connection.select_all <<~SQL.squish
       SELECT
          b.ndbc_id
         ,b.name

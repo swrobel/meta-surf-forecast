@@ -7,7 +7,7 @@ namespace :cleanup do
 
     start_time = Time.current
     Rails.logger.info 'Pruning ApiRequests more than 30 days old...'
-    ApiRequest.connection.execute <<-SQL.squish
+    ApiRequest.connection.execute <<~SQL.squish
       delete from api_requests where created_at < now() - interval '30 day'
     SQL
     Rails.logger.info "Finished pruning ApiRequests in #{distance_of_time_in_words_to_now(start_time)}"
