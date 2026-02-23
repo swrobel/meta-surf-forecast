@@ -13,7 +13,7 @@ class Buoy < ApplicationRecord
 
   class << self
     def buoy_report_api_url(ndbc_id)
-      "https://www.ndbc.noaa.gov/data/5day2/#{ndbc_id}_5day.spec"
+      "https://www.ndbc.noaa.gov/data/realtime2/#{ndbc_id}.spec"
     end
   end
 

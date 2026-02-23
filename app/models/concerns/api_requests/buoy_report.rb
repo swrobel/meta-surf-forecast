@@ -22,6 +22,8 @@ module ApiRequests
           end
 
           tstamp = Time.utc(*line[0..15].split, 0)
+          return if tstamp < 25.hours.ago
+
           record = service_class.unscoped.where(buoy: requestable, timestamp: requestable.utc_stamp_to_local(tstamp)).first_or_initialize
           record.api_request = self
           record.sig_wave_height = line[17..20].to_d * FEET_PER_METER
