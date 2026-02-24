@@ -1,4 +1,5 @@
 import Highcharts from 'highcharts'
+import chartConfig from './chartConfig'
 
 const BuoyChart = {
   /**
@@ -10,41 +11,14 @@ const BuoyChart = {
   render(container, props) {
     try {
       const options = {
-        accessibility: {
-          enabled: false,
-        },
-        boost: {
-          useGPUTranslations: true,
-          usePreAllocated: true
-        },
+        ...chartConfig,
         chart: {
-          animation: false, // Disable animation for faster rendering
-          marginRight: 2,
-          spacingLeft: 0,
-          style: {
-            fontFamily: 'inherit',
-          },
+          ...chartConfig.chart,
           type: 'spline',
         },
-        credits: {
-          enabled: false,
-        },
-        legend: {
-          borderWidth: 0,
-          margin: 0,
-        },
-        plotOptions: {
-          series: {
-            animation: false, // Disable series animation
-            turboThreshold: 1000 // Increase threshold for boost module
-          }
-        },
         series: props.data,
-        title: {
-          text: null,
-        },
         tooltip: {
-          animation: false, // Disable tooltip animation for better performance
+          ...chartConfig.tooltip,
           formatter: function() {
             let tooltip = ''
             let tooltip_time = ''
@@ -55,9 +29,9 @@ const BuoyChart = {
             tooltip = `<strong>${tooltip_time}</strong>${tooltip}`
             return tooltip
           },
-          shared: true,
         },
         xAxis: {
+          ...chartConfig.xAxis,
           categories: props.xLabels,
           labels: {
             style: {
@@ -65,28 +39,23 @@ const BuoyChart = {
             }
           },
           plotBands: props.plotBands,
-          title: {
-            text: null,
-          },
+          tickLength: 12,
+          tickmarkPlacement: 'on',
         },
         yAxis: {
+          ...chartConfig.yAxis,
           labels: {
             style: {
               color: null,
             }
           },
           min: 0,
-          offset: -8,
           stackLabels: {
             enabled: true,
             style: {
               fontSize: '0.65em',
               fontWeight: 'normal',
             },
-          },
-          tickInterval: 1,
-          title: {
-            text: null
           },
         },
       }

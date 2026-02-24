@@ -3,6 +3,7 @@
 
 :root {
   --dark: #222;
+  --dark-gray: #AAA;
   --light: #f8f9fa;
   --mid-gray: #e9ecef;
   --black: #000;
@@ -14,6 +15,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --dark: #c0c0c0; // 75% white
+    --dark-gray: var(--dark);
     --light: #292929;
     --mid-gray: #333;
     --black: white;
@@ -170,6 +172,11 @@ svg {
 
   .highcharts-grid-line {
     stroke: var(--mid-gray);
+  }
+
+  .highcharts-axis-line,
+  .highcharts-tick {
+    stroke: var(--dark-gray);
   }
 
   .highcharts-markers image.highcharts-point {

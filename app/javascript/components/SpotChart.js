@@ -1,4 +1,5 @@
 import Highcharts from 'highcharts'
+import chartConfig from './chartConfig'
 
 const SpotChart = {
   /**
@@ -10,36 +11,19 @@ const SpotChart = {
   render(container, props) {
     try {
       const options = {
-        accessibility: {
-          enabled: false,
-        },
-        boost: {
-          useGPUTranslations: true,
-          usePreAllocated: true
-        },
+        ...chartConfig,
         chart: {
-          animation: false, // Disable animation for faster rendering
-          marginRight: 2,
-          spacingLeft: 0,
-          style: {
-            fontFamily: 'inherit',
-          },
+          ...chartConfig.chart,
           styledMode: true,
           type: 'column',
         },
-        credits: {
-          enabled: false,
-        },
-        legend: {
-          borderWidth: 0,
-          margin: 0,
-        },
         plotOptions: {
+          ...chartConfig.plotOptions,
           areaspline: {
             animation: false
           },
           column: {
-            animation: false, // Disable column animation
+            animation: false,
             borderRadius: 0,
             borderWidth: 0,
             groupPadding: 0.07,
@@ -48,18 +32,14 @@ const SpotChart = {
             },
           },
           series: {
-            animation: false,
+            ...chartConfig.plotOptions.series,
             marker: {},
             stacking: 'normal',
-            turboThreshold: 1000 // Increase threshold for boost module
           },
         },
         series: props.data,
-        title: {
-          text: null,
-        },
         tooltip: {
-          animation: false, // Disable tooltip animation for better performance
+          ...chartConfig.tooltip,
           formatter: function() {
             let avg = 0
             let min = 0
@@ -80,18 +60,16 @@ const SpotChart = {
             tooltip += `<br>Min: ${min.toPrecision(2)} ft`
             return tooltip
           },
-          shared: true,
         },
         xAxis: {
+          ...chartConfig.xAxis,
           categories: props.xLabels,
           plotBands: props.plotBands,
-          title: {
-            text: null,
-          },
+          tickLength: 16,
         },
         yAxis: {
+          ...chartConfig.yAxis,
           max: props.max,
-          offset: -8,
           stackLabels: {
             enabled: true,
             formatter: function() {
@@ -102,15 +80,11 @@ const SpotChart = {
               fontWeight: 'normal',
             },
           },
-          tickInterval: 1,
-          title: {
-            text: null
-          },
         },
       }
 
       // Create and return the chart
-      return Highcharts.chart(container, options);
+      return Highcharts.chart(container, options)
     } catch (error) {
       console.error('Error rendering spot chart:', error)
       
