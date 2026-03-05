@@ -3,7 +3,7 @@
 class Spot < ApplicationRecord
   extend FriendlyId
 
-  friendly_id :name, use: %i[slugged finders scoped], scope: :subregion
+  friendly_id :sluggable, use: %i[slugged finders scoped], scope: :subregion
 
   include Spots::SpitcastV2
   include Spots::SurflineV2
@@ -24,6 +24,12 @@ class Spot < ApplicationRecord
 
   memoize def unique_timestamps
     (surfline_v2_lotus.collect(&:timestamp) | spitcast_v2s.collect(&:timestamp)).sort
+  end
+
+  # NOTE: Strip apostrophes
+  # ex: Queen's becomes queens instead of queen-s
+  def sluggable
+    name.gsub(/[`'’]/o, '').strip
   end
 
 private
