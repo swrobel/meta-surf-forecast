@@ -38,10 +38,10 @@ class SubregionsController < ApplicationController
 private
 
   def region
-    @region ||= Region.find(params[:region_id])
+    @region ||= Region.find(params.expect(:region_id))
   end
 
   def subregion
-    @subregion ||= region.subregions.find(params[:subregion_id])
+    @subregion ||= region.subregions.find(params.expect(:subregion_id))
   end
 end

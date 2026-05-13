@@ -45,6 +45,6 @@ class RegionsController < ApplicationController
 private
 
   def region
-    @region ||= Region.find(params[:region_id])
+    @region ||= Region.find(params.expect(:region_id))
   end
 end
