@@ -38,4 +38,4 @@
       }
     - plot_bands = to && [{ from: -0.5, to: to + 0.5 }].to_json
     - x_labels = reports.collect { |point| point[:xaxis_time] }.to_json
-    .buoy-chart data-data=[wind_data, swell_data].to_json data-plotbands=plot_bands data-xlabels=x_labels
+    .buoy-chart data-data=[swell_data, wind_data].to_json data-plotbands=plot_bands data-xlabels=x_labels
