@@ -471,10 +471,10 @@ headroom.js@^0.12.0:
   resolved "https://registry.yarnpkg.com/headroom.js/-/headroom.js-0.12.0.tgz#e09b466b18d22457f2023fb946ff620e47a5c205"
   integrity sha512-iXnAafUm3FdzfJ91uixLws2hkKI1jC8bAKK/pt7XYr8Ie1jO7xbK48Ycpl9tUPyBgkzuj1p/PhJS0fy4E/5anA==
 
-highcharts@^12.3.0:
-  version "12.6.0"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-12.6.0.tgz#5e527c3cc41b858edf8d72f129808a167604a939"
-  integrity sha512-zWwoXECOakJT2huBMqIZOjDNLLgyZFCcfZqTj2g6cvYOGxjF3nvooC+rIaF5aKiharluyGKNflfRNrzOAIjdRg==
+highcharts@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-13.0.0.tgz#fb50fe3cc0e622d34c9c7be00c65d2a9417a5ec1"
+  integrity sha512-AoFXei9hSnVXo8X5PmXzSiNXwPMgA+NzyN35uRRy0N1XwbJbRI1laTCaaFci9QB9Wyv9ZFWlgF0xzgivavJpDA==
 
 icss-utils@^5.0.0, icss-utils@^5.1.0:
   version "5.1.0"

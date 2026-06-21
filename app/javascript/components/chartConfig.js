@@ -6,6 +6,17 @@ const chartConfig = {
     useGPUTranslations: true,
     usePreAllocated: true
   },
+  palette: {
+    colorScheme: 'light dark',
+    light: {
+      backgroundColor: '#ffffff',
+      neutralColor: '#222222',
+    },
+    dark: {
+      backgroundColor: '#000000',
+      neutralColor: '#c0c0c0',
+    },
+  },
   chart: {
     animation: false,
     marginRight: 2,
