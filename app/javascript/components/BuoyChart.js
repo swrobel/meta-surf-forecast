@@ -1,6 +1,15 @@
 import Highcharts from 'highcharts'
 import chartConfig from './chartConfig'
 
+function markerScaleFromPeriod(period) {
+  const p = Number(period)
+  if (!Number.isFinite(p)) return 1
+
+  // 10s is baseline; shorter periods shrink and longer periods grow.
+  const scale = 1 + ((p - 10) * 0.06)
+  return Math.max(0.7, Math.min(1.6, scale))
+}
+
 const BuoyChart = {
   /**
    * Renders a buoy chart in the specified container
@@ -15,6 +24,19 @@ const BuoyChart = {
         chart: {
           ...chartConfig.chart,
           type: 'spline',
+          events: {
+            render: function() {
+              this.series.forEach((series) => {
+                series.points.forEach((point) => {
+                  const markerElement = point.graphic?.element
+                  if (!markerElement) return
+
+                  const scale = markerScaleFromPeriod(point.period)
+                  markerElement.style.setProperty('--period-scale', scale.toFixed(3))
+                })
+              })
+            },
+          },
         },
         series: props.data,
         tooltip: {
