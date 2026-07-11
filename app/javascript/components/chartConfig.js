@@ -43,6 +43,7 @@ const chartConfig = {
   },
   tooltip: {
     animation: false,
+    followTouchMove: false,
     shared: true,
   },
   xAxis: {
