@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
 
 private
 
-  def redirect_to_default(locked)
-    redirect_to "/southern-california/#{locked ? 'buoys' : 'los-angeles'}"
+  def redirect_to_default(_locked)
+    redirect_to '/southern-california/buoys'
   end
 
   def locked?
