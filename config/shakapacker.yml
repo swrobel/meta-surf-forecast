@@ -69,6 +69,7 @@ development:
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
+    live_reload: false
     host: localhost
     port: 3035
     public: localhost:3035

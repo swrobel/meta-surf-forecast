@@ -10,6 +10,24 @@ function markerScaleFromPeriod(period) {
   return Math.max(0.7, Math.min(1.6, scale))
 }
 
+function markerRotationFromDirection(direction) {
+  const d = Number(direction)
+  if (!Number.isFinite(d)) return '180deg'
+
+  const normalized = ((d % 360) + 360) % 360
+  return `${(180 + normalized).toFixed(2)}deg`
+}
+
+function formatTooltipNumber(value) {
+  const n = Number(value)
+  if (!Number.isFinite(n)) return '--'
+
+  return n.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1,
+  })
+}
+
 const BuoyChart = {
   /**
    * Renders a buoy chart in the specified container
@@ -32,7 +50,9 @@ const BuoyChart = {
                   if (!markerElement) return
 
                   const scale = markerScaleFromPeriod(point.period)
+                  const rotation = markerRotationFromDirection(point.direction)
                   markerElement.style.setProperty('--period-scale', scale.toFixed(3))
+                  markerElement.style.setProperty('--marker-rotation', rotation)
                 })
               })
             },
@@ -46,7 +66,12 @@ const BuoyChart = {
             let tooltip_time = ''
             for (const point of this.points) {
               if (point.tooltip_time) tooltip_time = point.tooltip_time
-              tooltip += `<br><span style="color:${point.series.color}">●</span> ${point.series.name}: ${point.y.toPrecision(2)}ft from ${point.point.direction}° (${point.point.swell.toPrecision(2)}ft @ ${point.point.period}s)`
+              const height = Number(point.y)
+              const direction = Number(point.point.direction)
+              const swell = Number(point.point.swell)
+              const period = Number(point.point.period)
+
+              tooltip += `<br><span style="color:${point.series.color}">●</span> ${point.series.name}: ${formatTooltipNumber(height)}ft from ${formatTooltipNumber(direction)}° (${formatTooltipNumber(swell)}ft @ ${formatTooltipNumber(period)}s)`
             }
             tooltip = `<strong>${tooltip_time}</strong>${tooltip}`
             return tooltip

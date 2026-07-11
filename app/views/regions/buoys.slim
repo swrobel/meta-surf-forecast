@@ -20,8 +20,7 @@
           swell: point[:ground_swell_height],\
           period: point[:ground_swell_period],\
           direction: point[:ground_swell_direction],\
-          tooltip_time: point[:tooltip_time],\
-          className: "dir-#{point[:ground_swell_direction].round}"\
+          tooltip_time: point[:tooltip_time]\
         }}\
       }
     - wind_data = {\
@@ -32,8 +31,7 @@
           y: point[:wind_wave_height],\
           swell: point[:wind_swell_height],\
           period: point[:wind_swell_period],\
-          direction: point[:wind_swell_direction],\
-          className: "dir-#{point[:wind_swell_direction].round}"\
+          direction: point[:wind_swell_direction]\
         }}\
       }
     - plot_bands = to && [{ from: -0.5, to: to + 0.5 }].to_json

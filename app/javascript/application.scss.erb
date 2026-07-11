@@ -181,13 +181,8 @@ svg {
 
   .highcharts-markers image.highcharts-point {
     transform-origin: 12px 12px;
-
-    <% DIRECTION_MAPPING.values.each do |dir| %>
-      <%= "&.dir-#{dir.round} {" %>
-        <%= "transform: translate(-12px,-12px) rotate(#{180 + dir}deg) scale(var(--period-scale, 1));" %>
-        transform-box: fill-box;
-      }
-    <% end %>
+    transform: translate(-12px, -12px) rotate(var(--marker-rotation, 180deg)) scale(var(--period-scale, 1));
+    transform-box: fill-box;
   }
 
   .highcharts-plot-band {
