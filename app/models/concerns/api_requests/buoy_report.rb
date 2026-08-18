@@ -36,7 +36,7 @@ module ApiRequests
           record.steepness = line[50..59].strip
           record.avg_period = line[61..64].to_d
           record.mean_wave_direction = line[65..68].to_i
-          record.save!
+          record.save! if record.wind_swell_height.positive? || record.ground_swell_height.positive?
         end
       end
     end
