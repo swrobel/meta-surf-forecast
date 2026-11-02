@@ -31,8 +31,8 @@
 ## Developer Setup
 
 ### Prerequisites
-* `ruby 3.4.x`
-* `node 22.x`
+* `ruby 4.0.x`
+* `node 26.x`
 * `yarn 1.x`
 * `postgresql`
 
